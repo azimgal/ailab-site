@@ -1412,8 +1412,14 @@ button { font-family: var(--ailab-font); }
   .ailab-footer__logo img { height: 40px; }
 
   /* Hero — tighten on phones */
-  .ailab-hero { padding: 48px 20px 56px; }
-  .ailab-hero__subtext { font-size: 14px; margin-bottom: 24px; }
+  .ailab-hero { padding: 40px 20px 56px; }
+  .ailab-hero__subtext { font-size: 14px; margin-bottom: 20px; }
+
+  /* Hero diagram — smaller on mobile */
+  .ailab-hero__visual { margin-bottom: -12px; }
+
+  /* Kicker — tighter spacing on mobile */
+  .ailab-kicker { letter-spacing: 0.10em; }
 
   /* Buttons — ensure 44px tap targets */
   .ailab-btn { min-height: 44px; padding: 13px 22px; }
@@ -1449,6 +1455,9 @@ button { font-family: var(--ailab-font); }
     --ailab-section-space: 64px;
     --ailab-pad-page: 16px;
   }
+
+  /* Hide hero diagram on very small phones to bring CTAs up */
+  .ailab-hero__visual { display: none; }
 
   .ailab-hero__headline { font-size: clamp(26px, 9vw, 34px); }
 
