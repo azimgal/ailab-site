@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Lab Academy — Практическое обучение AI и автоматизации</title>
+  <meta name="description" content="AI Lab Academy — практические курсы по AI, автоматизации и ML для команд и специалистов в Казахстане. Учимся на реальных задачах вашего бизнеса." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css?v=7" />
+  <link rel="icon" href="data:,">
+  <style>
+    /* ─── HERO ─────────────────────────────────────────────── */
+    .ac-hero {
+      min-height: calc(100vh - 72px);
+      min-height: calc(100svh - 72px);
+      background: url('../bg-hero.svg') center/cover no-repeat, #06071a;
+      display: flex;
+      align-items: center;
+      padding: 80px var(--ailab-pad-page) 64px;
+    }
+    .ac-hero__inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+    .ac-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(106,103,248,.18);
+      border: 1px solid rgba(106,103,248,.35);
+      border-radius: var(--ailab-radius-pill);
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ailab-violet-dark);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .ac-hero__headline {
+      font-size: clamp(38px, 6vw, 76px);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -.03em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .ac-hero__headline em {
+      font-style: normal;
+      background: linear-gradient(135deg, #8F8DFA 0%, #1E8AFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .ac-hero__subtext {
+      font-size: 18px;
+      color: rgba(255,255,255,.68);
+      max-width: 560px;
+      margin-bottom: 40px;
+      line-height: 1.65;
+    }
+    .ac-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .ac-hero__stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .ac-stat__value {
+      font-size: 38px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+    .ac-stat__label {
+      font-size: 13px;
+      color: rgba(255,255,255,.45);
+      margin-top: 6px;
+    }
+
+    /* ─── TRUST BAR ─────────────────────────────────────────── */
+    .ac-trust {
+      background: rgba(255,255,255,.04);
+      border-top: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      padding: 20px var(--ailab-pad-page);
+    }
+    .ac-trust__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .ac-trust__item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,.50);
+      white-space: nowrap;
+    }
+    .ac-trust__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ailab-violet-dark);
+      flex-shrink: 0;
+    }
+
+    /* ─── PROGRAMS ──────────────────────────────────────────── */
+    .ac-programs {
+      padding: var(--ailab-section-space) var(--ailab-pad-page);
+      background-color: var(--ailab-bg-page);
+      background-image: url('../bg-light.svg');
+      background-size: cover;
+      background-position: center;
+    }
+    .ac-programs__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 52px;
+    }
+    .ac-card {
+      background: var(--ailab-bg-card);
+      border: 1px solid var(--ailab-border);
+      border-radius: var(--ailab-radius-card);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow var(--ailab-dur-base) var(--ailab-ease),
+                  transform var(--ailab-dur-base) var(--ailab-ease);
+    }
+    .ac-card:hover { box-shadow: var(--ailab-shadow-md); transform: translateY(-3px); }
+    .ac-card--featured {
+      border-color: rgba(106,103,248,.35);
+      background: linear-gradient(160deg, rgba(106,103,248,.04) 0%, #fff 60%);
+    }
+    .ac-card__header { margin-bottom: 20px; }
+    .ac-card__icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(106,103,248,.14), rgba(30,138,255,.09));
+      border: 1px solid rgba(106,103,248,.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .ac-card__level {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--ailab-violet);
+      background: var(--ailab-violet-light);
+      border-radius: var(--ailab-radius-pill);
+      padding: 3px 10px;
+      margin-bottom: 12px;
+    }
+    .ac-card__level--blue { color: #1E8AFF; background: rgba(30,138,255,.12); }
+    .ac-card__level--green { color: #18A066; background: rgba(24,160,102,.12); }
+    .ac-card__title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--ailab-text-strong);
+      margin-bottom: 10px;
+      letter-spacing: -.01em;
+    }
+    .ac-card__desc {
+      font-size: 15px;
+      color: var(--ailab-text-body);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .ac-card__modules {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .ac-card__modules li {
+      font-size: 13px;
+      color: var(--ailab-text-body);
+      padding-left: 18px;
+      position: relative;
+    }
+    .ac-card__modules li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--ailab-violet-light);
+      border: 1.5px solid var(--ailab-violet);
+    }
+    .ac-card__footer {
+      margin-top: auto;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--ailab-border);
+      padding-top: 16px;
+    }
+    .ac-card__meta {
+      font-size: 12px;
+      color: var(--ailab-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .ac-card__cta {
+      margin-top: 16px;
+      display: block;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: var(--ailab-radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ailab-violet);
+      border: 1.5px solid rgba(106,103,248,.30);
+      transition: background var(--ailab-dur-base), color var(--ailab-dur-base);
+    }
+    .ac-card__cta:hover { background: var(--ailab-violet); color: #fff; }
+
+    /* ─── OUTCOMES ──────────────────────────────────────────── */
+    .ac-outcomes {
+      padding: var(--ailab-section-space) var(--ailab-pad-page);
+      background: var(--ailab-bg-dark);
+    }
+    .ac-outcomes .ailab-section-title { color: #fff; }
+    .ac-outcomes .ailab-section-sub { color: rgba(255,255,255,.50); }
+    .ac-outcomes__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 52px;
+    }
+    .ac-outcome {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--ailab-radius-card);
+      padding: 28px;
+    }
+    .ac-outcome__num {
+      font-size: 44px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8F8DFA, #1E8AFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -.03em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .ac-outcome__title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .ac-outcome__desc {
+      font-size: 14px;
+      color: rgba(255,255,255,.50);
+      line-height: 1.6;
+    }
+
+    /* ─── HOW IT WORKS ──────────────────────────────────────── */
+    .ac-how {
+      padding: var(--ailab-section-space) var(--ailab-pad-page);
+      background-color: var(--ailab-bg-page);
+      background-image: url('../bg-light.svg');
+      background-size: cover;
+      background-position: center;
+    }
+    .ac-how__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 52px;
+      position: relative;
+    }
+    .ac-how__steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 60px;
+      right: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--ailab-violet) 0%, rgba(30,138,255,.30) 100%);
+    }
+    .ac-step {
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .ac-step__circle {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--ailab-bg-card);
+      border: 2px solid var(--ailab-violet);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 0 6px rgba(106,103,248,.08);
+    }
+    .ac-step__num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ailab-violet);
+      margin-bottom: 8px;
+      font-family: var(--ailab-mono);
+    }
+    .ac-step__title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--ailab-text-strong);
+      margin-bottom: 10px;
+    }
+    .ac-step__desc {
+      font-size: 14px;
+      color: var(--ailab-text-body);
+      line-height: 1.65;
+    }
+
+    /* ─── INSTRUCTORS ───────────────────────────────────────── */
+    .ac-instructors {
+      padding: var(--ailab-section-space) var(--ailab-pad-page);
+      background: var(--ailab-bg-dark);
+    }
+    .ac-instructors .ailab-section-title { color: #fff; }
+    .ac-instructors .ailab-section-sub { color: rgba(255,255,255,.50); }
+    .ac-instructors__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 52px;
+    }
+    .ac-instructor {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--ailab-radius-card);
+      padding: 32px;
+    }
+    .ac-instructor__avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6A67F8, #1E8AFF);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+      margin-bottom: 16px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .ac-instructor__name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .ac-instructor__role {
+      font-size: 13px;
+      color: var(--ailab-violet-dark);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .ac-instructor__bio {
+      font-size: 14px;
+      color: rgba(255,255,255,.55);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .ac-instructor__tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .ac-instructor__tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,.45);
+      background: rgba(255,255,255,.07);
+      border-radius: var(--ailab-radius-pill);
+      padding: 3px 10px;
+    }
+
+    /* ─── REVIEWS ───────────────────────────────────────────── */
+    .ac-reviews {
+      padding: var(--ailab-section-space) var(--ailab-pad-page);
+      background-color: var(--ailab-bg-page);
+      background-image: url('../bg-light.svg');
+      background-size: cover;
+      background-position: center;
+    }
+    .ac-reviews__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 52px;
+    }
+    .ac-review {
+      background: var(--ailab-bg-card);
+      border: 1px solid var(--ailab-border);
+      border-radius: var(--ailab-radius-card);
+      padding: 28px;
+    }
+    .ac-review__stars {
+      color: #F5A623;
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .ac-review__text {
+      font-size: 15px;
+      color: var(--ailab-text-body);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .ac-review__text strong { color: var(--ailab-text-strong); }
+    .ac-review__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ac-review__ava {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(106,103,248,.20), rgba(30,138,255,.15));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--ailab-violet);
+      flex-shrink: 0;
+    }
+    .ac-review__name {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ailab-text-strong);
+    }
+    .ac-review__pos {
+      font-size: 12px;
+      color: var(--ailab-text-muted);
+      margin-top: 2px;
+    }
+    .ac-review__program {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ailab-violet);
+      background: var(--ailab-violet-light);
+      border-radius: var(--ailab-radius-pill);
+      padding: 2px 8px;
+      margin-top: 4px;
+      display: inline-block;
+    }
+
+    /* ─── FAQ ───────────────────────────────────────────────── */
+    .ac-faq {
+      padding: var(--ailab-section-space) var(--ailab-pad-page);
+      background: var(--ailab-bg-dark);
+    }
+    .ac-faq .ailab-section-title { color: #fff; }
+    .ac-faq .ailab-section-sub { color: rgba(255,255,255,.50); }
+    .ac-faq__list {
+      max-width: 760px;
+      margin: 52px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .ac-faq__item {
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .ac-faq__item:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+    .ac-faq__trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      text-align: left;
+      gap: 16px;
+    }
+    .ac-faq__q {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .ac-faq__icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.20);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.55);
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: transform var(--ailab-dur-base) var(--ailab-ease),
+                  border-color var(--ailab-dur-base), color var(--ailab-dur-base);
+    }
+    .ac-faq__item.is-open .ac-faq__icon {
+      transform: rotate(45deg);
+      border-color: var(--ailab-violet);
+      color: var(--ailab-violet-dark);
+    }
+    .ac-faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.32s var(--ailab-ease), padding 0.2s;
+    }
+    .ac-faq__item.is-open .ac-faq__answer { max-height: 300px; }
+    .ac-faq__answer p {
+      font-size: 15px;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+      padding-bottom: 20px;
+    }
+
+    /* ─── CTA ───────────────────────────────────────────────── */
+    .ac-cta {
+      padding: var(--ailab-section-space) var(--ailab-pad-page);
+      background: linear-gradient(160deg, #0e0f22 0%, #141636 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .ac-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(106,103,248,.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .ac-cta__inner { max-width: 640px; margin: 0 auto; position: relative; }
+    .ac-cta__label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ailab-violet-dark);
+      margin-bottom: 20px;
+    }
+    .ac-cta__title {
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .ac-cta__sub {
+      font-size: 16px;
+      color: rgba(255,255,255,.50);
+      margin-bottom: 40px;
+      line-height: 1.65;
+    }
+    .ac-cta__form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .ac-cta__input {
+      flex: 1;
+      min-width: 220px;
+      max-width: 300px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--ailab-radius-sm);
+      padding: 14px 18px;
+      font-size: 15px;
+      color: #fff;
+      font-family: var(--ailab-font);
+      outline: none;
+      transition: border-color var(--ailab-dur-base) var(--ailab-ease);
+    }
+    .ac-cta__input::placeholder { color: rgba(255,255,255,.30); }
+    .ac-cta__input:focus { border-color: var(--ailab-violet); }
+    .ac-cta__note {
+      font-size: 12px;
+      color: rgba(255,255,255,.25);
+      margin-top: 16px;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 1023px) {
+      .ac-programs__grid { grid-template-columns: 1fr 1fr; }
+      .ac-outcomes__grid { grid-template-columns: 1fr 1fr; }
+      .ac-instructors__grid { grid-template-columns: 1fr 1fr; }
+      .ac-reviews__grid { grid-template-columns: 1fr 1fr; }
+      .ac-how__steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .ac-how__steps::before { display: none; }
+    }
+    @media (max-width: 767px) {
+      .ac-hero { padding: 60px 20px 48px; }
+      .ac-hero__stats { gap: 28px; }
+      .ac-programs__grid { grid-template-columns: 1fr; }
+      .ac-outcomes__grid { grid-template-columns: 1fr; }
+      .ac-instructors__grid { grid-template-columns: 1fr; }
+      .ac-reviews__grid { grid-template-columns: 1fr; }
+      .ac-how__steps { grid-template-columns: 1fr; }
+      .ac-trust__inner { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="ailab-skip" href="#academy-main">Перейти к основному содержанию</a>
+
+  <!-- HEADER -->
+  <header class="ailab-header" id="ailab-header" role="banner">
+    <a href="../index.html" class="ailab-header__logo" aria-label="AI Laboratory — главная">
+      <img
+        src="../../design-system/ai-laboratory-design/assets/logos/ai-lab-logo.svg"
+        alt="AI Laboratory"
+        onerror="this.outerHTML='<span style=\'font-size:20px;font-weight:800;letter-spacing:-0.02em;\' class=\'ailab-header__logo-text\'>AI Lab</span>'" />
+    </a>
+    <nav class="ailab-header__nav" aria-label="Основная навигация">
+      <a href="../index.html#ailab-build">Что мы делаем</a>
+      <a href="../index.html#ailab-cases">Кейсы</a>
+      <a href="../index.html#ailab-how">Как работаем</a>
+      <a href="../index.html#ailab-team">Команда</a>
+      <a href="../academy/index.html" aria-current="page" style="color:var(--ailab-violet)">Academy</a>
+      <a href="../index.html#ailab-faq">FAQ</a>
+    </nav>
+    <div class="ailab-header__actions">
+      <a href="#ac-cta" class="ailab-btn ailab-btn--primary">Записаться</a>
+    </div>
+    <button class="ailab-hamburger" id="ailab-hamburger" aria-label="Открыть меню" aria-expanded="false" aria-controls="ailab-mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="ailab-mobile-menu" id="ailab-mobile-menu" role="dialog" aria-modal="true" aria-label="Мобильное меню">
+    <button class="ailab-mobile-menu__close" id="ailab-menu-close" aria-label="Закрыть меню">&times;</button>
+    <a href="../index.html#ailab-build">Что мы делаем</a>
+    <a href="../index.html#ailab-cases">Кейсы</a>
+    <a href="../index.html#ailab-how">Как работаем</a>
+    <a href="../index.html#ailab-team">Команда</a>
+    <a href="../academy/index.html" style="color:var(--ailab-violet)">Academy</a>
+    <a href="../index.html#ailab-faq">FAQ</a>
+    <a href="#ac-cta" class="ailab-btn ailab-btn--primary">Записаться</a>
+  </div>
+
+  <main id="academy-main">
+
+    <!-- ── HERO ───────────────────────────────────────────── -->
+    <section class="ac-hero" aria-label="AI Lab Academy — главный экран">
+      <div class="ac-hero__inner">
+        <div class="ailab-animate">
+          <div class="ac-hero__badge">✦ AI Lab Academy · Казахстан</div>
+          <h1 class="ac-hero__headline">
+            Обучаем командам,<br />
+            которые строят<br />
+            <em>AI-продукты</em>
+          </h1>
+          <p class="ac-hero__subtext">
+            Практические программы от инженеров, которые уже внедрили AI
+            в десятки казахстанских компаний. Учимся на реальных задачах вашего бизнеса — не на учебных датасетах.
+          </p>
+          <div class="ac-hero__actions">
+            <a href="#ac-programs" class="ailab-btn ailab-btn--primary">Смотреть программы</a>
+            <a href="#ac-cta" class="ailab-btn ailab-btn--secondary">Обсудить корпоратив</a>
+          </div>
+          <div class="ac-hero__stats">
+            <div>
+              <div class="ac-stat__value">6</div>
+              <div class="ac-stat__label">программ обучения</div>
+            </div>
+            <div>
+              <div class="ac-stat__value">150+</div>
+              <div class="ac-stat__label">обученных специалистов</div>
+            </div>
+            <div>
+              <div class="ac-stat__value">4.8 ★</div>
+              <div class="ac-stat__label">средняя оценка курсов</div>
+            </div>
+            <div>
+              <div class="ac-stat__value">3 мес</div>
+              <div class="ac-stat__label">средний срок внедрения после курса</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust bar -->
+    <div class="ac-trust">
+      <div class="ac-trust__inner">
+        <div class="ac-trust__item"><div class="ac-trust__dot"></div>Преподают действующие инженеры AI Lab</div>
+        <div class="ac-trust__item"><div class="ac-trust__dot"></div>70% времени — практика на живых задачах</div>
+        <div class="ac-trust__item"><div class="ac-trust__dot"></div>Сертификат по итогам обучения</div>
+        <div class="ac-trust__item"><div class="ac-trust__dot"></div>Поддержка 30 дней после курса</div>
+        <div class="ac-trust__item"><div class="ac-trust__dot"></div>Онлайн и офлайн в Алматы / Астане</div>
+      </div>
+    </div>
+
+    <!-- ── PROGRAMS ────────────────────────────────────────── -->
+    <section class="ac-programs" id="ac-programs" aria-labelledby="ac-programs-title">
+      <div class="ailab-container">
+        <div class="ailab-animate">
+          <span class="ailab-kicker">Программы</span>
+          <h2 class="ailab-section-title" id="ac-programs-title">Чему мы обучаем</h2>
+          <p class="ailab-section-sub">
+            Каждая программа — реальные инструменты, кейсы из практики и готовый результат, который можно применить сразу после обучения.
+          </p>
+        </div>
+
+        <div class="ac-programs__grid">
+
+          <!-- 1 -->
+          <article class="ac-card ailab-animate">
+            <div class="ac-card__header">
+              <div class="ac-card__icon">🤖</div>
+              <span class="ac-card__level">Старт · без кода</span>
+              <h3 class="ac-card__title">AI для бизнеса</h3>
+              <p class="ac-card__desc">
+                Для руководителей и менеджеров, которые хотят понять, что AI может сделать
+                прямо сейчас — и как внедрить его без IT-отдела.
+              </p>
+            </div>
+            <ul class="ac-card__modules">
+              <li>Что реально умеют современные LLM — и где они врут</li>
+              <li>Готовые AI-инструменты: ChatGPT, Notion AI, Copilot</li>
+              <li>Как оценить ROI от AI-автоматизации</li>
+              <li>Построение AI-стратегии под бизнес-задачу</li>
+              <li>Разбор 6 кейсов: ритейл, логистика, HR, финансы</li>
+            </ul>
+            <div class="ac-card__footer">
+              <span class="ac-card__meta">⏱ 3 дня (24 ч)</span>
+              <span class="ac-card__meta">👥 до 12 человек</span>
+              <span class="ac-card__meta">📍 Онлайн / Офлайн</span>
+            </div>
+            <a href="#ac-cta" class="ac-card__cta">Записаться →</a>
+          </article>
+
+          <!-- 2 -->
+          <article class="ac-card ac-card--featured ailab-animate">
+            <div class="ac-card__header">
+              <div class="ac-card__icon">⚙️</div>
+              <span class="ac-card__level ac-card__level--blue">Практика · популярный</span>
+              <h3 class="ac-card__title">Автоматизация процессов с AI</h3>
+              <p class="ac-card__desc">
+                Строим рабочие автоматизации с нуля. Команды уходят с готовыми пайплайнами,
+                которые сразу экономят часы работы.
+              </p>
+            </div>
+            <ul class="ac-card__modules">
+              <li>n8n и Zapier: построение no-code/low-code флоу</li>
+              <li>API-интеграции: OpenAI, Telegram, Google Sheets, CRM</li>
+              <li>LangChain для построения цепочек с LLM</li>
+              <li>Векторные базы: Pinecone, Chroma для поиска по документам</li>
+              <li>Финальный проект: автоматизация реального процесса</li>
+            </ul>
+            <div class="ac-card__footer">
+              <span class="ac-card__meta">⏱ 5 дней (40 ч)</span>
+              <span class="ac-card__meta">👥 до 8 человек</span>
+              <span class="ac-card__meta">📍 Онлайн</span>
+            </div>
+            <a href="#ac-cta" class="ac-card__cta">Записаться →</a>
+          </article>
+
+          <!-- 3 -->
+          <article class="ac-card ailab-animate">
+            <div class="ac-card__header">
+              <div class="ac-card__icon">🧠</div>
+              <span class="ac-card__level">Продвинутый · для разработчиков</span>
+              <h3 class="ac-card__title">ML Engineering</h3>
+              <p class="ac-card__desc">
+                Для backend-разработчиков, которые хотят перейти в AI: от первой модели до деплоя в прод.
+              </p>
+            </div>
+            <ul class="ac-card__modules">
+              <li>Python для ML: numpy, pandas, scikit-learn</li>
+              <li>PyTorch: обучение и файнтюнинг нейросетей</li>
+              <li>Работа с Hugging Face: LLM, трансформеры, эмбеддинги</li>
+              <li>RAG-архитектуры для корпоративных знаний</li>
+              <li>Деплой: FastAPI, Docker, мониторинг модели в прод</li>
+              <li>Финальный проект: ML-сервис под реальную задачу</li>
+            </ul>
+            <div class="ac-card__footer">
+              <span class="ac-card__meta">⏱ 4 недели</span>
+              <span class="ac-card__meta">👥 до 6 человек</span>
+              <span class="ac-card__meta">📍 Онлайн</span>
+            </div>
+            <a href="#ac-cta" class="ac-card__cta">Записаться →</a>
+          </article>
+
+          <!-- 4 -->
+          <article class="ac-card ailab-animate">
+            <div class="ac-card__header">
+              <div class="ac-card__icon">💬</div>
+              <span class="ac-card__level">Спецкурс · 2 нед</span>
+              <h3 class="ac-card__title">AI-Ассистенты и Чат-боты</h3>
+              <p class="ac-card__desc">
+                Строим интеллектуальных ботов для поддержки, продаж и внутренних процессов.
+                От прототипа до рабочего деплоя за 2 недели.
+              </p>
+            </div>
+            <ul class="ac-card__modules">
+              <li>Архитектура AI-ассистента: RAG, memory, tools</li>
+              <li>Подключение к Telegram и WhatsApp Business API</li>
+              <li>Обучение на базе знаний компании (PDF, Notion, CRM)</li>
+              <li>Guardrails: фильтрация, fallback, escalation</li>
+              <li>Метрики качества и A/B тестирование ботов</li>
+            </ul>
+            <div class="ac-card__footer">
+              <span class="ac-card__meta">⏱ 2 недели</span>
+              <span class="ac-card__meta">👥 до 8 человек</span>
+              <span class="ac-card__meta">📍 Онлайн / Офлайн</span>
+            </div>
+            <a href="#ac-cta" class="ac-card__cta">Записаться →</a>
+          </article>
+
+          <!-- 5 -->
+          <article class="ac-card ailab-animate">
+            <div class="ac-card__header">
+              <div class="ac-card__icon">📊</div>
+              <span class="ac-card__level ac-card__level--green">Аналитика · 1 нед</span>
+              <h3 class="ac-card__title">Data-Driven решения</h3>
+              <p class="ac-card__desc">
+                Для аналитиков и PM — работа с данными без зависимости от IT.
+                SQL, Python, дашборды и AI-инсайты за неделю.
+              </p>
+            </div>
+            <ul class="ac-card__modules">
+              <li>SQL для аналитика: запросы, агрегации, оконные функции</li>
+              <li>Python + pandas: чистка и анализ данных</li>
+              <li>Визуализация: Plotly, Streamlit, Power BI</li>
+              <li>AI-инсайты: автоматический анализ и отчёты через LLM</li>
+              <li>Построение живого дашборда для своего отдела</li>
+            </ul>
+            <div class="ac-card__footer">
+              <span class="ac-card__meta">⏱ 5 дней</span>
+              <span class="ac-card__meta">👥 до 10 человек</span>
+              <span class="ac-card__meta">📍 Онлайн</span>
+            </div>
+            <a href="#ac-cta" class="ac-card__cta">Записаться →</a>
+          </article>
+
+          <!-- 6 -->
+          <article class="ac-card ailab-animate">
+            <div class="ac-card__header">
+              <div class="ac-card__icon">🏗️</div>
+              <span class="ac-card__level">Корпоратив · под ключ</span>
+              <h3 class="ac-card__title">Корпоративная программа</h3>
+              <p class="ac-card__desc">
+                Кастомный план обучения под цели и процессы компании.
+                Диагностика пробелов → разработка программы → обучение → аттестация.
+              </p>
+            </div>
+            <ul class="ac-card__modules">
+              <li>Аудит текущих процессов и AI-готовности команды</li>
+              <li>Разработка кастомной учебной программы</li>
+              <li>Обучение на реальных данных и кейсах компании</li>
+              <li>Воркшопы + Q&A с экспертами AI Lab</li>
+              <li>Итоговая аттестация и сертификация сотрудников</li>
+            </ul>
+            <div class="ac-card__footer">
+              <span class="ac-card__meta">⏱ По запросу</span>
+              <span class="ac-card__meta">👥 Любой размер</span>
+              <span class="ac-card__meta">📍 Онлайн / Офлайн</span>
+            </div>
+            <a href="#ac-cta" class="ac-card__cta">Обсудить →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── OUTCOMES ─────────────────────────────────────────── -->
+    <section class="ac-outcomes" aria-labelledby="ac-outcomes-title">
+      <div class="ailab-container">
+        <div class="ailab-animate">
+          <span class="ailab-kicker" style="color:var(--ailab-violet-dark)">Результаты</span>
+          <h2 class="ailab-section-title" id="ac-outcomes-title">Что получает команда после обучения</h2>
+          <p class="ailab-section-sub">
+            Не просто знания — конкретные изменения в работе.
+          </p>
+        </div>
+        <div class="ac-outcomes__grid ailab-animate">
+          <div class="ac-outcome">
+            <div class="ac-outcome__num">×3</div>
+            <div class="ac-outcome__title">Ускорение рутинных задач</div>
+            <p class="ac-outcome__desc">Команды, прошедшие курс автоматизации, сокращают время на повторяющиеся операции в 2–4 раза уже в первый месяц.</p>
+          </div>
+          <div class="ac-outcome">
+            <div class="ac-outcome__num">14 дн</div>
+            <div class="ac-outcome__title">До первого рабочего AI-инструмента</div>
+            <p class="ac-outcome__desc">Участники уходят с готовым прототипом. Медианное время до первого внедрения в production — 2 недели.</p>
+          </div>
+          <div class="ac-outcome">
+            <div class="ac-outcome__num">87%</div>
+            <div class="ac-outcome__title">Применяют навыки в работе</div>
+            <p class="ac-outcome__desc">По данным опроса через 3 месяца после курса. Остальные 13% перешли в проекты с более высоким AI-порогом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ─────────────────────────────────────── -->
+    <section class="ac-how" id="ac-how" aria-labelledby="ac-how-title">
+      <div class="ailab-container">
+        <div class="ailab-animate">
+          <span class="ailab-kicker">Процесс</span>
+          <h2 class="ailab-section-title" id="ac-how-title">Как проходит обучение</h2>
+          <p class="ailab-section-sub">
+            Никаких слайдов ради слайдов. Каждый шаг заточен под реальный результат.
+          </p>
+        </div>
+        <div class="ac-how__steps ailab-animate">
+          <div class="ac-step">
+            <div class="ac-step__circle">🔍</div>
+            <div class="ac-step__num">Шаг 01</div>
+            <div class="ac-step__title">Диагностика</div>
+            <p class="ac-step__desc">До старта встречаемся с командой, разбираем текущие процессы и цели. Программа адаптируется под реальный контекст — не шаблон.</p>
+          </div>
+          <div class="ac-step">
+            <div class="ac-step__circle">⚡</div>
+            <div class="ac-step__num">Шаг 02</div>
+            <div class="ac-step__title">Интенсивная практика</div>
+            <p class="ac-step__desc">70% времени — работа с инструментами, кейсами и реальными данными. Теория только там, где без неё не понять «почему».</p>
+          </div>
+          <div class="ac-step">
+            <div class="ac-step__circle">🏗️</div>
+            <div class="ac-step__num">Шаг 03</div>
+            <div class="ac-step__title">Финальный проект</div>
+            <p class="ac-step__desc">Каждый участник сдаёт проект на основе задачи из своего бизнеса. Уходите не с сертификатом — а с работающим решением.</p>
+          </div>
+          <div class="ac-step">
+            <div class="ac-step__circle">🛡️</div>
+            <div class="ac-step__num">Шаг 04</div>
+            <div class="ac-step__title">Поддержка 30 дней</div>
+            <p class="ac-step__desc">Закрытый Telegram-канал с преподавателями. Вопросы по внедрению, разбор ошибок, помощь с деплоем — разбираем вместе.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INSTRUCTORS ──────────────────────────────────────── -->
+    <section class="ac-instructors" id="ac-team" aria-labelledby="ac-team-title">
+      <div class="ailab-container">
+        <div class="ailab-animate">
+          <span class="ailab-kicker" style="color:var(--ailab-violet-dark)">Преподаватели</span>
+          <h2 class="ailab-section-title" id="ac-team-title">Учат те, кто делает</h2>
+          <p class="ailab-section-sub">
+            Не методисты с теорией — инженеры, которые прямо сейчас строят AI-продукты в казахстанских компаниях.
+          </p>
+        </div>
+        <div class="ac-instructors__grid ailab-animate">
+
+          <div class="ac-instructor">
+            <div class="ac-instructor__avatar">АК</div>
+            <div class="ac-instructor__name">Азим Касимов</div>
+            <div class="ac-instructor__role">Основатель AI Laboratory · Lead AI Engineer</div>
+            <p class="ac-instructor__bio">
+              Строит AI-продукты для казахстанского бизнеса — от интеллектуальных ботов до систем компьютерного зрения. Преподаёт практику, а не теорию: каждый модуль основан на реальных кейсах из своих проектов.
+            </p>
+            <div class="ac-instructor__tags">
+              <span class="ac-instructor__tag">Python</span>
+              <span class="ac-instructor__tag">LLM</span>
+              <span class="ac-instructor__tag">PyTorch</span>
+              <span class="ac-instructor__tag">ML Ops</span>
+            </div>
+          </div>
+
+          <div class="ac-instructor">
+            <div class="ac-instructor__avatar">ИЕ</div>
+            <div class="ac-instructor__name">Исандер Ержанов</div>
+            <div class="ac-instructor__role">Head of Automation · Solutions Architect</div>
+            <p class="ac-instructor__bio">
+              Специализируется на low-code автоматизации и API-интеграциях. Построил рабочие пайплайны для компаний из e-commerce, логистики и госсектора. Ведёт курс «Автоматизация процессов с AI» и корпоративные воркшопы.
+            </p>
+            <div class="ac-instructor__tags">
+              <span class="ac-instructor__tag">n8n</span>
+              <span class="ac-instructor__tag">LangChain</span>
+              <span class="ac-instructor__tag">REST API</span>
+              <span class="ac-instructor__tag">Zapier</span>
+            </div>
+          </div>
+
+          <div class="ac-instructor">
+            <div class="ac-instructor__avatar">АС</div>
+            <div class="ac-instructor__name">Адилет Сулеменов</div>
+            <div class="ac-instructor__role">ML Engineer · AI Educator</div>
+            <p class="ac-instructor__bio">
+              Занимается разработкой и машинным обучением. Работал над ML-системами в финтехе и ритейле. Умеет объяснить сложное просто — его курс «Data-Driven решения» популярен среди нетехнических команд.
+            </p>
+            <div class="ac-instructor__tags">
+              <span class="ac-instructor__tag">pandas</span>
+              <span class="ac-instructor__tag">SQL</span>
+              <span class="ac-instructor__tag">Power BI</span>
+              <span class="ac-instructor__tag">Streamlit</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── REVIEWS ──────────────────────────────────────────── -->
+    <section class="ac-reviews" aria-labelledby="ac-reviews-title">
+      <div class="ailab-container">
+        <div class="ailab-animate">
+          <span class="ailab-kicker">Отзывы</span>
+          <h2 class="ailab-section-title" id="ac-reviews-title">Что говорят участники</h2>
+          <p class="ailab-section-sub">
+            Отзывы от реальных участников после прохождения программ.
+          </p>
+        </div>
+        <div class="ac-reviews__grid">
+
+          <div class="ac-review ailab-animate">
+            <div class="ac-review__stars">★★★★★</div>
+            <p class="ac-review__text">
+              Прошли курс по автоматизации всей командой из 5 человек.
+              <strong>За первый месяц автоматизировали обработку заявок в CRM — сэкономили 40 часов в неделю.</strong>
+              Такого эффекта от обучения не ожидал.
+            </p>
+            <div class="ac-review__author">
+              <div class="ac-review__ava">Р</div>
+              <div>
+                <div class="ac-review__name">Рустам Бейсенов</div>
+                <div class="ac-review__pos">COO, логистическая компания, Алматы</div>
+                <span class="ac-review__program">Автоматизация процессов с AI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ac-review ailab-animate">
+            <div class="ac-review__stars">★★★★★</div>
+            <p class="ac-review__text">
+              Я backend-разработчик с 6-летним опытом. Хотел перейти в AI, но не знал с чего начать.
+              <strong>После ML Engineering курса вышел на позицию AI Engineer в стартапе — через 2 месяца после обучения.</strong>
+            </p>
+            <div class="ac-review__author">
+              <div class="ac-review__ava">М</div>
+              <div>
+                <div class="ac-review__name">Марат Досымов</div>
+                <div class="ac-review__pos">AI Engineer, финтех-стартап, Астана</div>
+                <span class="ac-review__program">ML Engineering</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ac-review ailab-animate">
+            <div class="ac-review__stars">★★★★★</div>
+            <p class="ac-review__text">
+              Заказали корпоративную программу для отдела из 20 человек.
+              <strong>Адаптировали весь контент под наши процессы — никакой воды.</strong>
+              Преподаватели отвечали на вопросы ещё месяц после курса.
+            </p>
+            <div class="ac-review__author">
+              <div class="ac-review__ava">Г</div>
+              <div>
+                <div class="ac-review__name">Гульнара Ахметова</div>
+                <div class="ac-review__pos">HR Director, крупный ритейлер</div>
+                <span class="ac-review__program">Корпоративная программа</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ac-review ailab-animate">
+            <div class="ac-review__stars">★★★★★</div>
+            <p class="ac-review__text">
+              Курс «AI для бизнеса» прошёл как скептик — думал, это снова про «будущее наступило».
+              <strong>Оказалось — конкретные инструменты, которые я начал использовать прямо на следующий день.</strong>
+            </p>
+            <div class="ac-review__author">
+              <div class="ac-review__ava">А</div>
+              <div>
+                <div class="ac-review__name">Асхат Нурмагамбетов</div>
+                <div class="ac-review__pos">Директор по маркетингу, e-commerce</div>
+                <span class="ac-review__program">AI для бизнеса</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ac-review ailab-animate">
+            <div class="ac-review__stars">★★★★☆</div>
+            <p class="ac-review__text">
+              Ожидала больше теории, получила практику — и это хорошо.
+              <strong>За 5 дней курса построила дашборд для отдела продаж, который теперь используется ежедневно.</strong>
+              Очень насыщенно, но оно того стоит.
+            </p>
+            <div class="ac-review__author">
+              <div class="ac-review__ava">З</div>
+              <div>
+                <div class="ac-review__name">Зарина Кенжебаева</div>
+                <div class="ac-review__pos">Аналитик, телекоммуникации</div>
+                <span class="ac-review__program">Data-Driven решения</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ac-review ailab-animate">
+            <div class="ac-review__stars">★★★★★</div>
+            <p class="ac-review__text">
+              Курс по AI-ассистентам — лучшее обучение, которое я проходил за последние 3 года.
+              <strong>Задеплоили бота для поддержки клиентов за 12 дней. Бот закрывает 60% запросов без участия оператора.</strong>
+            </p>
+            <div class="ac-review__author">
+              <div class="ac-review__ava">Т</div>
+              <div>
+                <div class="ac-review__name">Тимур Касымов</div>
+                <div class="ac-review__pos">CTO, SaaS-компания, Алматы</div>
+                <span class="ac-review__program">AI-Ассистенты и Чат-боты</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ─────────────────────────────────────────────── -->
+    <section class="ac-faq" aria-labelledby="ac-faq-title">
+      <div class="ailab-container">
+        <div class="ailab-animate">
+          <span class="ailab-kicker" style="color:var(--ailab-violet-dark)">FAQ</span>
+          <h2 class="ailab-section-title" id="ac-faq-title">Частые вопросы</h2>
+          <p class="ailab-section-sub">Если не нашли ответ — напишите нам в Telegram.</p>
+        </div>
+        <div class="ac-faq__list ailab-animate">
+
+          <div class="ac-faq__item">
+            <button class="ac-faq__trigger" aria-expanded="false">
+              <span class="ac-faq__q">Нужен ли опыт в программировании для начала?</span>
+              <span class="ac-faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ac-faq__answer">
+              <p>Зависит от программы. «AI для бизнеса» и «Data-Driven решения» не требуют никакого кода — рассчитаны на менеджеров и аналитиков. «Автоматизация» — минимальный уровень (умеете читать JSON и понимать логику if/else). «ML Engineering» и «AI-Ассистенты» требуют базового Python. Мы уточняем уровень при записи и помогаем выбрать подходящую программу.</p>
+            </div>
+          </div>
+
+          <div class="ac-faq__item">
+            <button class="ac-faq__trigger" aria-expanded="false">
+              <span class="ac-faq__q">Можно ли пройти обучение корпоративно?</span>
+              <span class="ac-faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ac-faq__answer">
+              <p>Да, и это наш основной формат. Корпоративная программа — полностью адаптирована под ваши процессы, данные и инструменты. Мы проводим аудит команды, разрабатываем кастомный контент и обучаем на реальных кейсах вашего бизнеса. Минимальная группа — 4 человека. Напишите нам — расскажем подробнее.</p>
+            </div>
+          </div>
+
+          <div class="ac-faq__item">
+            <button class="ac-faq__trigger" aria-expanded="false">
+              <span class="ac-faq__q">Как проходят занятия — онлайн или офлайн?</span>
+              <span class="ac-faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ac-faq__answer">
+              <p>Большинство программ доступны в обоих форматах. Онлайн — синхронные сессии в Zoom с записями, доступ к материалам в личном кабинете. Офлайн — в Алматы и Астане, в нашем пространстве или на территории клиента. Интенсивы (3–5 дней) чаще проходят офлайн, длинные программы (2–4 нед) — онлайн.</p>
+            </div>
+          </div>
+
+          <div class="ac-faq__item">
+            <button class="ac-faq__trigger" aria-expanded="false">
+              <span class="ac-faq__q">Выдаёте ли вы сертификаты?</span>
+              <span class="ac-faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ac-faq__answer">
+              <p>Да. По итогам каждой программы выдаётся сертификат AI Lab Academy с указанием программы и количества часов. Для его получения нужно выполнить финальный проект. Корпоративные программы могут включать именную аттестацию сотрудников.</p>
+            </div>
+          </div>
+
+          <div class="ac-faq__item">
+            <button class="ac-faq__trigger" aria-expanded="false">
+              <span class="ac-faq__q">Что если я не успею освоить материал за курс?</span>
+              <span class="ac-faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ac-faq__answer">
+              <p>Все записи занятий остаются у вас без ограничения по времени. После курса работает Telegram-канал с преподавателями на 30 дней — там можно задать любой вопрос. Если не успели с финальным проектом — даём дополнительное время. Мы заинтересованы в вашем результате не меньше вас.</p>
+            </div>
+          </div>
+
+          <div class="ac-faq__item">
+            <button class="ac-faq__trigger" aria-expanded="false">
+              <span class="ac-faq__q">Как узнать стоимость обучения?</span>
+              <span class="ac-faq__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="ac-faq__answer">
+              <p>Стоимость зависит от программы, формата (онлайн/офлайн), размера группы и степени кастомизации. Заполните форму ниже или напишите в Telegram — в течение дня пришлём детальное предложение под ваш запрос.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ─────────────────────────────────────────────── -->
+    <section class="ac-cta" id="ac-cta" aria-labelledby="ac-cta-title">
+      <div class="ac-cta__inner ailab-animate">
+        <span class="ac-cta__label">Записаться на обучение</span>
+        <h2 class="ac-cta__title" id="ac-cta-title">
+          Готовы начать?<br />Давайте поговорим
+        </h2>
+        <p class="ac-cta__sub">
+          Оставьте контакт — обсудим, какая программа подходит вашей команде,
+          и пришлём детальное предложение в течение дня.
+        </p>
+        <form class="ac-cta__form" id="ac-form">
+          <input
+            class="ac-cta__input"
+            id="ac-contact"
+            type="text"
+            placeholder="Telegram или Email"
+            autocomplete="email" />
+          <button type="submit" class="ailab-btn ailab-btn--primary">Отправить заявку</button>
+        </form>
+        <p id="ac-success" style="display:none;color:rgba(255,255,255,.70);font-size:15px;margin-top:20px;">
+          Заявка принята — напишем вам в ближайшее время!
+        </p>
+        <p class="ac-cta__note">Также можно написать напрямую: <a href="https://t.me/tdm343" style="color:rgba(255,255,255,.40)">@tdm343</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="ailab-footer" role="contentinfo">
+    <div class="ailab-footer__inner">
+      <a href="../index.html" class="ailab-footer__logo" aria-label="AI Laboratory — главная">
+        <img
+          src="../../design-system/ai-laboratory-design/assets/logos/ai-lab-wordmark-light-on-black.png"
+          alt="AI Laboratory"
+          onerror="this.outerHTML='<span class=\'ailab-footer__logo-text\'>AI Laboratory</span>'" />
+      </a>
+      <nav class="ailab-footer__nav" aria-label="Навигация в подвале">
+        <a href="../index.html#ailab-build">Что мы делаем</a>
+        <a href="../index.html#ailab-cases">Кейсы</a>
+        <a href="../index.html#ailab-team">Команда</a>
+        <a href="../academy/index.html">Academy</a>
+        <a href="../index.html#ailab-faq">FAQ</a>
+        <a href="#ac-cta">Контакты</a>
+      </nav>
+      <div class="ailab-footer__right">
+        <a href="tel:+77751513414" class="ailab-footer__social" aria-label="Телефон">
+          <img src="../../design-system/ai-laboratory-design/assets/icons/phone.png" alt="" onerror="this.style.display='none'" />
+        </a>
+        <a href="https://t.me/tdm343" class="ailab-footer__social" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <img src="../../design-system/ai-laboratory-design/assets/icons/telegram.png" alt="" onerror="this.style.display='none'" />
+        </a>
+        <span class="ailab-footer__copy">© AI Laboratory <span id="ailab-year"></span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    // CTA form
+    document.getElementById('ac-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var val = document.getElementById('ac-contact').value.trim();
+      if (!val) { document.getElementById('ac-contact').focus(); return; }
+      this.style.display = 'none';
+      document.getElementById('ac-success').style.display = 'block';
+    });
+
+    // Academy FAQ accordion
+    document.querySelectorAll('.ac-faq__trigger').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var item = this.closest('.ac-faq__item');
+        var isOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.ac-faq__item').forEach(function(i) {
+          i.classList.remove('is-open');
+          i.querySelector('.ac-faq__trigger').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

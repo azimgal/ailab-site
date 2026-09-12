@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Laboratory — Внешняя технологическая команда</title>
+  <meta name="description" content="AI Laboratory — внешняя технологическая команда для компаний, которые хотят реального результата от AI и IT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="icon" href="data:,">
+<style>
+/* ══ Main page redesign overrides ══════════════════════════════ */
+
+/* ── Section gradient transitions ── */
+.sec-fade {
+  height: 72px;
+  display: block;
+  margin: 0; padding: 0;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+.sec-fade--eco-build   { display: none; }
+.sec-fade--biz-cases   { display: none; }
+.sec-fade--cases-how   { display: none; }
+.sec-fade--why-tech    { display: none; }
+.sec-fade--tech-team   { display: none; }
+.sec-fade--team-acad   { display: none; }
+
+/* ── Logo visibility on dark backgrounds ── */
+.ailab-header:not(.is-scrolled) .ailab-header__logo img {
+  filter: brightness(0) invert(1);
+}
+.ailab-footer__logo img {
+  filter: brightness(0) invert(1);
+  height: 36px;
+}
+
+/* ── Hero: SVG network diagram ── */
+.ailab-hero__glow  { display: none; }
+.ailab-hero__sphere { display: none; }
+.ailab-hero__diagram {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+/* ── What We Build: numeral text ── */
+.ailab-build__numeral img { display: none; }
+.ailab-build__numeral-n {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #6A67F8 0%, #1E8AFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'JetBrains Mono', monospace;
+  padding-top: 4px;
+  display: block;
+}
+
+/* ── Cases section — dark premium ── */
+#ailab-cases {
+  background:
+    url('cases-bg-grid.svg') center top / cover no-repeat,
+    #070818 !important;
+  background-image: url('cases-bg-grid.svg'), none !important;
+  background-color: #070818 !important;
+  padding: 120px 0;
+}
+#ailab-cases .ailab-kicker     { color: #8F8DFA; }
+#ailab-cases .ailab-title      { color: #fff; }
+#ailab-cases .ailab-section-header { margin-bottom: 48px; }
+
+/* ── Cases Carousel ── */
+.amc-slider-wrap { position: relative; margin: 0 0 32px; }
+.amc-slider {
+  overflow: hidden;
+  border-radius: 20px;
+}
+.amc-slider__track {
+  display: flex;
+  transition: transform 500ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+.amc-slide {
+  flex-shrink: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 360px;
+  border-radius: 20px;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(#0D0E26, #0D0E26) padding-box,
+    linear-gradient(145deg, rgba(106,103,248,.40) 0%, rgba(30,138,255,.24) 60%, rgba(106,103,248,.14) 100%) border-box;
+  position: relative;
+  overflow: hidden;
+}
+.amc-slide::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 100% 0%, rgba(106,103,248,.09) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+.amc-slide__text {
+  padding: 44px 48px;
+  display: flex; flex-direction: column;
+  position: relative; z-index: 1;
+}
+.amc-slide__ind {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: #8F8DFA; margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.amc-slide__ind--blue  { color: #5BAAFF; }
+.amc-slide__ind--green { color: #18A066; }
+.amc-slide__ind--amber { color: #F5A623; }
+.amc-slide__ind--teal  { color: #00C7A3; }
+.amc-slide__client {
+  font-size: 40px; font-weight: 800; color: #fff;
+  letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 24px;
+}
+.amc-slide__sol {
+  font-size: 14px; color: rgba(255,255,255,.52);
+  line-height: 1.65; border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 20px; margin-top: auto;
+}
+.amc-slide__visual {
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px;
+  border-left: 1px solid rgba(255,255,255,.05);
+  position: relative; z-index: 1;
+}
+
+/* Arrows — sit on top of the slider content */
+.amc-arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(13,14,38,.70);
+  border: 1px solid rgba(255,255,255,.14);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.75);
+  transition: background 180ms, border-color 180ms, transform 150ms;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.amc-arrow:hover {
+  background: rgba(106,103,248,.28);
+  border-color: rgba(106,103,248,.55);
+  color: #fff;
+  transform: translateY(-50%) scale(1.07);
+}
+.amc-arrow--prev { left: 16px; }
+.amc-arrow--next { right: 16px; }
+.amc-arrow svg { pointer-events: none; }
+
+/* Dots + counter */
+.amc-controls {
+  display: flex; align-items: center;
+  justify-content: center; gap: 20px;
+  margin-top: 20px;
+}
+.amc-dots { display: flex; gap: 8px; align-items: center; }
+.amc-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,.20);
+  border: none; cursor: pointer; padding: 0;
+  transition: background 200ms, transform 200ms;
+}
+.amc-dot.is-active { background: #8F8DFA; transform: scale(1.5); }
+.amc-counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: rgba(255,255,255,.28);
+  letter-spacing: .06em; user-select: none;
+}
+.amc-counter__cur { color: rgba(255,255,255,.65); }
+
+/* Academy promo icons — replace emoji */
+.ailab-academy-promo__card-icon {
+  font-size: 0;
+  background: rgba(106,103,248,.16);
+  border: 1px solid rgba(106,103,248,.22);
+}
+.ailab-academy-promo__card-icon svg {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .amc-slide { grid-template-columns: 1fr; min-height: auto; }
+  .amc-slide__text { padding: 32px 24px; }
+  .amc-slide__visual { display: none; }
+  .amc-slide__client { font-size: 28px; }
+  .amc-arrow { width: 36px; height: 36px; }
+  .amc-arrow--prev { left: 8px; }
+  .amc-arrow--next { right: 8px; }
+  .ailab-hero__diagram { max-width: 300px; }
+}
+@media (min-width: 768px) {
+  .ailab-hero__diagram { max-width: 300px; }
+}
+
+/* ── Technology section — dark premium grid ── */
+.atech {
+  background:
+    url('cases-bg-grid.svg') center top / cover no-repeat,
+    #070818 !important;
+  background-image: url('cases-bg-grid.svg'), none !important;
+  background-color: #070818 !important;
+  padding: 120px 0;
+}
+.atech__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 56px;
+}
+.atech__sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.38);
+  max-width: 260px;
+  line-height: 1.6;
+  text-align: right;
+  padding-bottom: 6px;
+}
+.atech__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.atech__cat {
+  border-radius: 16px;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(#0D0E26, #0D0E26) padding-box,
+    linear-gradient(145deg, rgba(106,103,248,.28) 0%, rgba(30,138,255,.14) 60%, rgba(106,103,248,.08) 100%) border-box;
+  padding: 24px 24px 22px;
+  transition: transform 360ms cubic-bezier(.22,.61,.36,1);
+}
+.atech__cat:hover { transform: translateY(-2px); }
+.atech__cat-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(143,141,250,.55);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.atech__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.atech__chip {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.65);
+  white-space: nowrap;
+  transition: border-color 180ms, color 180ms, background 180ms;
+}
+.atech__chip:hover {
+  border-color: rgba(106,103,248,.45);
+  color: #8F8DFA;
+  background: rgba(106,103,248,.08);
+}
+.atech__chip--v {
+  border-color: rgba(106,103,248,.22);
+  color: rgba(143,141,250,.80);
+  background: rgba(106,103,248,.06);
+}
+.atech__chip--b {
+  border-color: rgba(30,138,255,.20);
+  color: rgba(91,170,255,.80);
+  background: rgba(30,138,255,.05);
+}
+.atech__cat--certs {
+  background:
+    linear-gradient(#0D0E26, #0D0E26) padding-box,
+    linear-gradient(145deg, rgba(30,138,255,.28) 0%, rgba(106,103,248,.18) 60%, rgba(30,138,255,.08) 100%) border-box;
+}
+
+@media (max-width: 1023px) {
+  .atech__grid { grid-template-columns: 1fr 1fr; }
+  .atech__header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .atech__sub { text-align: left; max-width: 100%; }
+}
+@media (max-width: 767px) {
+  .atech__grid { grid-template-columns: 1fr; }
+}
+
+/* ══ DARK THEME OVERRIDES ══ */
+
+/* Animated orb background */
+@keyframes orb1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(80px,60px) scale(1.12); }
+  66%      { transform: translate(-30px,90px) scale(0.92); }
+}
+@keyframes orb2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%      { transform: translate(-70px,-90px) scale(1.18); }
+}
+@keyframes orb3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  40%      { transform: translate(60px,-50px) scale(0.92); }
+  75%      { transform: translate(-40px,50px) scale(1.06); }
+}
+@keyframes orb4 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  60%      { transform: translate(50px,70px) scale(1.10); }
+}
+
+.ailab-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background: #080920;
+}
+.ailab-bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(106,103,248,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(106,103,248,.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.ailab-bg__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+.ailab-bg__orb--1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(106,103,248,.22) 0%, transparent 70%);
+  top: -250px; left: -180px;
+  animation: orb1 22s ease-in-out infinite;
+}
+.ailab-bg__orb--2 {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(30,138,255,.18) 0%, transparent 70%);
+  top: 20%; right: -160px;
+  animation: orb2 28s ease-in-out infinite;
+}
+.ailab-bg__orb--3 {
+  width: 460px; height: 460px;
+  background: radial-gradient(circle, rgba(143,141,250,.14) 0%, transparent 70%);
+  bottom: 5%; left: 25%;
+  animation: orb3 20s ease-in-out infinite;
+}
+.ailab-bg__orb--4 {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(30,138,255,.12) 0%, transparent 70%);
+  bottom: 30%; left: -100px;
+  animation: orb4 25s ease-in-out infinite;
+}
+
+/* Force all sections to transparent so bg shows through */
+.ailab-section,
+.ailab-section--tinted { background: transparent !important; }
+#ailab-cases { background-color: transparent !important; background-image: none !important; }
+.ailab-ecosystem { background: rgba(6,7,26,.60) !important; }
+.ailab-hero { background: transparent !important; }
+
+/* Canvas layer */
+#ailab-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+}
+
+/* ─── CALCULATOR ───────────────────────────────────────── */
+.ac-calc {
+  padding: var(--ailab-section-space) var(--ailab-pad-page);
+  background: var(--ailab-bg-dark);
+}
+.ac-calc__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.ac-calc .ailab-kicker { color: var(--ailab-violet-dark); }
+
+.ac-calc__steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 40px 0 36px;
+}
+.ac-calc__step-dot {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  color: rgba(255,255,255,.30);
+  font-family: var(--ailab-mono);
+  transition: all 250ms var(--ailab-ease);
+  flex-shrink: 0;
+}
+.ac-calc__step-dot.is-active {
+  border-color: var(--ailab-violet);
+  color: var(--ailab-violet);
+  background: rgba(106,103,248,.12);
+}
+.ac-calc__step-dot.is-done {
+  border-color: var(--ailab-violet);
+  background: var(--ailab-violet);
+  color: #fff;
+}
+.ac-calc__step-line {
+  flex: 1; height: 1px;
+  background: rgba(255,255,255,.10);
+  transition: background 250ms var(--ailab-ease);
+}
+.ac-calc__step-line.is-done { background: var(--ailab-violet); }
+
+.ac-calc__panel { display: none; }
+.ac-calc__panel.is-active { display: block; }
+
+.ac-calc__panel-title {
+  font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,.65);
+  margin-bottom: 20px;
+  font-family: var(--ailab-mono);
+  text-transform: uppercase;
+  letter-spacing: .10em;
+}
+
+.ac-calc__grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+.ac-calc__grid--3 { grid-template-columns: repeat(3, 1fr); }
+.ac-calc__grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+.ac-calc__option {
+  background: rgba(255,255,255,.04);
+  border: 1.5px solid rgba(255,255,255,.08);
+  border-radius: var(--ailab-radius-card);
+  padding: 20px;
+  cursor: pointer;
+  transition:
+    border-color 180ms var(--ailab-ease),
+    background 180ms var(--ailab-ease),
+    transform 150ms var(--ailab-ease);
+  text-align: left;
+  width: 100%;
+}
+.ac-calc__option:hover {
+  border-color: rgba(106,103,248,.35);
+  background: rgba(106,103,248,.07);
+  transform: translateY(-2px);
+}
+.ac-calc__option.is-selected {
+  border-color: var(--ailab-violet);
+  background: rgba(106,103,248,.12);
+}
+.ac-calc__opt-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(168,165,252,.80);
+  flex-shrink: 0;
+  transition: background 180ms var(--ailab-ease), border-color 180ms var(--ailab-ease), color 180ms var(--ailab-ease);
+}
+.ac-calc__option:hover .ac-calc__opt-icon {
+  background: rgba(106,103,248,.14);
+  border-color: rgba(106,103,248,.30);
+  color: rgba(168,165,252,1);
+}
+.ac-calc__option.is-selected .ac-calc__opt-icon {
+  background: rgba(106,103,248,.18);
+  border-color: rgba(106,103,248,.50);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(106,103,248,.18);
+}
+.ac-calc__opt-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.ac-calc__opt-title {
+  font-size: 15px; font-weight: 700;
+  color: #fff; margin-bottom: 5px;
+  line-height: 1.3;
+}
+.ac-calc__opt-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,.38);
+  line-height: 1.5;
+}
+
+.ac-calc__result {
+  display: none;
+  background: rgba(106,103,248,.08);
+  border: 1px solid rgba(106,103,248,.28);
+  border-radius: var(--ailab-radius-card);
+  padding: 40px;
+  text-align: center;
+  margin-top: 32px;
+  animation: ac-fadein 300ms var(--ailab-ease) both;
+}
+@keyframes ac-fadein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.ac-calc__result.is-visible { display: block; }
+.ac-calc__result-label {
+  font-family: var(--ailab-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,.35);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  margin-bottom: 14px;
+}
+.ac-calc__result-price {
+  font-size: 38px; font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+.ac-calc__result-note {
+  font-size: 13px;
+  color: rgba(255,255,255,.38);
+  margin-bottom: 28px;
+  max-width: 420px;
+  margin-left: auto; margin-right: auto;
+  line-height: 1.55;
+}
+.ac-calc__result-actions {
+  display: flex; gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ac-calc__reset {
+  background: none; border: none;
+  color: rgba(255,255,255,.28);
+  font-size: 13px; cursor: pointer;
+  margin-top: 20px; text-decoration: underline;
+  display: block; text-align: center;
+  width: 100%;
+  transition: color 150ms;
+}
+.ac-calc__reset:hover { color: rgba(255,255,255,.55); }
+
+@media (max-width: 680px) {
+  .ac-calc__grid--3 { grid-template-columns: 1fr; }
+  .ac-calc__grid--4 { grid-template-columns: 1fr 1fr; }
+  .ac-calc__result-price { font-size: 28px; }
+}
+@media (max-width: 420px) {
+  .ac-calc__grid--4 { grid-template-columns: 1fr; }
+  .ac-calc__result { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+  <!-- Animated dark background -->
+  <div class="ailab-bg" aria-hidden="true">
+    <div class="ailab-bg__orb ailab-bg__orb--1"></div>
+    <div class="ailab-bg__orb ailab-bg__orb--2"></div>
+    <div class="ailab-bg__orb ailab-bg__orb--3"></div>
+    <div class="ailab-bg__orb ailab-bg__orb--4"></div>
+    <canvas id="ailab-canvas"></canvas>
+  </div>
+
+  <a class="ailab-skip" href="#ailab-main">Перейти к основному содержанию</a>
+
+  <!-- ══════════════════════════════════════════════════════
+       01 HEADER
+  ══════════════════════════════════════════════════════ -->
+  <header class="ailab-header" id="ailab-header" role="banner">
+    <a href="#ailab-hero" class="ailab-header__logo" aria-label="AI Laboratory — главная">
+      <img
+        src="../design-system/ai-laboratory-design/assets/logos/ai-lab-logo.svg"
+        alt="AI Laboratory"
+        onerror="this.outerHTML='<span style=\'font-size:20px;font-weight:800;letter-spacing:-0.02em;\' class=\'ailab-header__logo-text\'>AI Lab</span>'" />
+    </a>
+
+    <nav class="ailab-header__nav" aria-label="Основная навигация">
+      <a href="#ailab-build">Что мы делаем</a>
+      <a href="#ailab-cases">Кейсы</a>
+      <a href="#ailab-how">Как работаем</a>
+      <a href="academy/index.html">Academy</a>
+      <a href="#ailab-faq">FAQ</a>
+    </nav>
+
+    <div class="ailab-header__actions">
+      <a href="#ailab-cta" class="ailab-btn ailab-btn--primary">Обсудить проект</a>
+    </div>
+
+    <button class="ailab-hamburger" id="ailab-hamburger" aria-label="Открыть меню" aria-expanded="false" aria-controls="ailab-mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="ailab-mobile-menu" id="ailab-mobile-menu" role="dialog" aria-modal="true" aria-label="Мобильное меню">
+    <button class="ailab-mobile-menu__close" id="ailab-menu-close" aria-label="Закрыть меню">&times;</button>
+    <a href="#ailab-build">Что мы делаем</a>
+    <a href="#ailab-cases">Кейсы</a>
+    <a href="#ailab-how">Как работаем</a>
+    <a href="academy/index.html">Academy</a>
+    <a href="#ailab-faq">FAQ</a>
+    <a href="#ailab-cta" class="ailab-btn ailab-btn--primary">Обсудить проект</a>
+  </div>
+
+  <main id="ailab-main">
+
+    <!-- ══════════════════════════════════════════════════════
+         02 HERO — LIGHT
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-hero" id="ailab-hero" aria-label="Главный экран">
+      <div class="ailab-hero__inner">
+
+        <div class="ailab-hero__text ailab-animate">
+          <span class="ailab-kicker">AI &amp; IT Integration Partner · Kazakhstan</span>
+          <h1 class="ailab-hero__headline">
+            Технологии,<br />
+            которые работают<br />
+            <em>на ваш бизнес</em>
+          </h1>
+          <p class="ailab-hero__subtext">
+            AI Laboratory — внешняя технологическая команда для компаний,
+            которые хотят реального результата, а не эксперимента с AI.
+          </p>
+          <div class="ailab-hero__actions">
+            <a href="#ailab-cta" class="ailab-btn ailab-btn--primary">Обсудить проект</a>
+            <a href="#ailab-cases" class="ailab-btn ailab-btn--secondary">Смотреть кейсы</a>
+          </div>
+        </div>
+
+        <div class="ailab-hero__visual ailab-animate" style="transition-delay:80ms">
+          <svg class="ailab-hero__diagram" viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <filter id="hg1" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="10" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="hg2" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="5" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="hblob" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="32"/>
+              </filter>
+            </defs>
+            <circle cx="230" cy="200" r="140" fill="rgba(106,103,248,.07)" filter="url(#hblob)"/>
+            <circle cx="230" cy="200" r="158" stroke="rgba(106,103,248,.07)" stroke-width="1"/>
+            <circle cx="230" cy="200" r="102" stroke="rgba(30,138,255,.06)" stroke-width="1" stroke-dasharray="3 8"/>
+            <!-- Connections -->
+            <line x1="230" y1="200" x2="88"  y2="78"  stroke="rgba(106,103,248,.28)" stroke-width="1"/>
+            <line x1="230" y1="200" x2="372" y2="78"  stroke="rgba(30,138,255,.22)" stroke-width="1"/>
+            <line x1="230" y1="200" x2="412" y2="200" stroke="rgba(106,103,248,.22)" stroke-width="1"/>
+            <line x1="230" y1="200" x2="372" y2="322" stroke="rgba(30,138,255,.20)" stroke-width="1"/>
+            <line x1="230" y1="200" x2="88"  y2="322" stroke="rgba(106,103,248,.20)" stroke-width="1"/>
+            <line x1="230" y1="200" x2="48"  y2="200" stroke="rgba(30,138,255,.24)" stroke-width="1"/>
+            <!-- Mid-line dots -->
+            <circle cx="159" cy="139" r="2" fill="rgba(106,103,248,.55)"/>
+            <circle cx="301" cy="139" r="2" fill="rgba(30,138,255,.50)"/>
+            <circle cx="321" cy="200" r="2" fill="rgba(106,103,248,.42)"/>
+            <circle cx="301" cy="261" r="2" fill="rgba(30,138,255,.42)"/>
+            <circle cx="159" cy="261" r="2" fill="rgba(106,103,248,.40)"/>
+            <circle cx="139" cy="200" r="2" fill="rgba(30,138,255,.45)"/>
+            <!-- Central hub -->
+            <circle cx="230" cy="200" r="54" fill="rgba(106,103,248,.14)" filter="url(#hg1)"/>
+            <circle cx="230" cy="200" r="44" fill="#0B0D22" stroke="rgba(106,103,248,.60)" stroke-width="1.5"/>
+            <text x="230" y="196" text-anchor="middle" fill="#8F8DFA" font-size="10" font-family="JetBrains Mono,monospace" letter-spacing="0.12em">AI LAB</text>
+            <text x="230" y="211" text-anchor="middle" fill="rgba(143,141,250,.42)" font-size="7.5" font-family="JetBrains Mono,monospace" letter-spacing="0.08em">CORE</text>
+            <!-- LLM -->
+            <circle cx="88" cy="78" r="30" fill="rgba(106,103,248,.12)" filter="url(#hg2)"/>
+            <circle cx="88" cy="78" r="24" fill="#0B0D22" stroke="rgba(106,103,248,.45)" stroke-width="1.2"/>
+            <text x="88" y="82" text-anchor="middle" fill="rgba(143,141,250,.90)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">LLM</text>
+            <!-- API -->
+            <circle cx="372" cy="78" r="30" fill="rgba(30,138,255,.10)" filter="url(#hg2)"/>
+            <circle cx="372" cy="78" r="24" fill="#0B0D22" stroke="rgba(30,138,255,.42)" stroke-width="1.2"/>
+            <text x="372" y="82" text-anchor="middle" fill="rgba(91,170,255,.88)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">API</text>
+            <!-- AUTO -->
+            <circle cx="412" cy="200" r="30" fill="rgba(106,103,248,.10)" filter="url(#hg2)"/>
+            <circle cx="412" cy="200" r="24" fill="#0B0D22" stroke="rgba(106,103,248,.40)" stroke-width="1.2"/>
+            <text x="412" y="197" text-anchor="middle" fill="rgba(143,141,250,.85)" font-size="7.5" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">AUTO</text>
+            <text x="412" y="207" text-anchor="middle" fill="rgba(143,141,250,.48)" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">MATION</text>
+            <!-- WEB -->
+            <circle cx="372" cy="322" r="30" fill="rgba(30,138,255,.10)" filter="url(#hg2)"/>
+            <circle cx="372" cy="322" r="24" fill="#0B0D22" stroke="rgba(30,138,255,.40)" stroke-width="1.2"/>
+            <text x="372" y="326" text-anchor="middle" fill="rgba(91,170,255,.85)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">WEB</text>
+            <!-- MOBILE -->
+            <circle cx="88" cy="322" r="30" fill="rgba(106,103,248,.10)" filter="url(#hg2)"/>
+            <circle cx="88" cy="322" r="24" fill="#0B0D22" stroke="rgba(106,103,248,.40)" stroke-width="1.2"/>
+            <text x="88" y="319" text-anchor="middle" fill="rgba(143,141,250,.85)" font-size="8" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">MOBILE</text>
+            <!-- DATA -->
+            <circle cx="48" cy="200" r="30" fill="rgba(30,138,255,.10)" filter="url(#hg2)"/>
+            <circle cx="48" cy="200" r="24" fill="#0B0D22" stroke="rgba(30,138,255,.42)" stroke-width="1.2"/>
+            <text x="48" y="204" text-anchor="middle" fill="rgba(91,170,255,.88)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.04em">DATA</text>
+          </svg>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         03 TECHNOLOGY ECOSYSTEM STRIP
+    ══════════════════════════════════════════════════════ -->
+    <div class="ailab-ecosystem" role="complementary" aria-label="Партнёры">
+      <div class="ailab-ecosystem__inner">
+
+        <div class="ailab-ecosystem__head">
+          <span class="ailab-ecosystem__label">Партнёры</span>
+        </div>
+
+        <div class="ailab-ecosystem__rule" aria-hidden="true"></div>
+
+        <div class="ailab-ecosystem__ticker">
+          <div class="ailab-ecosystem__track">
+            <span class="ailab-ecosystem__logo"><span class="ailab-ecosystem__logo-name">Yandex Cloud</span></span>
+            <span class="ailab-ecosystem__logo"><span class="ailab-ecosystem__logo-name">Google Cloud</span></span>
+            <span class="ailab-ecosystem__logo"><span class="ailab-ecosystem__logo-name">SmartCloud</span></span>
+            <span class="ailab-ecosystem__logo"><span class="ailab-ecosystem__logo-name">Halyk Kazteleport</span></span>
+            <span class="ailab-ecosystem__logo"><span class="ailab-ecosystem__logo-name">Kismet AI</span></span>
+            <span class="ailab-ecosystem__logo"><span class="ailab-ecosystem__logo-name">Farabi Hub</span></span>
+            <span class="ailab-ecosystem__logo"><span class="ailab-ecosystem__logo-name">SDU Technopark</span></span>
+            <!-- duplicate set for seamless loop -->
+            <span class="ailab-ecosystem__logo" aria-hidden="true"><span class="ailab-ecosystem__logo-name">Yandex Cloud</span></span>
+            <span class="ailab-ecosystem__logo" aria-hidden="true"><span class="ailab-ecosystem__logo-name">Google Cloud</span></span>
+            <span class="ailab-ecosystem__logo" aria-hidden="true"><span class="ailab-ecosystem__logo-name">SmartCloud</span></span>
+            <span class="ailab-ecosystem__logo" aria-hidden="true"><span class="ailab-ecosystem__logo-name">Halyk Kazteleport</span></span>
+            <span class="ailab-ecosystem__logo" aria-hidden="true"><span class="ailab-ecosystem__logo-name">Kismet AI</span></span>
+            <span class="ailab-ecosystem__logo" aria-hidden="true"><span class="ailab-ecosystem__logo-name">Farabi Hub</span></span>
+            <span class="ailab-ecosystem__logo" aria-hidden="true"><span class="ailab-ecosystem__logo-name">SDU Technopark</span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="sec-fade sec-fade--eco-build" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════════════════
+         04 WHAT WE BUILD
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section" id="ailab-build" aria-labelledby="ailab-build-title">
+      <div class="ailab-container">
+        <div class="ailab-section-header ailab-animate">
+          <span class="ailab-kicker">Что мы строим</span>
+          <h2 class="ailab-title ailab-title--xl" id="ailab-build-title">Пять направлений работы</h2>
+        </div>
+
+        <div class="ailab-build__rows" role="list">
+
+          <div class="ailab-build__row ailab-animate" role="listitem">
+            <div class="ailab-build__numeral" aria-hidden="true">
+              <span class="ailab-build__numeral-n">01</span>
+            </div>
+            <div class="ailab-build__content">
+              <div class="ailab-build__category">AI-решения</div>
+              <div class="ailab-build__title">Автоматизация бизнес-процессов</div>
+              <div class="ailab-build__desc">
+                Внедрение AI в рабочие процессы: чат-боты, голосовые ассистенты,
+                интеллектуальные агенты, автоматизация задач на основе LLM.
+              </div>
+              <div class="ailab-build__caps" aria-label="Ключевые технологии">
+                <span class="ailab-chip">LLM Integration</span>
+                <span class="ailab-chip">AI Agents</span>
+                <span class="ailab-chip">RAG</span>
+                <span class="ailab-chip">ChatBot</span>
+                <span class="ailab-chip">Automation</span>
+              </div>
+            </div>
+            <div class="ailab-build__icon" aria-hidden="true">
+              <img src="../design-system/ai-laboratory-design/assets/icons/direction-consult.png" alt="" onerror="this.style.display='none'" />
+            </div>
+          </div>
+
+          <div class="ailab-build__row ailab-animate" style="transition-delay:80ms" role="listitem">
+            <div class="ailab-build__numeral" aria-hidden="true">
+              <span class="ailab-build__numeral-n">02</span>
+            </div>
+            <div class="ailab-build__content">
+              <div class="ailab-build__category">Продуктовая разработка</div>
+              <div class="ailab-build__title">Web &amp; Mobile приложения</div>
+              <div class="ailab-build__desc">
+                Разработка современных веб-приложений и мобильных продуктов —
+                от MVP до масштабируемых платформ.
+              </div>
+              <div class="ailab-build__caps" aria-label="Ключевые технологии">
+                <span class="ailab-chip">Next.js</span>
+                <span class="ailab-chip">React</span>
+                <span class="ailab-chip">Flutter</span>
+                <span class="ailab-chip">API</span>
+                <span class="ailab-chip">Backend</span>
+              </div>
+            </div>
+            <div class="ailab-build__icon" aria-hidden="true">
+              <img src="../design-system/ai-laboratory-design/assets/icons/direction-dev.png" alt="" onerror="this.style.display='none'" />
+            </div>
+          </div>
+
+          <div class="ailab-build__row ailab-animate" style="transition-delay:160ms" role="listitem">
+            <div class="ailab-build__numeral" aria-hidden="true">
+              <span class="ailab-build__numeral-n">03</span>
+            </div>
+            <div class="ailab-build__content">
+              <div class="ailab-build__category">Бизнес-платформы</div>
+              <div class="ailab-build__title">CRM &amp; ERP системы</div>
+              <div class="ailab-build__desc">
+                Внедрение и кастомизация CRM, ERP-систем.
+                Интеграция с существующими процессами и инфраструктурой компании.
+              </div>
+              <div class="ailab-build__caps" aria-label="Ключевые технологии">
+                <span class="ailab-chip">CRM</span>
+                <span class="ailab-chip">ERP</span>
+                <span class="ailab-chip">Интеграции</span>
+                <span class="ailab-chip">Аналитика</span>
+                <span class="ailab-chip">Custom</span>
+              </div>
+            </div>
+            <div class="ailab-build__icon" aria-hidden="true">
+              <img src="../design-system/ai-laboratory-design/assets/icons/direction-creo.png" alt="" onerror="this.style.display='none'" />
+            </div>
+          </div>
+
+          <div class="ailab-build__row ailab-animate" style="transition-delay:240ms" role="listitem">
+            <div class="ailab-build__numeral" aria-hidden="true">
+              <span class="ailab-build__numeral-n">04</span>
+            </div>
+            <div class="ailab-build__content">
+              <div class="ailab-build__category">GovTech &amp; High-Load</div>
+              <div class="ailab-build__title">Государственные и нагруженные системы</div>
+              <div class="ailab-build__desc">
+                Разработка высоконагруженных систем, государственных платформ,
+                Web3-решений с требованиями к надёжности и безопасности.
+              </div>
+              <div class="ailab-build__caps" aria-label="Ключевые технологии">
+                <span class="ailab-chip">High-Load</span>
+                <span class="ailab-chip">GovTech</span>
+                <span class="ailab-chip">Security</span>
+                <span class="ailab-chip">Web3</span>
+                <span class="ailab-chip">Integration</span>
+              </div>
+            </div>
+            <div class="ailab-build__icon" aria-hidden="true"></div>
+          </div>
+
+          <div class="ailab-build__row ailab-animate" style="transition-delay:320ms" role="listitem">
+            <div class="ailab-build__numeral" aria-hidden="true">
+              <span class="ailab-build__numeral-n">05</span>
+            </div>
+            <div class="ailab-build__content">
+              <div class="ailab-build__category">Внешняя IT-команда</div>
+              <div class="ailab-build__title">Аутсорс разработка и поддержка</div>
+              <div class="ailab-build__desc">
+                Работа как расширение внутренней команды клиента:
+                разработка, DevOps, поддержка продуктов на долгосрочной основе.
+              </div>
+              <div class="ailab-build__caps" aria-label="Ключевые технологии">
+                <span class="ailab-chip">Team Extension</span>
+                <span class="ailab-chip">DevOps</span>
+                <span class="ailab-chip">Support</span>
+                <span class="ailab-chip">Maintenance</span>
+                <span class="ailab-chip">Consulting</span>
+              </div>
+            </div>
+            <div class="ailab-build__icon" aria-hidden="true"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         05 BUSINESS-FIRST APPROACH — DARK
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section ailab-section--dark ailab-biz" id="ailab-biz" aria-labelledby="ailab-biz-title">
+      <div class="ailab-biz__ambient" aria-hidden="true">
+        <img src="../design-system/ai-laboratory-design/assets/imagery/blue-sphere.png" alt="" />
+      </div>
+      <div class="ailab-container">
+        <div class="ailab-biz__inner">
+
+          <span class="ailab-kicker ailab-kicker--dark ailab-animate">Наш подход</span>
+          <h2 class="ailab-title ailab-title--xl ailab-title--dark ailab-animate" id="ailab-biz-title" style="transition-delay:80ms">
+            Мы начинаем с бизнес-задачи,<br />а не с технологии.
+          </h2>
+          <p class="ailab-biz__subline ailab-animate" style="transition-delay:160ms">
+            Не AI ради AI.
+          </p>
+
+          <div class="ailab-biz__flow ailab-animate" style="transition-delay:240ms" role="list" aria-label="Наш процесс">
+            <span class="ailab-biz__step-label" role="listitem">Бизнес-проблема</span>
+            <span class="ailab-biz__arrow" aria-hidden="true">→</span>
+            <span class="ailab-biz__step-label" role="listitem">Процесс</span>
+            <span class="ailab-biz__arrow" aria-hidden="true">→</span>
+            <span class="ailab-biz__step-label" role="listitem">Данные</span>
+            <span class="ailab-biz__arrow" aria-hidden="true">→</span>
+            <span class="ailab-biz__step-label" role="listitem">Технология</span>
+            <span class="ailab-biz__arrow" aria-hidden="true">→</span>
+            <span class="ailab-biz__step-label" role="listitem">Интеграция</span>
+            <span class="ailab-biz__arrow" aria-hidden="true">→</span>
+            <span class="ailab-biz__step-label" role="listitem">Бизнес-результат</span>
+          </div>
+
+          <div class="ailab-biz__qs-label ailab-animate" style="transition-delay:320ms">
+            Решаем задачи в
+          </div>
+          <div class="ailab-biz__questions ailab-animate" style="transition-delay:360ms" role="list">
+            <span class="ailab-biz__q-chip" role="listitem">Продажи</span>
+            <span class="ailab-biz__q-chip" role="listitem">Customer Service</span>
+            <span class="ailab-biz__q-chip" role="listitem">Operations</span>
+            <span class="ailab-biz__q-chip" role="listitem">Management</span>
+            <span class="ailab-biz__q-chip" role="listitem">Product</span>
+            <span class="ailab-biz__q-chip" role="listitem">Data</span>
+          </div>
+
+          <p class="ailab-biz__ending ailab-animate" style="transition-delay:440ms">
+            <strong>Решением может быть:</strong> AI · CRM · ERP · Automation · новый продукт.<br />
+            Мы не навязываем стек — мы подбираем то, что решает задачу.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="sec-fade sec-fade--biz-cases" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════════════════
+         06 CASES — dark premium
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section" id="ailab-cases" aria-labelledby="ailab-cases-title">
+      <div class="ailab-container">
+
+        <div class="ailab-section-header ailab-animate">
+          <span class="ailab-kicker">Кейсы</span>
+          <h2 class="ailab-title ailab-title--xl" id="ailab-cases-title">Реальные проекты</h2>
+        </div>
+
+        <div class="amc-slider-wrap">
+          <div class="amc-slider">
+            <div class="amc-slider__track" id="amc-track">
+
+              <!-- Slide 1: Chayla Group -->
+              <div class="amc-slide">
+                <div class="amc-slide__text">
+                  <div class="amc-slide__ind">Real Estate &amp; Construction</div>
+                  <h3 class="amc-slide__client">Chayla Group</h3>
+                  <p class="amc-slide__sol">Автоматизация внутренних операций и разработка цифровых инструментов для управления строительными объектами.</p>
+                </div>
+                <div class="amc-slide__visual" aria-hidden="true">
+                  <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
+                    <rect x="4"   y="46" width="60" height="52" rx="5" fill="rgba(106,103,248,.08)" stroke="rgba(106,103,248,.28)" stroke-width="1"/>
+                    <text x="34"  y="72" text-anchor="middle" fill="rgba(143,141,250,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">ОБЪЕКТ</text>
+                    <text x="34"  y="83" text-anchor="middle" fill="rgba(143,141,250,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ ASSETS</text>
+                    <rect x="120" y="24" width="60" height="72" rx="5" fill="rgba(106,103,248,.14)" stroke="rgba(106,103,248,.52)" stroke-width="1.2"/>
+                    <text x="150" y="58" text-anchor="middle" fill="#8F8DFA" font-size="8" font-family="JetBrains Mono,monospace">DIGITAL</text>
+                    <text x="150" y="70" text-anchor="middle" fill="rgba(143,141,250,.55)" font-size="7" font-family="JetBrains Mono,monospace">OPS CORE</text>
+                    <rect x="236" y="46" width="60" height="52" rx="5" fill="rgba(30,138,255,.07)" stroke="rgba(30,138,255,.26)" stroke-width="1"/>
+                    <text x="266" y="72" text-anchor="middle" fill="rgba(91,170,255,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">КОМАНДА</text>
+                    <text x="266" y="83" text-anchor="middle" fill="rgba(91,170,255,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ STAFF</text>
+                    <line x1="64" y1="72" x2="120" y2="60" stroke="rgba(106,103,248,.35)" stroke-width="1"/>
+                    <line x1="180" y1="60" x2="236" y2="72" stroke="rgba(30,138,255,.28)" stroke-width="1"/>
+                    <circle cx="92" cy="66" r="2.5" fill="rgba(106,103,248,.65)"/>
+                    <circle cx="208" cy="66" r="2.5" fill="rgba(30,138,255,.58)"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Slide 2: Kelzin Group -->
+              <div class="amc-slide">
+                <div class="amc-slide__text">
+                  <div class="amc-slide__ind amc-slide__ind--blue">Logistics &amp; Transport</div>
+                  <h3 class="amc-slide__client">Kelzin Group</h3>
+                  <p class="amc-slide__sol">Платформа управления логистическими процессами, складом и командным взаимодействием.</p>
+                </div>
+                <div class="amc-slide__visual" aria-hidden="true">
+                  <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
+                    <circle cx="50"  cy="55" r="30" fill="rgba(30,138,255,.07)" stroke="rgba(30,138,255,.26)" stroke-width="1"/>
+                    <text x="50"  y="52" text-anchor="middle" fill="rgba(91,170,255,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">СКЛАД</text>
+                    <text x="50"  y="63" text-anchor="middle" fill="rgba(91,170,255,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ FLEET</text>
+                    <circle cx="150" cy="55" r="38" fill="rgba(30,138,255,.13)" stroke="rgba(30,138,255,.50)" stroke-width="1.5"/>
+                    <text x="150" y="52" text-anchor="middle" fill="#5BAAFF" font-size="8" font-family="JetBrains Mono,monospace">ERP CORE</text>
+                    <text x="150" y="64" text-anchor="middle" fill="rgba(91,170,255,.48)" font-size="7" font-family="JetBrains Mono,monospace">PLATFORM</text>
+                    <circle cx="250" cy="55" r="30" fill="rgba(106,103,248,.07)" stroke="rgba(106,103,248,.26)" stroke-width="1"/>
+                    <text x="250" y="52" text-anchor="middle" fill="rgba(143,141,250,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">КЛИЕНТ</text>
+                    <text x="250" y="63" text-anchor="middle" fill="rgba(143,141,250,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ REPORT</text>
+                    <line x1="80"  y1="55" x2="112" y2="55" stroke="rgba(30,138,255,.40)" stroke-width="1" stroke-dasharray="3 5"/>
+                    <line x1="188" y1="55" x2="220" y2="55" stroke="rgba(106,103,248,.35)" stroke-width="1" stroke-dasharray="3 5"/>
+                    <circle cx="96"  cy="55" r="2" fill="rgba(30,138,255,.75)"/>
+                    <circle cx="204" cy="55" r="2" fill="rgba(106,103,248,.65)"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Slide 3: Balance Fitness -->
+              <div class="amc-slide">
+                <div class="amc-slide__text">
+                  <div class="amc-slide__ind amc-slide__ind--green">Fitness &amp; Wellness</div>
+                  <h3 class="amc-slide__client">Balance Fitness</h3>
+                  <p class="amc-slide__sol">Мобильное приложение и цифровая инфраструктура для управления тренировками, клиентами и расписанием.</p>
+                </div>
+                <div class="amc-slide__visual" aria-hidden="true">
+                  <svg viewBox="0 0 300 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
+                    <rect x="110" y="8" width="80" height="104" rx="12" fill="rgba(24,160,102,.08)" stroke="rgba(24,160,102,.35)" stroke-width="1.2"/>
+                    <rect x="118" y="22" width="64" height="76" rx="4" fill="rgba(24,160,102,.05)"/>
+                    <text x="150" y="37" text-anchor="middle" fill="rgba(24,160,102,.60)" font-size="7" font-family="JetBrains Mono,monospace">BALANCE</text>
+                    <text x="150" y="47" text-anchor="middle" fill="rgba(24,160,102,.40)" font-size="6" font-family="JetBrains Mono,monospace">FITNESS APP</text>
+                    <polyline points="120,62 129,62 134,50 142,74 149,50 156,62 163,62 172,62" stroke="#18A066" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="122" y="76" width="8" height="14" rx="2" fill="rgba(24,160,102,.28)"/>
+                    <rect x="134" y="70" width="8" height="20" rx="2" fill="rgba(24,160,102,.45)"/>
+                    <rect x="146" y="74" width="8" height="16" rx="2" fill="rgba(24,160,102,.32)"/>
+                    <rect x="158" y="66" width="8" height="24" rx="2" fill="rgba(24,160,102,.60)"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Slide 4: GS Logistics -->
+              <div class="amc-slide">
+                <div class="amc-slide__text">
+                  <div class="amc-slide__ind amc-slide__ind--blue">Logistics &amp; Supply Chain</div>
+                  <h3 class="amc-slide__client">GS Logistics</h3>
+                  <p class="amc-slide__sol">Система управления цепочкой поставок: от поставщика до конечной доставки с полной аналитикой.</p>
+                </div>
+                <div class="amc-slide__visual" aria-hidden="true">
+                  <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
+                    <rect x="10" y="41" width="55" height="32" rx="5" fill="rgba(30,138,255,.07)" stroke="rgba(30,138,255,.26)" stroke-width="1"/>
+                    <text x="37" y="55" text-anchor="middle" fill="rgba(91,170,255,.65)" font-size="7" font-family="JetBrains Mono,monospace">SUPPLIER</text>
+                    <text x="37" y="65" text-anchor="middle" fill="rgba(91,170,255,.38)" font-size="6" font-family="JetBrains Mono,monospace">/ INPUT</text>
+                    <rect x="105" y="22" width="90" height="66" rx="8" fill="rgba(30,138,255,.13)" stroke="rgba(30,138,255,.48)" stroke-width="1.4"/>
+                    <text x="150" y="53" text-anchor="middle" fill="#5BAAFF" font-size="8" font-family="JetBrains Mono,monospace">SCM</text>
+                    <text x="150" y="65" text-anchor="middle" fill="rgba(91,170,255,.55)" font-size="7" font-family="JetBrains Mono,monospace">PLATFORM</text>
+                    <rect x="235" y="41" width="55" height="32" rx="5" fill="rgba(30,138,255,.07)" stroke="rgba(30,138,255,.26)" stroke-width="1"/>
+                    <text x="262" y="55" text-anchor="middle" fill="rgba(91,170,255,.65)" font-size="7" font-family="JetBrains Mono,monospace">DELIVERY</text>
+                    <text x="262" y="65" text-anchor="middle" fill="rgba(91,170,255,.38)" font-size="6" font-family="JetBrains Mono,monospace">/ OUTPUT</text>
+                    <line x1="65" y1="57" x2="104" y2="57" stroke="rgba(30,138,255,.40)" stroke-width="1.2" stroke-dasharray="4 4"/>
+                    <line x1="195" y1="57" x2="234" y2="57" stroke="rgba(30,138,255,.40)" stroke-width="1.2" stroke-dasharray="4 4"/>
+                    <polygon points="102,54 108,57 102,60" fill="rgba(30,138,255,.55)"/>
+                    <polygon points="232,54 238,57 232,60" fill="rgba(30,138,255,.55)"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Slide 5: Vexmont -->
+              <div class="amc-slide">
+                <div class="amc-slide__text">
+                  <div class="amc-slide__ind">B2B Services</div>
+                  <h3 class="amc-slide__client">Vexmont</h3>
+                  <p class="amc-slide__sol">Цифровые инструменты и API-платформа для автоматизации B2B-операций и взаимодействия с партнёрами.</p>
+                </div>
+                <div class="amc-slide__visual" aria-hidden="true">
+                  <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
+                    <rect x="20" y="18" width="120" height="76" rx="7" fill="rgba(106,103,248,.08)" stroke="rgba(106,103,248,.28)" stroke-width="1"/>
+                    <rect x="28" y="28" width="104" height="14" rx="3" fill="rgba(106,103,248,.15)"/>
+                    <text x="80" y="39" text-anchor="middle" fill="rgba(143,141,250,.65)" font-size="7" font-family="JetBrains Mono,monospace">DASHBOARD</text>
+                    <rect x="28" y="48" width="46" height="16" rx="3" fill="rgba(106,103,248,.10)"/>
+                    <rect x="80" y="48" width="22" height="16" rx="3" fill="rgba(106,103,248,.07)"/>
+                    <rect x="108" y="48" width="16" height="16" rx="3" fill="rgba(106,103,248,.07)"/>
+                    <rect x="28" y="70" width="104" height="12" rx="3" fill="rgba(106,103,248,.06)"/>
+                    <line x1="140" y1="56" x2="168" y2="56" stroke="rgba(106,103,248,.38)" stroke-width="1.2" stroke-dasharray="3 3"/>
+                    <polygon points="166,53 172,56 166,59" fill="rgba(106,103,248,.55)"/>
+                    <rect x="172" y="44" width="80" height="24" rx="5" fill="rgba(106,103,248,.10)" stroke="rgba(106,103,248,.32)" stroke-width="1"/>
+                    <text x="212" y="55" text-anchor="middle" fill="#8F8DFA" font-size="7.5" font-family="JetBrains Mono,monospace">B2B API</text>
+                    <text x="212" y="64" text-anchor="middle" fill="rgba(143,141,250,.38)" font-size="6" font-family="JetBrains Mono,monospace">GATEWAY</text>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Slide 6: Dostyq Auto -->
+              <div class="amc-slide">
+                <div class="amc-slide__text">
+                  <div class="amc-slide__ind amc-slide__ind--amber">Automotive</div>
+                  <h3 class="amc-slide__client">Dostyq Auto</h3>
+                  <p class="amc-slide__sol">Автоматизация процессов автодилера: от заявки и подбора автомобиля до сделки и CRM-отчётности.</p>
+                </div>
+                <div class="amc-slide__visual" aria-hidden="true">
+                  <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
+                    <rect x="8"  y="41" width="52" height="28" rx="5" fill="rgba(245,166,35,.07)" stroke="rgba(245,166,35,.28)" stroke-width="1"/>
+                    <text x="34" y="54" text-anchor="middle" fill="rgba(245,166,35,.65)" font-size="7" font-family="JetBrains Mono,monospace">ЗАЯВКА</text>
+                    <text x="34" y="63" text-anchor="middle" fill="rgba(245,166,35,.38)" font-size="6" font-family="JetBrains Mono,monospace">/ LEAD</text>
+                    <line x1="60" y1="55" x2="82" y2="55" stroke="rgba(245,166,35,.35)" stroke-width="1.2" stroke-dasharray="3 3"/>
+                    <polygon points="80,52 86,55 80,58" fill="rgba(245,166,35,.50)"/>
+                    <rect x="86" y="41" width="52" height="28" rx="5" fill="rgba(245,166,35,.12)" stroke="rgba(245,166,35,.42)" stroke-width="1.2"/>
+                    <text x="112" y="54" text-anchor="middle" fill="rgba(245,166,35,.80)" font-size="7" font-family="JetBrains Mono,monospace">АВТО</text>
+                    <text x="112" y="63" text-anchor="middle" fill="rgba(245,166,35,.45)" font-size="6" font-family="JetBrains Mono,monospace">/ STOCK</text>
+                    <line x1="138" y1="55" x2="160" y2="55" stroke="rgba(245,166,35,.35)" stroke-width="1.2" stroke-dasharray="3 3"/>
+                    <polygon points="158,52 164,55 158,58" fill="rgba(245,166,35,.50)"/>
+                    <rect x="164" y="41" width="52" height="28" rx="5" fill="rgba(245,166,35,.12)" stroke="rgba(245,166,35,.42)" stroke-width="1.2"/>
+                    <text x="190" y="54" text-anchor="middle" fill="rgba(245,166,35,.80)" font-size="7" font-family="JetBrains Mono,monospace">СДЕЛКА</text>
+                    <text x="190" y="63" text-anchor="middle" fill="rgba(245,166,35,.45)" font-size="6" font-family="JetBrains Mono,monospace">/ DEAL</text>
+                    <line x1="216" y1="55" x2="238" y2="55" stroke="rgba(245,166,35,.35)" stroke-width="1.2" stroke-dasharray="3 3"/>
+                    <polygon points="236,52 242,55 236,58" fill="rgba(245,166,35,.50)"/>
+                    <rect x="242" y="41" width="52" height="28" rx="5" fill="rgba(245,166,35,.07)" stroke="rgba(245,166,35,.25)" stroke-width="1"/>
+                    <text x="268" y="54" text-anchor="middle" fill="rgba(245,166,35,.60)" font-size="7" font-family="JetBrains Mono,monospace">CRM</text>
+                    <text x="268" y="63" text-anchor="middle" fill="rgba(245,166,35,.38)" font-size="6" font-family="JetBrains Mono,monospace">/ REPORT</text>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Slide 7: ОС для ТРЦ -->
+              <div class="amc-slide">
+                <div class="amc-slide__text">
+                  <div class="amc-slide__ind amc-slide__ind--teal">Retail / Mall Management</div>
+                  <h3 class="amc-slide__client">ОС для ТРЦ</h3>
+                  <p class="amc-slide__sol">Операционная система управления торговым центром: арендаторы, финансы, технические службы и аналитика.</p>
+                </div>
+                <div class="amc-slide__visual" aria-hidden="true">
+                  <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
+                    <rect x="28" y="12" width="244" height="88" rx="8" fill="rgba(0,199,163,.05)" stroke="rgba(0,199,163,.24)" stroke-width="1"/>
+                    <rect x="36" y="20" width="52" height="28" rx="3" fill="rgba(0,199,163,.10)" stroke="rgba(0,199,163,.28)" stroke-width="1"/>
+                    <text x="62" y="38" text-anchor="middle" fill="rgba(0,199,163,.65)" font-size="6.5" font-family="JetBrains Mono,monospace">TENANT A</text>
+                    <rect x="96" y="20" width="52" height="28" rx="3" fill="rgba(0,199,163,.10)" stroke="rgba(0,199,163,.28)" stroke-width="1"/>
+                    <text x="122" y="38" text-anchor="middle" fill="rgba(0,199,163,.65)" font-size="6.5" font-family="JetBrains Mono,monospace">TENANT B</text>
+                    <rect x="156" y="20" width="52" height="28" rx="3" fill="rgba(0,199,163,.15)" stroke="rgba(0,199,163,.42)" stroke-width="1.2"/>
+                    <text x="182" y="38" text-anchor="middle" fill="rgba(0,199,163,.80)" font-size="6.5" font-family="JetBrains Mono,monospace">TENANT C</text>
+                    <rect x="216" y="20" width="48" height="28" rx="3" fill="rgba(0,199,163,.10)" stroke="rgba(0,199,163,.28)" stroke-width="1"/>
+                    <text x="240" y="38" text-anchor="middle" fill="rgba(0,199,163,.65)" font-size="6.5" font-family="JetBrains Mono,monospace">TENANT D</text>
+                    <rect x="36" y="58" width="228" height="34" rx="4" fill="rgba(0,199,163,.13)" stroke="rgba(0,199,163,.40)" stroke-width="1.2"/>
+                    <text x="150" y="73" text-anchor="middle" fill="#00C7A3" font-size="8" font-family="JetBrains Mono,monospace">MALL OPERATING SYSTEM</text>
+                    <text x="150" y="83" text-anchor="middle" fill="rgba(0,199,163,.38)" font-size="6" font-family="JetBrains Mono,monospace">MANAGEMENT · ANALYTICS · CONTROL</text>
+                  </svg>
+                </div>
+              </div>
+
+            </div><!-- /track -->
+          </div><!-- /slider -->
+
+          <!-- Arrow buttons sit inside .amc-slider-wrap (outside overflow:hidden) -->
+          <button class="amc-arrow amc-arrow--prev" id="amc-prev" aria-label="Предыдущий проект">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 14L6 9l5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="amc-arrow amc-arrow--next" id="amc-next" aria-label="Следующий проект">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+        </div><!-- /slider-wrap -->
+
+        <div class="amc-controls">
+          <div class="amc-dots" id="amc-dots" role="tablist" aria-label="Навигация по кейсам">
+            <button class="amc-dot is-active" role="tab" aria-selected="true"  aria-label="Проект 1" data-idx="0"></button>
+            <button class="amc-dot"            role="tab" aria-selected="false" aria-label="Проект 2" data-idx="1"></button>
+            <button class="amc-dot"            role="tab" aria-selected="false" aria-label="Проект 3" data-idx="2"></button>
+            <button class="amc-dot"            role="tab" aria-selected="false" aria-label="Проект 4" data-idx="3"></button>
+            <button class="amc-dot"            role="tab" aria-selected="false" aria-label="Проект 5" data-idx="4"></button>
+            <button class="amc-dot"            role="tab" aria-selected="false" aria-label="Проект 6" data-idx="5"></button>
+            <button class="amc-dot"            role="tab" aria-selected="false" aria-label="Проект 7" data-idx="6"></button>
+          </div>
+          <div class="amc-counter" aria-live="polite">
+            <span class="amc-counter__cur" id="amc-cur">01</span>&nbsp;/&nbsp;07
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="sec-fade sec-fade--cases-how" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════════════════
+         07 HOW WE WORK
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section" id="ailab-how" aria-labelledby="ailab-how-title">
+      <div class="ailab-container">
+        <div class="ailab-section-header ailab-animate">
+          <span class="ailab-kicker">Как мы работаем</span>
+          <h2 class="ailab-title ailab-title--xl" id="ailab-how-title">Шесть шагов</h2>
+        </div>
+        <div class="ailab-how__grid">
+
+          <div class="ailab-how__step ailab-animate">
+            <div class="ailab-how__num">01</div>
+            <div class="ailab-how__label">Business Discovery</div>
+            <p class="ailab-how__desc">Изучаем бизнес, процессы, боли и цели. Формируем понимание задачи до начала работы.</p>
+          </div>
+          <div class="ailab-how__step ailab-animate" style="transition-delay:80ms">
+            <div class="ailab-how__num">02</div>
+            <div class="ailab-how__label">Solution Design</div>
+            <p class="ailab-how__desc">Проектируем архитектуру решения, выбираем стек, определяем объём и этапы.</p>
+          </div>
+          <div class="ailab-how__step ailab-animate" style="transition-delay:160ms">
+            <div class="ailab-how__num">03</div>
+            <div class="ailab-how__label">Prototype / MVP</div>
+            <p class="ailab-how__desc">Быстро собираем рабочий прототип, чтобы подтвердить гипотезу на реальных данных.</p>
+          </div>
+
+          <div class="ailab-how__divider" aria-hidden="true"></div>
+
+          <div class="ailab-how__step ailab-animate" style="transition-delay:240ms">
+            <div class="ailab-how__num">04</div>
+            <div class="ailab-how__label">Development</div>
+            <p class="ailab-how__desc">Разрабатываем продукт в коротких итерациях с регулярной обратной связью.</p>
+          </div>
+          <div class="ailab-how__step ailab-animate" style="transition-delay:320ms">
+            <div class="ailab-how__num">05</div>
+            <div class="ailab-how__label">Integration</div>
+            <p class="ailab-how__desc">Интегрируем решение в существующую инфраструктуру и бизнес-процессы клиента.</p>
+          </div>
+          <div class="ailab-how__step ailab-animate" style="transition-delay:400ms">
+            <div class="ailab-how__num">06</div>
+            <div class="ailab-how__label">Scale &amp; Support</div>
+            <p class="ailab-how__desc">Масштабируем то, что работает. Поддерживаем и развиваем продукт на долгосрочной основе.</p>
+          </div>
+
+        </div>
+        <p class="ailab-how__closing ailab-animate">От идеи до работающей технологии — одна команда.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         08 ENGAGEMENT MODELS
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section" id="ailab-engagement" aria-labelledby="ailab-engagement-title">
+      <div class="ailab-container">
+        <div class="ailab-section-header ailab-animate">
+          <span class="ailab-kicker">Форматы работы</span>
+          <h2 class="ailab-title ailab-title--xl" id="ailab-engagement-title">Четыре модели</h2>
+        </div>
+        <div class="ailab-engagement__grid">
+
+          <div class="ailab-eng-card ailab-animate">
+            <h3 class="ailab-eng-card__title">AI / IT Audit</h3>
+            <p class="ailab-eng-card__desc">Анализируем существующие процессы, технологии и данные. Предлагаем конкретный roadmap цифровизации.</p>
+          </div>
+
+          <div class="ailab-eng-card ailab-eng-card--pilot ailab-animate" style="transition-delay:80ms">
+            <span class="ailab-eng-badge ailab-eng-badge--violet">Быстрый старт</span>
+            <h3 class="ailab-eng-card__title">Pilot / MVP</h3>
+            <p class="ailab-eng-card__desc">Запускаем рабочий прототип за 2–3 недели. Минимальные инвестиции — максимальная проверка гипотезы.</p>
+            <span class="ailab-eng-tag">2–3 недели</span>
+          </div>
+
+          <div class="ailab-eng-card ailab-animate" style="transition-delay:160ms">
+            <h3 class="ailab-eng-card__title">Project Development</h3>
+            <p class="ailab-eng-card__desc">Берём проект под ключ: от проектирования до запуска и последующей поддержки.</p>
+          </div>
+
+          <div class="ailab-eng-card ailab-eng-card--ext ailab-animate" style="transition-delay:240ms">
+            <span class="ailab-eng-badge ailab-eng-badge--dark">Для растущих команд</span>
+            <h3 class="ailab-eng-card__title">External Technology Team</h3>
+            <p class="ailab-eng-card__desc">Работаем как ваша внутренняя IT-команда: разработка, DevOps, архитектура, долгосрочное партнёрство.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         09 WHY AI LABORATORY — TINTED
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section ailab-section--tinted" id="ailab-why" aria-labelledby="ailab-why-title">
+      <div class="ailab-container">
+        <div class="ailab-section-header ailab-animate">
+          <span class="ailab-kicker">Почему AI Laboratory</span>
+          <h2 class="ailab-title ailab-title--xl" id="ailab-why-title">Шесть отличий</h2>
+        </div>
+
+        <div role="list">
+
+          <div class="ailab-why__row ailab-animate" role="listitem">
+            <div class="ailab-why__num" aria-hidden="true">01</div>
+            <div>
+              <div class="ailab-why__title">Business-first</div>
+              <p class="ailab-why__desc">Мы начинаем с бизнес-задачи, а не с выбора технологии. Каждое решение обосновано бизнес-ценностью.</p>
+            </div>
+          </div>
+
+          <div class="ailab-why__row ailab-animate" style="transition-delay:80ms" role="listitem">
+            <div class="ailab-why__num" aria-hidden="true">02</div>
+            <div>
+              <div class="ailab-why__title">One Team</div>
+              <p class="ailab-why__desc">Одна сплочённая команда от Discovery до Scale — без передачи между подрядчиками и потери контекста.</p>
+            </div>
+          </div>
+
+          <div class="ailab-why__row ailab-animate" style="transition-delay:160ms" role="listitem">
+            <div class="ailab-why__num" aria-hidden="true">03</div>
+            <div>
+              <div class="ailab-why__title">Technology-agnostic</div>
+              <p class="ailab-why__desc">Мы не привязаны к конкретному стеку. Выбираем инструменты, которые решают задачу, а не те, которые нам удобны.</p>
+            </div>
+          </div>
+
+          <div class="ailab-why__row ailab-animate" style="transition-delay:240ms" role="listitem">
+            <div class="ailab-why__num" aria-hidden="true">04</div>
+            <div>
+              <div class="ailab-why__title">From MVP to Enterprise</div>
+              <p class="ailab-why__desc">Умеем работать в режиме Pilot за 2–3 недели и масштабировать до enterprise-уровня без смены команды.</p>
+            </div>
+          </div>
+
+          <div class="ailab-why__row ailab-animate" style="transition-delay:320ms" role="listitem">
+            <div class="ailab-why__num" aria-hidden="true">05</div>
+            <div>
+              <div class="ailab-why__title">Integration, not isolation</div>
+              <p class="ailab-why__desc">Наши решения встраиваются в существующую инфраструктуру. Мы не создаём технологические острова.</p>
+            </div>
+          </div>
+
+          <div class="ailab-why__row ailab-animate" style="transition-delay:400ms" role="listitem">
+            <div class="ailab-why__num" aria-hidden="true">06</div>
+            <div>
+              <div class="ailab-why__title">Long-term Partner</div>
+              <p class="ailab-why__desc">Мы не продаём разовые проекты. Мы строим долгосрочные технологические партнёрства.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="sec-fade sec-fade--why-tech" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════════════════
+         10 TECHNOLOGY & EXPERTISE
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section atech" id="ailab-tech" aria-labelledby="ailab-tech-title">
+      <div class="ailab-container">
+
+        <div class="atech__header ailab-animate">
+          <div>
+            <span class="ailab-kicker ailab-kicker--dark">Технологии</span>
+            <h2 class="ailab-title ailab-title--xl ailab-title--dark" id="ailab-tech-title">Стек и компетенции</h2>
+          </div>
+          <p class="atech__sub">Выбираем инструменты под задачу — не навязываем стек.</p>
+        </div>
+
+        <div class="atech__grid">
+
+          <div class="atech__cat ailab-animate">
+            <div class="atech__cat-label">AI &amp; Machine Learning</div>
+            <div class="atech__chips">
+              <span class="atech__chip atech__chip--v">LLM Integration</span>
+              <span class="atech__chip atech__chip--v">RAG</span>
+              <span class="atech__chip atech__chip--v">AI Agents</span>
+              <span class="atech__chip atech__chip--v">Vector DB</span>
+              <span class="atech__chip atech__chip--v">Fine-tuning</span>
+              <span class="atech__chip atech__chip--v">Automation</span>
+            </div>
+          </div>
+
+          <div class="atech__cat ailab-animate" style="transition-delay:60ms">
+            <div class="atech__cat-label">Backend &amp; API</div>
+            <div class="atech__chips">
+              <span class="atech__chip">Python</span>
+              <span class="atech__chip">FastAPI</span>
+              <span class="atech__chip">Node.js</span>
+              <span class="atech__chip">REST / GraphQL</span>
+              <span class="atech__chip">PostgreSQL</span>
+              <span class="atech__chip">Redis</span>
+            </div>
+          </div>
+
+          <div class="atech__cat ailab-animate" style="transition-delay:120ms">
+            <div class="atech__cat-label">Frontend &amp; Mobile</div>
+            <div class="atech__chips">
+              <span class="atech__chip atech__chip--b">Next.js</span>
+              <span class="atech__chip atech__chip--b">React</span>
+              <span class="atech__chip atech__chip--b">Flutter</span>
+              <span class="atech__chip atech__chip--b">TypeScript</span>
+              <span class="atech__chip atech__chip--b">React Native</span>
+            </div>
+          </div>
+
+          <div class="atech__cat ailab-animate" style="transition-delay:180ms">
+            <div class="atech__cat-label">Infrastructure &amp; Cloud</div>
+            <div class="atech__chips">
+              <span class="atech__chip">Docker</span>
+              <span class="atech__chip">Kubernetes</span>
+              <span class="atech__chip">Yandex Cloud</span>
+              <span class="atech__chip">Google Cloud</span>
+              <span class="atech__chip">CI/CD</span>
+            </div>
+          </div>
+
+          <div class="atech__cat ailab-animate" style="transition-delay:240ms">
+            <div class="atech__cat-label">Интеграции</div>
+            <div class="atech__chips">
+              <span class="atech__chip atech__chip--v">CRM / ERP</span>
+              <span class="atech__chip atech__chip--v">1С</span>
+              <span class="atech__chip atech__chip--v">Bitrix24</span>
+              <span class="atech__chip atech__chip--v">Webhook</span>
+              <span class="atech__chip atech__chip--v">Telegram Bot API</span>
+            </div>
+          </div>
+
+          <div class="atech__cat atech__cat--certs ailab-animate" style="transition-delay:300ms">
+            <div class="atech__cat-label">Квалификации</div>
+            <div class="atech__chips">
+              <span class="atech__chip atech__chip--b">Claude · Anthropic</span>
+              <span class="atech__chip atech__chip--b">OpenAI</span>
+              <span class="atech__chip atech__chip--b">Google Cloud</span>
+              <span class="atech__chip atech__chip--b">Microsoft</span>
+              <span class="atech__chip atech__chip--b">Yandex Cloud</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="sec-fade sec-fade--tech-team" aria-hidden="true"></div>
+
+    <div class="sec-fade sec-fade--team-acad" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════════════════
+         12 ACADEMY PROMO — DARK
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-academy-promo" id="ailab-academy" aria-labelledby="ailab-academy-title">
+      <div class="ailab-container">
+        <div class="ailab-academy-promo__inner ailab-animate">
+
+          <!-- Left: text -->
+          <div class="ailab-academy-promo__text">
+            <span class="ailab-academy-promo__badge">✦ AI Lab Academy</span>
+            <h2 class="ailab-academy-promo__title" id="ailab-academy-title">
+              Ваша команда<br />уже может строить<br /><em>AI-продукты</em>
+            </h2>
+            <p class="ailab-academy-promo__sub">
+              Практические курсы от инженеров AI Laboratory — не теория, а навыки,
+              которые применяются на следующий день. Учимся на реальных задачах вашего бизнеса.
+            </p>
+            <div class="ailab-academy-promo__stats">
+              <div class="ailab-academy-promo__stat">
+                <span class="ailab-academy-promo__stat-val">150+</span>
+                <span class="ailab-academy-promo__stat-lbl">обученных специалистов</span>
+              </div>
+              <div class="ailab-academy-promo__stat">
+                <span class="ailab-academy-promo__stat-val">6</span>
+                <span class="ailab-academy-promo__stat-lbl">программ обучения</span>
+              </div>
+              <div class="ailab-academy-promo__stat">
+                <span class="ailab-academy-promo__stat-val">100%</span>
+                <span class="ailab-academy-promo__stat-lbl">практика на реальных задачах</span>
+              </div>
+            </div>
+            <a href="academy/index.html" class="ailab-btn ailab-btn--primary ailab-academy-promo__cta">
+              Смотреть программы →
+            </a>
+          </div>
+
+          <!-- Right: course cards preview -->
+          <div class="ailab-academy-promo__cards">
+            <div class="ailab-academy-promo__card">
+              <span class="ailab-academy-promo__card-icon">
+                <svg viewBox="0 0 20 20" fill="none" stroke="#8F8DFA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="14" height="14" rx="3"/>
+                  <rect x="7" y="7" width="6" height="6" rx="1"/>
+                  <path d="M3 8H1M3 12H1M19 8h-2M19 12h-2M8 3V1M12 3V1M8 19v-2M12 19v-2"/>
+                </svg>
+              </span>
+              <div>
+                <div class="ailab-academy-promo__card-title">AI для бизнеса</div>
+                <div class="ailab-academy-promo__card-meta">3 дня · без кода · до 12 человек</div>
+              </div>
+            </div>
+            <div class="ailab-academy-promo__card ailab-academy-promo__card--accent">
+              <span class="ailab-academy-promo__card-icon">
+                <svg viewBox="0 0 20 20" fill="none" stroke="#8F8DFA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 10h3l2-6 3 12 2-6h4"/>
+                </svg>
+              </span>
+              <div>
+                <div class="ailab-academy-promo__card-title">Автоматизация процессов с AI</div>
+                <div class="ailab-academy-promo__card-meta">5 дней · практика · популярный</div>
+              </div>
+            </div>
+            <div class="ailab-academy-promo__card">
+              <span class="ailab-academy-promo__card-icon">
+                <svg viewBox="0 0 20 20" fill="none" stroke="#8F8DFA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="10" cy="10" r="3"/>
+                  <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42"/>
+                </svg>
+              </span>
+              <div>
+                <div class="ailab-academy-promo__card-title">ML Engineering</div>
+                <div class="ailab-academy-promo__card-meta">4 нед · для разработчиков</div>
+              </div>
+            </div>
+            <div class="ailab-academy-promo__card">
+              <span class="ailab-academy-promo__card-icon">
+                <svg viewBox="0 0 20 20" fill="none" stroke="#8F8DFA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v8a1 1 0 01-1 1H8l-4 3V4z"/>
+                  <path d="M7 8h6M7 11h4"/>
+                </svg>
+              </span>
+              <div>
+                <div class="ailab-academy-promo__card-title">AI-Ассистенты и Чат-боты</div>
+                <div class="ailab-academy-promo__card-meta">2 нед · онлайн / офлайн</div>
+              </div>
+            </div>
+            <a href="academy/index.html" class="ailab-academy-promo__more">
+              + ещё 2 программы — смотреть все →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         CALCULATOR
+    ══════════════════════════════════════════════════════ -->
+    <section class="ac-calc" id="ac-calc" aria-labelledby="ac-calc-title">
+      <div class="ac-calc__inner ailab-animate">
+        <span class="ailab-kicker">Стоимость</span>
+        <h2 class="ailab-section-title" id="ac-calc-title" style="color:#fff;">Рассчитайте программу</h2>
+        <p class="ailab-section-sub" style="color:rgba(255,255,255,.45);">Выберите параметры — покажем ориентировочную стоимость и пришлём детальное предложение в течение дня.</p>
+
+        <!-- Step indicators -->
+        <div class="ac-calc__steps" aria-hidden="true">
+          <div class="ac-calc__step-dot is-active" data-step="1">1</div>
+          <div class="ac-calc__step-line"></div>
+          <div class="ac-calc__step-dot" data-step="2">2</div>
+          <div class="ac-calc__step-line"></div>
+          <div class="ac-calc__step-dot" data-step="3">3</div>
+        </div>
+
+        <!-- Step 1: Direction -->
+        <div class="ac-calc__panel is-active" data-panel="1">
+          <p class="ac-calc__panel-title">Шаг 1 — Направление обучения</p>
+          <div class="ac-calc__grid">
+            <button class="ac-calc__option" data-key="direction" data-value="business" data-price="75000">
+              <span class="ac-calc__opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="6" height="6" rx="1.5"/><line x1="12" y1="3" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="21"/><line x1="3" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="21" y2="12"/><circle cx="12" cy="3" r="1.25" fill="currentColor" stroke="none"/><circle cx="12" cy="21" r="1.25" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1.25" fill="currentColor" stroke="none"/><circle cx="21" cy="12" r="1.25" fill="currentColor" stroke="none"/></svg></span>
+              <div class="ac-calc__opt-title">AI для бизнеса</div>
+              <div class="ac-calc__opt-sub">Инструменты, промпты, автоматизация без кода</div>
+            </button>
+            <button class="ac-calc__option" data-key="direction" data-value="automation" data-price="95000">
+              <span class="ac-calc__opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="12" r="2.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.5"/><circle cx="19" cy="9" r="2"/><circle cx="19" cy="15" r="2"/><line x1="8" y1="12" x2="9.5" y2="12"/><line x1="14.5" y1="10.5" x2="17.3" y2="9.5"/><line x1="14.5" y1="13.5" x2="17.3" y2="14.5"/></svg></span>
+              <div class="ac-calc__opt-title">Автоматизация</div>
+              <div class="ac-calc__opt-sub">n8n, Make, API-интеграции</div>
+            </button>
+
+            <button class="ac-calc__option" data-key="direction" data-value="data" data-price="88000">
+              <span class="ac-calc__opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="2" y1="20" x2="22" y2="20"/><rect x="4" y="14" width="4" height="6" rx="1"/><rect x="10" y="7" width="4" height="13" rx="1"/><rect x="16" y="10" width="4" height="10" rx="1"/><path d="M6 14 L12 7 L18 10" stroke-opacity="0.45" stroke-dasharray="2 1.5" stroke-linecap="round"/></svg></span>
+              <div class="ac-calc__opt-title">Data Analytics</div>
+              <div class="ac-calc__opt-sub">SQL, Power BI, анализ данных</div>
+            </button>
+            <button class="ac-calc__option" data-key="direction" data-value="assistant" data-price="105000">
+              <span class="ac-calc__opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="2.5"/><path d="M11 8.5 Q14 10 14 12 Q14 14 11 15.5"/><path d="M13.5 6 Q17.5 8.5 17.5 12 Q17.5 15.5 13.5 18"/><path d="M16 4 Q21 7.5 21 12 Q21 16.5 16 20"/></svg></span>
+              <div class="ac-calc__opt-title">AI-Ассистенты</div>
+              <div class="ac-calc__opt-sub">Чат-боты, голосовые агенты, RAG</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Format -->
+        <div class="ac-calc__panel" data-panel="2">
+          <p class="ac-calc__panel-title">Шаг 2 — Формат обучения</p>
+          <div class="ac-calc__grid ac-calc__grid--3">
+            <button class="ac-calc__option" data-key="format" data-value="intensive" data-mult="1">
+              <span class="ac-calc__opt-icon">⚡</span>
+              <div class="ac-calc__opt-title">Онлайн-интенсив</div>
+              <div class="ac-calc__opt-sub">3–5 дней · Максимум практики за короткое время</div>
+            </button>
+            <button class="ac-calc__option" data-key="format" data-value="course" data-mult="1.8">
+              <span class="ac-calc__opt-icon">📚</span>
+              <div class="ac-calc__opt-title">Онлайн-курс</div>
+              <div class="ac-calc__opt-sub">2–4 недели · Глубокое изучение с проектной работой</div>
+            </button>
+            <button class="ac-calc__option" data-key="format" data-value="corporate" data-mult="1.5">
+              <span class="ac-calc__opt-icon">🏢</span>
+              <div class="ac-calc__opt-title">Корпоративный</div>
+              <div class="ac-calc__opt-sub">Кастомная программа · На задачах вашего бизнеса</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Group size -->
+        <div class="ac-calc__panel" data-panel="3">
+          <p class="ac-calc__panel-title">Шаг 3 — Размер команды</p>
+          <div class="ac-calc__grid ac-calc__grid--4">
+            <button class="ac-calc__option" data-key="group" data-value="solo" data-people="2" data-discount="0">
+              <span class="ac-calc__opt-icon">👤</span>
+              <div class="ac-calc__opt-title">1–3 человека</div>
+              <div class="ac-calc__opt-sub">Индивидуально или мини-группа</div>
+            </button>
+            <button class="ac-calc__option" data-key="group" data-value="small" data-people="6" data-discount="0.15">
+              <span class="ac-calc__opt-icon">👥</span>
+              <div class="ac-calc__opt-title">4–8 человек</div>
+              <div class="ac-calc__opt-sub">Малая группа · скидка 15%</div>
+            </button>
+            <button class="ac-calc__option" data-key="group" data-value="medium" data-people="12" data-discount="0.25">
+              <span class="ac-calc__opt-icon">🏛️</span>
+              <div class="ac-calc__opt-title">9–15 человек</div>
+              <div class="ac-calc__opt-sub">Средняя группа · скидка 25%</div>
+            </button>
+            <button class="ac-calc__option" data-key="group" data-value="large" data-people="0" data-discount="0">
+              <span class="ac-calc__opt-icon">🌐</span>
+              <div class="ac-calc__opt-title">15+ человек</div>
+              <div class="ac-calc__opt-sub">Крупный корпоратив · Индивидуальный расчёт</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="ac-calc__result" id="ac-calc-result">
+          <div class="ac-calc__result-label">Ориентировочная стоимость</div>
+          <div class="ac-calc__result-price" id="ac-calc-price">—</div>
+          <div class="ac-calc__result-note">Точный расчёт — после 20-минутного созвона. Готовы в течение дня.</div>
+          <div class="ac-calc__result-actions">
+            <a href="#ailab-cta" class="ailab-btn ailab-btn--primary">Получить предложение</a>
+            <a href="https://t.me/tdm343" target="_blank" rel="noopener noreferrer" class="ailab-btn ailab-btn--ghost">Написать в Telegram</a>
+          </div>
+          <button class="ac-calc__reset" id="ac-calc-reset">Рассчитать заново</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         13 FAQ — TINTED
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section ailab-section--tinted" id="ailab-faq" aria-labelledby="ailab-faq-title">
+      <div class="ailab-container">
+        <div class="ailab-section-header ailab-animate">
+          <span class="ailab-kicker">Частые вопросы</span>
+          <h2 class="ailab-title ailab-title--xl" id="ailab-faq-title">FAQ</h2>
+        </div>
+
+        <div class="ailab-faq__list" role="list">
+
+          <div class="ailab-faq__item ailab-animate" role="listitem">
+            <button class="ailab-faq__trigger" aria-expanded="false">
+              <span class="ailab-faq__q">С чего начинается работа?</span>
+              <svg class="ailab-faq__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/>
+              </svg>
+            </button>
+            <div class="ailab-faq__answer">
+              <p class="ailab-faq__a">Всё начинается с разговора о вашей бизнес-задаче — без технического брифа и длинных форм. Мы проводим первый звонок, формируем понимание задачи и предлагаем конкретный следующий шаг.</p>
+            </div>
+          </div>
+
+          <div class="ailab-faq__item ailab-animate" style="transition-delay:60ms" role="listitem">
+            <button class="ailab-faq__trigger" aria-expanded="false">
+              <span class="ailab-faq__q">Обязательно ли сразу запускать большой IT-проект?</span>
+              <svg class="ailab-faq__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/>
+              </svg>
+            </button>
+            <div class="ailab-faq__answer">
+              <p class="ailab-faq__a">Нет. Большинство наших проектов начинается с небольшой конкретной задачи. Это снижает риски и позволяет убедиться в ценности решения до масштабных инвестиций.</p>
+            </div>
+          </div>
+
+          <div class="ailab-faq__item ailab-animate" style="transition-delay:120ms" role="listitem">
+            <button class="ailab-faq__trigger" aria-expanded="false">
+              <span class="ailab-faq__q">Можно ли начать с Pilot / MVP?</span>
+              <svg class="ailab-faq__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/>
+              </svg>
+            </button>
+            <div class="ailab-faq__answer">
+              <p class="ailab-faq__a">Да, и мы рекомендуем именно этот подход. Pilot / MVP позволяет за 2–3 недели получить рабочее решение, проверить гипотезу на реальных данных и принять обоснованное решение о дальнейшем развитии.</p>
+            </div>
+          </div>
+
+          <div class="ailab-faq__item ailab-animate" style="transition-delay:180ms" role="listitem">
+            <button class="ailab-faq__trigger" aria-expanded="false">
+              <span class="ailab-faq__q">Интегрируетесь ли вы с существующими системами?</span>
+              <svg class="ailab-faq__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/>
+              </svg>
+            </button>
+            <div class="ailab-faq__answer">
+              <p class="ailab-faq__a">Да. Наши решения встраиваются в то, что у вас уже есть: CRM, ERP, 1С, внутренние системы, API партнёров. Интеграция — часть проекта, а не опция.</p>
+            </div>
+          </div>
+
+          <div class="ailab-faq__item ailab-animate" style="transition-delay:240ms" role="listitem">
+            <button class="ailab-faq__trigger" aria-expanded="false">
+              <span class="ailab-faq__q">Что происходит после запуска?</span>
+              <svg class="ailab-faq__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/>
+              </svg>
+            </button>
+            <div class="ailab-faq__answer">
+              <p class="ailab-faq__a">Мы остаёмся с вами. Поддерживаем продукт, мониторим работу, развиваем функциональность. Большинство наших клиентов работают с нами на долгосрочной основе — это осознанная модель, а не случайность.</p>
+            </div>
+          </div>
+
+          <div class="ailab-faq__item ailab-animate" style="transition-delay:300ms" role="listitem">
+            <button class="ailab-faq__trigger" aria-expanded="false">
+              <span class="ailab-faq__q">Может ли AI Laboratory работать как внешняя технологическая команда?</span>
+              <svg class="ailab-faq__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/>
+              </svg>
+            </button>
+            <div class="ailab-faq__answer">
+              <p class="ailab-faq__a">Да. Модель External Technology Team — одно из наших ключевых предложений. Мы работаем как ваш IT-отдел: с погружением в контекст, регулярным взаимодействием и полной ответственностью за технологическую часть.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         13 FINAL CTA — DARK
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-section ailab-section--dark ailab-cta" id="ailab-cta" aria-labelledby="ailab-cta-title">
+      <div class="ailab-container">
+        <div class="ailab-cta__inner">
+
+          <span class="ailab-kicker ailab-kicker--dark ailab-animate">Начать работу</span>
+          <h2 class="ailab-cta__headline ailab-animate" id="ailab-cta-title" style="transition-delay:80ms">
+            Не обязательно начинать с большого IT‑проекта.
+            Начнём с одной бизнес‑задачи.
+          </h2>
+          <p class="ailab-cta__subline ailab-animate" style="transition-delay:160ms">
+            Start small. Prove value. Scale what works.
+          </p>
+
+          <div class="ailab-cta__flow ailab-animate" style="transition-delay:240ms">
+            <div class="ailab-cta__step">
+              <span class="ailab-cta__step-num">01</span>
+              <span class="ailab-cta__step-text">Расскажите о бизнес-задаче</span>
+            </div>
+            <div class="ailab-cta__step">
+              <span class="ailab-cta__step-num">02</span>
+              <span class="ailab-cta__step-text">Проведём assessment и предложим варианты решения</span>
+            </div>
+            <div class="ailab-cta__step">
+              <span class="ailab-cta__step-num">03</span>
+              <span class="ailab-cta__step-text">Запустим Pilot / MVP и масштабируем то, что подтвердит эффект</span>
+            </div>
+          </div>
+
+          <div class="ailab-form ailab-animate" id="ailab-contact-form" style="transition-delay:320ms">
+            <div class="ailab-form__fields">
+              <div class="ailab-form__group">
+                <label class="ailab-form__label" for="ailab-field-name">
+                  Имя <span class="ailab-form__label-hint">— необязательно</span>
+                </label>
+                <input
+                  class="ailab-form__input"
+                  type="text"
+                  id="ailab-field-name"
+                  name="name"
+                  placeholder="Как к вам обращаться"
+                  autocomplete="given-name" />
+              </div>
+              <div class="ailab-form__group">
+                <label class="ailab-form__label" for="ailab-field-contact">
+                  Контакт <span class="ailab-form__label-hint">— телефон или Telegram</span>
+                </label>
+                <input
+                  class="ailab-form__input"
+                  type="text"
+                  id="ailab-field-contact"
+                  name="contact"
+                  placeholder="+7 000 000 00 00 или @username"
+                  required
+                  autocomplete="tel" />
+              </div>
+              <div class="ailab-form__group">
+                <label class="ailab-form__label" for="ailab-field-task">
+                  Кратко о задаче
+                </label>
+                <textarea
+                  class="ailab-form__textarea"
+                  id="ailab-field-task"
+                  name="task"
+                  rows="3"
+                  placeholder="Опишите, что хотите автоматизировать, создать или улучшить"
+                  required></textarea>
+              </div>
+              <div class="ailab-form__submit">
+                <button type="button" class="ailab-btn ailab-btn--primary ailab-btn--full" id="ailab-submit-btn">
+                  Отправить
+                </button>
+              </div>
+              <p class="ailab-form__legal">
+                Отправляя форму, вы соглашаетесь с Политикой конфиденциальности.
+              </p>
+            </div>
+            <div class="ailab-form__success" aria-live="polite">
+              <strong>Спасибо.</strong>
+              Свяжемся с вами по указанному контакту.
+            </div>
+          </div>
+
+          <div class="ailab-cta__contacts ailab-animate" style="transition-delay:400ms">
+            <a href="tel:+77751513414" class="ailab-cta__contact">
+              <img src="../design-system/ai-laboratory-design/assets/icons/phone.png" alt="" onerror="this.style.display='none'" />
+              +7 775 151 34 14
+            </a>
+            <a href="https://t.me/tdm343" class="ailab-cta__contact" target="_blank" rel="noopener noreferrer">
+              <img src="../design-system/ai-laboratory-design/assets/icons/telegram.png" alt="" onerror="this.style.display='none'" />
+              @tdm343
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       14 FOOTER — DARK
+  ══════════════════════════════════════════════════════ -->
+  <footer class="ailab-footer" role="contentinfo">
+    <div class="ailab-footer__inner">
+      <a href="#ailab-hero" class="ailab-footer__logo" aria-label="AI Laboratory — главная">
+        <img
+          src="../design-system/ai-laboratory-design/assets/logos/ai-lab-logo.svg"
+          alt="AI Laboratory"
+          onerror="this.outerHTML='<span class=\'ailab-footer__logo-text\'>AI Laboratory</span>'" />
+      </a>
+      <nav class="ailab-footer__nav" aria-label="Навигация в подвале">
+        <a href="#ailab-build">Что мы делаем</a>
+        <a href="#ailab-cases">Кейсы</a>
+        <a href="#ailab-faq">FAQ</a>
+        <a href="#ailab-cta">Контакты</a>
+      </nav>
+      <div class="ailab-footer__right">
+        <a href="tel:+77751513414" class="ailab-footer__social" aria-label="Телефон">
+          <img src="../design-system/ai-laboratory-design/assets/icons/phone.png" alt="" onerror="this.style.display='none'" />
+        </a>
+        <a href="https://t.me/tdm343" class="ailab-footer__social" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <img src="../design-system/ai-laboratory-design/assets/icons/telegram.png" alt="" onerror="this.style.display='none'" />
+        </a>
+        <span class="ailab-footer__copy">© AI Laboratory <span id="ailab-year"></span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+  /* ── IT Background Canvas ── */
+  (function () {
+    var canvas = document.getElementById('ailab-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+
+    var W, H, nodes, floats, pulses, ripples, rafId, lastPulse = 0;
+    var mouse = { x: -9999, y: -9999 };
+
+    var VIOLET = [106, 103, 248];
+    var BLUE   = [30,  138, 255];
+    var LIGHT  = [143, 141, 250];
+    var PALETTE = [VIOLET, BLUE, LIGHT];
+
+    var SYMS = ['{ }', '</>', '//', '01', 'AI', '∑', 'λ', 'api', 'def', '0x', 'GPU', '∇', 'ML', '≈'];
+
+    /* ── Node ── */
+    function Node(isInit) {
+      this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+      this.isKey = Math.random() < 0.14;
+      this.r     = this.isKey ? (Math.random() * 2.5 + 2) : (Math.random() * 1.4 + 0.7);
+      this.phase = Math.random() * Math.PI * 2;
+      this.pSpeed = Math.random() * 0.022 + 0.007;
+      this.x  = Math.random() * W;
+      this.y  = isInit ? Math.random() * H : -20;
+      var spd = Math.random() * 0.28 + 0.08;
+      var ang = Math.random() * Math.PI * 2;
+      this.vx = Math.cos(ang) * spd;
+      this.vy = Math.sin(ang) * spd;
+      this.bvx = this.vx;
+      this.bvy = this.vy;
+    }
+    Node.prototype.update = function () {
+      var mdx = this.x - mouse.x, mdy = this.y - mouse.y;
+      var md2 = mdx * mdx + mdy * mdy;
+      if (md2 < 9025 && md2 > 0.25) {
+        var md = Math.sqrt(md2);
+        var f  = (95 - md) / 95 * 0.058;
+        this.vx += (mdx / md) * f;
+        this.vy += (mdy / md) * f;
+      }
+      this.vx += (this.bvx - this.vx) * 0.012;
+      this.vy += (this.bvy - this.vy) * 0.012;
+      var sp2 = this.vx * this.vx + this.vy * this.vy;
+      if (sp2 > 2.25) { var s = Math.sqrt(sp2); this.vx = this.vx/s*1.5; this.vy = this.vy/s*1.5; }
+      this.x += this.vx; this.y += this.vy;
+      this.phase += this.pSpeed;
+      if (this.x < -12) this.x = W + 12;
+      if (this.x > W + 12) this.x = -12;
+      if (this.y < -12) this.y = H + 12;
+      if (this.y > H + 12) this.y = -12;
+    };
+    Node.prototype.draw = function () {
+      var p  = (Math.sin(this.phase) + 1) * 0.5;
+      var al = this.isKey ? (0.55 + p * 0.38) : (0.28 + p * 0.28);
+      var r  = this.r + (this.isKey ? p * 2.2 : p * 0.7);
+      var cr = this.color[0], cg = this.color[1], cb = this.color[2];
+      var gr = this.isKey ? r * 9 : r * 5;
+      var grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, gr);
+      grd.addColorStop(0, 'rgba(' + cr + ',' + cg + ',' + cb + ',' + (al * 0.22) + ')');
+      grd.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.beginPath(); ctx.arc(this.x, this.y, gr, 0, Math.PI * 2);
+      ctx.fillStyle = grd; ctx.fill();
+      ctx.beginPath(); ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + al + ')';
+      ctx.fill();
+    };
+
+    /* ── Ripple ── */
+    function Ripple(x, y) {
+      this.x = x; this.y = y;
+      this.r = 3; this.alpha = 0.60; this.active = true;
+    }
+    Ripple.prototype.update = function () {
+      this.r += 3.4; this.alpha -= 0.017;
+      if (this.alpha <= 0) this.active = false;
+    };
+    Ripple.prototype.draw = function () {
+      if (!this.active) return;
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(106,103,248,' + this.alpha + ')';
+      ctx.lineWidth = 1.5; ctx.stroke();
+      if (this.r > 20) {
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.r * 0.55, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(30,138,255,' + (this.alpha * 0.45) + ')';
+        ctx.lineWidth = 0.7; ctx.stroke();
+      }
+    };
+
+    /* ── Floating symbol ── */
+    function FloatSym(isInit) {
+      this.reset(isInit);
+    }
+    FloatSym.prototype.reset = function (isInit) {
+      this.text  = SYMS[Math.floor(Math.random() * SYMS.length)];
+      this.x     = Math.random() * W;
+      this.y     = isInit ? Math.random() * H : H + 30;
+      this.vx    = (Math.random() - 0.5) * 0.1;
+      this.vy    = -(Math.random() * 0.07 + 0.03);
+      this.alpha = Math.random() * 0.055 + 0.015;
+      this.size  = Math.floor(Math.random() * 7 + 10);
+      this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    };
+    FloatSym.prototype.update = function () {
+      this.x += this.vx; this.y += this.vy;
+      if (this.y < -30) this.reset(false);
+      if (this.x < -50) this.x = W + 50;
+      if (this.x > W + 50) this.x = -50;
+    };
+    FloatSym.prototype.draw = function () {
+      var c = this.color;
+      ctx.font = this.size + "px 'JetBrains Mono',monospace";
+      ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + this.alpha + ')';
+      ctx.fillText(this.text, this.x, this.y);
+    };
+
+    /* ── Data pulse (horizontal streak) ── */
+    function Pulse() {
+      this.active = false;
+    }
+    Pulse.prototype.trigger = function () {
+      this.y      = Math.random() * H;
+      this.x      = 0;
+      this.speed  = Math.random() * 4 + 2.5;
+      this.len    = Math.random() * 220 + 80;
+      this.alpha  = Math.random() * 0.13 + 0.05;
+      this.color  = Math.random() > 0.5 ? VIOLET : BLUE;
+      this.active = true;
+    };
+    Pulse.prototype.update = function () {
+      if (!this.active) return;
+      this.x += this.speed;
+      if (this.x > W + this.len) this.active = false;
+    };
+    Pulse.prototype.draw = function () {
+      if (!this.active) return;
+      var c = this.color;
+      var grd = ctx.createLinearGradient(this.x - this.len, 0, this.x, 0);
+      grd.addColorStop(0, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',0)');
+      grd.addColorStop(0.4, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + this.alpha + ')');
+      grd.addColorStop(1, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',0)');
+      ctx.beginPath();
+      ctx.moveTo(this.x - this.len, this.y);
+      ctx.lineTo(this.x, this.y);
+      ctx.strokeStyle = grd;
+      ctx.lineWidth = Math.random() * 0.4 + 0.2;
+      ctx.stroke();
+    };
+
+    /* ── Init ── */
+    function init() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      nodes   = Array.from({ length: 72 }, function() { return new Node(true); });
+      floats  = Array.from({ length: 22 }, function() { return new FloatSym(true); });
+      pulses  = Array.from({ length: 10 }, function() { return new Pulse(); });
+      ripples = [];
+    }
+
+    /* ── Draw node connections ── */
+    function drawEdges() {
+      var maxD = Math.min(W, H) * 0.20;
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[i].x - nodes[j].x;
+          var dy = nodes[i].y - nodes[j].y;
+          var d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < maxD) {
+            var t  = 1 - d / maxD;
+            var c1 = nodes[i].color, c2 = nodes[j].color;
+            var mr = Math.round((c1[0] + c2[0]) / 2);
+            var mg = Math.round((c1[1] + c2[1]) / 2);
+            var mb = Math.round((c1[2] + c2[2]) / 2);
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = 'rgba(' + mr + ',' + mg + ',' + mb + ',' + (t * 0.20) + ')';
+            ctx.lineWidth   = t * 0.85;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    /* ── Draw cursor-to-node connections ── */
+    function drawMouseEdges() {
+      if (mouse.x < -999) return;
+      var maxD = 140;
+      for (var i = 0; i < nodes.length; i++) {
+        var dx = nodes[i].x - mouse.x, dy = nodes[i].y - mouse.y;
+        var d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < maxD) {
+          var t  = 1 - d / maxD;
+          var c  = nodes[i].color;
+          ctx.beginPath();
+          ctx.moveTo(mouse.x, mouse.y);
+          ctx.lineTo(nodes[i].x, nodes[i].y);
+          ctx.strokeStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (t * 0.35) + ')';
+          ctx.lineWidth   = t * 1.0;
+          ctx.stroke();
+        }
+      }
+    }
+
+    /* ── Loop ── */
+    function tick(ts) {
+      ctx.clearRect(0, 0, W, H);
+
+      /* Cursor glow */
+      if (mouse.x > -999) {
+        var cg = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 140);
+        cg.addColorStop(0,   'rgba(106,103,248,0.08)');
+        cg.addColorStop(0.45,'rgba(30,138,255,0.04)');
+        cg.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 140, 0, Math.PI * 2);
+        ctx.fillStyle = cg; ctx.fill();
+      }
+
+      if (ts - lastPulse > 1300) {
+        var idle = pulses.find(function(p) { return !p.active; });
+        if (idle) { idle.trigger(); lastPulse = ts; }
+      }
+
+      pulses.forEach(function(p)  { p.update(); p.draw(); });
+      drawEdges();
+      drawMouseEdges();
+      nodes.forEach(function(n)   { n.update(); n.draw(); });
+      floats.forEach(function(s)  { s.update(); s.draw(); });
+      ripples = ripples.filter(function(r) { r.update(); r.draw(); return r.active; });
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    init();
+    requestAnimationFrame(tick);
+
+    /* ── Mouse interaction ── */
+    window.addEventListener('mousemove', function(e) {
+      mouse.x = e.clientX; mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseleave', function() {
+      mouse.x = -9999; mouse.y = -9999;
+    });
+    window.addEventListener('click', function(e) {
+      ripples.push(new Ripple(e.clientX, e.clientY));
+    });
+
+    window.addEventListener('resize', function () {
+      cancelAnimationFrame(rafId);
+      init();
+      requestAnimationFrame(tick);
+    });
+  })();
+
+  // ── Calculator ────────────────────────────────────────────
+  (function() {
+    var state = {};
+
+    document.querySelectorAll('.ac-calc__option').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var key = this.dataset.key;
+        state[key] = this;
+
+        this.closest('.ac-calc__grid').querySelectorAll('.ac-calc__option').forEach(function(b) {
+          b.classList.remove('is-selected');
+        });
+        this.classList.add('is-selected');
+
+        var panel = this.closest('.ac-calc__panel');
+        var panelNum = parseInt(panel.dataset.panel);
+
+        setTimeout(function() {
+          if (panelNum < 3) {
+            panel.classList.remove('is-active');
+            document.querySelector('[data-panel="' + (panelNum + 1) + '"]').classList.add('is-active');
+            updateDots(panelNum + 1);
+          } else {
+            showResult();
+          }
+        }, 180);
+      });
+    });
+
+    function updateDots(activeStep) {
+      document.querySelectorAll('.ac-calc__step-dot').forEach(function(dot, i) {
+        var step = i + 1;
+        dot.classList.remove('is-active', 'is-done');
+        if (step < activeStep) dot.classList.add('is-done');
+        else if (step === activeStep) dot.classList.add('is-active');
+      });
+      document.querySelectorAll('.ac-calc__step-line').forEach(function(line, i) {
+        line.classList.toggle('is-done', i + 1 < activeStep);
+      });
+    }
+
+    function showResult() {
+      var dirBtn = state['direction'];
+      var fmtBtn = state['format'];
+      var grpBtn = state['group'];
+      if (!dirBtn || !fmtBtn || !grpBtn) return;
+
+      var basePrice = parseInt(dirBtn.dataset.price);
+      var mult = parseFloat(fmtBtn.dataset.mult);
+      var people = parseInt(grpBtn.dataset.people);
+      var discount = parseFloat(grpBtn.dataset.discount);
+
+      var result = document.getElementById('ac-calc-result');
+      var priceEl = document.getElementById('ac-calc-price');
+
+      if (people === 0) {
+        priceEl.textContent = 'Рассчитаем индивидуально';
+      } else {
+        var total = basePrice * mult * people * (1 - discount);
+        var min = Math.round(total * 0.85 / 10000) * 10000;
+        var max = Math.round(total * 1.15 / 10000) * 10000;
+        priceEl.textContent = min.toLocaleString('ru-RU') + ' – ' + max.toLocaleString('ru-RU') + ' ₸';
+      }
+
+      result.classList.add('is-visible');
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      updateDots(4);
+    }
+
+    document.getElementById('ac-calc-reset').addEventListener('click', function() {
+      state = {};
+      document.querySelectorAll('.ac-calc__option').forEach(function(b) { b.classList.remove('is-selected'); });
+      document.querySelectorAll('.ac-calc__panel').forEach(function(p) { p.classList.remove('is-active'); });
+      document.querySelector('[data-panel="1"]').classList.add('is-active');
+      document.getElementById('ac-calc-result').classList.remove('is-visible');
+      updateDots(1);
+    });
+  })();
+  </script>
+</body>
+</html>

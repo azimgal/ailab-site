@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs>
+    <!-- 72px grid pattern -->
+    <pattern id="grid72" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72,0L0,0 0,72" fill="none" stroke="rgba(106,103,248,.07)" stroke-width=".8"/>
+    </pattern>
+
+    <!-- Radial mask: grid visible only in center -->
+    <radialGradient id="gridFade" cx="50%" cy="42%" r="58%">
+      <stop offset="0%"   stop-color="white" stop-opacity="1"/>
+      <stop offset="65%"  stop-color="white" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="gridMask">
+      <rect width="1440" height="900" fill="url(#gridFade)"/>
+    </mask>
+
+    <!-- Node glow filter -->
+    <filter id="gv" x="-300%" y="-300%" width="700%" height="700%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/>
+    </filter>
+    <filter id="gb" x="-300%" y="-300%" width="700%" height="700%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/>
+    </filter>
+
+    <!-- Large ambient blob filters -->
+    <filter id="blob" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="55"/>
+    </filter>
+  </defs>
+
+  <!-- Grid with edge fade -->
+  <rect width="1440" height="900" fill="url(#grid72)" mask="url(#gridMask)"/>
+
+  <!-- ── Circuit paths (only horizontal + vertical segments) ─────── -->
+  <g stroke-linecap="square" fill="none">
+    <!-- Path cluster 1: top-left area -->
+    <path d="M216,144 H360 V216 H504" stroke="rgba(106,103,248,.20)" stroke-width="1.2"/>
+    <!-- Path cluster 2: top-center -->
+    <path d="M720,72 H864 V216 H1008" stroke="rgba(106,103,248,.16)" stroke-width="1.2"/>
+    <!-- Path cluster 3: top-right -->
+    <path d="M1152,144 V360 H1296" stroke="rgba(30,138,255,.16)" stroke-width="1.2"/>
+    <!-- Path cluster 4: mid-left -->
+    <path d="M144,432 H360 V504 H576" stroke="rgba(106,103,248,.13)" stroke-width="1.2"/>
+    <!-- Path cluster 5: mid-right -->
+    <path d="M864,504 H1008 V576 H1152" stroke="rgba(30,138,255,.13)" stroke-width="1.2"/>
+    <!-- Path cluster 6: bottom-left -->
+    <path d="M216,648 H432 V792" stroke="rgba(106,103,248,.10)" stroke-width="1.2"/>
+    <!-- Path cluster 7: bottom-right -->
+    <path d="M1080,648 V792 H1296" stroke="rgba(30,138,255,.10)" stroke-width="1.2"/>
+  </g>
+
+  <!-- ── Inactive nodes at path endpoints/intersections ──────────── -->
+  <g fill="rgba(106,103,248,.30)">
+    <circle cx="360" cy="144" r="2.2"/>
+    <circle cx="360" cy="216" r="2.2"/>
+    <circle cx="504" cy="216" r="2.2"/>
+    <circle cx="720" cy="72"  r="2.2"/>
+    <circle cx="864" cy="72"  r="2.2"/>
+    <circle cx="864" cy="216" r="2.2"/>
+    <circle cx="1008" cy="216" r="2.2"/>
+    <circle cx="360" cy="432" r="2.2"/>
+    <circle cx="360" cy="504" r="2.2"/>
+    <circle cx="576" cy="504" r="2.2"/>
+    <circle cx="432" cy="648" r="2.2"/>
+    <circle cx="432" cy="792" r="2.2"/>
+  </g>
+  <g fill="rgba(30,138,255,.28)">
+    <circle cx="1152" cy="144" r="2.2"/>
+    <circle cx="1152" cy="360" r="2.2"/>
+    <circle cx="1296" cy="360" r="2.2"/>
+    <circle cx="1008" cy="504" r="2.2"/>
+    <circle cx="1008" cy="576" r="2.2"/>
+    <circle cx="1152" cy="576" r="2.2"/>
+    <circle cx="1080" cy="648" r="2.2"/>
+    <circle cx="1296" cy="792" r="2.2"/>
+  </g>
+
+  <!-- ── Active glowing nodes — violet ───────────────────────────── -->
+  <circle cx="216" cy="144" r="8" fill="rgba(106,103,248,.55)" filter="url(#gv)"/>
+  <circle cx="216" cy="144" r="2.2" fill="#8F8DFA"/>
+
+  <circle cx="1008" cy="72"  r="7" fill="rgba(106,103,248,.45)" filter="url(#gv)"/>
+  <circle cx="1008" cy="72"  r="2"   fill="#8F8DFA"/>
+
+  <circle cx="576" cy="432" r="7" fill="rgba(106,103,248,.40)" filter="url(#gv)"/>
+  <circle cx="576" cy="432" r="2"   fill="#8F8DFA"/>
+
+  <circle cx="216" cy="648" r="6" fill="rgba(106,103,248,.35)" filter="url(#gv)"/>
+  <circle cx="216" cy="648" r="2"   fill="#8F8DFA"/>
+
+  <!-- ── Active glowing nodes — blue ─────────────────────────────── -->
+  <circle cx="1296" cy="144" r="8" fill="rgba(30,138,255,.50)" filter="url(#gb)"/>
+  <circle cx="1296" cy="144" r="2.2" fill="#5BAAFF"/>
+
+  <circle cx="1152" cy="504" r="7" fill="rgba(30,138,255,.42)" filter="url(#gb)"/>
+  <circle cx="1152" cy="504" r="2"   fill="#5BAAFF"/>
+
+  <circle cx="1296" cy="648" r="6" fill="rgba(30,138,255,.36)" filter="url(#gb)"/>
+  <circle cx="1296" cy="648" r="2"   fill="#5BAAFF"/>
+
+  <!-- ── Large ambient color blobs ───────────────────────────────── -->
+  <circle cx="180" cy="200" r="220" fill="rgba(106,103,248,.06)" filter="url(#blob)"/>
+  <circle cx="1320" cy="720" r="180" fill="rgba(30,138,255,.05)" filter="url(#blob)"/>
+</svg>
