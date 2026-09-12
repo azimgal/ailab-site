@@ -238,6 +238,7 @@ button { font-family: var(--ailab-font); }
   height: 70px;
   width: auto;
   display: block;
+  filter: invert(1);
 }
 
 .ailab-header__logo-text {
@@ -1263,7 +1264,7 @@ button { font-family: var(--ailab-font); }
   gap: 24px;
   flex-wrap: wrap;
 }
-.ailab-footer__logo img { height: 50px; width: auto; }
+.ailab-footer__logo img { height: 70px; width: auto; filter: invert(1); }
 .ailab-footer__logo-text { font-size: 15px; font-weight: 800; color: var(--ailab-text-white); }
 .ailab-footer__nav { display: flex; gap: 24px; flex-wrap: wrap; }
 .ailab-footer__nav a {
@@ -1291,7 +1292,7 @@ button { font-family: var(--ailab-font); }
   .ailab-cases__secondary { grid-template-columns: 1fr 1fr; }
   .ailab-team__grid { grid-template-columns: 1fr 1fr; }
   .ailab-ecosystem__logo-name { font-size: 18px; }
-  .ailab-header__logo img { height: 56px; }
+  .ailab-header__logo img { height: 32px; }
 }
 
 /* ============================================================
@@ -1501,8 +1502,8 @@ button { font-family: var(--ailab-font); }
 
 
 /* N. Why AI Lab rows — hover accent */
-.ailab-why__row { border-radius: 0 8px 8px 0; }
-.ailab-why__row:hover { background: rgba(106,103,248,.05); }
+.ailab-why__row { border-radius: 8px; }
+.ailab-why__row:hover { background: rgba(106,103,248,.05); box-shadow: inset 2px 0 0 rgba(106,103,248,.50); }
 
 /* O. Mobile menu — gradient background + ambient glow */
 .ailab-mobile-menu {
@@ -1650,11 +1651,15 @@ button { font-family: var(--ailab-font); }
   padding: 16px 20px;
   transition: background var(--ailab-dur-base) var(--ailab-ease),
               border-color var(--ailab-dur-base) var(--ailab-ease);
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 .ailab-academy-promo__card:hover {
   background: rgba(106,103,248,.10);
-  border-color: rgba(106,103,248,.25);
+  border-color: rgba(106,103,248,.35);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(106,103,248,.12);
 }
 .ailab-academy-promo__card--accent {
   background: rgba(106,103,248,.12);

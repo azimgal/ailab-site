@@ -111,23 +111,26 @@
   var taskInput    = document.getElementById('ailab-field-task');
 
   if (submitBtn && contactForm) {
+    function isValidContact(val) {
+      var v = val.trim();
+      // Telegram: @username
+      if (/^@[\w]{3,}$/.test(v)) return true;
+      // Phone: digits, spaces, dashes, parens, +, min 7 digits total
+      var digits = v.replace(/\D/g, '');
+      if (digits.length >= 7 && /^[+\d][\d\s\-().]{5,}$/.test(v)) return true;
+      return false;
+    }
+
     submitBtn.addEventListener('click', function () {
       var contact = contactInput.value.trim();
-      var task    = taskInput.value.trim();
       var valid   = true;
 
-      // Clear previous error state
       contactInput.classList.remove('is-error');
       taskInput.classList.remove('is-error');
 
-      if (!contact) {
+      if (!contact || !isValidContact(contact)) {
         contactInput.classList.add('is-error');
         contactInput.focus();
-        valid = false;
-      }
-      if (!task) {
-        taskInput.classList.add('is-error');
-        if (valid) taskInput.focus();
         valid = false;
       }
       if (!valid) return;
@@ -135,7 +138,6 @@
       contactForm.classList.add('is-submitted');
     });
 
-    // Remove error state on input
     contactInput.addEventListener('input', function () { contactInput.classList.remove('is-error'); });
     taskInput.addEventListener('input', function () { taskInput.classList.remove('is-error'); });
   }

@@ -12,12 +12,11 @@
   <link rel="icon" href="data:,">
   <style>
     /* ─── Logo on dark header ── */
-    .ailab-header:not(.is-scrolled) .ailab-header__logo img {
-      filter: brightness(0) invert(1);
+    .ailab-header__logo img {
+      filter: invert(1);
     }
-    .ailab-footer__logo img {
-      filter: brightness(0) invert(1);
-      height: 36px;
+    body.ac-page .ailab-header.is-scrolled .ailab-header__logo img {
+      filter: none;
     }
 
     /* ─── ACADEMY DESIGN TOKENS ────────────────────────────── */
@@ -1400,7 +1399,7 @@
   <header class="ailab-header" id="ailab-header" role="banner">
     <a href="../index.html" class="ailab-header__logo" aria-label="AI Laboratory — главная">
       <img
-        src="../../design-system/ai-laboratory-design/assets/logos/ai-lab-logo.svg"
+        src="../assets/logos/ai-lab-logo.svg"
         alt="AI Laboratory"
         onerror="this.outerHTML='<span style=\'font-size:20px;font-weight:800;letter-spacing:-0.02em;\' class=\'ailab-header__logo-text\'>AI Lab</span>'" />
     </a>
@@ -2210,7 +2209,7 @@
               <span class="ac-faq__icon" aria-hidden="true">+</span>
             </button>
             <div class="ac-faq__answer">
-              <p>Зависит от программы. «AI для бизнеса» и «Data-Driven решения» не требуют никакого кода — рассчитаны на менеджеров и аналитиков. «Автоматизация» — минимальный уровень (умеете читать JSON и понимать логику if/else). «ML Engineering» и «AI-Ассистенты» требуют базового Python. Мы уточняем уровень при записи и помогаем выбрать подходящую программу.</p>
+              <p>Зависит от программы. «AI для бизнеса» и «Data-Driven решения» не требуют никакого кода — рассчитаны на менеджеров и аналитиков. «Автоматизация» — минимальный уровень (умеете читать JSON и понимать логику if/else). «AI-Ассистенты» требуют базового Python. Мы уточняем уровень при записи и помогаем выбрать подходящую программу.</p>
             </div>
           </div>
 
@@ -2294,7 +2293,7 @@
     <div class="ailab-footer__inner">
       <a href="../index.html" class="ailab-footer__logo" aria-label="AI Laboratory — главная">
         <img
-          src="../../design-system/ai-laboratory-design/assets/logos/ai-lab-logo.svg"
+          src="../assets/logos/ai-lab-logo.svg"
           alt="AI Laboratory"
           onerror="this.outerHTML='<span class=\'ailab-footer__logo-text\'>AI Laboratory</span>'" />
       </a>
@@ -2308,10 +2307,10 @@
       </nav>
       <div class="ailab-footer__right">
         <a href="tel:+77751513414" class="ailab-footer__social" aria-label="Телефон">
-          <img src="../../design-system/ai-laboratory-design/assets/icons/phone.png" alt="" onerror="this.style.display='none'" />
+          <img src="../assets/icons/phone.png" alt="" onerror="this.style.display='none'" />
         </a>
         <a href="https://t.me/tdm343" class="ailab-footer__social" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-          <img src="../../design-system/ai-laboratory-design/assets/icons/telegram.png" alt="" onerror="this.style.display='none'" />
+          <img src="../assets/icons/telegram.png" alt="" onerror="this.style.display='none'" />
         </a>
         <span class="ailab-footer__copy">&copy; AI Laboratory <span id="ailab-year"></span></span>
       </div>
