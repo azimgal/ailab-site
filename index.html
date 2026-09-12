@@ -200,16 +200,39 @@
 
 @media (max-width: 767px) {
   .amc-slide { grid-template-columns: 1fr; min-height: auto; }
-  .amc-slide__text { padding: 32px 24px; }
+  .amc-slide__text { padding: 28px 20px; }
   .amc-slide__visual { display: none; }
   .amc-slide__client { font-size: 28px; }
+  .amc-slide__ind { margin-bottom: 10px; }
   .amc-arrow { width: 36px; height: 36px; }
   .amc-arrow--prev { left: 8px; }
   .amc-arrow--next { right: 8px; }
-  .ailab-hero__diagram { max-width: 300px; }
+  .ailab-hero__diagram { max-width: 280px; }
+  #ailab-cases { padding: 80px 0; }
+  .amc-controls { gap: 12px; margin-top: 16px; }
+
+  /* Biz approach — smaller step labels */
+  .ailab-biz__step-label { font-size: 10px; padding: 6px 10px; letter-spacing: .04em; }
+  .ailab-biz__flow { gap: 4px; }
+  .ailab-biz__q-chip { font-size: 12px; padding: 6px 12px; }
+
+  /* Tech section */
+  .atech { padding: 80px 0; }
+  .atech__header { margin-bottom: 36px; }
+
+  /* Academy promo cards */
+  .ailab-academy-promo__card { padding: 12px 16px; gap: 12px; }
+  .ailab-academy-promo__card-title { font-size: 14px; }
+  .ailab-academy-promo__card-meta { font-size: 11px; }
 }
 @media (min-width: 768px) {
   .ailab-hero__diagram { max-width: 300px; }
+}
+@media (max-width: 479px) {
+  .amc-slide__text { padding: 24px 16px; }
+  .amc-slide__sol { font-size: 13px; }
+  .atech { padding: 64px 0; }
+  .ailab-academy-promo__card-icon { width: 36px; height: 36px; border-radius: 8px; }
 }
 
 /* ── Technology section — dark premium grid ── */

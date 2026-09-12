@@ -1290,9 +1290,9 @@ button { font-family: var(--ailab-font); }
   .ailab-hero__inner { grid-template-columns: 1fr 1fr; gap: 40px; }
   .ailab-engagement__grid { grid-template-columns: 1fr 1fr; }
   .ailab-cases__secondary { grid-template-columns: 1fr 1fr; }
-  .ailab-team__grid { grid-template-columns: 1fr 1fr; }
   .ailab-ecosystem__logo-name { font-size: 18px; }
   .ailab-header__logo img { height: 32px; }
+  .ailab-how__grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* ============================================================
@@ -1397,14 +1397,73 @@ button { font-family: var(--ailab-font); }
   .ailab-biz__arrow { transform: rotate(90deg); }
 
   /* CTA */
-  .ailab-cta__inner { text-align: left; }
-  .ailab-cta__contacts { justify-content: flex-start; flex-direction: column; gap: 16px; }
+  .ailab-cta__inner { text-align: center; }
+  .ailab-cta__flow { text-align: left; }
+  .ailab-cta__contacts { justify-content: flex-start; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .ailab-cta__action { align-items: stretch; }
+  .ailab-cta__open-btn { width: 100%; justify-content: center; font-size: 16px; padding: 16px 24px; }
+  .ailab-cta__action-hint { text-align: center; }
   .ailab-form { padding: 20px; }
 
   /* Footer */
   .ailab-footer { padding: 24px 20px; }
   .ailab-footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
   .ailab-footer__right { flex-wrap: wrap; }
+  .ailab-footer__logo img { height: 40px; }
+
+  /* Hero — tighten on phones */
+  .ailab-hero { padding: 48px 20px 56px; }
+  .ailab-hero__subtext { font-size: 14px; margin-bottom: 24px; }
+
+  /* Buttons — ensure 44px tap targets */
+  .ailab-btn { min-height: 44px; padding: 13px 22px; }
+  .ailab-hero__actions .ailab-btn { width: 100%; }
+
+  /* Build row — kill hover styles on touch */
+  .ailab-build__row:hover { background: transparent; padding-left: 0; padding-right: 0; margin: 0; }
+  .ailab-build__row.is-open { background: rgba(106,103,248,.04); }
+
+  /* Why rows — disable hover on touch */
+  .ailab-why__row:hover { background: transparent; box-shadow: none; }
+
+  /* Academy promo */
+  .ailab-academy-promo { padding: 64px 20px; }
+  .ailab-academy-promo__title { font-size: clamp(26px, 8vw, 36px); }
+  .ailab-academy-promo__stat-val { font-size: 22px; }
+  .ailab-academy-promo__cards { gap: 8px; }
+  .ailab-academy-promo__sub { font-size: 14px; }
+
+  /* FAQ list — full width on mobile */
+  .ailab-faq__list { max-width: 100%; }
+  .ailab-faq__q { font-size: 14px; }
+
+  /* Section header spacing */
+  .ailab-section-header { margin-bottom: 32px; }
+}
+
+/* ============================================================
+   RESPONSIVE — SMALL PHONE < 480px
+   ============================================================ */
+@media (max-width: 479px) {
+  :root {
+    --ailab-section-space: 64px;
+    --ailab-pad-page: 16px;
+  }
+
+  .ailab-hero__headline { font-size: clamp(26px, 9vw, 34px); }
+
+  .amc-slide__client { font-size: 24px !important; }
+
+  .ailab-cta__headline { font-size: clamp(22px, 7vw, 28px); }
+
+  .ailab-academy-promo__stats { gap: 16px; }
+  .ailab-academy-promo__stat-val { font-size: 20px; }
+
+  .ailab-eng-card { padding: 20px 16px; }
+
+  .ailab-how__step { padding: 16px 0; }
+
+  .ailab-footer__nav { gap: 16px; }
 }
 
 /* ============================================================
