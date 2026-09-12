@@ -223,13 +223,13 @@
     .ac-sys-panel {
       position: relative;
       z-index: 1;
-      background: rgba(13,14,30,.75);
-      border: 1px solid rgba(106,103,248,.22);
+      background: rgba(13,14,30,.42);
+      border: 1px solid rgba(106,103,248,.28);
       border-radius: 14px;
       padding: 0;
-      box-shadow: 0 24px 80px rgba(0,0,0,.45);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
+      box-shadow: 0 24px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(106,103,248,.08);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       font-family: var(--ailab-mono);
       width: 100%;
       max-width: 440px;
@@ -409,33 +409,38 @@
     }
 
     .ac-bcard {
-      background: var(--ailab-bg-card);
-      border: 1px solid var(--ailab-border);
+      background: rgba(13,15,36,.52);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255,255,255,.09);
       border-radius: var(--ailab-radius-card);
       padding: 28px 32px;
       display: flex;
       flex-direction: column;
       height: 100%;
       position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.07);
       transition:
         box-shadow 200ms var(--ailab-ease),
         transform 200ms var(--ailab-ease);
       overflow: hidden;
     }
     .ac-bcard:hover {
-      box-shadow: 0 12px 32px rgba(20,22,43,.08);
+      box-shadow: 0 10px 36px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.10);
       transform: translateY(-2px);
     }
 
     /* Featured card — Automation */
     .ac-bcard--featured {
-      border-color: rgba(106,103,248,.28);
-      border-top: 2px solid var(--ailab-violet);
+      border-color: rgba(106,103,248,.38);
+      border-top: 2px solid rgba(106,103,248,.80);
+      background: rgba(13,15,36,.45);
+      box-shadow: 0 4px 28px rgba(106,103,248,.14), inset 0 1px 0 rgba(106,103,248,.18);
     }
 
     /* Wide card — Corporate */
     .ac-bcard--wide {
-      background: var(--ailab-bg-sunken);
+      background: rgba(10,11,30,.58);
     }
     .ac-bcard--wide .ac-bcard__inner {
       display: flex;

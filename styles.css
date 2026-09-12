@@ -226,13 +226,13 @@ button { font-family: var(--ailab-font); }
     box-shadow var(--ailab-dur-base) var(--ailab-ease);
 }
 .ailab-header.is-scrolled {
-  background: rgba(8,9,32,.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 1px 0 rgba(255,255,255,.06);
+  background: rgba(8,9,32,.68);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.08), 0 4px 28px rgba(0,0,0,.32);
 }
 @supports not (backdrop-filter: blur(1px)) {
-  .ailab-header.is-scrolled { background: rgba(8,9,32,.97); }
+  .ailab-header.is-scrolled { background: rgba(8,9,32,.96); }
 }
 .ailab-header__logo img {
   height: 70px;
@@ -683,14 +683,17 @@ button { font-family: var(--ailab-font); }
 }
 .ailab-case-card {
   border-radius: var(--ailab-radius-card);
-  border: 1px solid var(--ailab-border);
-  background: var(--ailab-bg-card);
+  border: 1px solid rgba(255,255,255,.09);
+  background: rgba(13,14,36,.55);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 4px 24px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.06);
   overflow: hidden;
   transition:
     transform var(--ailab-dur-slow) var(--ailab-ease),
     box-shadow var(--ailab-dur-slow) var(--ailab-ease);
 }
-.ailab-case-card:hover { transform: translateY(-2px); box-shadow: var(--ailab-shadow-md); }
+.ailab-case-card:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.09); }
 .ailab-case-card__top {
   background: var(--ailab-bg-dark);
   padding: 28px 28px 24px;
@@ -738,8 +741,11 @@ button { font-family: var(--ailab-font); }
 .ailab-case-compact {
   padding: 20px 22px;
   border-radius: var(--ailab-radius-md);
-  border: 1px solid var(--ailab-border);
-  background: var(--ailab-bg-card);
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(13,14,36,.50);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: 0 2px 16px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.06);
   transition:
     transform var(--ailab-dur-slow) var(--ailab-ease),
     box-shadow var(--ailab-dur-slow) var(--ailab-ease);
@@ -820,8 +826,11 @@ button { font-family: var(--ailab-font); }
 }
 .ailab-eng-card {
   border-radius: var(--ailab-radius-card);
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  background: rgba(255,255,255,.045);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  box-shadow: 0 4px 20px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.07);
   padding: 28px 22px;
   display: flex;
   flex-direction: column;
@@ -829,9 +838,9 @@ button { font-family: var(--ailab-font); }
     transform var(--ailab-dur-slow) var(--ailab-ease),
     box-shadow var(--ailab-dur-slow) var(--ailab-ease);
 }
-.ailab-eng-card:hover { transform: translateY(-2px); box-shadow: var(--ailab-shadow-md); }
-.ailab-eng-card--pilot { border-color: var(--ailab-violet); }
-.ailab-eng-card--ext   { background: rgba(106,103,248,.06); }
+.ailab-eng-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.10); }
+.ailab-eng-card--pilot { border-color: rgba(106,103,248,.55); box-shadow: 0 4px 24px rgba(106,103,248,.12), inset 0 1px 0 rgba(106,103,248,.15); }
+.ailab-eng-card--ext   { background: rgba(106,103,248,.07); }
 
 .ailab-eng-badge {
   display: inline-block;
