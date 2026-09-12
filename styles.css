@@ -1322,12 +1322,13 @@ button { font-family: var(--ailab-font); }
   .ailab-hero__actions { flex-direction: column; }
   .ailab-hero__actions .ailab-btn { width: 100%; }
 
-  /* Partners ticker — mobile */
-  .ailab-ecosystem__inner { height: auto; padding: 16px 0 14px; flex-direction: column; align-items: flex-start; gap: 10px; }
-  .ailab-ecosystem__head  { padding: 0 20px; }
+  /* Partners ticker — mobile: keep single row, hide label */
+  .ailab-ecosystem__inner { height: 52px; padding: 0; flex-direction: row; align-items: center; }
+  .ailab-ecosystem__head  { display: none; }
   .ailab-ecosystem__rule  { display: none; }
-  .ailab-ecosystem__ticker { width: 100%; }
-  .ailab-ecosystem__logo-name { font-size: 16px; }
+  .ailab-ecosystem__ticker { width: 100%; flex: 1; }
+  .ailab-ecosystem__logo-name { font-size: 15px; }
+  .ailab-ecosystem__logo { padding: 0 32px; }
 
   /* What We Build — accordion */
   .ailab-build__row {
