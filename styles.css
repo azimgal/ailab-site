@@ -16,12 +16,12 @@
   --ailab-ink-200:      #D6DAE6;   /* lines */
   --ailab-white:        #FEFCFF;
 
-  --ailab-bg-page:      #0A0C1A;
-  --ailab-bg-card:      #14162E;
-  --ailab-bg-sunken:    #0A0C1A;
-  --ailab-bg-dark:      #080A14;
-  --ailab-bg-dark-2:    #14162E;
-  --ailab-bg-card-dark: #111328;
+  --ailab-bg-page:      #08090F;
+  --ailab-bg-card:      #0F1120;
+  --ailab-bg-sunken:    #08090F;
+  --ailab-bg-dark:      #060710;
+  --ailab-bg-dark-2:    #0F1120;
+  --ailab-bg-card-dark: #0D0E1C;
 
   --ailab-text-strong:  #FFFFFF;
   --ailab-text-body:    rgba(255,255,255,.78);
@@ -82,6 +82,17 @@ body {
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font-family: var(--ailab-font); }
+
+/* ── Top accent bar ─────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
+  z-index: 1000;
+  pointer-events: none;
+}
 
 /* ── Skip link ─────────────────────────────────────────────── */
 .ailab-skip {
@@ -368,7 +379,7 @@ button { font-family: var(--ailab-font); }
 .ailab-hero {
   min-height: calc(100vh - 72px);
   min-height: calc(100svh - 72px);
-  background: #0A0C1A;
+  background: #08090F;
   display: flex;
   align-items: center;
   padding: 80px var(--ailab-pad-page);
@@ -388,7 +399,7 @@ button { font-family: var(--ailab-font); }
 .ailab-hero__headline {
   font-family: var(--ailab-font-display);
   font-weight: 400;
-  font-size: clamp(64px, 13vw, 160px);
+  font-size: clamp(32px, 5.5vw, 76px);
   line-height: 0.88;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -1666,11 +1677,11 @@ button { font-family: var(--ailab-font); }
 #ailab-how,
 #ailab-engagement,
 #ailab-tech {
-  background: #0A0C1A;
+  background: #08090F;
 }
 
 #ailab-team {
-  background: #0D0F20;
+  background: #0B0C1A;
   position: relative;
 }
 
@@ -1826,5 +1837,5 @@ button { font-family: var(--ailab-font); }
 
 /* Tinted sections — flat dark */
 .ailab-section--tinted {
-  background-color: #0D0F20;
+  background-color: #0B0C1A;
 }

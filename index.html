@@ -60,7 +60,7 @@
 
 /* ── Cases section ── */
 #ailab-cases {
-  background: #0A0C1A !important;
+  background: #08090F !important;
   padding: 120px 0;
 }
 #ailab-cases .ailab-kicker     { color: #8F8DFA; }
@@ -233,7 +233,7 @@
 
 /* ── Technology section ── */
 .atech {
-  background: #0A0C1A !important;
+  background: #08090F !important;
   padding: 120px 0;
 }
 .atech__header {
@@ -359,26 +359,44 @@
 
 /* ══ CLEAN FLAT BACKGROUND ══ */
 
-/* Hero diagonal accent — Figma-style geometric block */
+/* Hero: right column accent (grid item) */
 .ailab-hero__accent {
+  position: relative;
+  align-self: stretch;
+  min-height: 340px;
+  overflow: hidden;
+}
+.ailab-hero__accent::before {
+  content: '';
   position: absolute;
-  right: 0; top: 0; bottom: 0;
-  width: 48%;
+  top: -80px; bottom: -80px;
+  left: 0; right: calc(-1 * var(--ailab-pad-page));
   background: var(--ailab-violet);
-  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
-  opacity: 0.12;
-  pointer-events: none;
-  z-index: 0;
+  clip-path: polygon(22% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+/* Subtle inner grid pattern on violet block */
+.ailab-hero__accent::after {
+  content: '';
+  position: absolute;
+  top: -80px; bottom: -80px;
+  left: 0; right: calc(-1 * var(--ailab-pad-page));
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  clip-path: polygon(22% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 @media (max-width: 767px) {
-  .ailab-hero__accent { opacity: 0.07; width: 80%; }
+  .ailab-hero__accent { display: none; }
 }
 
+.ailab-hero__text { position: relative; z-index: 1; }
+
 /* Sections — flat solid, no transparency hacks */
-.ailab-section { background: #0A0C1A; }
-.ailab-section--tinted { background: #0D0F20 !important; }
-.ailab-ecosystem { background: #080A16 !important; }
-.ailab-hero { background: #0A0C1A !important; }
+.ailab-section { background: #08090F; }
+.ailab-section--tinted { background: #0B0C1A !important; }
+.ailab-ecosystem { background: #060710 !important; }
+.ailab-hero { background: #08090F !important; }
 
 /* ─── CALCULATOR ───────────────────────────────────────── */
 .ac-calc {
@@ -977,8 +995,7 @@
          02 HERO — LIGHT
     ══════════════════════════════════════════════════════ -->
     <section class="ailab-hero" id="ailab-hero" aria-label="Главный экран">
-      <div class="ailab-hero__accent" aria-hidden="true"></div>
-      <div class="ailab-hero__inner" style="grid-template-columns: 1fr; max-width: 900px;">
+      <div class="ailab-hero__inner">
 
         <div class="ailab-hero__text ailab-animate">
           <span class="ailab-kicker">Внешняя технологическая команда · Казахстан</span>
@@ -995,6 +1012,8 @@
             <a href="#ailab-cases" class="ailab-btn ailab-btn--secondary">Смотреть кейсы</a>
           </div>
         </div>
+
+        <div class="ailab-hero__accent" aria-hidden="true"></div>
 
       </div>
     </section>
