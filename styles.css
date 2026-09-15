@@ -16,12 +16,12 @@
   --ailab-ink-200:      #D6DAE6;   /* lines */
   --ailab-white:        #FEFCFF;
 
-  --ailab-bg-page:      #14162B;
-  --ailab-bg-card:      #232640;
-  --ailab-bg-sunken:    #14162B;
-  --ailab-bg-dark:      #0E1022;
-  --ailab-bg-dark-2:    #232640;
-  --ailab-bg-card-dark: #1C1E38;
+  --ailab-bg-page:      #0A0C1A;
+  --ailab-bg-card:      #14162E;
+  --ailab-bg-sunken:    #0A0C1A;
+  --ailab-bg-dark:      #080A14;
+  --ailab-bg-dark-2:    #14162E;
+  --ailab-bg-card-dark: #111328;
 
   --ailab-text-strong:  #FFFFFF;
   --ailab-text-body:    rgba(255,255,255,.78);
@@ -368,7 +368,7 @@ button { font-family: var(--ailab-font); }
 .ailab-hero {
   min-height: calc(100vh - 72px);
   min-height: calc(100svh - 72px);
-  background: url('bg-hero.svg') center/cover no-repeat, #14162B;
+  background: #0A0C1A;
   display: flex;
   align-items: center;
   padding: 80px var(--ailab-pad-page);
@@ -1598,41 +1598,9 @@ button { font-family: var(--ailab-font); }
 .ailab-header:not(.is-scrolled) .ailab-header__nav a:hover { color: #fff; }
 .ailab-header:not(.is-scrolled) .ailab-hamburger span  { background: rgba(254,252,255,.85); }
 
-/* C. Business-First — grid line texture (z-index:0 keeps content on top) */
-.ailab-biz::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
-}
+/* C. Business-First — clean */
 
-/* D. CTA — radial glow bloom + grid texture */
-.ailab-cta::before {
-  content: '';
-  position: absolute;
-  top: -100px; left: 50%;
-  transform: translateX(-50%);
-  width: 800px; height: 600px;
-  background: radial-gradient(ellipse, rgba(106,103,248,.20) 0%, rgba(30,138,255,.07) 35%, transparent 68%);
-  pointer-events: none;
-  z-index: 0;
-}
-.ailab-cta::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
-  z-index: 0;
-}
+/* D. CTA — clean flat */
 
 /* E. Tinted sections — dot pattern now in background-image directly */
 .ailab-section--tinted .ailab-container {
@@ -1692,37 +1660,19 @@ button { font-family: var(--ailab-font); }
    LIGHT SECTION BACKGROUNDS — tech SVG pattern
    ============================================================ */
 
+/* Sections — flat solid dark backgrounds */
 #ailab-build,
 #ailab-cases,
 #ailab-how,
 #ailab-engagement,
 #ailab-tech {
-  background-color: var(--ailab-bg-page);
-  background-image: url('bg-light.svg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: #0A0C1A;
 }
 
-/* Team — tinted to break the consecutive-light-section transition */
 #ailab-team {
-  background-color: var(--ailab-bg-sunken);
-  background-image:
-    radial-gradient(rgba(106,103,248,.07) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background: #0D0F20;
   position: relative;
 }
-/* Gradient fade from tech (white) into team (tinted) */
-#ailab-team::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(180deg, var(--ailab-bg-page) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-#ailab-team > * { position: relative; z-index: 1; }
 
 /* ── Academy Promo block ───────────────────────────────── */
 .ailab-academy-promo {
@@ -1874,10 +1824,7 @@ button { font-family: var(--ailab-font); }
   .ailab-academy-promo__stats { gap: 20px; }
 }
 
-/* Tinted sections keep their own dot pattern */
+/* Tinted sections — flat dark */
 .ailab-section--tinted {
-  background-color: var(--ailab-bg-sunken);
-  background-image:
-    radial-gradient(rgba(106,103,248,.08) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-color: #0D0F20;
 }
