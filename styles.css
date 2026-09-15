@@ -4,7 +4,7 @@
    Tokens: --ailab-* mapped from design-system
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;800&family=JetBrains+Mono:wght@400&display=swap');
 
 /* ── Design tokens ─────────────────────────────────────────── */
 :root {
@@ -61,6 +61,7 @@
   --ailab-ease:     cubic-bezier(.22,.61,.36,1);
 
   --ailab-font: 'Manrope', sans-serif;
+  --ailab-font-display: 'Bebas Neue', 'Arial Black', sans-serif;
   --ailab-mono: 'JetBrains Mono', monospace;
 
   --ailab-grad-glow: radial-gradient(60% 60% at 50% 50%, rgba(30,138,255,.4) 0%, rgba(106,103,248,.10) 55%, transparent 100%);
@@ -115,11 +116,12 @@ button { font-family: var(--ailab-font); }
 .ailab-kicker {
   display: block;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-weight: 700;
+  letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--ailab-violet);
-  margin-bottom: 12px;
+  font-family: var(--ailab-mono);
+  margin-bottom: 16px;
 }
 .ailab-kicker--dark  { color: var(--ailab-violet-dark); }
 .ailab-kicker--muted { color: var(--ailab-text-muted); }
@@ -135,19 +137,38 @@ button { font-family: var(--ailab-font); }
 
 .ailab-section-header { margin-bottom: var(--ailab-gap-section); }
 
+/* ── Diagonal accent line ── */
+.ailab-section-header--accent {
+  position: relative;
+  padding-left: 24px;
+}
+.ailab-section-header--accent::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
+  border-radius: 2px;
+}
+
 .ailab-title {
-  font-size: clamp(20px, 2.8vw, 24px);
-  font-weight: 700;
+  font-family: var(--ailab-font-display);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--ailab-text-strong);
-  line-height: 1.2;
 }
 .ailab-title--xl {
-  font-size: clamp(26px, 4.5vw, 40px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.06;
+  font-size: clamp(56px, 9vw, 110px);
 }
-.ailab-title--dark { color: var(--ailab-text-white); }
+.ailab-title--lg {
+  font-size: clamp(40px, 6vw, 72px);
+}
+.ailab-title--sm {
+  font-size: clamp(28px, 4vw, 44px);
+}
+.ailab-title--dark { color: #FFFFFF; }
 
 /* ── Scroll animation ──────────────────────────────────────── */
 .ailab-animate {
@@ -365,23 +386,27 @@ button { font-family: var(--ailab-font); }
   align-items: center;
 }
 .ailab-hero__headline {
-  font-size: clamp(32px, 6vw, 56px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.02;
-  color: var(--ailab-text-white);
-  margin-bottom: 20px;
+  font-family: var(--ailab-font-display);
+  font-weight: 400;
+  font-size: clamp(64px, 13vw, 160px);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 28px;
 }
 .ailab-hero__headline em {
   font-style: normal;
-  color: var(--ailab-violet-dark);
+  color: var(--ailab-violet);
+  -webkit-text-fill-color: var(--ailab-violet);
+  background: none;
 }
 .ailab-hero__subtext {
-  font-size: 16px;
+  font-size: 17px;
+  color: rgba(255,255,255,.68);
   line-height: 1.6;
-  color: rgba(254,252,255,.70);
-  max-width: 480px;
-  margin-bottom: 36px;
+  max-width: 520px;
+  margin-bottom: 40px;
 }
 .ailab-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
@@ -828,6 +853,68 @@ button { font-family: var(--ailab-font); }
   font-style: italic;
 }
 
+/* ── Stats / ЦИФРЫ section ── */
+.ailab-stats {
+  padding: 80px 0;
+  background: var(--ailab-bg-card);
+  position: relative;
+  overflow: hidden;
+}
+.ailab-stats::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
+}
+.ailab-stats::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
+}
+.ailab-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+.ailab-stats__item {
+  text-align: center;
+  padding: 24px 16px;
+  position: relative;
+}
+.ailab-stats__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 20%; bottom: 20%;
+  width: 1px;
+  background: rgba(214,218,230,.12);
+}
+.ailab-stats__num {
+  font-family: var(--ailab-font-display);
+  font-size: clamp(52px, 7vw, 88px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--ailab-violet);
+  display: block;
+  margin-bottom: 8px;
+}
+.ailab-stats__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.55);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-family: var(--ailab-mono);
+}
+@media (max-width: 767px) {
+  .ailab-stats__grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .ailab-stats__item:not(:last-child)::after { display: none; }
+  .ailab-stats__item { border-bottom: 1px solid rgba(214,218,230,.08); }
+  .ailab-stats__item:nth-child(odd) { border-right: 1px solid rgba(214,218,230,.08); }
+}
+
 /* ============================================================
    08 ENGAGEMENT MODELS
    ============================================================ */
@@ -1121,12 +1208,14 @@ button { font-family: var(--ailab-font); }
 .ailab-cta__inner { max-width: 620px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
 
 .ailab-cta__headline {
-  font-size: clamp(24px, 4.5vw, 40px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--ailab-text-white);
-  line-height: 1.08;
-  margin-bottom: 16px;
+  font-family: var(--ailab-font-display);
+  font-weight: 400;
+  font-size: clamp(48px, 8vw, 100px);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 32px;
 }
 .ailab-cta__subline {
   font-size: 16px;

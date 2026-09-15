@@ -7,7 +7,7 @@
   <meta name="description" content="AI Laboratory — внешняя технологическая команда для компаний, которые хотят реального результата от AI и IT." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=7" />
   <link rel="icon" href="data:,">
 <style>
@@ -1055,7 +1055,7 @@
          02 HERO — LIGHT
     ══════════════════════════════════════════════════════ -->
     <section class="ailab-hero" id="ailab-hero" aria-label="Главный экран">
-      <div class="ailab-hero__inner">
+      <div class="ailab-hero__inner" style="grid-template-columns: 1fr; max-width: 900px;">
 
         <div class="ailab-hero__text ailab-animate">
           <span class="ailab-kicker">Внешняя технологическая команда · Казахстан</span>
@@ -1073,8 +1073,11 @@
           </div>
         </div>
 
-        <div class="ailab-hero__visual ailab-animate" style="transition-delay:80ms">
-          <svg class="ailab-hero__diagram" viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      </div>
+    </section>
+
+    <!-- REPLACED_HERO_VISUAL_PLACEHOLDER_START -->
+    <div style="display:none"><svg class="ailab-hero__diagram" viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <filter id="hg1" x="-80%" y="-80%" width="260%" height="260%">
                 <feGaussianBlur stdDeviation="10" result="b"/>
@@ -1136,10 +1139,8 @@
             <circle cx="48" cy="200" r="24" fill="#1C1E38" stroke="rgba(30,138,255,.42)" stroke-width="1.2"/>
             <text x="48" y="204" text-anchor="middle" fill="rgba(91,170,255,.88)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.04em">DATA</text>
           </svg>
-        </div>
-
-      </div>
-    </section>
+    </div>
+    <!-- REPLACED_HERO_VISUAL_PLACEHOLDER_END -->
 
     <!-- ══════════════════════════════════════════════════════
          03 TECHNOLOGY ECOSYSTEM STRIP
@@ -1183,7 +1184,7 @@
     ══════════════════════════════════════════════════════ -->
     <section class="ailab-section" id="ailab-build" aria-labelledby="ailab-build-title">
       <div class="ailab-container">
-        <div class="ailab-section-header ailab-animate">
+        <div class="ailab-section-header ailab-section-header--accent ailab-animate">
           <span class="ailab-kicker">С чем к нам приходят</span>
           <h2 class="ailab-title ailab-title--xl" id="ailab-build-title">Пять задач,<br />которые мы решаем</h2>
         </div>
@@ -1496,7 +1497,7 @@
     ══════════════════════════════════════════════════════ -->
     <section class="ailab-section" id="ailab-how" aria-labelledby="ailab-how-title">
       <div class="ailab-container">
-        <div class="ailab-section-header ailab-animate">
+        <div class="ailab-section-header ailab-section-header--accent ailab-animate">
           <span class="ailab-kicker">Наш подход</span>
           <h2 class="ailab-title ailab-title--xl" id="ailab-how-title">Начинаем с задачи,<br />а не с разработки</h2>
         </div>
@@ -1536,13 +1537,43 @@
       </div>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════
+         ЦИФРЫ — STATS
+    ══════════════════════════════════════════════════════ -->
+    <section class="ailab-stats" aria-label="Ключевые цифры">
+      <div class="ailab-container">
+        <div class="ailab-stats__grid">
+
+          <div class="ailab-stats__item ailab-animate">
+            <span class="ailab-stats__num">40+</span>
+            <span class="ailab-stats__label">AI-агентов</span>
+          </div>
+
+          <div class="ailab-stats__item ailab-animate" style="transition-delay:80ms">
+            <span class="ailab-stats__num">30+</span>
+            <span class="ailab-stats__label">Проектов</span>
+          </div>
+
+          <div class="ailab-stats__item ailab-animate" style="transition-delay:160ms">
+            <span class="ailab-stats__num">50+</span>
+            <span class="ailab-stats__label">Сертификатов</span>
+          </div>
+
+          <div class="ailab-stats__item ailab-animate" style="transition-delay:240ms">
+            <span class="ailab-stats__num">3</span>
+            <span class="ailab-stats__label">Co-founders</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- ══════════════════════════════════════════════════════
          09 ПОЧЕМУ НАМ МОЖНО ДОВЕРИТЬ РАЗРАБОТКУ
     ══════════════════════════════════════════════════════ -->
     <section class="ailab-section ailab-section--tinted" id="ailab-why" aria-labelledby="ailab-why-title">
       <div class="ailab-container">
-        <div class="ailab-section-header ailab-animate">
+        <div class="ailab-section-header ailab-section-header--accent ailab-animate">
           <span class="ailab-kicker">О нас</span>
           <h2 class="ailab-title ailab-title--xl" id="ailab-why-title">Почему нам можно<br />доверить разработку</h2>
         </div>
@@ -1900,15 +1931,14 @@
 
           <div class="ailab-cta__logo ailab-animate">
             <img
-              src="assets/logos/ai-lab-logo.svg"
+              src="assets/logos/ailab-wordmark.svg"
               alt="AI Laboratory"
-              style="height:82px;width:auto;filter:invert(1);" />
+              style="height:20px;width:auto;" />
           </div>
 
           <span class="ailab-kicker ailab-kicker--dark ailab-animate">Начать работу</span>
           <h2 class="ailab-cta__headline ailab-animate" id="ailab-cta-title" style="transition-delay:80ms">
-            Не обязательно начинать с большого IT‑проекта.
-            Начнём с одной бизнес‑задачи.
+            Обсудим вашу<br /><em style="-webkit-text-fill-color:var(--ailab-violet);color:var(--ailab-violet)">задачу</em>
           </h2>
           <p class="ailab-cta__subline ailab-animate" style="transition-delay:160ms">
             Start small. Prove value. Scale what works.
