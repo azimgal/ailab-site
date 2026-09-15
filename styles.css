@@ -8,32 +8,42 @@
 
 /* ── Design tokens ─────────────────────────────────────────── */
 :root {
-  --ailab-bg-page:      #080920;
-  --ailab-bg-card:      #0D0F24;
-  --ailab-bg-sunken:    #0A0B1E;
-  --ailab-bg-dark:      #06071A;
-  --ailab-bg-dark-2:    #0D0F24;
-  --ailab-bg-card-dark: #131530;
+  /* Figma ink scale */
+  --ailab-ink-900:      #14162B;   /* darkest bg */
+  --ailab-ink-700:      #232640;   /* cards / sections */
+  --ailab-ink-600:      #333455;   /* text on light */
+  --ailab-ink-400:      #7F879B;   /* muted */
+  --ailab-ink-200:      #D6DAE6;   /* lines */
+  --ailab-white:        #FEFCFF;
+
+  --ailab-bg-page:      #14162B;
+  --ailab-bg-card:      #232640;
+  --ailab-bg-sunken:    #14162B;
+  --ailab-bg-dark:      #0E1022;
+  --ailab-bg-dark-2:    #232640;
+  --ailab-bg-card-dark: #1C1E38;
 
   --ailab-text-strong:  #FFFFFF;
-  --ailab-text-body:    rgba(255,255,255,.72);
-  --ailab-text-muted:   rgba(255,255,255,.42);
-  --ailab-text-light:   rgba(255,255,255,.28);
+  --ailab-text-body:    rgba(255,255,255,.78);
+  --ailab-text-muted:   #7F879B;
+  --ailab-text-light:   rgba(214,218,230,.40);
   --ailab-text-white:   #FFFFFF;
 
-  --ailab-violet:       #6A67F8;
+  --ailab-violet:       #6A67F8;   /* violet-500 */
   --ailab-violet-hover: #524FE0;
   --ailab-violet-light: rgba(106,103,248,.14);
+  --ailab-violet-tint:  #DBDDFF;   /* violet-200 */
   --ailab-violet-dark:  #8F8DFA;
-  --ailab-blue:         #1E8AFF;
+  --ailab-blue:         #1E8AFF;   /* blue-500 */
+  --ailab-blue-dark:    #153B7D;   /* blue-700 */
 
-  --ailab-border:        rgba(255,255,255,.08);
-  --ailab-border-strong: rgba(255,255,255,.13);
-  --ailab-border-dark:   rgba(219,221,255,.12);
-  --ailab-focus-ring:    #8F8DFA;
+  --ailab-border:        rgba(214,218,230,.10);
+  --ailab-border-strong: rgba(214,218,230,.18);
+  --ailab-border-dark:   rgba(219,221,255,.14);
+  --ailab-focus-ring:    #6A67F8;
 
-  --ailab-shadow-sm:  0 2px 8px rgba(0,0,0,.45);
-  --ailab-shadow-md:  0 8px 24px rgba(0,0,0,.55);
+  --ailab-shadow-sm:  0 2px 8px rgba(0,0,0,.35);
+  --ailab-shadow-md:  0 8px 24px rgba(0,0,0,.45);
 
   --ailab-radius-sm:   10px;
   --ailab-radius-md:   14px;
@@ -53,8 +63,8 @@
   --ailab-font: 'Manrope', sans-serif;
   --ailab-mono: 'JetBrains Mono', monospace;
 
-  --ailab-grad-glow: radial-gradient(60% 60% at 50% 50%, rgba(30,138,255,.5) 0%, rgba(106,103,248,.14) 55%, transparent 100%);
-  --ailab-grad-ink:  linear-gradient(180deg, #0D0F24 0%, #080920 100%);
+  --ailab-grad-glow: radial-gradient(60% 60% at 50% 50%, rgba(30,138,255,.4) 0%, rgba(106,103,248,.10) 55%, transparent 100%);
+  --ailab-grad-ink:  linear-gradient(180deg, #232640 0%, #14162B 100%);
 }
 
 /* ── Reset ─────────────────────────────────────────────────── */
@@ -227,13 +237,13 @@ button { font-family: var(--ailab-font); }
     box-shadow var(--ailab-dur-base) var(--ailab-ease);
 }
 .ailab-header.is-scrolled {
-  background: rgba(8,9,32,.68);
+  background: rgba(20,22,43,.68);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   box-shadow: 0 1px 0 rgba(255,255,255,.08), 0 4px 28px rgba(0,0,0,.32);
 }
 @supports not (backdrop-filter: blur(1px)) {
-  .ailab-header.is-scrolled { background: rgba(8,9,32,.96); }
+  .ailab-header.is-scrolled { background: rgba(20,22,43,.96); }
 }
 .ailab-header__logo img {
   height: 70px;
@@ -337,7 +347,7 @@ button { font-family: var(--ailab-font); }
 .ailab-hero {
   min-height: calc(100vh - 72px);
   min-height: calc(100svh - 72px);
-  background: url('bg-hero.svg') center/cover no-repeat, #06071a;
+  background: url('bg-hero.svg') center/cover no-repeat, #14162B;
   display: flex;
   align-items: center;
   padding: 80px var(--ailab-pad-page);
@@ -406,7 +416,7 @@ button { font-family: var(--ailab-font); }
    03 PARTNERS TICKER
    ============================================================ */
 .ailab-ecosystem {
-  background: #090b1e;
+  background: #14162B;
   border-top:    1px solid rgba(106,103,248,.25);
   border-bottom: 1px solid rgba(106,103,248,.15);
   overflow: hidden;
