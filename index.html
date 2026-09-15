@@ -360,11 +360,12 @@
 /* ══ CLEAN FLAT BACKGROUND ══ */
 
 /* Hero: right column accent (grid item) */
+.ailab-hero .ailab-hero__inner { gap: 0; }
 .ailab-hero__accent {
   position: relative;
   align-self: stretch;
   min-height: 340px;
-  overflow: hidden;
+  overflow: visible;
 }
 .ailab-hero__accent::before {
   content: '';
@@ -372,7 +373,7 @@
   top: -80px; bottom: -80px;
   left: 0; right: calc(-1 * var(--ailab-pad-page));
   background: var(--ailab-violet);
-  clip-path: polygon(22% 0%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(28% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 /* Subtle inner grid pattern on violet block */
 .ailab-hero__accent::after {
@@ -384,7 +385,7 @@
     linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
   background-size: 48px 48px;
-  clip-path: polygon(22% 0%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(28% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 @media (max-width: 767px) {
   .ailab-hero__accent { display: none; }

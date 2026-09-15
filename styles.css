@@ -139,8 +139,9 @@ body::before {
 
 .ailab-section {
   padding: var(--ailab-section-space) 0;
+  border-top: 1px solid rgba(255,255,255,.05);
 }
-.ailab-section--tinted { background: rgba(255,255,255,.03); position: relative; overflow: hidden; }
+.ailab-section--tinted { background: rgba(255,255,255,.02); position: relative; overflow: hidden; }
 .ailab-section--dark {
   background: var(--ailab-bg-dark);
   color: var(--ailab-text-white);
@@ -399,7 +400,7 @@ body::before {
 .ailab-hero__headline {
   font-family: var(--ailab-font-display);
   font-weight: 400;
-  font-size: clamp(32px, 5.5vw, 76px);
+  font-size: clamp(32px, 6vw, 82px);
   line-height: 0.88;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -866,50 +867,41 @@ body::before {
 
 /* ── Stats / ЦИФРЫ section ── */
 .ailab-stats {
-  padding: 80px 0;
-  background: var(--ailab-bg-card);
+  padding: 96px 0;
+  background: #060710;
   position: relative;
   overflow: hidden;
-}
-.ailab-stats::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
-}
-.ailab-stats::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
+  border-top: 1px solid rgba(106,103,248,.20);
+  border-bottom: 1px solid rgba(106,103,248,.20);
 }
 .ailab-stats__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 0;
 }
 .ailab-stats__item {
   text-align: center;
-  padding: 24px 16px;
+  padding: 32px 24px;
   position: relative;
 }
 .ailab-stats__item:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: 0; top: 20%; bottom: 20%;
+  right: 0; top: 15%; bottom: 15%;
   width: 1px;
-  background: rgba(214,218,230,.12);
+  background: rgba(106,103,248,.20);
 }
 .ailab-stats__num {
   font-family: var(--ailab-font-display);
-  font-size: clamp(52px, 7vw, 88px);
-  line-height: 1;
+  font-size: clamp(64px, 9vw, 120px);
+  line-height: 0.9;
   letter-spacing: 0.02em;
-  color: var(--ailab-violet);
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--ailab-violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .ailab-stats__label {
   font-size: 13px;
