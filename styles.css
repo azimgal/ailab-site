@@ -852,28 +852,30 @@ body {
 }
 .apps__slide-preview {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 .apps__slide-preview--light {
   background: #f5f0e8;
-  padding: 24px 24px 0;
+  padding: 32px 16px 0;
+  align-items: flex-end;
 }
 .apps__slide-preview--dark {
   background: #111117;
-  padding: 24px 24px 0;
+  padding: 32px 16px 0;
+  align-items: flex-end;
 }
 .apps__slide-img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-.apps__slide-img--phone {
+  height: auto;
   object-fit: contain;
   object-position: bottom center;
+}
+.apps__slide-img--phone {
+  width: 100%;
+  height: auto;
 }
 
 /* ── STATS ── */
