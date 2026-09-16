@@ -500,14 +500,18 @@ body {
   padding: 88px var(--pad) 88px;
   overflow: hidden;
 }
-.models::before {
+.models::after {
   content: '';
   position: absolute;
   top: 0; right: 0;
-  width: 130px; height: 130px;
+  width: 220px;
+  height: 220px;
   background: var(--purple);
-  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 0%);
+  opacity: 0.55;
+  pointer-events: none;
 }
+
 .models__head {
   font-size: clamp(32px, 5vw, 72px);
   font-weight: 800;
@@ -912,6 +916,26 @@ body {
   overflow: hidden;
   margin-top: 88px;
 }
+.stats::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 180px; height: 180px;
+  background: var(--blue);
+  clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.stats::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px; height: 120px;
+  background: var(--purple);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 0%);
+  opacity: 0.3;
+  pointer-events: none;
+}
 .stats__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -939,6 +963,16 @@ body {
   padding: 64px 0 88px;
   border-top: 1px solid rgba(255,255,255,0.07);
   overflow: hidden;
+}
+.partners::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 200px; height: 200px;
+  background: var(--purple);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+  opacity: 0.25;
+  pointer-events: none;
 }
 .partners__head {
   font-size: clamp(32px, 5vw, 72px);
@@ -994,6 +1028,18 @@ body {
   padding: 100px 0 100px;
   border-top: 1px solid rgba(255,255,255,0.07);
   margin-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 240px; height: 240px;
+  background: var(--blue);
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+  opacity: 0.2;
+  pointer-events: none;
 }
 .cta__inner {
   display: grid;
