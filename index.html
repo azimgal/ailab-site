@@ -26,6 +26,7 @@
     <ul class="nav__links" id="nav-links" role="list">
       <li><a href="#services">Услуги</a></li>
       <li><a href="#how">Как работаем</a></li>
+      <li><a href="#cases">Кейсы</a></li>
       <li><a href="#cta">Контакты</a></li>
     </ul>
 
@@ -47,7 +48,7 @@
       <div class="hero__purple"></div>
       <div class="hero__black"></div>
       <div class="hero__side">
-        <p class="hero__side-main">Берём на себя разработку и развитие<br>цифровых продуктов — от AI и автоматизации<br>до web, mobile, backend и интеграций.</p>
+        <p class="hero__side-main">Помогаем бизнесу внедрять технологии,<br>автоматизировать процессы и создавать<br>новые цифровые продукты</p>
       </div>
     </div>
   </section>
@@ -55,9 +56,29 @@
   <!-- diagonal cut: dark → white -->
   <span class="cut cut--to-white" aria-hidden="true"></span>
 
-  <!-- ══ MISSION ══ -->
-  <section class="mission">
-    <p class="mission__text">Начинаем с бизнес-задачи, а не с разработки.</p>
+  <!-- ══ MARKET ══ -->
+  <section class="market" id="market" aria-labelledby="market-title">
+    <h2 class="market__head" id="market-title">AI уже стал частью бизнеса</h2>
+    <div class="market__stats">
+      <div class="market__stat">
+        <div class="market__stat-num">88%</div>
+        <div class="market__stat-desc">организаций используют AI в 2025 году</div>
+        <div class="market__source">Stanford HAI</div>
+      </div>
+      <div class="market__stat">
+        <div class="market__stat-num">86%</div>
+        <div class="market__stat-desc">работодателей ожидают трансформацию бизнеса к 2030</div>
+        <div class="market__source">WEF</div>
+      </div>
+      <div class="market__stat">
+        <div class="market__stat-num">+40%</div>
+        <div class="market__stat-desc">рост производительности у компаний с AI</div>
+        <div class="market__source">PwC</div>
+      </div>
+    </div>
+    <blockquote class="market__quote">
+      Вопрос уже не в том, нужен ли бизнесу AI —<br>вопрос, где именно он создаст экономический эффект
+    </blockquote>
   </section>
 
   <!-- diagonal cut: white → dark -->
@@ -81,11 +102,72 @@
       </div>
       <div class="services__card">
         <div class="services__title">Уже начали делать, но нужно довести до ума</div>
-        <p class="services__desc">Подхватываем существующий продукт, разбираемся в коде и архитектуре и приводим его к стабильному рабочему состоянию.</p>
+        <p class="services__desc">Подхватываем существующий продукт, разбираемся в коде и архитектуре, приводим к стабильному состоянию.</p>
       </div>
       <div class="services__card services__card--wide">
         <div class="services__title">Не хватает IT-ресурса внутри компании</div>
-        <p class="services__desc">Подключаем отдельных специалистов или полноценную внешнюю команду и берём на себя разработку, поддержку и развитие продукта.</p>
+        <p class="services__desc">Подключаем отдельных специалистов или полноценную внешнюю команду и берём разработку, поддержку и развитие продукта.</p>
+      </div>
+    </div>
+
+    <!-- ══ PRODUCT LANDSCAPE ══ -->
+    <div class="landscape">
+      <h2 class="landscape__head">Пять направлений, в которых собирается решение</h2>
+      <div class="landscape__grid">
+        <div class="landscape__col">
+          <div class="landscape__num">01</div>
+          <div class="landscape__title">AI &amp; Agents</div>
+          <ul class="landscape__list">
+            <li>AI Agents</li>
+            <li>AI Assistants</li>
+            <li>RAG / Enterprise Search</li>
+            <li>Voice AI</li>
+            <li>Document AI</li>
+            <li>AI Analytics</li>
+          </ul>
+        </div>
+        <div class="landscape__col">
+          <div class="landscape__num">02</div>
+          <div class="landscape__title">Business Systems</div>
+          <ul class="landscape__list">
+            <li>CRM</li>
+            <li>ERP</li>
+            <li>Customer Portals</li>
+            <li>Internal Platforms</li>
+            <li>Service Desk</li>
+          </ul>
+        </div>
+        <div class="landscape__col">
+          <div class="landscape__num">03</div>
+          <div class="landscape__title">Automation</div>
+          <ul class="landscape__list">
+            <li>Sales Automation</li>
+            <li>Customer Support Automation</li>
+            <li>Document Processing</li>
+            <li>Back-office Automation</li>
+          </ul>
+        </div>
+        <div class="landscape__col">
+          <div class="landscape__num">04</div>
+          <div class="landscape__title">Digital Products</div>
+          <ul class="landscape__list">
+            <li>Web Platforms</li>
+            <li>Mobile Applications</li>
+            <li>SaaS Products</li>
+            <li>MVP Development</li>
+          </ul>
+        </div>
+        <div class="landscape__col">
+          <div class="landscape__num">05</div>
+          <div class="landscape__title">Data &amp; Integrations</div>
+          <ul class="landscape__list">
+            <li>API Integration</li>
+            <li>Data Pipelines</li>
+            <li>BI &amp; Dashboards</li>
+            <li>System Integration</li>
+            <li>Cloud Infrastructure</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -95,42 +177,49 @@
 
   <!-- ══ HOW WE WORK ══ -->
   <section class="how" id="how" aria-labelledby="how-title">
-    <h2 class="how__head" id="how-title">Наш <span>подход</span></h2>
-    <p class="how__sub">Начинаем с бизнес-задачи, а не с разработки</p>
+    <h2 class="how__head" id="how-title">Как мы <span>работаем</span></h2>
+    <p class="how__sub">Один процесс — от идеи до работающей технологии</p>
     <div class="how__steps">
       <div class="how__step">
         <span class="how__num" aria-hidden="true">01</span>
         <div class="how__step-body">
-          <div class="how__step-title">Рассказываете о задаче</div>
-          <p class="how__text">Что хотите запустить, улучшить, автоматизировать или исправить.</p>
+          <div class="how__step-title">Business Discovery</div>
+          <p class="how__text">Изучаем бизнес, процессы, пользователей и существующую IT-инфраструктуру</p>
         </div>
       </div>
       <div class="how__step">
         <span class="how__num" aria-hidden="true">02</span>
         <div class="how__step-body">
-          <div class="how__step-title">Вместе разбираемся</div>
-          <p class="how__text">Погружаемся в процесс, задаём вопросы, уточняем ограничения и определяем, какой результат действительно нужен.</p>
+          <div class="how__step-title">Solution Design</div>
+          <p class="how__text">Формируем решение, архитектуру, scope и roadmap</p>
         </div>
       </div>
       <div class="how__step">
         <span class="how__num" aria-hidden="true">03</span>
         <div class="how__step-body">
-          <div class="how__step-title">Формируем решение</div>
-          <p class="how__text">Предлагаем подход, фиксируем объём работ, сроки и стоимость. Если есть неопределённость — начинаем с прототипа или MVP.</p>
+          <div class="how__step-title">Prototype / MVP</div>
+          <p class="how__text">Быстро проверяем ключевые гипотезы</p>
         </div>
       </div>
       <div class="how__step">
         <span class="how__num" aria-hidden="true">04</span>
         <div class="how__step-body">
-          <div class="how__step-title">Разрабатываем и запускаем</div>
-          <p class="how__text">Берём реализацию на себя, интегрируем решение и доводим его до рабочего состояния.</p>
+          <div class="how__step-title">Development</div>
+          <p class="how__text">Создаём production-ready решение</p>
         </div>
       </div>
       <div class="how__step">
         <span class="how__num" aria-hidden="true">05</span>
         <div class="how__step-body">
-          <div class="how__step-title">Развиваем дальше</div>
-          <p class="how__text">Поддерживаем, масштабируем или остаёмся вашей внешней IT-командой.</p>
+          <div class="how__step-title">Integration</div>
+          <p class="how__text">Интегрируем решение в существующий IT-контур компании</p>
+        </div>
+      </div>
+      <div class="how__step">
+        <span class="how__num" aria-hidden="true">06</span>
+        <div class="how__step-body">
+          <div class="how__step-title">Scale &amp; Support</div>
+          <p class="how__text">Развиваем систему после запуска</p>
         </div>
       </div>
     </div>
@@ -139,103 +228,186 @@
   <!-- diagonal cut: white → dark -->
   <span class="cut cut--to-dark" aria-hidden="true"></span>
 
-  <!-- ══ WHY ══ -->
-  <section class="why" id="why" aria-labelledby="why-title">
-    <h2 class="why__head" id="why-title">Почему нам можно<br>доверить разработку</h2>
-    <div class="why__grid">
-      <div class="why__item">
-        <span class="why__num" aria-hidden="true">01</span>
-        <div class="why__title">Опыт из бизнеса</div>
-        <p class="why__text">Мы сами отвечали за продажи, продукт, операции и рост бизнеса.</p>
+  <!-- ══ MODELS ══ -->
+  <section class="models" id="models" aria-labelledby="models-title">
+    <h2 class="models__head" id="models-title">Форматы сотрудничества</h2>
+    <div class="models__grid">
+      <div class="models__card">
+        <div class="models__title">AI/IT Аудит</div>
+        <p class="models__text">Для компаний, которые понимают необходимость цифровизации, но не знают, с чего начать. Карта процессов, точки автоматизации, потенциальные AI use cases, приоритеты и roadmap.</p>
       </div>
-      <div class="why__item">
-        <span class="why__num" aria-hidden="true">02</span>
-        <div class="why__title">Делали сложные проекты</div>
-        <p class="why__text">Работали с корпоративными системами, high-load, GovTech и интеграциями, где важны надёжность и ответственность за результат.</p>
+      <div class="models__card">
+        <div class="models__title">Pilot / MVP</div>
+        <p class="models__text">Для быстрой проверки технологической или продуктовой гипотезы. Типовой цикл: 2–3 недели. Архитектура, разработка, интеграция, запуск.</p>
       </div>
-      <div class="why__item">
-        <span class="why__num" aria-hidden="true">03</span>
-        <div class="why__title">Сильная техническая команда</div>
-        <p class="why__text">AI, backend, архитектура, инфраструктура и продуктовая разработка — ключевые компетенции внутри команды.</p>
+      <div class="models__card">
+        <div class="models__title">Project Development</div>
+        <p class="models__text">Разработка конкретной системы или продукта под ключ.</p>
       </div>
-      <div class="why__item">
-        <span class="why__num" aria-hidden="true">04</span>
-        <div class="why__title">Работаем как партнёр, а не как «руки»</div>
-        <p class="why__text">Можем спорить с ТЗ, предлагать более простой путь и искать решение исходя из задачи бизнеса.</p>
+      <div class="models__card">
+        <div class="models__title">External Technology Team</div>
+        <p class="models__text">Долгосрочная модель: AI Laboratory становится выделенной технологической командой компании. Постоянное развитие продуктов, AI transformation, запуск нескольких инициатив.</p>
       </div>
     </div>
-  </section>
 
-  <!-- ══ STATS ══ -->
-  <section class="stats" id="stats" aria-label="Цифры">
-    <div class="stats__grid">
-      <div>
-        <div class="stats__num">40+</div>
-        <div class="stats__label">AI-агентов</div>
-      </div>
-      <div>
-        <div class="stats__num">30+</div>
-        <div class="stats__label">Проектов</div>
-      </div>
-      <div>
-        <div class="stats__num">50+</div>
-        <div class="stats__label">Сертификатов</div>
+    <!-- ══ WHY ══ -->
+    <div class="why" id="why" aria-labelledby="why-title">
+      <h2 class="why__head" id="why-title">Почему AI Laboratory</h2>
+      <div class="why__grid">
+        <div class="why__item">
+          <div class="why__title">Business-first</div>
+          <p class="why__text">Мы сначала понимаем экономику и бизнес-процесс — затем выбираем технологию</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">One Team</div>
+          <p class="why__text">Product + Business + Engineering + AI + Integration внутри одной команды</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Technology-agnostic</div>
+          <p class="why__text">Не продаём конкретный software любой ценой. Подбираем архитектуру под задачу</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">From MVP to Enterprise</div>
+          <p class="why__text">Можем начать с небольшой гипотезы и затем масштабировать решение</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Integration, not isolation</div>
+          <p class="why__text">Новые продукты должны работать с существующей IT-инфраструктурой клиента</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Long-term Partner</div>
+          <p class="why__text">После запуска можем продолжить развитие продукта как внешняя технологическая команда</p>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ══ PARTNERS ══ -->
-  <section class="partners" id="partners" aria-labelledby="partners-title">
-    <h2 class="partners__head" id="partners-title">Партнёры</h2>
-    <div class="partners__ticker">
-      <div class="partners__ticker-track" id="ticker-track">
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <!-- duplicate set for seamless loop -->
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
-        <div class="partners__item">Партнёр</div>
+    <!-- ══ CASES ══ -->
+    <div class="cases" id="cases" aria-labelledby="cases-title">
+      <h2 class="cases__head" id="cases-title">Кейсы</h2>
+      <div class="cases__grid">
+        <div class="cases__card">
+          <div class="cases__industry">HoReCa</div>
+          <div class="cases__company">Chayla Group</div>
+          <p class="cases__solution">Система автоматизации отдела закупок</p>
+        </div>
+        <div class="cases__card">
+          <div class="cases__industry">Fashion Retail</div>
+          <div class="cases__company">Kelzin Group</div>
+          <p class="cases__solution">ERP-система для группы компаний</p>
+        </div>
+        <div class="cases__card">
+          <div class="cases__industry">Девелопмент</div>
+          <div class="cases__company">Vexmont Development</div>
+          <p class="cases__solution">Операционная система для контроля строительства</p>
+        </div>
+        <div class="cases__card">
+          <div class="cases__industry">Fitness</div>
+          <div class="cases__company">Balance Fitness</div>
+          <p class="cases__solution">Система учёта прихода сотрудников</p>
+        </div>
+        <div class="cases__card">
+          <div class="cases__industry">Авто</div>
+          <div class="cases__company">Dostyq Auto</div>
+          <p class="cases__solution">AI-агент для онбординга сотрудников</p>
+        </div>
+        <div class="cases__card">
+          <div class="cases__industry">Логистика</div>
+          <div class="cases__company">GS Logistics</div>
+          <p class="cases__solution">ОС + AI-агент для экспедиторов</p>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ══ CTA ══ -->
-  <section class="cta" id="cta" aria-labelledby="cta-title">
-    <div class="cta__inner">
-      <h2 class="cta__title" id="cta-title">Обсудим<br>ваш проект</h2>
-      <form class="cta__form" id="cta-form" novalidate>
-        <div class="cta__field">
-          <label class="cta__label" for="f-email">Ваш e-mail</label>
-          <input class="cta__input" id="f-email" type="email" placeholder="mail@example.com" required />
+    <!-- ══ STATS ══ -->
+    <section class="stats" id="stats" aria-label="Цифры">
+      <div class="stats__grid">
+        <div>
+          <div class="stats__num">40+</div>
+          <div class="stats__label">AI-агентов</div>
         </div>
-        <div class="cta__field">
-          <label class="cta__label" for="f-name">Имя</label>
-          <input class="cta__input" id="f-name" type="text" placeholder="Имя" />
+        <div>
+          <div class="stats__num">30+</div>
+          <div class="stats__label">приложений</div>
         </div>
-        <div class="cta__field">
-          <label class="cta__label" for="f-task">Опишите задачу</label>
-          <input class="cta__input" id="f-task" type="text" />
+        <div>
+          <div class="stats__num">50+</div>
+          <div class="stats__label">сертификатов</div>
         </div>
-        <button type="submit" class="cta__submit">Обсудить проект</button>
-      </form>
-    </div>
+        <div>
+          <div class="stats__num">6+</div>
+          <div class="stats__label">реализованных кейсов</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PARTNERS ══ -->
+    <section class="partners" id="partners" aria-labelledby="partners-title">
+      <h2 class="partners__head" id="partners-title">Партнёры</h2>
+      <div class="partners__ticker">
+        <div class="partners__ticker-track" id="ticker-track">
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <!-- duplicate set for seamless loop -->
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+          <div class="partners__item">Партнёр</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section class="cta" id="cta" aria-labelledby="cta-title">
+      <div class="cta__inner">
+        <div class="cta__left">
+          <h2 class="cta__title" id="cta-title">Воплотим ваш проект<br><span>вместе!</span></h2>
+          <ol class="cta__steps">
+            <li class="cta__step-item">Расскажите о процессе или проблеме</li>
+            <li class="cta__step-item">Проведём initial assessment</li>
+            <li class="cta__step-item">Предложим варианты решения</li>
+            <li class="cta__step-item">Запустим Pilot / MVP</li>
+            <li class="cta__step-item">Масштабируем при подтверждённом эффекте</li>
+          </ol>
+          <p class="cta__mantra">Start small. Prove value. Scale what works.</p>
+        </div>
+        <form class="cta__form" id="cta-form" novalidate>
+          <div class="cta__field">
+            <label class="cta__label" for="f-email">Ваш e-mail</label>
+            <input class="cta__input" id="f-email" type="email" placeholder="mail@example.com" required />
+          </div>
+          <div class="cta__field">
+            <label class="cta__label" for="f-name">Имя</label>
+            <input class="cta__input" id="f-name" type="text" placeholder="Имя" />
+          </div>
+          <div class="cta__field">
+            <label class="cta__label" for="f-task">Опишите задачу</label>
+            <input class="cta__input" id="f-task" type="text" />
+          </div>
+          <button type="submit" class="cta__submit">Обсудить проект</button>
+        </form>
+      </div>
+    </section>
   </section>
 
   <!-- ══ FOOTER ══ -->
   <footer class="footer" role="contentinfo">
     <div class="footer__inner">
       <span class="footer__name">Artificial Intelligence Laboratory</span>
+      <div class="footer__contacts">
+        <a href="tel:+77751513414" class="footer__contact">+7 775 151 34 14</a>
+        <a href="https://t.me/tdm343" class="footer__contact" target="_blank" rel="noopener noreferrer">@tdm343</a>
+        <a href="https://ai-laboratory.kz" class="footer__contact" target="_blank" rel="noopener noreferrer">ai-laboratory.kz</a>
+      </div>
       <div class="footer__socials">
         <a href="https://t.me/tdm343" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
