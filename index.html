@@ -283,37 +283,75 @@
 
     <!-- ══ CASES ══ -->
     <div class="cases" id="cases" aria-labelledby="cases-title">
-      <h2 class="cases__head" id="cases-title">Кейсы</h2>
-      <div class="cases__grid">
-        <div class="cases__card">
-          <div class="cases__industry">HoReCa</div>
-          <div class="cases__company">Chayla Group</div>
-          <p class="cases__solution">Система автоматизации отдела закупок</p>
+      <div class="cases__header">
+        <h2 class="cases__head" id="cases-title">Кейсы</h2>
+        <div class="cases__nav">
+          <button class="cases__btn cases__btn--prev" id="cases-prev" aria-label="Предыдущий кейс">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="cases__dots" id="cases-dots" role="tablist">
+            <button class="cases__dot cases__dot--active" role="tab" aria-selected="true" aria-label="Кейс 1"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 2"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 3"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 4"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 5"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 6"></button>
+          </div>
+          <button class="cases__btn cases__btn--next" id="cases-next" aria-label="Следующий кейс">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
-        <div class="cases__card">
-          <div class="cases__industry">Fashion Retail</div>
-          <div class="cases__company">Kelzin Group</div>
-          <p class="cases__solution">ERP-система для группы компаний</p>
-        </div>
-        <div class="cases__card">
-          <div class="cases__industry">Девелопмент</div>
-          <div class="cases__company">Vexmont Development</div>
-          <p class="cases__solution">Операционная система для контроля строительства</p>
-        </div>
-        <div class="cases__card">
-          <div class="cases__industry">Fitness</div>
-          <div class="cases__company">Balance Fitness</div>
-          <p class="cases__solution">Система учёта прихода сотрудников</p>
-        </div>
-        <div class="cases__card">
-          <div class="cases__industry">Авто</div>
-          <div class="cases__company">Dostyq Auto</div>
-          <p class="cases__solution">AI-агент для онбординга сотрудников</p>
-        </div>
-        <div class="cases__card">
-          <div class="cases__industry">Логистика</div>
-          <div class="cases__company">GS Logistics</div>
-          <p class="cases__solution">ОС + AI-агент для экспедиторов</p>
+      </div>
+      <div class="cases__track-wrap">
+        <div class="cases__track" id="cases-track">
+          <div class="cases__slide">
+            <div class="cases__slide-num">01</div>
+            <div class="cases__slide-body">
+              <div class="cases__slide-tag">HoReCa</div>
+              <div class="cases__slide-company">Chayla Group</div>
+              <p class="cases__slide-desc">Система автоматизации отдела закупок</p>
+            </div>
+          </div>
+          <div class="cases__slide">
+            <div class="cases__slide-num">02</div>
+            <div class="cases__slide-body">
+              <div class="cases__slide-tag">Fashion Retail</div>
+              <div class="cases__slide-company">Kelzin Group</div>
+              <p class="cases__slide-desc">ERP-система для группы компаний</p>
+            </div>
+          </div>
+          <div class="cases__slide">
+            <div class="cases__slide-num">03</div>
+            <div class="cases__slide-body">
+              <div class="cases__slide-tag">Девелопмент</div>
+              <div class="cases__slide-company">Vexmont Development</div>
+              <p class="cases__slide-desc">Операционная система для контроля строительства</p>
+            </div>
+          </div>
+          <div class="cases__slide">
+            <div class="cases__slide-num">04</div>
+            <div class="cases__slide-body">
+              <div class="cases__slide-tag">Fitness</div>
+              <div class="cases__slide-company">Balance Fitness</div>
+              <p class="cases__slide-desc">Система учёта прихода сотрудников</p>
+            </div>
+          </div>
+          <div class="cases__slide">
+            <div class="cases__slide-num">05</div>
+            <div class="cases__slide-body">
+              <div class="cases__slide-tag">Авто</div>
+              <div class="cases__slide-company">Dostyq Auto</div>
+              <p class="cases__slide-desc">AI-агент для онбординга сотрудников</p>
+            </div>
+          </div>
+          <div class="cases__slide">
+            <div class="cases__slide-num">06</div>
+            <div class="cases__slide-body">
+              <div class="cases__slide-tag">Логистика</div>
+              <div class="cases__slide-company">GS Logistics</div>
+              <p class="cases__slide-desc">ОС + AI-агент для экспедиторов</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -345,21 +383,21 @@
       <h2 class="partners__head" id="partners-title">Партнёры</h2>
       <div class="partners__ticker">
         <div class="partners__ticker-track" id="ticker-track">
-          <div class="partners__item">Yandex Cloud</div>
-          <div class="partners__item">Google Cloud</div>
-          <div class="partners__item">SmartCloud</div>
-          <div class="partners__item">Halyk Kazteleport</div>
-          <div class="partners__item">Kismet AI</div>
-          <div class="partners__item">Farabi Hub</div>
-          <div class="partners__item">SDU Technopark</div>
+          <div class="partners__item"><img src="img/partners/partner_4.png" alt="Yandex Cloud" class="partners__logo"></div>
+          <div class="partners__item"><img src="img/partners/partner_7.png" alt="Google Cloud" class="partners__logo"></div>
+          <div class="partners__item"><img src="img/partners/partner_3.png" alt="Smart Cloud" class="partners__logo"></div>
+          <div class="partners__item"><img src="img/partners/partner_1.png" alt="Halyk Kazteleport" class="partners__logo"></div>
+          <div class="partners__item"><img src="img/partners/partner_6.png" alt="Kismet AI" class="partners__logo"></div>
+          <div class="partners__item"><img src="img/partners/partner_2.png" alt="Farabi Hub" class="partners__logo"></div>
+          <div class="partners__item"><img src="img/partners/partner_5.png" alt="SDU Technopark" class="partners__logo"></div>
           <!-- duplicate set for seamless loop -->
-          <div class="partners__item" aria-hidden="true">Yandex Cloud</div>
-          <div class="partners__item" aria-hidden="true">Google Cloud</div>
-          <div class="partners__item" aria-hidden="true">SmartCloud</div>
-          <div class="partners__item" aria-hidden="true">Halyk Kazteleport</div>
-          <div class="partners__item" aria-hidden="true">Kismet AI</div>
-          <div class="partners__item" aria-hidden="true">Farabi Hub</div>
-          <div class="partners__item" aria-hidden="true">SDU Technopark</div>
+          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_4.png" alt="" class="partners__logo"></div>
+          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_7.png" alt="" class="partners__logo"></div>
+          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_3.png" alt="" class="partners__logo"></div>
+          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_1.png" alt="" class="partners__logo"></div>
+          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_6.png" alt="" class="partners__logo"></div>
+          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_2.png" alt="" class="partners__logo"></div>
+          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_5.png" alt="" class="partners__logo"></div>
         </div>
       </div>
     </section>
@@ -460,6 +498,50 @@
         form.innerHTML = '<p style="color:#fff;font-size:16px;font-weight:600;line-height:1.6;">Спасибо!<br>Мы свяжемся с вами в течение рабочего дня.</p>';
       });
     }
+  })();
+
+  // Cases Carousel
+  (function() {
+    var track = document.getElementById('cases-track');
+    var prevBtn = document.getElementById('cases-prev');
+    var nextBtn = document.getElementById('cases-next');
+    var dotsContainer = document.getElementById('cases-dots');
+    if (!track) return;
+
+    var slides = track.querySelectorAll('.cases__slide');
+    var dots = dotsContainer ? dotsContainer.querySelectorAll('.cases__dot') : [];
+    var current = 0;
+    var total = slides.length;
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function(d, i) {
+        d.classList.toggle('cases__dot--active', i === current);
+        d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+      });
+    }
+
+    prevBtn && prevBtn.addEventListener('click', function() { goTo(current - 1); });
+    nextBtn && nextBtn.addEventListener('click', function() { goTo(current + 1); });
+    dots.forEach(function(dot, i) {
+      dot.addEventListener('click', function() { goTo(i); });
+    });
+
+    // Touch/swipe support
+    var touchStartX = 0;
+    track.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', function(e) {
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+    }, {passive:true});
+
+    // Auto-advance every 5s
+    var timer = setInterval(function() { goTo(current + 1); }, 5000);
+    track.closest('.cases').addEventListener('mouseenter', function() { clearInterval(timer); });
+    track.closest('.cases').addEventListener('mouseleave', function() {
+      timer = setInterval(function() { goTo(current + 1); }, 5000);
+    });
   })();
   </script>
 
