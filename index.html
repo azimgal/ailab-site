@@ -85,7 +85,7 @@
   border-radius: 20px;
   border: 1.5px solid transparent;
   background:
-    linear-gradient(rgba(13,14,38,.50), rgba(13,14,38,.50)) padding-box,
+    linear-gradient(rgba(10,10,10,.50), rgba(10,10,10,.50)) padding-box,
     linear-gradient(145deg, rgba(106,103,248,.45) 0%, rgba(30,138,255,.28) 60%, rgba(106,103,248,.18) 100%) border-box;
   backdrop-filter: blur(22px) saturate(170%);
   -webkit-backdrop-filter: blur(22px) saturate(170%);
@@ -140,7 +140,7 @@
   top: 50%; transform: translateY(-50%);
   width: 48px; height: 48px;
   border-radius: 50%;
-  background: rgba(13,14,38,.70);
+  background: rgba(10,10,10,.70);
   border: 1px solid rgba(255,255,255,.14);
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
@@ -176,10 +176,10 @@
 .amc-dot.is-active { background: #8F8DFA; transform: scale(1.5); }
 .amc-counter {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px; color: rgba(255,255,255,.28);
+  font-size: 12px; color: rgba(255,255,255,.50);
   letter-spacing: .06em; user-select: none;
 }
-.amc-counter__cur { color: rgba(255,255,255,.65); }
+.amc-counter__cur { color: rgba(255,255,255,.85); }
 
 /* Academy promo icons — replace emoji */
 .ailab-academy-promo__card-icon {
@@ -256,7 +256,7 @@
 }
 .atech__sub {
   font-size: 14px;
-  color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,.62);
   max-width: 260px;
   line-height: 1.6;
   text-align: right;
@@ -271,7 +271,7 @@
   border-radius: 16px;
   border: 1.5px solid transparent;
   background:
-    linear-gradient(#232640, #232640) padding-box,
+    linear-gradient(#141414, #141414) padding-box,
     linear-gradient(145deg, rgba(106,103,248,.28) 0%, rgba(30,138,255,.14) 60%, rgba(106,103,248,.08) 100%) border-box;
   padding: 24px 24px 22px;
   transition: transform 360ms cubic-bezier(.22,.61,.36,1);
@@ -282,7 +282,7 @@
   font-weight: 600;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(143,141,250,.55);
+  color: rgba(74,127,255,.55);
   font-family: 'JetBrains Mono', monospace;
   margin-bottom: 16px;
   padding-bottom: 12px;
@@ -311,7 +311,7 @@
 }
 .atech__chip--v {
   border-color: rgba(106,103,248,.22);
-  color: rgba(143,141,250,.80);
+  color: rgba(74,127,255,.80);
   background: rgba(106,103,248,.06);
 }
 .atech__chip--b {
@@ -327,7 +327,7 @@
   box-shadow: 0 0 40px rgba(106,103,248,.10);
 }
 .atech__cat--certs .atech__cat-label {
-  color: #A8A6FF;
+  color: #7AACFF;
   letter-spacing: .26em;
   border-bottom-color: rgba(106,103,248,.20);
   display: flex;
@@ -374,13 +374,13 @@
 .ailab-geo-bg { display: none; }
 
 /* ── Explicit section backgrounds ── */
-.ailab-section { background: #08090F; }
-.ailab-section--tinted { background: #0C0D1A !important; }
-.ailab-ecosystem { background: #06070E !important; }
-#ailab-cases { background: #08090F; }
+.ailab-section { background: #0D0E1E; }
+.ailab-section--tinted { background: #111228 !important; }
+.ailab-ecosystem { background: #0A0B18 !important; }
+#ailab-cases { background: #0D0E1E; }
 
 /* ══ HERO — black + violet diagonal ══ */
-.ailab-hero { background: #000000 !important; }
+.ailab-hero { background: #0A0B18 !important; }
 .ailab-hero .ailab-hero__inner { gap: 0; }
 .ailab-hero__accent {
   position: relative;
@@ -549,7 +549,7 @@
 
 /* ══ WHY US — BLACK editorial section ══ */
 #ailab-why {
-  background: #000000 !important;
+  background: #0C0D1A !important;
 }
 #ailab-why .ailab-kicker { color: #6A67F8; }
 #ailab-why .ailab-title,
@@ -592,16 +592,17 @@
   grid-template-columns: repeat(3, 1fr) !important;
   flex-direction: initial !important;
   gap: 1px !important;
-  border-top: 1px solid rgba(255,255,255,.08);
+  background: #6A67F8 !important;
+  border-top: none !important;
 }
 #ailab-why .ailab-how__step {
   display: flex !important;
   flex-direction: column !important;
   grid-template-columns: initial !important;
   padding: 28px 24px !important;
-  background: rgba(255,255,255,.025) !important;
+  background: #6A67F8 !important;
   border: none !important;
-  border-right: 1px solid rgba(255,255,255,.06) !important;
+  border-right: 1px solid rgba(255,255,255,.15) !important;
   border-radius: 0 !important;
   gap: 6px !important;
   transition: none !important;
@@ -609,8 +610,8 @@
 }
 #ailab-why .ailab-how__step:last-child { border-right: none !important; }
 #ailab-why .ailab-how__num { display: none !important; }
-#ailab-why .ailab-how__label { color: #FEFCFF !important; padding-top: 0 !important; }
-#ailab-why .ailab-how__desc { color: rgba(255,255,255,.55) !important; padding-top: 0 !important; }
+#ailab-why .ailab-how__label { color: #FFFFFF !important; font-size: 18px !important; padding-top: 0 !important; }
+#ailab-why .ailab-how__desc { color: rgba(255,255,255,.70) !important; padding-top: 0 !important; }
 
 /* ══ PARALLELOGRAM SHAPE LABELS ══ */
 
@@ -649,7 +650,7 @@
 }
 /* Dark kicker variant */
 .ailab-kicker--dark {
-  background: #1E1B4B;
+  background: #0D1E4B;
   color: #DBDDFF !important;
   -webkit-text-fill-color: #DBDDFF !important;
 }
@@ -667,7 +668,7 @@
   clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
   border: none !important;
 }
-.ahg__stat--2 .ahg__num { color: #14162B; }
+.ahg__stat--2 .ahg__num { color: #0A0A0A; }
 .ahg__stat--2 .ahg__lbl { color: rgba(0,0,0,.55); }
 /* Card 3: left-slant parallelogram */
 .ahg__stat--3 {
@@ -685,7 +686,7 @@
   max-width: 900px;
   margin: 0 auto;
 }
-.ac-calc .ailab-kicker { background: #14162B; color: #DBDDFF !important; -webkit-text-fill-color: #DBDDFF !important; }
+.ac-calc .ailab-kicker { background: #0A0A0A; color: #DBDDFF !important; -webkit-text-fill-color: #DBDDFF !important; }
 
 .ac-calc__steps {
   display: flex;
@@ -779,14 +780,14 @@
   border-radius: 10px;
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.08);
-  color: rgba(168,165,252,.80);
+  color: rgba(74,127,255,.80);
   flex-shrink: 0;
   transition: background 180ms var(--ailab-ease), border-color 180ms var(--ailab-ease), color 180ms var(--ailab-ease);
 }
 .ac-calc__option:hover .ac-calc__opt-icon {
   background: rgba(106,103,248,.14);
   border-color: rgba(106,103,248,.30);
-  color: rgba(168,165,252,1);
+  color: rgba(74,127,255,1);
 }
 .ac-calc__option.is-selected .ac-calc__opt-icon {
   background: rgba(106,103,248,.18);
@@ -806,7 +807,7 @@
 }
 .ac-calc__opt-sub {
   font-size: 12px;
-  color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,.62);
   line-height: 1.5;
 }
 
@@ -828,7 +829,7 @@
 .ac-calc__result-label {
   font-family: var(--ailab-mono);
   font-size: 11px;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.60);
   text-transform: uppercase;
   letter-spacing: .14em;
   margin-bottom: 14px;
@@ -842,7 +843,7 @@
 }
 .ac-calc__result-note {
   font-size: 13px;
-  color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,.65);
   margin-bottom: 28px;
   max-width: 420px;
   margin-left: auto; margin-right: auto;
@@ -855,7 +856,7 @@
 }
 .ac-calc__reset {
   background: none; border: none;
-  color: rgba(255,255,255,.28);
+  color: rgba(255,255,255,.50);
   font-size: 13px; cursor: pointer;
   margin-top: 20px; text-decoration: underline;
   display: block; text-align: center;
@@ -911,7 +912,7 @@
 .ailab-cta__open-btn:hover .ailab-cta__open-btn-arrow { transform: translateX(4px); }
 .ailab-cta__action-hint {
   font-size: 13px;
-  color: rgba(255,255,255,.40);
+  color: rgba(255,255,255,.62);
   margin: 0;
 }
 
@@ -929,7 +930,7 @@
 .ailab-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(4,5,20,.75);
+  background: rgba(0,0,0,.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   opacity: 0;
@@ -943,7 +944,7 @@
   max-width: 520px;
   max-height: 90vh;
   overflow-y: auto;
-  background: rgba(13,14,36,.82);
+  background: rgba(10,10,10,.82);
   backdrop-filter: blur(32px) saturate(180%);
   -webkit-backdrop-filter: blur(32px) saturate(180%);
   border: 1px solid rgba(106,103,248,.28);
@@ -1002,7 +1003,7 @@
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.38);
+  color: rgba(255,255,255,.62);
 }
 .ailab-modal__chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .ailab-modal__field {
@@ -1018,7 +1019,7 @@
 }
 .ailab-modal__hint {
   font-weight: 400;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.55);
 }
 .ailab-modal__input,
 .ailab-modal__textarea {
@@ -1068,7 +1069,7 @@
 .ailab-modal__submit:active { transform: none; }
 .ailab-modal__legal {
   font-size: 11px;
-  color: rgba(255,255,255,.28);
+  color: rgba(255,255,255,.50);
   text-align: center;
   margin: 14px 0 0;
 }
@@ -1100,7 +1101,7 @@
   border-radius: 10px;
   border: 1px solid rgba(106,103,248,.40);
   background: rgba(106,103,248,.12);
-  color: #A8A6FF;
+  color: #7AACFF;
   font-size: 14px;
   font-weight: 600;
   font-family: inherit;
@@ -1159,7 +1160,7 @@
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.40);
+  color: rgba(255,255,255,.65);
 }
 .ailab-form__format-chips {
   display: flex;
@@ -1187,13 +1188,13 @@
 .ailab-fmt-chip.is-active {
   background: rgba(106,103,248,.22);
   border-color: rgba(106,103,248,.70);
-  color: #C4C2FF;
+  color: #7AACFF;
   box-shadow: 0 0 12px rgba(106,103,248,.22);
 }
 
 /* ─── BIZ SECTION — contrast fix ──────────────────────── */
 .ailab-biz__qs-label {
-  color: #A8A6FF;
+  color: #7AACFF;
   letter-spacing: .18em;
 }
 .ailab-biz__q-chip {
@@ -1224,6 +1225,126 @@
 
 .ailab-biz__subline {
   color: rgba(255,255,255,.62);
+}
+
+/* ══ GEOMETRIC BLOCKS — Stats ══ */
+.ailab-stats__item {
+  position: relative;
+  background: rgba(255,255,255,.04) !important;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px)) !important;
+  padding: 28px 24px !important;
+  border-bottom: none !important;
+  transition: background 250ms ease !important;
+}
+.ailab-stats__item:hover {
+  background: rgba(106,103,248,.12) !important;
+}
+.ailab-stats__item::after { display:none !important; }
+.ailab-stats__num {
+  display: block !important;
+  min-width: unset !important;
+}
+.ailab-stats__grid {
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 12px !important;
+}
+@media (max-width: 767px) {
+  .ailab-stats__grid { grid-template-columns: repeat(2,1fr) !important; }
+}
+
+/* ══ GEOMETRIC BLOCKS — Build rows ══ */
+.ailab-build__row {
+  border-left: none !important;
+  position: relative;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+.ailab-build__numeral-n {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 68px; height: 68px;
+  background: rgba(106,103,248,.10);
+  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  font-size: 32px !important;
+  color: #6A67F8 !important;
+}
+.ailab-build__row:hover .ailab-build__numeral-n {
+  background: rgba(106,103,248,.22);
+  color: #8F8DFA !important;
+}
+
+/* ══ GEOMETRIC BLOCKS — Why rows ══ */
+.ailab-why__num {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 56px; height: 56px;
+  background: rgba(106,103,248,.12);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important;
+  font-size: 20px !important;
+  background: none !important;
+  -webkit-text-fill-color: #6A67F8 !important;
+  color: #6A67F8 !important;
+}
+
+/* ══ GEOMETRIC BLOCKS — Engagement cards ══ */
+.ailab-eng-card {
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
+  border-radius: 0 !important;
+}
+
+/* ══ GEOMETRIC BLOCKS — Case compact cards ══ */
+.ailab-case-compact {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%) !important;
+  border-radius: 0 !important;
+}
+
+/* ══ GEOMETRIC — Team cards ══ */
+#ailab-why .ailab-how__step {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%) !important;
+  border-radius: 0 !important;
+}
+
+/* ══ GEOMETRIC — How steps (white section) ══ */
+#ailab-how .ailab-how__step {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%) !important;
+  background: rgba(0,0,0,.03) !important;
+  border: 1px solid rgba(0,0,0,.08) !important;
+  border-radius: 0 !important;
+}
+
+/* ══ GEOMETRIC — CTA button ══ */
+.ailab-cta__open-btn {
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px)) !important;
+  border-radius: 0 !important;
+}
+
+/* ══ GEOMETRIC — FAQ items ══ */
+.ailab-faq__item {
+  position: relative;
+  padding-left: 16px;
+}
+.ailab-faq__item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background 200ms ease;
+}
+.ailab-faq__item.is-open::before {
+  background: linear-gradient(180deg, #6A67F8, #1E8AFF);
+}
+
+/* ══ GEOMETRIC — Hero kicker ══ */
+.ailab-hero .ailab-kicker {
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%) !important;
+  background: rgba(106,103,248,.22) !important;
+  color: #DBDDFF !important;
+  -webkit-text-fill-color: #DBDDFF !important;
+  border: none !important;
+  padding: 6px 28px 6px 18px !important;
 }
 </style>
 </head>
@@ -1346,33 +1467,33 @@
             <circle cx="139" cy="200" r="2" fill="rgba(30,138,255,.45)"/>
             <!-- Central hub -->
             <circle cx="230" cy="200" r="54" fill="rgba(106,103,248,.14)" filter="url(#hg1)"/>
-            <circle cx="230" cy="200" r="44" fill="#1C1E38" stroke="rgba(106,103,248,.60)" stroke-width="1.5"/>
+            <circle cx="230" cy="200" r="44" fill="#0A0A12" stroke="rgba(106,103,248,.60)" stroke-width="1.5"/>
             <text x="230" y="196" text-anchor="middle" fill="#8F8DFA" font-size="10" font-family="JetBrains Mono,monospace" letter-spacing="0.12em">AI LAB</text>
-            <text x="230" y="211" text-anchor="middle" fill="rgba(143,141,250,.42)" font-size="7.5" font-family="JetBrains Mono,monospace" letter-spacing="0.08em">CORE</text>
+            <text x="230" y="211" text-anchor="middle" fill="rgba(74,127,255,.42)" font-size="7.5" font-family="JetBrains Mono,monospace" letter-spacing="0.08em">CORE</text>
             <!-- LLM -->
             <circle cx="88" cy="78" r="30" fill="rgba(106,103,248,.12)" filter="url(#hg2)"/>
-            <circle cx="88" cy="78" r="24" fill="#1C1E38" stroke="rgba(106,103,248,.45)" stroke-width="1.2"/>
-            <text x="88" y="82" text-anchor="middle" fill="rgba(143,141,250,.90)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">LLM</text>
+            <circle cx="88" cy="78" r="24" fill="#0A0A12" stroke="rgba(106,103,248,.45)" stroke-width="1.2"/>
+            <text x="88" y="82" text-anchor="middle" fill="rgba(74,127,255,.90)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">LLM</text>
             <!-- API -->
             <circle cx="372" cy="78" r="30" fill="rgba(30,138,255,.10)" filter="url(#hg2)"/>
-            <circle cx="372" cy="78" r="24" fill="#1C1E38" stroke="rgba(30,138,255,.42)" stroke-width="1.2"/>
+            <circle cx="372" cy="78" r="24" fill="#0A0A12" stroke="rgba(30,138,255,.42)" stroke-width="1.2"/>
             <text x="372" y="82" text-anchor="middle" fill="rgba(91,170,255,.88)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">API</text>
             <!-- AUTO -->
             <circle cx="412" cy="200" r="30" fill="rgba(106,103,248,.10)" filter="url(#hg2)"/>
-            <circle cx="412" cy="200" r="24" fill="#1C1E38" stroke="rgba(106,103,248,.40)" stroke-width="1.2"/>
-            <text x="412" y="197" text-anchor="middle" fill="rgba(143,141,250,.85)" font-size="7.5" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">AUTO</text>
-            <text x="412" y="207" text-anchor="middle" fill="rgba(143,141,250,.48)" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">MATION</text>
+            <circle cx="412" cy="200" r="24" fill="#0A0A12" stroke="rgba(106,103,248,.40)" stroke-width="1.2"/>
+            <text x="412" y="197" text-anchor="middle" fill="rgba(74,127,255,.85)" font-size="7.5" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">AUTO</text>
+            <text x="412" y="207" text-anchor="middle" fill="rgba(74,127,255,.48)" font-size="6.5" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">MATION</text>
             <!-- WEB -->
             <circle cx="372" cy="322" r="30" fill="rgba(30,138,255,.10)" filter="url(#hg2)"/>
-            <circle cx="372" cy="322" r="24" fill="#1C1E38" stroke="rgba(30,138,255,.40)" stroke-width="1.2"/>
+            <circle cx="372" cy="322" r="24" fill="#0A0A12" stroke="rgba(30,138,255,.40)" stroke-width="1.2"/>
             <text x="372" y="326" text-anchor="middle" fill="rgba(91,170,255,.85)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">WEB</text>
             <!-- MOBILE -->
             <circle cx="88" cy="322" r="30" fill="rgba(106,103,248,.10)" filter="url(#hg2)"/>
-            <circle cx="88" cy="322" r="24" fill="#1C1E38" stroke="rgba(106,103,248,.40)" stroke-width="1.2"/>
-            <text x="88" y="319" text-anchor="middle" fill="rgba(143,141,250,.85)" font-size="8" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">MOBILE</text>
+            <circle cx="88" cy="322" r="24" fill="#0A0A12" stroke="rgba(106,103,248,.40)" stroke-width="1.2"/>
+            <text x="88" y="319" text-anchor="middle" fill="rgba(74,127,255,.85)" font-size="8" font-family="JetBrains Mono,monospace" letter-spacing="0.03em">MOBILE</text>
             <!-- DATA -->
             <circle cx="48" cy="200" r="30" fill="rgba(30,138,255,.10)" filter="url(#hg2)"/>
-            <circle cx="48" cy="200" r="24" fill="#1C1E38" stroke="rgba(30,138,255,.42)" stroke-width="1.2"/>
+            <circle cx="48" cy="200" r="24" fill="#0A0A12" stroke="rgba(30,138,255,.42)" stroke-width="1.2"/>
             <text x="48" y="204" text-anchor="middle" fill="rgba(91,170,255,.88)" font-size="9" font-family="JetBrains Mono,monospace" letter-spacing="0.04em">DATA</text>
           </svg>
     </div>
@@ -1522,11 +1643,11 @@
                 <div class="amc-slide__visual" aria-hidden="true">
                   <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
                     <rect x="4"   y="46" width="60" height="52" rx="5" fill="rgba(106,103,248,.08)" stroke="rgba(106,103,248,.28)" stroke-width="1"/>
-                    <text x="34"  y="72" text-anchor="middle" fill="rgba(143,141,250,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">ОБЪЕКТ</text>
-                    <text x="34"  y="83" text-anchor="middle" fill="rgba(143,141,250,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ ASSETS</text>
+                    <text x="34"  y="72" text-anchor="middle" fill="rgba(74,127,255,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">ОБЪЕКТ</text>
+                    <text x="34"  y="83" text-anchor="middle" fill="rgba(74,127,255,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ ASSETS</text>
                     <rect x="120" y="24" width="60" height="72" rx="5" fill="rgba(106,103,248,.14)" stroke="rgba(106,103,248,.52)" stroke-width="1.2"/>
                     <text x="150" y="58" text-anchor="middle" fill="#8F8DFA" font-size="8" font-family="JetBrains Mono,monospace">DIGITAL</text>
-                    <text x="150" y="70" text-anchor="middle" fill="rgba(143,141,250,.55)" font-size="7" font-family="JetBrains Mono,monospace">OPS CORE</text>
+                    <text x="150" y="70" text-anchor="middle" fill="rgba(74,127,255,.55)" font-size="7" font-family="JetBrains Mono,monospace">OPS CORE</text>
                     <rect x="236" y="46" width="60" height="52" rx="5" fill="rgba(30,138,255,.07)" stroke="rgba(30,138,255,.26)" stroke-width="1"/>
                     <text x="266" y="72" text-anchor="middle" fill="rgba(91,170,255,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">КОМАНДА</text>
                     <text x="266" y="83" text-anchor="middle" fill="rgba(91,170,255,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ STAFF</text>
@@ -1554,8 +1675,8 @@
                     <text x="150" y="52" text-anchor="middle" fill="#5BAAFF" font-size="8" font-family="JetBrains Mono,monospace">ERP CORE</text>
                     <text x="150" y="64" text-anchor="middle" fill="rgba(91,170,255,.48)" font-size="7" font-family="JetBrains Mono,monospace">PLATFORM</text>
                     <circle cx="250" cy="55" r="30" fill="rgba(106,103,248,.07)" stroke="rgba(106,103,248,.26)" stroke-width="1"/>
-                    <text x="250" y="52" text-anchor="middle" fill="rgba(143,141,250,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">КЛИЕНТ</text>
-                    <text x="250" y="63" text-anchor="middle" fill="rgba(143,141,250,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ REPORT</text>
+                    <text x="250" y="52" text-anchor="middle" fill="rgba(74,127,255,.65)" font-size="7.5" font-family="JetBrains Mono,monospace">КЛИЕНТ</text>
+                    <text x="250" y="63" text-anchor="middle" fill="rgba(74,127,255,.38)" font-size="6.5" font-family="JetBrains Mono,monospace">/ REPORT</text>
                     <line x1="80"  y1="55" x2="112" y2="55" stroke="rgba(30,138,255,.40)" stroke-width="1" stroke-dasharray="3 5"/>
                     <line x1="188" y1="55" x2="220" y2="55" stroke="rgba(106,103,248,.35)" stroke-width="1" stroke-dasharray="3 5"/>
                     <circle cx="96"  cy="55" r="2" fill="rgba(30,138,255,.75)"/>
@@ -1623,7 +1744,7 @@
                   <svg viewBox="0 0 300 110" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px">
                     <rect x="20" y="18" width="120" height="76" rx="7" fill="rgba(106,103,248,.08)" stroke="rgba(106,103,248,.28)" stroke-width="1"/>
                     <rect x="28" y="28" width="104" height="14" rx="3" fill="rgba(106,103,248,.15)"/>
-                    <text x="80" y="39" text-anchor="middle" fill="rgba(143,141,250,.65)" font-size="7" font-family="JetBrains Mono,monospace">DASHBOARD</text>
+                    <text x="80" y="39" text-anchor="middle" fill="rgba(74,127,255,.65)" font-size="7" font-family="JetBrains Mono,monospace">DASHBOARD</text>
                     <rect x="28" y="48" width="46" height="16" rx="3" fill="rgba(106,103,248,.10)"/>
                     <rect x="80" y="48" width="22" height="16" rx="3" fill="rgba(106,103,248,.07)"/>
                     <rect x="108" y="48" width="16" height="16" rx="3" fill="rgba(106,103,248,.07)"/>
@@ -1632,7 +1753,7 @@
                     <polygon points="166,53 172,56 166,59" fill="rgba(106,103,248,.55)"/>
                     <rect x="172" y="44" width="80" height="24" rx="5" fill="rgba(106,103,248,.10)" stroke="rgba(106,103,248,.32)" stroke-width="1"/>
                     <text x="212" y="55" text-anchor="middle" fill="#8F8DFA" font-size="7.5" font-family="JetBrains Mono,monospace">B2B API</text>
-                    <text x="212" y="64" text-anchor="middle" fill="rgba(143,141,250,.38)" font-size="6" font-family="JetBrains Mono,monospace">GATEWAY</text>
+                    <text x="212" y="64" text-anchor="middle" fill="rgba(74,127,255,.38)" font-size="6" font-family="JetBrains Mono,monospace">GATEWAY</text>
                   </svg>
                 </div>
               </div>
@@ -2180,18 +2301,18 @@
             Start small. Prove value. Scale what works.
           </p>
 
-          <div class="ailab-cta__flow ailab-animate" style="transition-delay:240ms">
-            <div class="ailab-cta__step">
-              <span class="ailab-cta__step-num">01</span>
-              <span class="ailab-cta__step-text">Расскажите о бизнес-задаче</span>
+          <div class="ailab-cta__flow ailab-animate" style="transition-delay:240ms; display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; align-items:center; gap:20px; background:rgba(255,255,255,.06); clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%); padding:16px 24px; border-left:3px solid #6A67F8;">
+              <span style="font-family:'Bebas Neue',display; font-size:36px; color:#6A67F8; line-height:1; min-width:48px; flex-shrink:0;">01</span>
+              <span style="font-size:15px; font-weight:600; color:#FFFFFF; line-height:1.4;">Расскажите о бизнес-задаче</span>
             </div>
-            <div class="ailab-cta__step">
-              <span class="ailab-cta__step-num">02</span>
-              <span class="ailab-cta__step-text">Проведём assessment и предложим варианты решения</span>
+            <div style="display:flex; align-items:center; gap:20px; background:rgba(255,255,255,.06); clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%); padding:16px 24px; border-left:3px solid #FFB800;">
+              <span style="font-family:'Bebas Neue',display; font-size:36px; color:#FFB800; line-height:1; min-width:48px; flex-shrink:0;">02</span>
+              <span style="font-size:15px; font-weight:600; color:#FFFFFF; line-height:1.4;">Проведём assessment и предложим варианты решения</span>
             </div>
-            <div class="ailab-cta__step">
-              <span class="ailab-cta__step-num">03</span>
-              <span class="ailab-cta__step-text">Запустим Pilot / MVP и масштабируем то, что подтвердит эффект</span>
+            <div style="display:flex; align-items:center; gap:20px; background:rgba(255,255,255,.06); clip-path:polygon(0 0,100% 0,calc(100% - 16px) 100%,0 100%); padding:16px 24px; border-left:3px solid #1E8AFF;">
+              <span style="font-family:'Bebas Neue',display; font-size:36px; color:#1E8AFF; line-height:1; min-width:48px; flex-shrink:0;">03</span>
+              <span style="font-size:15px; font-weight:600; color:#FFFFFF; line-height:1.4;">Запустим Pilot / MVP и масштабируем то, что подтвердит эффект</span>
             </div>
           </div>
 
@@ -2204,15 +2325,15 @@
           </div>
 
           <div class="ailab-cta__contacts ailab-animate" style="transition-delay:400ms">
-            <a href="tel:+77751513414" class="ailab-cta__contact">
+            <a href="tel:+77751513414" class="ailab-cta__contact" style="color:#FFFFFF">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0" aria-hidden="true"><path d="M14.9 11.38l-2.18-2.18a1.38 1.38 0 00-1.95 0l-.87.87a.34.34 0 01-.44.03 11.6 11.6 0 01-3.56-3.56.34.34 0 01.03-.44l.87-.87a1.38 1.38 0 000-1.95L4.62 1.1a1.38 1.38 0 00-1.95 0l-.7.7C.83 3.03.94 5.7 3.5 8.5 6.07 11.3 8.98 12.97 11.2 12.97c.95 0 1.76-.32 2.4-.97l.7-.7a1.38 1.38 0 000-1.92z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               +7 775 151 34 14
             </a>
-            <a href="https://t.me/tdm343" class="ailab-cta__contact" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/tdm343" class="ailab-cta__contact" style="color:#FFFFFF" target="_blank" rel="noopener noreferrer">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0" aria-hidden="true"><path d="M14.5 1.5L1 6.5l5 1.5 1.5 5 2.5-3 3 2.5 1.5-11z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               @tdm343
             </a>
-            <a href="https://ai-laboratory.kz" class="ailab-cta__contact" target="_blank" rel="noopener noreferrer">
+            <a href="https://ai-laboratory.kz" class="ailab-cta__contact" style="color:#FFFFFF" target="_blank" rel="noopener noreferrer">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5C8 1.5 5.5 4 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4 10.5 8S8 14.5 8 14.5M1.5 8h13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               ai-laboratory.kz
             </a>
