@@ -1152,7 +1152,8 @@ body {
   .nav__hamburger { display: flex; }
 
   .hero__content { max-width: 100%; }
-  .hero__accent { opacity: 0.35; }
+  .hero__accent { opacity: 0.18; }
+  .hero__side { display: none; }
 
   .market__stats { grid-template-columns: 1fr; gap: 32px; }
 
