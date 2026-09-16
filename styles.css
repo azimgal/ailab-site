@@ -291,11 +291,21 @@ body {
   margin-top: 64px;
 }
 .services__card {
-  padding: 36px 32px;
+  padding: 36px 32px 40px;
   border: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 .services__card--wide {
   grid-column: 1 / -1;
+}
+.services__num {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--purple);
+  margin-bottom: 20px;
 }
 .services__title {
   font-size: 15px;
@@ -304,6 +314,7 @@ body {
   letter-spacing: 0.06em;
   margin-bottom: 14px;
   color: var(--white);
+  line-height: 1.35;
 }
 .services__desc {
   font-size: 12px;
@@ -312,6 +323,25 @@ body {
   letter-spacing: 0.05em;
   line-height: 1.85;
   color: var(--muted);
+  margin-bottom: 14px;
+}
+.services__example {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.3);
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.services__example span {
+  color: rgba(255,255,255,0.5);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+  margin-right: 4px;
 }
 
 /* ── PRODUCT LANDSCAPE ── */
