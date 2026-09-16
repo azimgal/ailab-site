@@ -791,7 +791,7 @@ body {
   overflow: hidden;
 }
 .apps__slide-info {
-  padding: 56px 56px 56px 0;
+  padding: 56px 72px 56px 0;
   border-right: 1px solid rgba(255,255,255,0.07);
   display: flex;
   flex-direction: column;
@@ -1154,12 +1154,40 @@ body {
   .cta__inner { grid-template-columns: 1fr; gap: 48px; }
 
   .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+
+  /* Cases — reduce inner padding on tablet */
+  .cases__slide-left { padding: 48px 48px 48px 0; }
+  .cases__slide-right { padding: 48px 0 48px 48px; }
+  /* Apps — reduce inner padding on tablet */
+  .apps__slide-info { padding: 48px 56px 48px 0; }
 }
 
 @media (max-width: 640px) {
   .landscape__grid { grid-template-columns: 1fr; }
   .why__grid { grid-template-columns: 1fr; }
   .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; }
+
+  /* Cases carousel — stack to single column */
+  .cases__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cases__slide { grid-template-columns: 1fr; }
+  .cases__slide-left {
+    padding: 36px 0 28px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .cases__slide-right { padding: 28px 0 36px; }
+  .cases__slide-num { font-size: clamp(64px, 18vw, 100px); margin-bottom: 20px; }
+
+  /* Apps slider — stack to single column */
+  .apps__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .apps__slide { grid-template-columns: 1fr; min-height: auto; }
+  .apps__slide-info {
+    padding: 36px 0 28px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .apps__slide-preview { min-height: 260px; padding: 28px; }
+  .apps__slide-preview--light { padding: 28px 28px 0; }
 }
 
 @media (max-width: 540px) {
@@ -1168,4 +1196,10 @@ body {
   .how__num { font-size: 44px; }
   .stats__num { font-size: clamp(40px, 8vw, 64px); }
   .market__quote { font-size: clamp(14px, 4vw, 20px); }
+
+  /* Tighter padding inside the models section on small phones */
+  .models { padding: 56px var(--pad) 56px; }
+  .cases { padding-top: 56px; margin-top: 56px; }
+  .apps  { padding-top: 56px; margin-top: 56px; }
+  .why   { padding-top: 56px; margin-top: 56px; }
 }
