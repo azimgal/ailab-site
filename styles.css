@@ -722,23 +722,108 @@ body {
   border-radius: 100px;
   color: rgba(255,255,255,0.45);
 }
-/* App showcase slides */
-.cases__slide--app .cases__slide-left {
-  border-right: 1px solid rgba(255,255,255,0.07);
+/* ── APPS ── */
+.apps {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 88px;
+  margin-top: 88px;
 }
-.cases__slide-right--preview {
-  padding: 0;
+.apps__head {
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 56px;
+}
+.apps__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.apps__card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border: 1px solid rgba(255,255,255,0.07);
   overflow: hidden;
-  display: flex;
-  align-items: stretch;
+  background: rgba(255,255,255,0.02);
 }
-.cases__slide-preview {
+.apps__card--dark {
+  background: rgba(255,255,255,0.01);
+}
+.apps__card-info {
+  padding: 40px 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.apps__card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--purple);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.apps__card-tag::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: var(--purple);
+  flex-shrink: 0;
+}
+.apps__card-name {
+  font-size: clamp(28px, 3.5vw, 52px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.apps__card-desc {
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 28px;
+  flex: 1;
+}
+.apps__card-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.apps__card-tech {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.45);
+}
+.apps__card-preview {
+  overflow: hidden;
+  max-height: 420px;
+}
+.apps__card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
-  max-height: 520px;
+  transition: transform .5s ease;
+}
+.apps__card:hover .apps__card-img {
+  transform: scale(1.02);
 }
 
 /* ── STATS ── */
