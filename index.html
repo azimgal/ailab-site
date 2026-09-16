@@ -45,22 +45,20 @@
 /* ── What We Build: numeral text ── */
 .ailab-build__numeral img { display: none; }
 .ailab-build__numeral-n {
-  font-size: 32px;
-  font-weight: 800;
+  font-family: 'Bebas Neue', display;
+  font-size: 72px;
+  font-weight: 400;
   line-height: 1;
-  letter-spacing: -0.01em;
-  background: linear-gradient(135deg, #6A67F8 0%, #1E8AFF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: 'JetBrains Mono', monospace;
-  padding-top: 4px;
+  letter-spacing: .02em;
+  color: rgba(106,103,248,.22);
   display: block;
 }
+.ailab-build__row:hover .ailab-build__numeral-n { color: rgba(106,103,248,.45); }
+.ailab-build__row:first-of-type { border-top: 1px solid rgba(255,255,255,.07); }
 
 /* ── Cases section ── */
 #ailab-cases {
-  background: #08090F !important;
+  background: transparent !important;
   padding: 120px 0;
 }
 #ailab-cases .ailab-kicker     { color: #8F8DFA; }
@@ -231,9 +229,22 @@
   .ailab-academy-promo__card-icon { width: 36px; height: 36px; border-radius: 8px; }
 }
 
+/* ── How steps: card borders ── */
+.ailab-how__step {
+  background: rgba(255,255,255,.015);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 2px;
+  padding: 28px 24px;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+.ailab-how__step:hover {
+  border-color: rgba(106,103,248,.30);
+  background: rgba(106,103,248,.04);
+}
+
 /* ── Technology section ── */
 .atech {
-  background: #08090F !important;
+  background: transparent !important;
   padding: 120px 0;
 }
 .atech__header {
@@ -357,9 +368,19 @@
   .atech__cat--certs .atech__chip { white-space: normal; }
 }
 
-/* ══ CLEAN FLAT BACKGROUND ══ */
+/* ══ REDESIGN: BLACK / WHITE / VIOLET editorial ══ */
 
-/* Hero: right column accent (grid item) */
+/* Kill geo-bg, body is pure black */
+.ailab-geo-bg { display: none; }
+
+/* ── Explicit section backgrounds ── */
+.ailab-section { background: #08090F; }
+.ailab-section--tinted { background: #0C0D1A !important; }
+.ailab-ecosystem { background: #06070E !important; }
+#ailab-cases { background: #08090F; }
+
+/* ══ HERO — black + violet diagonal ══ */
+.ailab-hero { background: #000000 !important; }
 .ailab-hero .ailab-hero__inner { gap: 0; }
 .ailab-hero__accent {
   position: relative;
@@ -367,37 +388,293 @@
   min-height: 340px;
   overflow: visible;
 }
+/* VIOLET diagonal panel */
 .ailab-hero__accent::before {
   content: '';
   position: absolute;
   top: -80px; bottom: -80px;
   left: 0; right: calc(-1 * var(--ailab-pad-page));
-  background: var(--ailab-violet);
-  clip-path: polygon(28% 0%, 100% 0%, 100% 100%, 0% 100%);
+  background: #6A67F8;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
-/* Subtle inner grid pattern on violet block */
+/* Light grid on violet */
 .ailab-hero__accent::after {
   content: '';
   position: absolute;
   top: -80px; bottom: -80px;
   left: 0; right: calc(-1 * var(--ailab-pad-page));
   background-image:
-    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-  background-size: 48px 48px;
-  clip-path: polygon(28% 0%, 100% 0%, 100% 100%, 0% 100%);
+    linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+  z-index: 1;
 }
-@media (max-width: 767px) {
-  .ailab-hero__accent { display: none; }
-}
+@media (max-width: 767px) { .ailab-hero__accent { display: none; } }
 
+/* Composition on violet panel */
+.ahg {
+  position: absolute;
+  top: -80px; bottom: -80px;
+  left: 0; right: calc(-1 * var(--ailab-pad-page));
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+/* White diagonal slash on violet boundary */
+.ahg::before {
+  content: '';
+  position: absolute;
+  top: -5%; bottom: -5%;
+  left: 1%; width: 7%;
+  background: rgba(255,255,255,.16);
+  clip-path: polygon(50% 0%, 100% 0%, 50% 100%, 0% 100%);
+}
+/* White horizontal accent line */
+.ahg::after {
+  content: '';
+  position: absolute;
+  top: 42%; left: 18%; width: 56%;
+  height: 1px;
+  background: rgba(255,255,255,.28);
+  transform: rotate(-5deg);
+  transform-origin: left center;
+}
+/* Stat cards on violet */
+.ahg__stat {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  pointer-events: auto;
+  padding: 12px 16px;
+  background: rgba(0,0,0,.22);
+  border-radius: 2px;
+}
+.ahg__num {
+  font-family: 'Bebas Neue', display;
+  font-size: 44px;
+  line-height: 1;
+  color: #FEFCFF;
+  letter-spacing: .03em;
+}
+.ahg__lbl {
+  font-size: 10px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  color: rgba(255,255,255,.65);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+.ahg__stat--1 {
+  top: 16%; left: 18%;
+  border-left: 2px solid rgba(255,255,255,.80);
+  border-top: 1px solid rgba(255,255,255,.18);
+  border-right: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.ahg__stat--2 {
+  top: 47%; left: 52%;
+  border-top: 2px solid rgba(255,255,255,.80);
+  border-left: 1px solid rgba(255,255,255,.14);
+  border-right: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.ahg__stat--3 {
+  top: 70%; left: 20%;
+  border: 1px solid rgba(255,255,255,.22);
+}
+@media (max-width: 767px) { .ahg { display: none; } }
 .ailab-hero__text { position: relative; z-index: 1; }
 
-/* Sections — flat solid, no transparency hacks */
-.ailab-section { background: #08090F; }
-.ailab-section--tinted { background: #0B0C1A !important; }
-.ailab-ecosystem { background: #060710 !important; }
-.ailab-hero { background: #08090F !important; }
+/* ══ HOW WE WORK — WHITE editorial section ══ */
+#ailab-how {
+  background: #FEFCFF !important;
+  border-top: 4px solid #000000;
+}
+#ailab-how .ailab-kicker { color: #6A67F8; }
+#ailab-how .ailab-title,
+#ailab-how h2 { color: #000000; }
+#ailab-how .ailab-section-header--accent::before { background: #6A67F8; }
+#ailab-how .ailab-how__grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  border-top: 2px solid #000000;
+  margin-bottom: 32px;
+}
+#ailab-how .ailab-how__divider { display: none !important; }
+#ailab-how .ailab-how__step {
+  display: grid !important;
+  grid-template-columns: 68px 1fr 1fr !important;
+  gap: 0 48px !important;
+  padding: 32px 0 !important;
+  border-bottom: 1px solid rgba(0,0,0,.10) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  transition: background 180ms ease !important;
+  align-items: start !important;
+}
+#ailab-how .ailab-how__step:hover { background: rgba(106,103,248,.05) !important; }
+#ailab-how .ailab-how__num {
+  font-family: 'Bebas Neue', display !important;
+  font-size: 52px !important;
+  font-weight: 400 !important;
+  color: #6A67F8 !important;
+  -webkit-text-fill-color: #6A67F8 !important;
+  background: none !important;
+  letter-spacing: .03em !important;
+  line-height: 1 !important;
+  margin-bottom: 0 !important;
+  align-self: start !important;
+}
+#ailab-how .ailab-how__label {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  margin-bottom: 6px !important;
+  padding-top: 8px !important;
+}
+#ailab-how .ailab-how__desc {
+  font-size: 14px !important;
+  color: rgba(0,0,0,.55) !important;
+  line-height: 1.55 !important;
+  padding-top: 8px !important;
+}
+#ailab-how .ailab-how__closing { color: rgba(0,0,0,.45) !important; }
+
+/* ══ WHY US — BLACK editorial section ══ */
+#ailab-why {
+  background: #000000 !important;
+}
+#ailab-why .ailab-kicker { color: #6A67F8; }
+#ailab-why .ailab-title,
+#ailab-why h2 { color: #FEFCFF; }
+#ailab-why .ailab-section-header--accent::before { background: #6A67F8; }
+#ailab-why [role="list"] { border-top: 1px solid rgba(255,255,255,.08); }
+#ailab-why .ailab-why__row {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: 48px;
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  align-items: start;
+}
+#ailab-why .ailab-why__num {
+  font-family: 'Bebas Neue', display;
+  font-size: 52px;
+  font-weight: 400;
+  color: #6A67F8;
+  line-height: 1;
+  letter-spacing: .03em;
+  background: none;
+  -webkit-text-fill-color: #6A67F8;
+}
+#ailab-why .ailab-why__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FEFCFF;
+  margin-bottom: 8px;
+}
+#ailab-why .ailab-why__desc {
+  font-size: 15px;
+  color: rgba(255,255,255,.50);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+/* Team cards inside Why section use ailab-how__grid/step */
+#ailab-why .ailab-how__grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  flex-direction: initial !important;
+  gap: 1px !important;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+#ailab-why .ailab-how__step {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: initial !important;
+  padding: 28px 24px !important;
+  background: rgba(255,255,255,.025) !important;
+  border: none !important;
+  border-right: 1px solid rgba(255,255,255,.06) !important;
+  border-radius: 0 !important;
+  gap: 6px !important;
+  transition: none !important;
+  align-items: initial !important;
+}
+#ailab-why .ailab-how__step:last-child { border-right: none !important; }
+#ailab-why .ailab-how__num { display: none !important; }
+#ailab-why .ailab-how__label { color: #FEFCFF !important; padding-top: 0 !important; }
+#ailab-why .ailab-how__desc { color: rgba(255,255,255,.55) !important; padding-top: 0 !important; }
+
+/* ══ PARALLELOGRAM SHAPE LABELS ══ */
+
+/* All kickers → parallelogram shape */
+.ailab-kicker {
+  display: inline-block !important;
+  background: #6A67F8;
+  color: #FEFCFF !important;
+  -webkit-text-fill-color: #FEFCFF !important;
+  padding: 5px 26px 5px 12px;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  margin-bottom: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-family: 'Manrope', sans-serif;
+  border-radius: 0;
+  border: none;
+  line-height: 1.8;
+}
+/* Hero kicker: subtle on black */
+.ailab-hero .ailab-kicker {
+  background: rgba(106,103,248,.18);
+  color: #DBDDFF !important;
+  -webkit-text-fill-color: #DBDDFF !important;
+  border: 1px solid rgba(106,103,248,.40);
+  clip-path: none;
+  padding: 5px 18px;
+}
+/* White section (How): black parallelogram */
+#ailab-how .ailab-kicker {
+  background: #000000;
+  color: #FEFCFF !important;
+  -webkit-text-fill-color: #FEFCFF !important;
+}
+/* Dark kicker variant */
+.ailab-kicker--dark {
+  background: #1E1B4B;
+  color: #DBDDFF !important;
+  -webkit-text-fill-color: #DBDDFF !important;
+}
+
+/* ── Hero stat card shapes: each card = different geometry ── */
+/* Card 1: parallelogram (left-angled, violet-accented) */
+.ahg__stat--1 {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  border: none !important;
+  padding-right: 24px !important;
+}
+/* Card 2: white card with corner cut (inverse parallelogram) */
+.ahg__stat--2 {
+  background: rgba(255,255,255,.90) !important;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  border: none !important;
+}
+.ahg__stat--2 .ahg__num { color: #14162B; }
+.ahg__stat--2 .ahg__lbl { color: rgba(0,0,0,.55); }
+/* Card 3: left-slant parallelogram */
+.ahg__stat--3 {
+  clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%);
+  border: none !important;
+  padding-left: 20px !important;
+}
 
 /* ─── CALCULATOR ───────────────────────────────────────── */
 .ac-calc {
@@ -408,7 +685,7 @@
   max-width: 900px;
   margin: 0 auto;
 }
-.ac-calc .ailab-kicker { color: var(--ailab-violet-dark); }
+.ac-calc .ailab-kicker { background: #14162B; color: #DBDDFF !important; -webkit-text-fill-color: #DBDDFF !important; }
 
 .ac-calc__steps {
   display: flex;
@@ -951,6 +1228,7 @@
 </style>
 </head>
 <body>
+  <div class="ailab-geo-bg" aria-hidden="true"></div>
   <a class="ailab-skip" href="#ailab-main">Перейти к основному содержанию</a>
 
   <!-- ══════════════════════════════════════════════════════
@@ -1014,7 +1292,22 @@
           </div>
         </div>
 
-        <div class="ailab-hero__accent" aria-hidden="true"></div>
+        <div class="ailab-hero__accent" aria-hidden="true">
+          <div class="ahg">
+            <div class="ahg__stat ahg__stat--1">
+              <span class="ahg__num">40+</span>
+              <span class="ahg__lbl">AI-агентов</span>
+            </div>
+            <div class="ahg__stat ahg__stat--2">
+              <span class="ahg__num">30+</span>
+              <span class="ahg__lbl">Проектов</span>
+            </div>
+            <div class="ahg__stat ahg__stat--3">
+              <span class="ahg__num">50+</span>
+              <span class="ahg__lbl">Сертификатов</span>
+            </div>
+          </div>
+        </div>
 
       </div>
     </section>
@@ -1912,11 +2205,11 @@
 
           <div class="ailab-cta__contacts ailab-animate" style="transition-delay:400ms">
             <a href="tel:+77751513414" class="ailab-cta__contact">
-              <img src="assets/icons/phone.png" alt="" onerror="this.style.display='none'" />
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0" aria-hidden="true"><path d="M14.9 11.38l-2.18-2.18a1.38 1.38 0 00-1.95 0l-.87.87a.34.34 0 01-.44.03 11.6 11.6 0 01-3.56-3.56.34.34 0 01.03-.44l.87-.87a1.38 1.38 0 000-1.95L4.62 1.1a1.38 1.38 0 00-1.95 0l-.7.7C.83 3.03.94 5.7 3.5 8.5 6.07 11.3 8.98 12.97 11.2 12.97c.95 0 1.76-.32 2.4-.97l.7-.7a1.38 1.38 0 000-1.92z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
               +7 775 151 34 14
             </a>
             <a href="https://t.me/tdm343" class="ailab-cta__contact" target="_blank" rel="noopener noreferrer">
-              <img src="assets/icons/telegram.png" alt="" onerror="this.style.display='none'" />
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0" aria-hidden="true"><path d="M14.5 1.5L1 6.5l5 1.5 1.5 5 2.5-3 3 2.5 1.5-11z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               @tdm343
             </a>
             <a href="https://ai-laboratory.kz" class="ailab-cta__contact" target="_blank" rel="noopener noreferrer">
