@@ -728,6 +728,14 @@ body {
   padding-top: 88px;
   margin-top: 88px;
 }
+.apps__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
 .apps__head {
   font-size: clamp(32px, 5vw, 72px);
   font-weight: 800;
@@ -735,72 +743,104 @@ body {
   color: var(--white);
   line-height: 0.95;
   letter-spacing: -0.03em;
-  margin-bottom: 56px;
 }
-.apps__grid {
+.apps__nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.apps__btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.apps__btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+.apps__counter {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  min-width: 48px;
+  text-align: center;
+}
+.apps__counter span:first-child { color: var(--white); }
+.apps__track-wrap {
+  overflow: hidden;
+}
+.apps__track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.apps__slide {
+  min-width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
-.apps__card {
-  display: grid;
-  grid-template-rows: auto 1fr;
   border: 1px solid rgba(255,255,255,0.07);
+  min-height: 480px;
   overflow: hidden;
-  background: rgba(255,255,255,0.02);
 }
-.apps__card--dark {
-  background: rgba(255,255,255,0.01);
-}
-.apps__card-info {
-  padding: 40px 40px 36px;
+.apps__slide-info {
+  padding: 56px 56px 56px 0;
+  border-right: 1px solid rgba(255,255,255,0.07);
   display: flex;
   flex-direction: column;
-  gap: 0;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
-.apps__card-tag {
+.apps__slide-tag {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--purple);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.apps__card-tag::before {
+.apps__slide-tag::before {
   content: '';
   display: block;
-  width: 16px;
+  width: 20px;
   height: 1px;
   background: var(--purple);
   flex-shrink: 0;
 }
-.apps__card-name {
-  font-size: clamp(28px, 3.5vw, 52px);
+.apps__slide-name {
+  font-size: clamp(36px, 5vw, 72px);
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--white);
-  line-height: 1;
-  margin-bottom: 20px;
+  line-height: 0.95;
+  margin-bottom: 28px;
 }
-.apps__card-desc {
-  font-size: clamp(13px, 1.2vw, 15px);
+.apps__slide-desc {
+  font-size: clamp(13px, 1.3vw, 16px);
   font-weight: 500;
   color: var(--muted);
   line-height: 1.75;
-  margin-bottom: 28px;
   flex: 1;
+  margin-bottom: 36px;
 }
-.apps__card-techs {
+.apps__slide-techs {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: auto;
 }
-.apps__card-tech {
+.apps__slide-tech {
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
@@ -810,20 +850,33 @@ body {
   border-radius: 100px;
   color: rgba(255,255,255,0.45);
 }
-.apps__card-preview {
+.apps__slide-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  max-height: 420px;
 }
-.apps__card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+.apps__slide-preview--light {
+  background: #f5f0e8;
+  padding: 32px 40px 0;
+  align-items: flex-end;
+}
+.apps__slide-preview--dark {
+  background: #111117;
+  padding: 32px 40px 0;
+  align-items: flex-end;
+}
+.apps__slide-img {
   display: block;
-  transition: transform .5s ease;
+  width: auto;
+  height: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  object-position: bottom;
 }
-.apps__card:hover .apps__card-img {
-  transform: scale(1.02);
+.apps__slide-img--phone {
+  max-height: 380px;
+  width: auto;
 }
 
 /* ── STATS ── */
