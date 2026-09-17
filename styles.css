@@ -158,6 +158,21 @@ body {
   z-index: 0;
   pointer-events: none;
 }
+/* Gradient overlay — darkens left side so text is legible */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(20,22,43,0.92) 0%,
+    rgba(20,22,43,0.78) 30%,
+    rgba(20,22,43,0.30) 60%,
+    rgba(20,22,43,0.00) 100%
+  );
+}
 
 /* ── SECTION DIVIDERS (diagonal transitions) ── */
 .cut {
