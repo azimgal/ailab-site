@@ -1590,7 +1590,7 @@ body {
 .calc { display: flex; flex-direction: column; gap: 20px; }
 
 /* Progress bar */
-.calc__prog { display: flex; align-items: center; gap: 0; }
+.calc__prog { display: flex; align-items: center; gap: 0; padding-top: 18px; }
 .calc__prog-step {
   display: flex; flex-direction: column; align-items: center; gap: 5px;
   cursor: pointer; flex-shrink: 0;
