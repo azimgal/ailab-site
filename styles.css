@@ -1659,7 +1659,7 @@ body {
 .calc__type.is-sel { border-color: var(--purple); background: rgba(106,103,248,0.14); }
 .calc__type-icon { color: rgba(255,255,255,0.35); transition: color .15s; flex-shrink: 0; }
 .calc__type.is-sel .calc__type-icon { color: var(--purple); }
-.calc__type-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.65); transition: color .15s; }
+.calc__type-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.65); transition: color .15s; word-break: break-word; }
 .calc__type.is-sel .calc__type-name { color: #fff; }
 .calc__type-sub { font-size: 10px; color: var(--muted); line-height: 1.35; }
 
