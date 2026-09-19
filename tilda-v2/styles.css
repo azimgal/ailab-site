@@ -1,0 +1,1700 @@
+/* ============================================================
+   AI LABORATORY — Local Prototype
+   All selectors prefixed .ailab-*
+   Tokens: --ailab-* mapped from design-system
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap');
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  --ailab-bg-page:      #FEFCFF;
+  --ailab-bg-card:      #FFFFFF;
+  --ailab-bg-sunken:    #F4F5F9;
+  --ailab-bg-dark:      #14162B;
+  --ailab-bg-dark-2:    #1B202B;
+  --ailab-bg-card-dark: #232640;
+
+  --ailab-text-strong:  #333455;
+  --ailab-text-body:    #4D5566;
+  --ailab-text-muted:   #7F879B;
+  --ailab-text-light:   #A8AEBF;
+  --ailab-text-white:   #FEFCFF;
+
+  --ailab-violet:       #6A67F8;
+  --ailab-violet-hover: #524FE0;
+  --ailab-violet-light: #DBDDFF;
+  --ailab-violet-dark:  #8F8DFA;
+  --ailab-blue:         #1E8AFF;
+
+  --ailab-border:        #E6EDF8;
+  --ailab-border-strong: #D6DAE6;
+  --ailab-border-dark:   rgba(219,221,255,.16);
+  --ailab-focus-ring:    #8F8DFA;
+
+  --ailab-shadow-sm:  0 2px 8px rgba(20,22,43,.06);
+  --ailab-shadow-md:  0 8px 24px rgba(20,22,43,.08);
+
+  --ailab-radius-sm:   10px;
+  --ailab-radius-md:   14px;
+  --ailab-radius-card: 20px;
+  --ailab-radius-xl:   28px;
+  --ailab-radius-pill: 999px;
+
+  --ailab-pad-page:      56px;
+  --ailab-gap-section:   48px;
+  --ailab-gap-card:      20px;
+  --ailab-section-space: 120px;
+
+  --ailab-dur-base: 200ms;
+  --ailab-dur-slow: 360ms;
+  --ailab-ease:     cubic-bezier(.22,.61,.36,1);
+
+  --ailab-font: 'Manrope', sans-serif;
+  --ailab-mono: 'JetBrains Mono', monospace;
+
+  --ailab-grad-glow: radial-gradient(60% 60% at 50% 50%, rgba(30,138,255,.5) 0%, rgba(106,103,248,.14) 55%, transparent 100%);
+  --ailab-grad-ink:  linear-gradient(180deg, #1B202B 0%, #14162B 100%);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ailab-font);
+  background: var(--ailab-bg-page);
+  color: var(--ailab-text-strong);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--ailab-font); }
+
+/* ── Skip link ─────────────────────────────────────────────── */
+.ailab-skip {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 999;
+  background: var(--ailab-violet);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: var(--ailab-radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  transition: top 120ms;
+}
+.ailab-skip:focus { top: 16px; }
+
+/* ── Focus ─────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--ailab-focus-ring);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ── Utility ───────────────────────────────────────────────── */
+.ailab-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ailab-pad-page);
+}
+
+.ailab-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ailab-violet);
+  margin-bottom: 12px;
+}
+.ailab-kicker--dark  { color: var(--ailab-violet-dark); }
+.ailab-kicker--muted { color: var(--ailab-text-muted); }
+
+.ailab-section {
+  padding: var(--ailab-section-space) 0;
+}
+.ailab-section--tinted { background: var(--ailab-bg-sunken); position: relative; overflow: hidden; }
+.ailab-section--dark {
+  background: var(--ailab-bg-dark);
+  color: var(--ailab-text-white);
+}
+
+.ailab-section-header { margin-bottom: var(--ailab-gap-section); }
+
+.ailab-title {
+  font-size: clamp(20px, 2.8vw, 24px);
+  font-weight: 700;
+  color: var(--ailab-text-strong);
+  line-height: 1.2;
+}
+.ailab-title--xl {
+  font-size: clamp(26px, 4.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+}
+.ailab-title--dark { color: var(--ailab-text-white); }
+
+/* ── Scroll animation ──────────────────────────────────────── */
+.ailab-animate {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity  var(--ailab-dur-slow) var(--ailab-ease),
+    transform var(--ailab-dur-slow) var(--ailab-ease);
+}
+.ailab-animate.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ailab-animate { opacity: 1; transform: none; transition: none; }
+  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.ailab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--ailab-radius-pill);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  transition:
+    background var(--ailab-dur-base) var(--ailab-ease),
+    color var(--ailab-dur-base) var(--ailab-ease),
+    border-color var(--ailab-dur-base) var(--ailab-ease),
+    box-shadow var(--ailab-dur-base) var(--ailab-ease),
+    transform 120ms var(--ailab-ease);
+  text-decoration: none;
+}
+.ailab-btn--primary {
+  background: var(--ailab-violet);
+  color: #fff;
+}
+.ailab-btn--primary:hover {
+  background: var(--ailab-violet-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(106,103,248,.28);
+}
+.ailab-btn--secondary {
+  background: transparent;
+  color: var(--ailab-text-strong);
+  border: 1.5px solid var(--ailab-border-strong);
+}
+.ailab-btn--secondary:hover {
+  border-color: var(--ailab-violet);
+  color: var(--ailab-violet);
+}
+.ailab-btn--full { width: 100%; }
+
+/* ── Chips ─────────────────────────────────────────────────── */
+.ailab-chip {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: var(--ailab-radius-pill);
+  border: 1px solid var(--ailab-border-strong);
+  background: var(--ailab-bg-sunken);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ailab-text-strong);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   01 HEADER
+   ============================================================ */
+.ailab-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 72px;
+  padding: 0 var(--ailab-pad-page);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: transparent;
+  transition:
+    background var(--ailab-dur-base) var(--ailab-ease),
+    box-shadow var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-header.is-scrolled {
+  background: rgba(254,252,255,.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--ailab-shadow-sm);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .ailab-header.is-scrolled { background: rgba(254,252,255,.97); }
+}
+.ailab-header__logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
+.ailab-header__logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ailab-text-strong);
+  letter-spacing: -0.02em;
+}
+.ailab-header:not(.is-scrolled) .ailab-header__logo-text {
+  color: #fff;
+}
+
+.ailab-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+}
+.ailab-header__nav a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ailab-text-strong);
+  position: relative;
+  padding-bottom: 2px;
+}
+.ailab-header__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 2px;
+  background: var(--ailab-violet);
+  transition: width var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-header__nav a:hover::after { width: 100%; }
+
+.ailab-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+}
+.ailab-hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--ailab-text-strong);
+  border-radius: 2px;
+}
+
+.ailab-mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--ailab-bg-dark);
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+.ailab-mobile-menu.is-open { display: flex; }
+.ailab-mobile-menu a {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ailab-text-white);
+  transition: color var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-mobile-menu a:hover { color: var(--ailab-violet-dark); }
+.ailab-mobile-menu .ailab-btn {
+  margin-top: 8px;
+  font-size: 16px;
+  padding: 14px 32px;
+}
+.ailab-mobile-menu__close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ailab-text-light);
+  font-size: 28px;
+  line-height: 1;
+  padding: 4px;
+  transition: color var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-mobile-menu__close:hover { color: var(--ailab-text-white); }
+
+/* ============================================================
+   02 HERO — LIGHT
+   ============================================================ */
+.ailab-hero {
+  min-height: calc(100vh - 72px);
+  min-height: calc(100svh - 72px);
+  background: url('assets/bg-hero.svg') center/cover no-repeat, #06071a;
+  display: flex;
+  align-items: center;
+  padding: 80px var(--ailab-pad-page);
+  position: relative;
+  overflow: hidden;
+  color: var(--ailab-text-white);
+}
+.ailab-hero__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 58fr 42fr;
+  gap: 64px;
+  align-items: center;
+}
+.ailab-hero__headline {
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  color: var(--ailab-text-white);
+  margin-bottom: 20px;
+}
+.ailab-hero__headline em {
+  font-style: normal;
+  color: var(--ailab-violet-dark);
+}
+.ailab-hero__subtext {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(254,252,255,.70);
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+.ailab-hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.ailab-hero__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ailab-hero__glow {
+  position: absolute;
+  inset: -60px;
+  background: var(--ailab-grad-glow);
+  pointer-events: none;
+  border-radius: 50%;
+}
+.ailab-hero__sphere {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+@keyframes ailab-sphere-breathe {
+  0%, 100% { transform: scale(1);   opacity: .95; }
+  50%       { transform: scale(1.02); opacity: 1; }
+}
+.ailab-hero__sphere { animation: ailab-sphere-breathe 8s ease-in-out infinite; }
+
+/* ============================================================
+   03 PARTNERS TICKER
+   ============================================================ */
+.ailab-ecosystem {
+  background: #090b1e;
+  border-top:    1px solid rgba(106,103,248,.25);
+  border-bottom: 1px solid rgba(106,103,248,.15);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Glowing accent line at top */
+.ailab-ecosystem::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(106,103,248,.80) 25%,
+    rgba(30,138,255,.80)  75%,
+    transparent 100%);
+  pointer-events: none;
+}
+
+.ailab-ecosystem__inner {
+  display: flex;
+  align-items: center;
+  height: 96px;
+}
+
+/* Fixed label block */
+.ailab-ecosystem__head {
+  padding: 0 32px 0 var(--ailab-pad-page);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.ailab-ecosystem__label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #8F8DFA 0%, #1E8AFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Vertical separator */
+.ailab-ecosystem__rule {
+  width: 1px;
+  height: 32px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(106,103,248,.55) 50%,
+    transparent 100%);
+}
+
+/* Ticker container — clips overflow + edge fades */
+.ailab-ecosystem__ticker {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+/* Scrolling track — 7 items × 2 for seamless loop */
+.ailab-ecosystem__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ailab-ticker 32s linear infinite;
+  will-change: transform;
+}
+.ailab-ecosystem__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ailab-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Individual partner */
+.ailab-ecosystem__logo {
+  display: flex;
+  align-items: center;
+  padding: 0 52px;
+  flex-shrink: 0;
+  position: relative;
+  cursor: default;
+}
+
+/* Vertical line separator */
+.ailab-ecosystem__logo::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background: rgba(106,103,248,.30);
+}
+
+.ailab-ecosystem__logo-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  color: #ffffff;
+  transition: color var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-ecosystem__logo:hover .ailab-ecosystem__logo-name {
+  color: #8F8DFA;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ailab-ecosystem__track { animation: none; }
+}
+
+/* ============================================================
+   04 WHAT WE BUILD
+   ============================================================ */
+.ailab-build__row {
+  display: grid;
+  grid-template-columns: 52px 1fr 28px;
+  gap: 24px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ailab-border);
+  border-radius: 4px;
+  transition: background var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-build__row:first-of-type { border-top: 1px solid var(--ailab-border); }
+.ailab-build__row:hover {
+  background: var(--ailab-bg-sunken);
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 -16px;
+}
+
+.ailab-build__numeral img { width: 40px; height: auto; }
+.ailab-build__numeral-text {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ailab-violet);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  padding-top: 2px;
+}
+.ailab-build__category {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ailab-text-muted);
+  margin-bottom: 5px;
+}
+.ailab-build__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ailab-text-strong);
+  margin-bottom: 10px;
+}
+.ailab-build__desc {
+  font-size: 14px;
+  color: var(--ailab-text-body);
+  line-height: 1.55;
+  margin-bottom: 14px;
+  max-width: 560px;
+}
+.ailab-build__caps { display: flex; flex-wrap: wrap; gap: 8px; }
+.ailab-build__icon { padding-top: 6px; opacity: .35; align-self: start; }
+.ailab-build__icon img { width: 22px; height: auto; }
+
+/* ============================================================
+   05 BUSINESS-FIRST — DARK
+   ============================================================ */
+.ailab-biz { position: relative; overflow: hidden; }
+.ailab-biz__ambient {
+  position: absolute;
+  right: -100px; top: 50%;
+  transform: translateY(-50%);
+  width: 420px; height: 420px;
+  opacity: .11;
+  pointer-events: none;
+  z-index: 0;
+}
+.ailab-biz__ambient img { width: 100%; height: 100%; object-fit: contain; }
+.ailab-biz__inner { position: relative; z-index: 1; max-width: 820px; }
+
+.ailab-biz__subline {
+  font-size: 16px;
+  color: var(--ailab-text-light);
+  margin-bottom: 48px;
+  font-style: italic;
+}
+.ailab-biz__flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 44px;
+}
+.ailab-biz__step-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ailab-text-white);
+  padding: 8px 14px;
+  border: 1px solid var(--ailab-border-dark);
+  border-radius: var(--ailab-radius-sm);
+  background: var(--ailab-bg-dark-2);
+}
+.ailab-biz__arrow {
+  color: var(--ailab-violet-dark);
+  font-size: 16px;
+  flex-shrink: 0;
+  opacity: .8;
+}
+
+.ailab-biz__qs-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ailab-violet-dark);
+  margin-bottom: 14px;
+}
+.ailab-biz__questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.ailab-biz__q-chip {
+  padding: 8px 16px;
+  border-radius: var(--ailab-radius-pill);
+  border: 1px solid var(--ailab-border-dark);
+  background: var(--ailab-bg-card-dark);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ailab-text-light);
+}
+.ailab-biz__ending {
+  font-size: 14px;
+  color: var(--ailab-text-light);
+  line-height: 1.65;
+  border-top: 1px solid var(--ailab-border-dark);
+  padding-top: 24px;
+}
+.ailab-biz__ending strong { color: var(--ailab-text-white); font-weight: 600; }
+
+/* ============================================================
+   06 CASES
+   ============================================================ */
+.ailab-cases__featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ailab-gap-card);
+  margin-bottom: 24px;
+}
+.ailab-case-card {
+  border-radius: var(--ailab-radius-card);
+  border: 1px solid var(--ailab-border);
+  background: var(--ailab-bg-card);
+  overflow: hidden;
+  transition:
+    transform var(--ailab-dur-slow) var(--ailab-ease),
+    box-shadow var(--ailab-dur-slow) var(--ailab-ease);
+}
+.ailab-case-card:hover { transform: translateY(-2px); box-shadow: var(--ailab-shadow-md); }
+.ailab-case-card__top {
+  background: var(--ailab-bg-dark);
+  padding: 28px 28px 24px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+.ailab-case-card__industry {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ailab-violet-dark);
+  margin-bottom: 8px;
+}
+.ailab-case-card__client {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ailab-text-white);
+  line-height: 1.15;
+}
+.ailab-case-card__bottom { padding: 22px 28px 24px; }
+.ailab-case-card__sol-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ailab-text-muted);
+  margin-bottom: 8px;
+}
+.ailab-case-card__sol {
+  font-size: 14px;
+  color: var(--ailab-text-body);
+  line-height: 1.55;
+}
+
+.ailab-cases__secondary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ailab-gap-card);
+}
+.ailab-case-compact {
+  padding: 20px 22px;
+  border-radius: var(--ailab-radius-md);
+  border: 1px solid var(--ailab-border);
+  background: var(--ailab-bg-card);
+  transition:
+    transform var(--ailab-dur-slow) var(--ailab-ease),
+    box-shadow var(--ailab-dur-slow) var(--ailab-ease);
+}
+.ailab-case-compact:hover { transform: translateY(-2px); box-shadow: var(--ailab-shadow-sm); }
+.ailab-case-compact__industry {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ailab-violet);
+  margin-bottom: 6px;
+}
+.ailab-case-compact__client {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ailab-text-strong);
+  margin-bottom: 5px;
+}
+.ailab-case-compact__sol {
+  font-size: 13px;
+  color: var(--ailab-text-muted);
+  line-height: 1.45;
+}
+
+/* ============================================================
+   07 HOW WE WORK
+   ============================================================ */
+.ailab-how__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 48px;
+  margin-bottom: 48px;
+}
+.ailab-how__divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: var(--ailab-border);
+}
+.ailab-how__num {
+  font-size: 38px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.ailab-how__label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ailab-text-strong);
+  margin-bottom: 8px;
+}
+.ailab-how__desc {
+  font-size: 13px;
+  color: var(--ailab-text-muted);
+  line-height: 1.55;
+}
+.ailab-how__closing {
+  text-align: center;
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 600;
+  color: var(--ailab-text-body);
+  font-style: italic;
+}
+
+/* ============================================================
+   08 ENGAGEMENT MODELS
+   ============================================================ */
+.ailab-engagement__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--ailab-gap-card);
+}
+.ailab-eng-card {
+  border-radius: var(--ailab-radius-card);
+  border: 1px solid var(--ailab-border);
+  background: var(--ailab-bg-card);
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--ailab-dur-slow) var(--ailab-ease),
+    box-shadow var(--ailab-dur-slow) var(--ailab-ease);
+}
+.ailab-eng-card:hover { transform: translateY(-2px); box-shadow: var(--ailab-shadow-md); }
+.ailab-eng-card--pilot { border-color: var(--ailab-violet); }
+.ailab-eng-card--ext   { background: var(--ailab-bg-sunken); }
+
+.ailab-eng-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: var(--ailab-radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.ailab-eng-badge--violet { background: var(--ailab-violet); color: #fff; }
+.ailab-eng-badge--dark   { background: var(--ailab-bg-dark); color: var(--ailab-text-white); }
+
+.ailab-eng-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ailab-text-strong);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.ailab-eng-card__desc {
+  font-size: 13px;
+  color: var(--ailab-text-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+.ailab-eng-tag {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ailab-violet);
+  background: var(--ailab-violet-light);
+  padding: 4px 10px;
+  border-radius: var(--ailab-radius-pill);
+}
+
+/* ============================================================
+   09 WHY AI LABORATORY — TINTED
+   ============================================================ */
+.ailab-why__row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--ailab-border);
+}
+.ailab-why__row:first-of-type { border-top: 1px solid var(--ailab-border); }
+.ailab-why__num {
+  font-size: 30px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  padding-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.ailab-why__title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ailab-text-strong);
+  margin-bottom: 8px;
+}
+.ailab-why__desc {
+  font-size: 14px;
+  color: var(--ailab-text-body);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   10 TECHNOLOGY & EXPERTISE
+   ============================================================ */
+.ailab-tech__group { margin-bottom: 40px; }
+.ailab-tech__group-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ailab-text-strong);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.ailab-tech__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ailab-tech__chip {
+  padding: 8px 16px;
+  border-radius: var(--ailab-radius-pill);
+  border: 1px solid var(--ailab-border-strong);
+  background: var(--ailab-bg-sunken);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ailab-text-strong);
+  transition:
+    background var(--ailab-dur-base) var(--ailab-ease),
+    color var(--ailab-dur-base) var(--ailab-ease),
+    border-color var(--ailab-dur-base) var(--ailab-ease);
+  cursor: default;
+}
+.ailab-tech__chip:hover {
+  background: var(--ailab-bg-card-dark);
+  color: var(--ailab-text-white);
+  border-color: var(--ailab-bg-card-dark);
+}
+.ailab-tech__certs {
+  padding: 24px 28px;
+  border-radius: var(--ailab-radius-card);
+  border: 1px solid var(--ailab-border);
+  background: var(--ailab-bg-card);
+}
+.ailab-tech__cert-note {
+  font-size: 11px;
+  font-family: var(--ailab-mono);
+  color: var(--ailab-text-muted);
+  margin-bottom: 14px;
+}
+.ailab-tech__cert-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ailab-tech__cert-chip {
+  padding: 6px 14px;
+  border-radius: var(--ailab-radius-sm);
+  border: 1px solid var(--ailab-border-strong);
+  background: var(--ailab-bg-sunken);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ailab-text-body);
+}
+
+/* ============================================================
+   11 TEAM
+   ============================================================ */
+.ailab-team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ailab-gap-card);
+  margin-bottom: 20px;
+}
+.ailab-team-card {
+  border-radius: var(--ailab-radius-card);
+  border: 1px solid var(--ailab-border);
+  background: var(--ailab-bg-card);
+  padding: 28px 24px;
+  transition:
+    transform var(--ailab-dur-slow) var(--ailab-ease),
+    box-shadow var(--ailab-dur-slow) var(--ailab-ease);
+}
+.ailab-team-card:hover { transform: translateY(-2px); box-shadow: var(--ailab-shadow-md); }
+.ailab-team-card__photo {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+.ailab-team-card__placeholder {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(219,221,255,.70) 0%, rgba(106,103,248,.22) 100%);
+  border: 1px solid rgba(106,103,248,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ailab-violet);
+  letter-spacing: -0.02em;
+}
+.ailab-team-card__name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ailab-text-strong);
+  margin-bottom: 4px;
+}
+.ailab-team-card__role {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ailab-violet);
+  margin-bottom: 12px;
+}
+.ailab-team-card__bio {
+  font-size: 13px;
+  color: var(--ailab-text-muted);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.ailab-team-card__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ailab-team-card__tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ailab-text-muted);
+  background: var(--ailab-bg-sunken);
+  border: 1px solid var(--ailab-border);
+  padding: 3px 10px;
+  border-radius: var(--ailab-radius-pill);
+}
+
+.ailab-team__backend {
+  padding: 18px 22px;
+  border-radius: var(--ailab-radius-md);
+  border: 1px solid var(--ailab-border);
+  background: var(--ailab-bg-sunken);
+  font-size: 14px;
+  color: var(--ailab-text-body);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   12 FAQ — TINTED
+   ============================================================ */
+.ailab-faq__list { max-width: 720px; }
+.ailab-faq__item { border-bottom: 1px solid var(--ailab-border-strong); }
+.ailab-faq__item:first-of-type { border-top: 1px solid var(--ailab-border-strong); }
+
+.ailab-faq__trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.ailab-faq__q {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ailab-text-strong);
+  line-height: 1.35;
+}
+.ailab-faq__icon {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  margin-top: 2px;
+  color: var(--ailab-text-muted);
+  transition: transform var(--ailab-dur-base) var(--ailab-ease),
+              color var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-faq__item.is-open .ailab-faq__icon {
+  transform: rotate(45deg);
+  color: var(--ailab-violet);
+}
+.ailab-faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--ailab-dur-slow) ease-in-out;
+}
+.ailab-faq__item.is-open .ailab-faq__answer { max-height: 320px; }
+.ailab-faq__a {
+  font-size: 14px;
+  color: var(--ailab-text-body);
+  line-height: 1.65;
+  padding-bottom: 20px;
+}
+
+/* ============================================================
+   13 FINAL CTA — DARK
+   ============================================================ */
+.ailab-cta { background: var(--ailab-grad-ink); position: relative; overflow: hidden; }
+.ailab-cta__inner { max-width: 620px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+
+.ailab-cta__headline {
+  font-size: clamp(24px, 4.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ailab-text-white);
+  line-height: 1.08;
+  margin-bottom: 16px;
+}
+.ailab-cta__subline {
+  font-size: 16px;
+  color: var(--ailab-text-light);
+  margin-bottom: 44px;
+  line-height: 1.6;
+}
+.ailab-cta__flow {
+  margin-bottom: 44px;
+  text-align: left;
+}
+.ailab-cta__step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ailab-border-dark);
+}
+.ailab-cta__step:first-of-type { border-top: 1px solid var(--ailab-border-dark); }
+.ailab-cta__step-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ailab-violet-dark);
+  line-height: 1;
+  min-width: 32px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.ailab-cta__step-text {
+  font-size: 14px;
+  color: var(--ailab-text-light);
+  line-height: 1.5;
+  padding-top: 3px;
+}
+
+/* Form */
+.ailab-form {
+  background: var(--ailab-bg-dark-2);
+  border: 1px solid var(--ailab-border-dark);
+  border-radius: var(--ailab-radius-card);
+  padding: 28px 32px;
+  text-align: left;
+  margin-bottom: 28px;
+}
+.ailab-form__group { margin-bottom: 14px; }
+.ailab-form__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ailab-text-light);
+  margin-bottom: 6px;
+}
+.ailab-form__label-hint {
+  font-weight: 400;
+  color: var(--ailab-text-muted);
+  margin-left: 4px;
+}
+.ailab-form__input,
+.ailab-form__textarea {
+  width: 100%;
+  background: rgba(20,22,43,.6);
+  border: 1.5px solid rgba(214,218,230,.18);
+  border-radius: var(--ailab-radius-sm);
+  color: var(--ailab-text-white);
+  font-family: var(--ailab-font);
+  font-size: 14px;
+  padding: 11px 14px;
+  outline: none;
+  transition:
+    border-color var(--ailab-dur-base) var(--ailab-ease),
+    box-shadow var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-form__input::placeholder,
+.ailab-form__textarea::placeholder { color: rgba(127,135,155,.7); }
+.ailab-form__input:focus,
+.ailab-form__textarea:focus {
+  border-color: var(--ailab-violet-dark);
+  box-shadow: 0 0 0 3px rgba(106,103,248,.18);
+}
+.ailab-form__input.is-error,
+.ailab-form__textarea.is-error {
+  border-color: #FF002E;
+}
+.ailab-form__textarea { resize: vertical; min-height: 78px; }
+.ailab-form__submit { margin-top: 20px; }
+.ailab-form__legal {
+  font-size: 11px;
+  color: var(--ailab-text-muted);
+  margin-top: 12px;
+  text-align: center;
+  line-height: 1.5;
+}
+.ailab-form__legal a {
+  color: var(--ailab-violet-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ailab-form__fields {}
+.ailab-form__success {
+  display: none;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--ailab-text-light);
+  line-height: 1.7;
+}
+.ailab-form__success strong { color: var(--ailab-text-white); display: block; margin-bottom: 4px; }
+.ailab-form.is-submitted .ailab-form__fields { display: none; }
+.ailab-form.is-submitted .ailab-form__success { display: block; }
+
+.ailab-cta__contacts {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.ailab-cta__contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ailab-text-light);
+  transition: color var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-cta__contact:hover { color: var(--ailab-text-white); }
+.ailab-cta__contact img {
+  width: 18px; height: 18px;
+  opacity: .65;
+  filter: invert(1);
+}
+
+/* ============================================================
+   14 FOOTER — DARK
+   ============================================================ */
+.ailab-footer {
+  background: var(--ailab-bg-dark-2);
+  border-top: 1px solid var(--ailab-border-dark);
+  padding: 28px var(--ailab-pad-page);
+}
+.ailab-footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.ailab-footer__logo img { height: 50px; width: auto; }
+.ailab-footer__logo-text { font-size: 15px; font-weight: 800; color: var(--ailab-text-white); }
+.ailab-footer__nav { display: flex; gap: 24px; flex-wrap: wrap; }
+.ailab-footer__nav a {
+  font-size: 13px;
+  color: var(--ailab-text-light);
+  transition: color var(--ailab-dur-base) var(--ailab-ease);
+}
+.ailab-footer__nav a:hover { color: var(--ailab-text-white); }
+.ailab-footer__right { display: flex; align-items: center; gap: 20px; }
+.ailab-footer__social { opacity: .55; transition: opacity var(--ailab-dur-base) var(--ailab-ease); }
+.ailab-footer__social:hover { opacity: 1; }
+.ailab-footer__social img { width: 20px; height: 20px; filter: invert(1); }
+.ailab-footer__copy { font-size: 12px; color: var(--ailab-text-muted); }
+
+/* ============================================================
+   RESPONSIVE — TABLET ≤ 1023px
+   ============================================================ */
+@media (max-width: 1023px) {
+  :root {
+    --ailab-pad-page:      32px;
+    --ailab-section-space: 100px;
+  }
+  .ailab-hero__inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .ailab-engagement__grid { grid-template-columns: 1fr 1fr; }
+  .ailab-cases__secondary { grid-template-columns: 1fr 1fr; }
+  .ailab-team__grid { grid-template-columns: 1fr 1fr; }
+  .ailab-ecosystem__logo-name { font-size: 18px; }
+  .ailab-header__logo img { height: 56px; }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE < 768px
+   ============================================================ */
+@media (max-width: 767px) {
+  :root {
+    --ailab-pad-page:      20px;
+    --ailab-section-space: 80px;
+    --ailab-gap-card:      12px;
+  }
+
+  /* Header */
+  .ailab-header { padding: 0 20px; }
+  .ailab-header__nav,
+  .ailab-header__actions { display: none; }
+  .ailab-hamburger { display: flex; }
+
+  /* Hero */
+  .ailab-hero {
+    min-height: auto;
+    padding: 56px 20px;
+  }
+  .ailab-hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .ailab-hero__visual { order: -1; }
+  .ailab-hero__sphere { max-width: 240px; margin: 0 auto; }
+  .ailab-hero__actions { flex-direction: column; }
+  .ailab-hero__actions .ailab-btn { width: 100%; }
+
+  /* Partners ticker — mobile */
+  .ailab-ecosystem__inner { height: auto; padding: 16px 0 14px; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .ailab-ecosystem__head  { padding: 0 20px; }
+  .ailab-ecosystem__rule  { display: none; }
+  .ailab-ecosystem__ticker { width: 100%; }
+  .ailab-ecosystem__logo-name { font-size: 16px; }
+
+  /* What We Build — accordion */
+  .ailab-build__row {
+    grid-template-columns: 44px 1fr;
+    cursor: pointer;
+    user-select: none;
+  }
+  .ailab-build__icon { display: none; }
+  .ailab-build__desc,
+  .ailab-build__caps { display: none; }
+  .ailab-build__row.is-open .ailab-build__desc { display: block; }
+  .ailab-build__row.is-open .ailab-build__caps { display: flex; }
+  .ailab-build__row:hover { padding-left: 0; padding-right: 0; margin: 0; }
+  .ailab-build__title { margin-bottom: 0; }
+
+  /* Cases featured — horizontal scroll */
+  .ailab-cases__featured {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0 20px;
+    grid-template-columns: unset;
+  }
+  .ailab-case-card {
+    flex: 0 0 82vw;
+    scroll-snap-align: start;
+  }
+  .ailab-cases__secondary { grid-template-columns: 1fr; }
+
+  /* How We Work */
+  .ailab-how__grid { grid-template-columns: 1fr; gap: 0; }
+  .ailab-how__divider { display: none; }
+  .ailab-how__step {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--ailab-border);
+  }
+  .ailab-how__num { font-size: 30px; margin-bottom: 8px; }
+
+  /* Engagement */
+  .ailab-engagement__grid { grid-template-columns: 1fr; }
+
+  /* Why */
+  .ailab-why__row { grid-template-columns: 48px 1fr; gap: 16px; }
+  .ailab-why__num { font-size: 24px; }
+
+  /* Tech chips */
+  .ailab-tech__chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .ailab-tech__chips::-webkit-scrollbar { display: none; }
+  .ailab-tech__chip { flex-shrink: 0; }
+
+  /* Team */
+  .ailab-team__grid { grid-template-columns: 1fr; }
+
+  /* Business-first */
+  .ailab-biz__ambient { display: none; }
+  .ailab-biz__flow { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .ailab-biz__arrow { transform: rotate(90deg); }
+
+  /* CTA */
+  .ailab-cta__inner { text-align: left; }
+  .ailab-cta__contacts { justify-content: flex-start; flex-direction: column; gap: 16px; }
+  .ailab-form { padding: 20px; }
+
+  /* Footer */
+  .ailab-footer { padding: 24px 20px; }
+  .ailab-footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .ailab-footer__right { flex-wrap: wrap; }
+}
+
+/* ============================================================
+   VISUAL DEPTH — Phase 4.5
+   Pseudo-element textures, section backgrounds, micro-enhancements
+   ============================================================ */
+
+/* B. Hero text / UI overrides for dark SVG background */
+.ailab-hero .ailab-kicker          { color: var(--ailab-violet-dark); }
+.ailab-hero .ailab-btn--secondary  {
+  border-color: rgba(255,255,255,.30);
+  color: var(--ailab-text-white);
+  background: rgba(255,255,255,.06);
+}
+.ailab-hero .ailab-btn--secondary:hover {
+  border-color: var(--ailab-violet-dark);
+  color: var(--ailab-violet-dark);
+  background: rgba(143,141,250,.10);
+}
+/* Header on dark hero: stay transparent, text white-ish until scrolled */
+.ailab-header:not(.is-scrolled) .ailab-header__nav a   { color: rgba(254,252,255,.85); }
+.ailab-header:not(.is-scrolled) .ailab-header__nav a:hover { color: #fff; }
+.ailab-header:not(.is-scrolled) .ailab-hamburger span  { background: rgba(254,252,255,.85); }
+
+/* C. Business-First — grid line texture (z-index:0 keeps content on top) */
+.ailab-biz::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* D. CTA — radial glow bloom + grid texture */
+.ailab-cta::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  width: 800px; height: 600px;
+  background: radial-gradient(ellipse, rgba(106,103,248,.20) 0%, rgba(30,138,255,.07) 35%, transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+.ailab-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* E. Tinted sections — dot pattern now in background-image directly */
+.ailab-section--tinted .ailab-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* F. Case card top — diagonal glow overlay */
+.ailab-case-card__top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 80% at 110% 120%, rgba(106,103,248,.30) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(30,138,255,.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* H. Technology section — handled by inline overrides */
+
+/* J. Engagement card — animated top accent line */
+.ailab-eng-card { position: relative; overflow: hidden; }
+.ailab-eng-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ailab-violet) 0%, var(--ailab-blue) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ailab-dur-slow) var(--ailab-ease);
+  border-radius: var(--ailab-radius-card) var(--ailab-radius-card) 0 0;
+}
+.ailab-eng-card:hover::before { transform: scaleX(1); }
+.ailab-eng-card--pilot::before { transform: scaleX(1); }
+
+
+/* N. Why AI Lab rows — hover accent */
+.ailab-why__row { border-radius: 0 8px 8px 0; }
+.ailab-why__row:hover { background: rgba(106,103,248,.05); }
+
+/* O. Mobile menu — gradient background + ambient glow */
+.ailab-mobile-menu {
+  background: linear-gradient(160deg, #1B202B 0%, #14162B 60%, #1a1436 100%);
+}
+.ailab-mobile-menu::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 400px; height: 400px;
+  background: radial-gradient(ellipse, rgba(106,103,248,.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ============================================================
+   LIGHT SECTION BACKGROUNDS — tech SVG pattern
+   ============================================================ */
+
+#ailab-build,
+#ailab-cases,
+#ailab-how,
+#ailab-engagement,
+#ailab-tech {
+  background-color: var(--ailab-bg-page);
+  background-image: url('assets/bg-light.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Team — tinted to break the consecutive-light-section transition */
+#ailab-team {
+  background-color: var(--ailab-bg-sunken);
+  background-image:
+    radial-gradient(rgba(106,103,248,.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+  position: relative;
+}
+/* Gradient fade from tech (white) into team (tinted) */
+#ailab-team::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(180deg, var(--ailab-bg-page) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+#ailab-team > * { position: relative; z-index: 1; }
+
+/* ── Academy Promo block ───────────────────────────────── */
+.ailab-academy-promo {
+  padding: var(--ailab-section-space) var(--ailab-pad-page);
+  background: var(--ailab-bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+.ailab-academy-promo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 100% at 100% 50%, rgba(106,103,248,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 0% 80%, rgba(30,138,255,.08) 0%, transparent 55%);
+  pointer-events: none;
+}
+.ailab-academy-promo__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+}
+.ailab-academy-promo__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(106,103,248,.18);
+  border: 1px solid rgba(106,103,248,.35);
+  border-radius: var(--ailab-radius-pill);
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ailab-violet-dark);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.ailab-academy-promo__title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  margin-bottom: 20px;
+}
+.ailab-academy-promo__title em {
+  font-style: normal;
+  background: linear-gradient(135deg, #8F8DFA 0%, #1E8AFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ailab-academy-promo__sub {
+  font-size: 16px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.65;
+  margin-bottom: 32px;
+  max-width: 440px;
+}
+.ailab-academy-promo__stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.ailab-academy-promo__stat-val {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.ailab-academy-promo__stat-lbl {
+  display: block;
+  font-size: 12px;
+  color: rgba(255,255,255,.40);
+  margin-top: 4px;
+}
+/* Right side — card list */
+.ailab-academy-promo__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ailab-academy-promo__card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--ailab-radius-md);
+  padding: 16px 20px;
+  transition: background var(--ailab-dur-base) var(--ailab-ease),
+              border-color var(--ailab-dur-base) var(--ailab-ease);
+  cursor: default;
+}
+.ailab-academy-promo__card:hover {
+  background: rgba(106,103,248,.10);
+  border-color: rgba(106,103,248,.25);
+}
+.ailab-academy-promo__card--accent {
+  background: rgba(106,103,248,.12);
+  border-color: rgba(106,103,248,.30);
+}
+.ailab-academy-promo__card-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: center;
+}
+.ailab-academy-promo__card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3px;
+}
+.ailab-academy-promo__card-meta {
+  font-size: 12px;
+  color: rgba(255,255,255,.40);
+}
+.ailab-academy-promo__more {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ailab-violet-dark);
+  padding: 10px;
+  border-radius: var(--ailab-radius-sm);
+  border: 1px dashed rgba(106,103,248,.30);
+  transition: border-color var(--ailab-dur-base), color var(--ailab-dur-base);
+}
+.ailab-academy-promo__more:hover {
+  border-color: var(--ailab-violet);
+  color: #fff;
+}
+
+@media (max-width: 1023px) {
+  .ailab-academy-promo__inner { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 767px) {
+  .ailab-academy-promo__stats { gap: 20px; }
+}
+
+/* Tinted sections keep their own dot pattern */
+.ailab-section--tinted {
+  background-color: var(--ailab-bg-sunken);
+  background-image:
+    radial-gradient(rgba(106,103,248,.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}

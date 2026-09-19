@@ -1,0 +1,40 @@
+<!--
+  AI LABORATORY — Tilda Block
+  Block: 15-footer
+  ─────────────────────────────────────────────────────────────
+  Dark footer with logo, nav, social icons, copyright year.
+  Year is set dynamically by global JS.
+  Replace {{AILAB_WORDMARK_URL}}, {{AILAB_ICON_PHONE_URL}},
+  {{AILAB_ICON_TELEGRAM_URL}} after upload.
+  ─────────────────────────────────────────────────────────────
+-->
+<div class="ailab-site">
+
+  <footer class="ailab-footer" role="contentinfo">
+    <div class="ailab-footer__inner">
+      <a href="#ailab-hero" class="ailab-footer__logo" aria-label="AI Laboratory — главная">
+        <img
+          src="{{AILAB_WORDMARK_URL}}"
+          alt="AI Laboratory"
+          onerror="this.outerHTML='<span class=\'ailab-footer__logo-text\'>AI Laboratory</span>'" />
+      </a>
+      <nav class="ailab-footer__nav" aria-label="Навигация в подвале">
+        <a href="#ailab-build">Что мы делаем</a>
+        <a href="#ailab-cases">Кейсы</a>
+        <a href="#ailab-team">Команда</a>
+        <a href="#ailab-faq">FAQ</a>
+        <a href="#ailab-cta">Контакты</a>
+      </nav>
+      <div class="ailab-footer__right">
+        <a href="tel:+77751513414" class="ailab-footer__social" aria-label="Телефон">
+          <img src="{{AILAB_ICON_PHONE_URL}}" alt="" onerror="this.style.display='none'" />
+        </a>
+        <a href="https://t.me/tdm343" class="ailab-footer__social" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <img src="{{AILAB_ICON_TELEGRAM_URL}}" alt="" onerror="this.style.display='none'" />
+        </a>
+        <span class="ailab-footer__copy">© AI Laboratory <span id="ailab-year"></span></span>
+      </div>
+    </div>
+  </footer>
+
+</div>

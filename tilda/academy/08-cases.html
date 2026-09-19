@@ -1,0 +1,483 @@
+<!--
+  AI LAB ACADEMY — Tilda Block
+  Block: 08-cases  (replaces: 08-reviews — fake testimonials removed)
+  ─────────────────────────────────────────────────────────────────────
+  Real AI Laboratory project cases:
+  • Featured (2-up): Chayla Group, Kelzin Group — with SVG diagrams
+  • Secondary (3-up): Vexmont, Balance Fitness, GS Logistics
+  • Mini extras (4): Dostyq Auto, ОС для ТРЦ, Разработка приложений, Система учёта прихода
+  • Bridge text + CTA → ../index.html#ailab-cases
+  ─────────────────────────────────────────────────────────────────────
+  No fake metrics. No fake names. Real projects only.
+-->
+<div class="ailab-site">
+<style>
+  /* ─── CASES BLOCK TOKENS ───────────────────────────────── */
+  .ac-cases-block {
+    padding: 120px clamp(20px, 5vw, 80px);
+    background: #0A0B1D;
+    position: relative;
+    overflow: hidden;
+  }
+  .ac-cases-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(106,103,248,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(106,103,248,.025) 1px, transparent 1px);
+    background-size: 72px 72px;
+    pointer-events: none;
+  }
+  .ac-cases-block__inner { max-width: 1200px; margin: 0 auto; position: relative; }
+
+  /* Header */
+  .ac-cases-block__header  { margin-bottom: 64px; }
+  .ac-cases-block__eyebrow {
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #6A67F8;
+    margin-bottom: 16px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .ac-cases-block__headline {
+    font-size: clamp(28px, 3.8vw, 44px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.08;
+    letter-spacing: -.03em;
+    margin-bottom: 16px;
+    font-family: 'Manrope', sans-serif;
+  }
+  .ac-cases-block__headline em {
+    font-style: normal;
+    background: linear-gradient(100deg, #8F8DFA 0%, #1E8AFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .ac-cases-block__sub {
+    font-size: 15px;
+    color: rgba(255,255,255,.35);
+    line-height: 1.6;
+    max-width: 540px;
+    font-family: 'Manrope', sans-serif;
+  }
+
+  /* ── Featured 2-up ──────────────────────────────────────── */
+  .ac-cases-block__feat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .ac-cases-block__feat-card {
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.07);
+    overflow: hidden;
+    background: #111228;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 220ms ease, transform 220ms ease;
+    height: 420px;
+  }
+  .ac-cases-block__feat-card:hover {
+    border-color: rgba(106,103,248,.30);
+    transform: translateY(-2px);
+  }
+  .ac-cases-block__feat-visual {
+    height: 220px;
+    flex-shrink: 0;
+    background: #0D0E25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .ac-cases-block__feat-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, #111228 0%, transparent 40%);
+    pointer-events: none;
+  }
+  .ac-cases-block__feat-info {
+    flex: 1;
+    padding: 20px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ac-cases-block__feat-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #6A67F8;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .ac-cases-block__feat-company {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -.02em;
+    font-family: 'Manrope', sans-serif;
+    margin-top: 2px;
+  }
+  .ac-cases-block__feat-sol-lbl {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: rgba(255,255,255,.25);
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 10px;
+  }
+  .ac-cases-block__feat-sol {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(255,255,255,.55);
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+  }
+
+  /* ── Secondary 3-up ─────────────────────────────────────── */
+  .ac-cases-block__sec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .ac-cases-block__sec-card {
+    background: #111228;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color 220ms ease, transform 220ms ease;
+  }
+  .ac-cases-block__sec-card:hover {
+    border-color: rgba(106,103,248,.25);
+    transform: translateY(-2px);
+  }
+  .ac-cases-block__sec-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .ac-cases-block__sec-company {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -.02em;
+    font-family: 'Manrope', sans-serif;
+  }
+  .ac-cases-block__sec-icon { flex-shrink: 0; }
+  .ac-cases-block__sec-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(106,103,248,.75);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 10px;
+  }
+  .ac-cases-block__sec-sol {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(255,255,255,.45);
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+  }
+
+  /* ── Mini extras 4-up ───────────────────────────────────── */
+  .ac-cases-block__extra-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .ac-cases-block__extra-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 12px;
+    padding: 18px 20px;
+    transition: border-color 200ms ease;
+  }
+  .ac-cases-block__extra-card:hover { border-color: rgba(106,103,248,.20); }
+  .ac-cases-block__extra-company {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,.70);
+    letter-spacing: -.01em;
+    margin-bottom: 6px;
+    font-family: 'Manrope', sans-serif;
+  }
+  .ac-cases-block__extra-sol {
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(255,255,255,.30);
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+  }
+
+  /* ── Bridge + CTA ───────────────────────────────────────── */
+  .ac-cases-block__bridge {
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .ac-cases-block__bridge-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255,255,255,.35);
+    max-width: 520px;
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+  }
+  .ac-cases-block__cta {
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #8F8DFA;
+    text-decoration: none;
+    border: 1px solid rgba(106,103,248,.35);
+    border-radius: 8px;
+    padding: 10px 20px;
+    letter-spacing: .02em;
+    transition: background 200ms ease, border-color 200ms ease;
+    font-family: 'Manrope', sans-serif;
+  }
+  .ac-cases-block__cta:hover {
+    background: rgba(106,103,248,.10);
+    border-color: rgba(106,103,248,.60);
+  }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 1023px) {
+    .ac-cases-block__sec-grid { grid-template-columns: 1fr 1fr; }
+    .ac-cases-block__extra-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 767px) {
+    .ac-cases-block { padding: 64px 20px; }
+    .ac-cases-block__feat-grid { grid-template-columns: 1fr; }
+    .ac-cases-block__feat-card { height: auto; min-height: 340px; }
+    .ac-cases-block__feat-visual { height: 160px; }
+    .ac-cases-block__sec-grid { grid-template-columns: 1fr; }
+    .ac-cases-block__extra-grid { grid-template-columns: 1fr 1fr; }
+    .ac-cases-block__bridge { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+  <section class="ac-cases-block" id="ac-cases-tilda" aria-labelledby="ac-cases-tilda-title">
+    <div class="ac-cases-block__inner">
+
+      <!-- Header -->
+      <div class="ac-cases-block__header">
+        <span class="ac-cases-block__eyebrow">// Реальный опыт AI Laboratory</span>
+        <h2 class="ac-cases-block__headline" id="ac-cases-tilda-title">
+          Не теория.<br/><em>Опыт из реальных проектов.</em>
+        </h2>
+        <p class="ac-cases-block__sub">
+          Команда AI Laboratory создаёт AI-системы, автоматизацию и цифровые продукты для бизнеса.
+          Практики Academy строятся на том же подходе к проектированию и разработке.
+        </p>
+      </div>
+
+      <!-- Featured 2-up: Chayla Group + Kelzin Group -->
+      <div class="ac-cases-block__feat-grid">
+
+        <!-- Chayla Group -->
+        <div class="ac-cases-block__feat-card">
+          <div class="ac-cases-block__feat-visual">
+            <svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="170" cy="100" rx="130" ry="90" fill="rgba(106,103,248,.06)"/>
+              <rect x="18" y="30"  width="52" height="32" rx="6" stroke="rgba(106,103,248,.45)" stroke-width="1.3" fill="rgba(106,103,248,.06)"/>
+              <rect x="18" y="84"  width="52" height="32" rx="6" stroke="rgba(106,103,248,.40)" stroke-width="1.3" fill="rgba(106,103,248,.05)"/>
+              <rect x="18" y="138" width="52" height="32" rx="6" stroke="rgba(106,103,248,.35)" stroke-width="1.3" fill="rgba(106,103,248,.04)"/>
+              <text x="44"  y="50"  text-anchor="middle" fill="rgba(143,141,250,.70)" font-size="8" font-family="monospace">SUP 01</text>
+              <text x="44"  y="104" text-anchor="middle" fill="rgba(143,141,250,.60)" font-size="8" font-family="monospace">SUP 02</text>
+              <text x="44"  y="158" text-anchor="middle" fill="rgba(143,141,250,.55)" font-size="8" font-family="monospace">SUP 03</text>
+              <line x1="70" y1="46"  x2="130" y2="92"  stroke="rgba(106,103,248,.30)" stroke-width="1.2"/>
+              <line x1="70" y1="100" x2="130" y2="100" stroke="rgba(106,103,248,.40)" stroke-width="1.4"/>
+              <line x1="70" y1="154" x2="130" y2="108" stroke="rgba(106,103,248,.28)" stroke-width="1.2"/>
+              <rect x="130" y="72" width="80" height="56" rx="10" stroke="rgba(106,103,248,.75)" stroke-width="1.8" fill="rgba(106,103,248,.12)"/>
+              <text x="170" y="96"  text-anchor="middle" fill="rgba(255,255,255,.80)" font-size="7.5" font-weight="bold" font-family="monospace">PROCUREMENT</text>
+              <text x="170" y="108" text-anchor="middle" fill="rgba(143,141,250,.60)" font-size="6.5"  font-family="monospace">SYSTEM</text>
+              <circle cx="170" cy="100" r="4" fill="rgba(106,103,248,.50)"/>
+              <circle cx="170" cy="100" r="2" fill="#8F8DFA"/>
+              <line x1="210" y1="92"  x2="268" y2="46"  stroke="rgba(30,138,255,.30)" stroke-width="1.2"/>
+              <line x1="210" y1="100" x2="268" y2="100" stroke="rgba(30,138,255,.40)" stroke-width="1.4"/>
+              <line x1="210" y1="108" x2="268" y2="154" stroke="rgba(30,138,255,.28)" stroke-width="1.2"/>
+              <rect x="268" y="30"  width="52" height="32" rx="6" stroke="rgba(30,138,255,.40)" stroke-width="1.3" fill="rgba(30,138,255,.05)"/>
+              <rect x="268" y="84"  width="52" height="32" rx="6" stroke="rgba(30,138,255,.50)" stroke-width="1.3" fill="rgba(30,138,255,.07)"/>
+              <rect x="268" y="138" width="52" height="32" rx="6" stroke="rgba(30,138,255,.38)" stroke-width="1.3" fill="rgba(30,138,255,.04)"/>
+              <text x="294" y="50"  text-anchor="middle" fill="rgba(62,187,255,.70)" font-size="8" font-family="monospace">KITCHEN</text>
+              <text x="294" y="104" text-anchor="middle" fill="rgba(62,187,255,.80)" font-size="8" font-family="monospace">STORE</text>
+              <text x="294" y="158" text-anchor="middle" fill="rgba(62,187,255,.65)" font-size="8" font-family="monospace">FINANCE</text>
+              <circle cx="100" cy="100" r="2.5" fill="rgba(106,103,248,.60)"/>
+              <circle cx="240" cy="100" r="2.5" fill="rgba(30,138,255,.60)"/>
+            </svg>
+          </div>
+          <div class="ac-cases-block__feat-info">
+            <span class="ac-cases-block__feat-tag">HoReCa</span>
+            <div class="ac-cases-block__feat-company">Chayla Group</div>
+            <div class="ac-cases-block__feat-sol-lbl">Решение</div>
+            <p class="ac-cases-block__feat-sol">Цифровая система управления закупками — автоматизация цепочки поставок и контроль отдела снабжения.</p>
+          </div>
+        </div>
+
+        <!-- Kelzin Group -->
+        <div class="ac-cases-block__feat-card">
+          <div class="ac-cases-block__feat-visual">
+            <svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="170" cy="100" rx="120" ry="85" fill="rgba(30,138,255,.04)"/>
+              <circle cx="170" cy="100" r="38" stroke="rgba(106,103,248,.55)" stroke-width="1.8" fill="rgba(106,103,248,.08)"/>
+              <circle cx="170" cy="100" r="28" stroke="rgba(106,103,248,.25)" stroke-width="1" fill="rgba(106,103,248,.04)" stroke-dasharray="3 3"/>
+              <text x="170" y="96"  text-anchor="middle" fill="rgba(255,255,255,.85)" font-size="9" font-weight="bold" font-family="monospace">ERP</text>
+              <text x="170" y="108" text-anchor="middle" fill="rgba(143,141,250,.55)" font-size="6.5" font-family="monospace">CORE</text>
+              <circle cx="170" cy="32" r="22" stroke="rgba(106,103,248,.50)" stroke-width="1.4" fill="rgba(106,103,248,.08)"/>
+              <text x="170" y="29"  text-anchor="middle" fill="rgba(143,141,250,.75)" font-size="7"  font-family="monospace">SALES</text>
+              <text x="170" y="39"  text-anchor="middle" fill="rgba(143,141,250,.45)" font-size="6"  font-family="monospace">&amp; CRM</text>
+              <line x1="170" y1="54" x2="170" y2="62" stroke="rgba(106,103,248,.35)" stroke-width="1.3"/>
+              <circle cx="170" cy="168" r="22" stroke="rgba(106,103,248,.45)" stroke-width="1.4" fill="rgba(106,103,248,.07)"/>
+              <text x="170" y="165" text-anchor="middle" fill="rgba(143,141,250,.70)" font-size="7"  font-family="monospace">FINANCE</text>
+              <text x="170" y="175" text-anchor="middle" fill="rgba(143,141,250,.40)" font-size="6"  font-family="monospace">&amp; HR</text>
+              <line x1="170" y1="138" x2="170" y2="146" stroke="rgba(106,103,248,.30)" stroke-width="1.3"/>
+              <circle cx="66" cy="100" r="22" stroke="rgba(30,138,255,.45)" stroke-width="1.4" fill="rgba(30,138,255,.06)"/>
+              <text x="66" y="97"  text-anchor="middle" fill="rgba(62,187,255,.70)" font-size="6.5" font-family="monospace">INVEN-</text>
+              <text x="66" y="107" text-anchor="middle" fill="rgba(62,187,255,.70)" font-size="6.5" font-family="monospace">TORY</text>
+              <line x1="88" y1="100" x2="132" y2="100" stroke="rgba(30,138,255,.30)" stroke-width="1.3"/>
+              <circle cx="274" cy="100" r="22" stroke="rgba(30,138,255,.45)" stroke-width="1.4" fill="rgba(30,138,255,.06)"/>
+              <text x="274" y="97"  text-anchor="middle" fill="rgba(62,187,255,.70)" font-size="6.5" font-family="monospace">LOGIS-</text>
+              <text x="274" y="107" text-anchor="middle" fill="rgba(62,187,255,.70)" font-size="6.5" font-family="monospace">TICS</text>
+              <line x1="208" y1="100" x2="252" y2="100" stroke="rgba(30,138,255,.30)" stroke-width="1.3"/>
+              <line x1="143" y1="76" x2="86"  y2="82"  stroke="rgba(106,103,248,.20)" stroke-width="1" stroke-dasharray="3 2"/>
+              <line x1="197" y1="76" x2="254" y2="82"  stroke="rgba(106,103,248,.20)" stroke-width="1" stroke-dasharray="3 2"/>
+              <line x1="143" y1="124" x2="86"  y2="118" stroke="rgba(106,103,248,.18)" stroke-width="1" stroke-dasharray="3 2"/>
+              <line x1="197" y1="124" x2="254" y2="118" stroke="rgba(106,103,248,.18)" stroke-width="1" stroke-dasharray="3 2"/>
+              <circle cx="170" cy="100" r="4" fill="#6A67F8" opacity=".8"/>
+              <circle cx="170" cy="100" r="2" fill="#fff" opacity=".6"/>
+            </svg>
+          </div>
+          <div class="ac-cases-block__feat-info">
+            <span class="ac-cases-block__feat-tag">Fashion Retail</span>
+            <div class="ac-cases-block__feat-company">Kelzin Group</div>
+            <div class="ac-cases-block__feat-sol-lbl">Решение</div>
+            <p class="ac-cases-block__feat-sol">ERP-система для управления группой компаний — единая платформа операций, финансов и логистики.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Secondary 3-up: Vexmont + Balance Fitness + GS Logistics -->
+      <div class="ac-cases-block__sec-grid">
+
+        <!-- Vexmont -->
+        <div class="ac-cases-block__sec-card">
+          <div class="ac-cases-block__sec-top">
+            <div class="ac-cases-block__sec-company">Vexmont</div>
+            <svg class="ac-cases-block__sec-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect x="3"  y="22" width="22" height="3.5" rx="1.5" stroke="#6A67F8" stroke-width="1.3"/>
+              <rect x="5.5" y="16" width="17" height="4.5" rx="1.5" stroke="#6A67F8" stroke-width="1.3" opacity=".85"/>
+              <rect x="8"  y="10" width="12" height="4.5" rx="1.5" stroke="#8F8DFA" stroke-width="1.3" opacity=".75"/>
+              <rect x="10.5" y="4" width="7"  height="4.5" rx="1.5" stroke="#1E8AFF" stroke-width="1.3" opacity=".65"/>
+              <circle cx="3.5" cy="23.5" r="1.5" fill="#6A67F8"/>
+            </svg>
+          </div>
+          <span class="ac-cases-block__sec-tag">Development</span>
+          <p class="ac-cases-block__sec-sol">Система цифрового контроля строительства — мониторинг объектов, документооборот и контроль подрядчиков.</p>
+        </div>
+
+        <!-- Balance Fitness -->
+        <div class="ac-cases-block__sec-card">
+          <div class="ac-cases-block__sec-top">
+            <div class="ac-cases-block__sec-company">Balance Fitness</div>
+            <svg class="ac-cases-block__sec-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="8" stroke="#6A67F8" stroke-width="1.3"/>
+              <circle cx="14" cy="5"  r="3"  stroke="#6A67F8" stroke-width="1.3" opacity=".7"/>
+              <circle cx="14" cy="23" r="3"  stroke="#6A67F8" stroke-width="1.3" opacity=".7"/>
+              <circle cx="5"  cy="14" r="3"  stroke="#1E8AFF" stroke-width="1.3" opacity=".7"/>
+              <circle cx="23" cy="14" r="3"  stroke="#1E8AFF" stroke-width="1.3" opacity=".7"/>
+              <line x1="14" y1="8"  x2="14" y2="6"  stroke="#6A67F8" stroke-width="1.2"/>
+              <line x1="14" y1="20" x2="14" y2="22" stroke="#6A67F8" stroke-width="1.2"/>
+              <line x1="8"  y1="14" x2="6"  y2="14" stroke="#1E8AFF" stroke-width="1.2"/>
+              <line x1="20" y1="14" x2="22" y2="14" stroke="#1E8AFF" stroke-width="1.2"/>
+              <circle cx="14" cy="14" r="2" fill="#8F8DFA"/>
+            </svg>
+          </div>
+          <span class="ac-cases-block__sec-tag">Fitness</span>
+          <p class="ac-cases-block__sec-sol">AI-агент для автоматизации онбординга новых сотрудников сети фитнес-клубов.</p>
+        </div>
+
+        <!-- GS Logistics -->
+        <div class="ac-cases-block__sec-card">
+          <div class="ac-cases-block__sec-top">
+            <div class="ac-cases-block__sec-company">GS Logistics</div>
+            <svg class="ac-cases-block__sec-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="5"  cy="6"  r="3" stroke="#6A67F8" stroke-width="1.3"/>
+              <circle cx="23" cy="6"  r="3" stroke="#6A67F8" stroke-width="1.3"/>
+              <circle cx="5"  cy="22" r="3" stroke="#1E8AFF" stroke-width="1.3"/>
+              <circle cx="23" cy="22" r="3" stroke="#1E8AFF" stroke-width="1.3"/>
+              <circle cx="14" cy="14" r="3.5" stroke="#8F8DFA" stroke-width="1.5"/>
+              <line x1="8"  y1="6"  x2="11" y2="12" stroke="rgba(106,103,248,.50)" stroke-width="1.2"/>
+              <line x1="20" y1="6"  x2="17" y2="12" stroke="rgba(106,103,248,.50)" stroke-width="1.2"/>
+              <line x1="8"  y1="22" x2="11" y2="16" stroke="rgba(30,138,255,.45)" stroke-width="1.2"/>
+              <line x1="20" y1="22" x2="17" y2="16" stroke="rgba(30,138,255,.45)" stroke-width="1.2"/>
+              <circle cx="14" cy="14" r="1.5" fill="#8F8DFA"/>
+            </svg>
+          </div>
+          <span class="ac-cases-block__sec-tag">Logistics</span>
+          <p class="ac-cases-block__sec-sol">Операционная система и AI-агент для экспедиторов — управление маршрутами и документооборотом.</p>
+        </div>
+
+      </div>
+
+      <!-- Mini extras 4-up -->
+      <div class="ac-cases-block__extra-grid">
+
+        <div class="ac-cases-block__extra-card">
+          <div class="ac-cases-block__extra-company">Dostyq Auto</div>
+          <p class="ac-cases-block__extra-sol">AI-агент для классификации и маршрутизации входящих обращений клиентов.</p>
+        </div>
+
+        <div class="ac-cases-block__extra-card">
+          <div class="ac-cases-block__extra-company">ОС для ТРЦ</div>
+          <p class="ac-cases-block__extra-sol">Операционная система управления торговым центром.</p>
+        </div>
+
+        <div class="ac-cases-block__extra-card">
+          <div class="ac-cases-block__extra-company">Разработка приложений</div>
+          <p class="ac-cases-block__extra-sol">Продуктовая разработка мобильных и веб-приложений под ключ.</p>
+        </div>
+
+        <div class="ac-cases-block__extra-card">
+          <div class="ac-cases-block__extra-company">Система учёта прихода</div>
+          <p class="ac-cases-block__extra-sol">Автоматический учёт рабочего времени сотрудников.</p>
+        </div>
+
+      </div>
+
+      <!-- Bridge + CTA -->
+      <div class="ac-cases-block__bridge">
+        <p class="ac-cases-block__bridge-text">
+          Те же принципы проектирования, работы с AI и разработки продуктов
+          мы переносим в обучение на Academy.
+        </p>
+        <a href="../index.html#ailab-cases" class="ac-cases-block__cta">
+          Кейсы AI Laboratory →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</div>

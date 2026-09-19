@@ -1,0 +1,45 @@
+<!--
+  AI LABORATORY — Tilda Block
+  Block: 02-hero
+  ─────────────────────────────────────────────────────────────
+  Dark hero section with bg-hero.svg background.
+  Replace {{AILAB_BG_HERO_URL}} in global CSS after upload.
+  Replace {{AILAB_BLUE_SPHERE_URL}} here after upload.
+  ─────────────────────────────────────────────────────────────
+-->
+<div class="ailab-site" id="ailab-main">
+
+  <section class="ailab-hero" id="ailab-hero" aria-label="Главный экран">
+    <div class="ailab-hero__inner">
+
+      <div class="ailab-hero__text ailab-animate">
+        <span class="ailab-kicker">AI &amp; IT Integration Partner · Kazakhstan</span>
+        <h1 class="ailab-hero__headline">
+          Технологии,<br />
+          которые работают<br />
+          <em>на ваш бизнес</em>
+        </h1>
+        <p class="ailab-hero__subtext">
+          AI Laboratory — внешняя технологическая команда для компаний,
+          которые хотят реального результата, а не эксперимента с AI.
+        </p>
+        <div class="ailab-hero__actions">
+          <a href="#ailab-cta" class="ailab-btn ailab-btn--primary">Обсудить проект</a>
+          <a href="#ailab-cases" class="ailab-btn ailab-btn--secondary">Смотреть кейсы</a>
+        </div>
+      </div>
+
+      <div class="ailab-hero__visual ailab-animate" style="transition-delay:80ms">
+        <div class="ailab-hero__glow" aria-hidden="true"></div>
+        <img
+          class="ailab-hero__sphere"
+          src="{{AILAB_BLUE_SPHERE_URL}}"
+          alt=""
+          aria-hidden="true"
+          loading="eager" />
+      </div>
+
+    </div>
+  </section>
+
+</div>

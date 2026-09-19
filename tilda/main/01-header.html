@@ -1,0 +1,62 @@
+<!--
+  AI LABORATORY — Tilda Block
+  Block: 01-header
+  ─────────────────────────────────────────────────────────────
+  Sticky header + mobile menu overlay.
+  The wrapper div#ailab-header-block receives position:sticky
+  via #ailab-header-block rule in global CSS.
+  ─────────────────────────────────────────────────────────────
+-->
+<a class="ailab-skip" href="#ailab-main">Перейти к основному содержанию</a>
+
+<div class="ailab-site" id="ailab-header-block">
+
+  <header class="ailab-header" id="ailab-header" role="banner">
+    <a href="#ailab-hero" class="ailab-header__logo" aria-label="AI Laboratory — главная">
+      <img
+        src="{{AILAB_LOGO_URL}}"
+        alt="AI Laboratory"
+        onerror="this.outerHTML='<span style=\'font-size:20px;font-weight:800;letter-spacing:-0.02em;\' class=\'ailab-header__logo-text\'>AI Lab</span>'" />
+    </a>
+
+    <nav class="ailab-header__nav" aria-label="Основная навигация">
+      <a href="#ailab-build">Что мы делаем</a>
+      <a href="#ailab-cases">Кейсы</a>
+      <a href="#ailab-how">Как работаем</a>
+      <a href="#ailab-team">Команда</a>
+      <a href="/academy">Academy</a>
+      <a href="#ailab-faq">FAQ</a>
+    </nav>
+
+    <div class="ailab-header__actions">
+      <a href="#ailab-cta" class="ailab-btn ailab-btn--primary">Обсудить проект</a>
+    </div>
+
+    <button
+      class="ailab-hamburger"
+      id="ailab-hamburger"
+      aria-label="Открыть меню"
+      aria-expanded="false"
+      aria-controls="ailab-mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+</div>
+
+<!-- Mobile menu — fixed overlay, outside sticky wrapper -->
+<div
+  class="ailab-mobile-menu"
+  id="ailab-mobile-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Мобильное меню">
+  <button class="ailab-mobile-menu__close" id="ailab-menu-close" aria-label="Закрыть меню">&times;</button>
+  <a href="#ailab-build">Что мы делаем</a>
+  <a href="#ailab-cases">Кейсы</a>
+  <a href="#ailab-how">Как работаем</a>
+  <a href="#ailab-team">Команда</a>
+  <a href="/academy">Academy</a>
+  <a href="#ailab-faq">FAQ</a>
+  <a href="#ailab-cta" class="ailab-btn ailab-btn--primary">Обсудить проект</a>
+</div>

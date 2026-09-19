@@ -1,0 +1,121 @@
+<!--
+  AI LABORATORY — Tilda Block
+  Block: 14-final-cta
+  ─────────────────────────────────────────────────────────────
+  Final CTA — dark gradient, contact form (frontend-only).
+
+  FORM NOTE:
+  This form is frontend-only — clicking submit shows a success
+  message. To connect real submission, see TILDA_INSTALLATION.md
+  Section "Forms Integration".
+
+  Replace {{AILAB_ICON_PHONE_URL}} and {{AILAB_ICON_TELEGRAM_URL}}
+  after upload.
+  ─────────────────────────────────────────────────────────────
+-->
+<div class="ailab-site">
+
+  <section
+    class="ailab-section ailab-section--dark ailab-cta"
+    id="ailab-cta"
+    aria-labelledby="ailab-cta-title">
+    <div class="ailab-container">
+      <div class="ailab-cta__inner">
+
+        <span class="ailab-kicker ailab-kicker--dark ailab-animate">Начать работу</span>
+        <h2 class="ailab-cta__headline ailab-animate" id="ailab-cta-title" style="transition-delay:80ms">
+          Не обязательно начинать с большого IT‑проекта.
+          Начнём с одной бизнес‑задачи.
+        </h2>
+        <p class="ailab-cta__subline ailab-animate" style="transition-delay:160ms">
+          Start small. Prove value. Scale what works.
+        </p>
+
+        <div class="ailab-cta__flow ailab-animate" style="transition-delay:240ms">
+          <div class="ailab-cta__step">
+            <span class="ailab-cta__step-num">01</span>
+            <span class="ailab-cta__step-text">Расскажите о бизнес-задаче</span>
+          </div>
+          <div class="ailab-cta__step">
+            <span class="ailab-cta__step-num">02</span>
+            <span class="ailab-cta__step-text">Проведём assessment и предложим варианты решения</span>
+          </div>
+          <div class="ailab-cta__step">
+            <span class="ailab-cta__step-num">03</span>
+            <span class="ailab-cta__step-text">Запустим Pilot / MVP и масштабируем то, что подтвердит эффект</span>
+          </div>
+        </div>
+
+        <div class="ailab-form ailab-animate" id="ailab-contact-form" style="transition-delay:320ms">
+          <div class="ailab-form__fields">
+            <div class="ailab-form__group">
+              <label class="ailab-form__label" for="ailab-field-name">
+                Имя <span class="ailab-form__label-hint">— необязательно</span>
+              </label>
+              <input
+                class="ailab-form__input"
+                type="text"
+                id="ailab-field-name"
+                name="name"
+                placeholder="Как к вам обращаться"
+                autocomplete="given-name" />
+            </div>
+            <div class="ailab-form__group">
+              <label class="ailab-form__label" for="ailab-field-contact">
+                Контакт <span class="ailab-form__label-hint">— телефон или Telegram</span>
+              </label>
+              <input
+                class="ailab-form__input"
+                type="text"
+                id="ailab-field-contact"
+                name="contact"
+                placeholder="+7 000 000 00 00 или @username"
+                required
+                autocomplete="tel" />
+            </div>
+            <div class="ailab-form__group">
+              <label class="ailab-form__label" for="ailab-field-task">
+                Кратко о задаче
+              </label>
+              <textarea
+                class="ailab-form__textarea"
+                id="ailab-field-task"
+                name="task"
+                rows="3"
+                placeholder="Опишите, что хотите автоматизировать, создать или улучшить"
+                required></textarea>
+            </div>
+            <div class="ailab-form__submit">
+              <button
+                type="button"
+                class="ailab-btn ailab-btn--primary ailab-btn--full"
+                id="ailab-submit-btn">
+                Отправить
+              </button>
+            </div>
+            <p class="ailab-form__legal">
+              Отправляя форму, вы соглашаетесь с Политикой конфиденциальности.
+            </p>
+          </div>
+          <div class="ailab-form__success" aria-live="polite">
+            <strong>Спасибо.</strong>
+            Свяжемся с вами по указанному контакту.
+          </div>
+        </div>
+
+        <div class="ailab-cta__contacts ailab-animate" style="transition-delay:400ms">
+          <a href="tel:+77751513414" class="ailab-cta__contact">
+            <img src="{{AILAB_ICON_PHONE_URL}}" alt="" onerror="this.style.display='none'" />
+            +7 775 151 34 14
+          </a>
+          <a href="https://t.me/tdm343" class="ailab-cta__contact" target="_blank" rel="noopener noreferrer">
+            <img src="{{AILAB_ICON_TELEGRAM_URL}}" alt="" onerror="this.style.display='none'" />
+            @tdm343
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>

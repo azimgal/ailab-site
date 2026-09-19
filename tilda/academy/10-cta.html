@@ -1,0 +1,38 @@
+<!--
+  AI LAB ACADEMY — Tilda Block
+  Block: 10-cta
+  ─────────────────────────────────────────────────────────────
+  Dark gradient CTA with inline form.
+  Form submit handled by 12-global-js.html (frontend-only).
+  Webhook endpoint to be wired after launch.
+  ─────────────────────────────────────────────────────────────
+-->
+<div class="ailab-site">
+
+  <section class="ac-cta" id="ac-cta" aria-labelledby="ac-cta-title">
+    <div class="ac-cta__inner ailab-animate">
+      <span class="ac-cta__label">Записаться на обучение</span>
+      <h2 class="ac-cta__title" id="ac-cta-title">
+        Готовы начать?<br />Давайте поговорим
+      </h2>
+      <p class="ac-cta__sub">
+        Оставьте контакт — обсудим, какая программа подходит вашей команде,
+        и пришлём детальное предложение в течение дня.
+      </p>
+      <form class="ac-cta__form" id="ac-form" novalidate>
+        <input
+          class="ac-cta__input"
+          id="ac-contact"
+          type="text"
+          placeholder="Telegram или Email"
+          autocomplete="email" />
+        <button type="submit" class="ailab-btn ailab-btn--primary">Отправить заявку</button>
+      </form>
+      <p id="ac-success" style="display:none;color:rgba(255,255,255,.70);font-size:15px;margin-top:20px;">
+        Заявка принята — напишем вам в ближайшее время!
+      </p>
+      <p class="ac-cta__note">Также можно написать напрямую: <a href="https://t.me/tdm343" style="color:rgba(255,255,255,.40)" target="_blank" rel="noopener noreferrer">@tdm343</a></p>
+    </div>
+  </section>
+
+</div>
