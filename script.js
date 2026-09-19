@@ -197,4 +197,62 @@
     });
   })();
 
+  // ── Landscape carousel auto-scroll (mobile only) ─────────────────
+  (function () {
+    var grid = document.getElementById('landscape-grid');
+    if (!grid) return;
+
+    var autoTimer = null;
+
+    function isMobile() { return window.innerWidth <= 640; }
+
+    function scrollToNext() {
+      if (!isMobile()) return;
+      var cols = grid.querySelectorAll('.landscape__col');
+      if (!cols.length) return;
+      var colW = cols[0].offsetWidth + 12;
+      var maxScroll = grid.scrollWidth - grid.clientWidth;
+      var next = grid.scrollLeft + colW;
+      grid.scrollTo({ left: next >= maxScroll ? 0 : next, behavior: 'smooth' });
+    }
+
+    function startAuto() {
+      if (autoTimer) return;
+      autoTimer = setInterval(scrollToNext, 3000);
+    }
+
+    function stopAuto() {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
+
+    grid.addEventListener('touchstart', stopAuto, { passive: true });
+    grid.addEventListener('touchend', function () {
+      setTimeout(startAuto, 4000);
+    }, { passive: true });
+
+    if (isMobile()) startAuto();
+    window.addEventListener('resize', function () {
+      if (isMobile()) startAuto(); else stopAuto();
+    });
+  })();
+
+  // ── Cases / Products tab switching ───────────────────────────────
+  (function () {
+    var tabs = document.querySelectorAll('.cases__tab');
+    if (!tabs.length) return;
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var target = tab.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('cases__tab--active'); });
+        tab.classList.add('cases__tab--active');
+        document.querySelectorAll('.cases__pane').forEach(function (pane) {
+          pane.classList.add('cases__pane--hidden');
+        });
+        var pane = document.getElementById('cases-pane-' + target);
+        if (pane) pane.classList.remove('cases__pane--hidden');
+      });
+    });
+  })();
+
 })();
