@@ -1,0 +1,3093 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Laboratory — Ваша внешняя технологическая команда</title>
+  <meta name="description" content="AI Laboratory — берём на себя разработку и развитие цифровых продуктов от AI и автоматизации до web, mobile, backend и интеграций." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+/* ============================================================
+   AI Laboratory — Complete Redesign
+   Matches Figma: dark/white alternating, purple diagonal shapes
+   ============================================================ */
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Manrope', 'Inter', sans-serif;
+  background: #14162B;
+  color: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TOKENS ── */
+:root {
+  --black:   #14162B;
+  --ink-700: #232640;
+  --ink-600: #333455;
+  --ink-200: #D6DAE6;
+  --white:   #FFFFFF;
+  --purple:  #6A67F8;
+  --violet-tint: #DBDDFF;
+  --blue:    #1E8AFF;
+  --muted:   rgba(255,255,255,0.52);
+  --pad:     clamp(24px, 6vw, 100px);
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--pad);
+  background: rgba(20,22,43,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.nav__logo { display: flex; align-items: center; text-decoration: none; }
+.nav__links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav__links a {
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  transition: color .2s;
+}
+.nav__links a:hover { color: #fff; }
+.nav__links a::before { content: '> '; color: var(--purple); }
+.nav__cta {
+  display: inline-block;
+  padding: 9px 22px;
+  border: 1.5px solid rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.88);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.nav__cta:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.06); }
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav__hamburger span { display: block; width: 22px; height: 2px; background: #fff; }
+
+/* Mobile nav */
+.nav__links.is-open {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 60px; left: 0; right: 0;
+  background: #0A0A0A;
+  padding: 24px var(--pad) 32px;
+  gap: 20px;
+  z-index: 199;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: var(--black);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 130px var(--pad) 100px;
+}
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 46%;
+}
+.hero__logo {
+  margin-bottom: 40px;
+  opacity: 0.72;
+}
+.hero__title {
+  font-size: clamp(32px, 4vw, 68px);
+  font-weight: 800;
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--white);
+  letter-spacing: -0.025em;
+}
+.hero__sub {
+  margin-top: 24px;
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 500;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.65;
+  max-width: 480px;
+}
+.hero__btn {
+  display: inline-block;
+  margin-top: 44px;
+  padding: 13px 34px;
+  border: 2px solid var(--white);
+  color: var(--white);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .18s, color .18s;
+}
+.hero__btn:hover { background: var(--white); color: var(--black); }
+
+/* Fibre Arc WebGL canvas — full hero background */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Gradient overlay — darkens left side so text is legible */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    rgba(20,22,43,0.92) 0%,
+    rgba(20,22,43,0.78) 30%,
+    rgba(20,22,43,0.30) 60%,
+    rgba(20,22,43,0.00) 100%
+  );
+}
+
+/* ── SECTION DIVIDERS (diagonal transitions) ── */
+.cut {
+  height: 80px;
+  display: block;
+  position: relative;
+  z-index: 10;
+}
+.cut--to-white {
+  background: var(--white);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+.cut--to-dark {
+  background: var(--white);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* ── MARKET ── */
+.market {
+  position: relative;
+  background: var(--white);
+  padding: 88px var(--pad) 96px;
+  overflow: hidden;
+}
+.market::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 130px; height: 130px;
+  background: var(--black);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+.market__head {
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--black);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 64px;
+}
+.market__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.market__stat {
+  display: flex;
+  flex-direction: column;
+}
+.market__stat-num {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(56px, 8vw, 96px);
+  color: var(--black);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.market__stat-desc {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.65;
+  color: var(--black);
+  margin-top: 10px;
+  max-width: 260px;
+}
+.market__source {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(0,0,0,0.35);
+  margin-top: 8px;
+}
+.market__quote {
+  margin-top: 72px;
+  font-size: clamp(16px, 2.2vw, 26px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--black);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  border-left: 4px solid var(--purple);
+  padding-left: 28px;
+  font-style: normal;
+}
+
+/* ── SERVICES ── */
+.services {
+  position: relative;
+  background: var(--black);
+  padding: 88px var(--pad) 88px;
+  overflow: hidden;
+}
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 130px; height: 130px;
+  background: var(--purple);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+.services__head {
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: 64px;
+}
+.services__card {
+  padding: 36px 32px 40px;
+  border: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.services__card--wide {
+  grid-column: 1 / -1;
+}
+.services__num {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--purple);
+  margin-bottom: 20px;
+}
+.services__title {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+  color: var(--white);
+  line-height: 1.35;
+}
+.services__desc {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.services__example {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.services__example span {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+  margin-right: 4px;
+}
+
+/* ── PRODUCT LANDSCAPE ── */
+.landscape {
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 88px;
+  padding-bottom: 8px;
+}
+.landscape__head {
+  font-size: clamp(22px, 3.2vw, 48px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 16px;
+}
+.landscape__sub {
+  font-size: clamp(13px, 1.3vw, 16px);
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  margin-bottom: 44px;
+}
+.landscape__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+}
+.landscape__col {
+  padding: 28px 24px 32px;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.landscape__num {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 40px;
+  color: var(--purple);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.landscape__title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.landscape__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.landscape__list li {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+/* ── HOW ── */
+.how {
+  position: relative;
+  background: var(--white);
+  padding: 88px var(--pad) 88px;
+  overflow: hidden;
+}
+.how::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 130px; height: 130px;
+  background: var(--black);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+.how__head {
+  font-size: clamp(60px, 10.5vw, 148px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: var(--black);
+}
+.how__head span { color: var(--purple); }
+.how__sub {
+  margin-top: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  color: rgba(0,0,0,0.72);
+  line-height: 1.6;
+  max-width: 760px;
+}
+.how__steps {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+}
+.how__step {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 28px;
+  padding: 32px 0;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  align-items: start;
+}
+.how__step:last-child { border-bottom: 1px solid rgba(0,0,0,0.12); }
+.how__num {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 84px;
+  color: var(--black);
+  line-height: 1;
+}
+.how__step-body { padding-top: 10px; }
+.how__step-title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.how__text {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.85;
+  color: rgba(0,0,0,0.55);
+}
+
+/* ── HOW TIMELINE ── */
+.how__timeline {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  position: relative;
+}
+.how__timeline::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: rgba(0,0,0,0.1);
+  z-index: 0;
+}
+.how__tl-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-right: 20px;
+}
+.how__tl-step:last-child { padding-right: 0; }
+.how__tl-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--black);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+.how__tl-body { padding-right: 12px; }
+.how__tl-title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--black);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.how__tl-text {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.65;
+  color: rgba(0,0,0,0.75);
+}
+.how__footer {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+}
+.how__footer-main {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.how__footer-note {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.42);
+  line-height: 1.6;
+}
+
+/* ── MODELS ── */
+.models {
+  position: relative;
+  background: var(--black);
+  padding: 88px var(--pad) 88px;
+  overflow: hidden;
+}
+.models::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 220px;
+  height: 220px;
+  background: var(--purple);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 0%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.models__head {
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 64px;
+}
+.models__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+.models__card {
+  padding: 36px 32px;
+  background: var(--ink-700);
+  border: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  flex-direction: column;
+}
+.models__title {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+.models__text {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.models__example {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.72);
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.models__example span {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 10px;
+  margin-right: 4px;
+}
+
+/* ── WHY (inside models section) ── */
+.why {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 88px;
+  padding-bottom: 0;
+  margin-top: 88px;
+}
+.why__head {
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 64px;
+}
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+.why__item {
+  padding: 36px 32px;
+  background: var(--ink-700);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.why__title {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.why__text {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+/* ── TEAM ── */
+.team {
+  margin-top: 64px;
+  padding-top: 56px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.team__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 36px 32px;
+  background: var(--ink-700);
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: background .2s;
+}
+.team__card:hover { background: var(--ink-600); }
+.team__avatar {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.team__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.team__role {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--purple);
+  margin-bottom: 12px;
+}
+.team__desc {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .team__grid { grid-template-columns: 1fr; }
+}
+
+/* ── CASES TABS ── */
+.cases__tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.cases__tab {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 20px;
+  position: relative;
+  transition: color 0.2s;
+}
+.cases__tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0; right: 0;
+  height: 2px;
+  background: var(--purple);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.cases__tab--active { color: #fff; }
+.cases__tab--active::after { opacity: 1; }
+.cases__tab:hover { color: rgba(255,255,255,0.8); }
+.cases__pane--hidden { display: none; }
+
+/* ── CASES ── */
+.cases {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 88px;
+  margin-top: 88px;
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+}
+.cases__track-wrap {
+  margin-left: calc(-1 * var(--pad));
+  margin-right: calc(-1 * var(--pad));
+}
+.cases__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cases__header-top {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cases__logo {
+  height: 36px;
+  width: auto;
+  opacity: 0.9;
+}
+.cases__head {
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.cases__nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.cases__btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.cases__btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+.cases__btn:disabled { opacity: 0.3; cursor: default; }
+.cases__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.cases__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: background .2s, transform .2s;
+  flex-shrink: 0;
+}
+.cases__dot--active {
+  background: var(--purple);
+  transform: scale(1.25);
+}
+.cases__track-wrap {
+  overflow: hidden;
+}
+.cases__track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.cases__slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.cases__slide-left {
+  padding: 48px 56px 48px var(--pad);
+  border-right: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cases__slide-num {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(96px, 15vw, 180px);
+  color: rgba(255,255,255,0.04);
+  line-height: 0.85;
+  user-select: none;
+  margin-bottom: 32px;
+}
+.cases__slide-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--purple);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cases__slide-tag::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--purple);
+  flex-shrink: 0;
+}
+.cases__slide-logo-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+}
+.cases__slide-logo {
+  max-width: 320px;
+  max-height: 240px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.4));
+}
+.cases__slide-company {
+  font-size: clamp(22px, 3vw, 44px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  line-height: 1.05;
+}
+.cases__slide-right {
+  padding: 56px 0 56px 56px;
+  display: flex;
+  flex-direction: column;
+}
+.cases__slide-block {
+  margin-bottom: 32px;
+}
+.cases__slide-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.cases__slide-text {
+  font-size: clamp(14px, 1.4vw, 16px);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.7;
+}
+.cases__slide-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.cases__slide-tech {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.45);
+}
+/* ── APPS ── */
+.apps {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 88px;
+  margin-top: 88px;
+}
+.apps__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.apps__head {
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.apps__nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.apps__btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.apps__btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
+.apps__counter {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  min-width: 48px;
+  text-align: center;
+}
+.apps__counter span:first-child { color: var(--white); }
+.apps__track-wrap {
+  overflow: hidden;
+}
+.apps__track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.apps__slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(255,255,255,0.07);
+  min-height: 360px;
+  overflow: hidden;
+}
+.apps__slide-info {
+  padding: 56px 72px 56px 56px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  flex-direction: column;
+}
+.apps__slide-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--purple);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.apps__slide-tag::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--purple);
+  flex-shrink: 0;
+}
+.apps__slide-name {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  line-height: 0.95;
+  margin-bottom: 28px;
+}
+.apps__slide-desc {
+  font-size: clamp(13px, 1.3vw, 16px);
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.75;
+  flex: 1;
+  margin-bottom: 36px;
+}
+.apps__slide-techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: auto;
+}
+.apps__slide-tech {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.45);
+}
+.apps__slide-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 40px 32px;
+  background: #090910;
+}
+.apps__slide-preview--light,
+.apps__slide-preview--dark { background: #090910; }
+.apps__slide-preview--sfera { background: radial-gradient(ellipse at 65% 40%, #1e1428 0%, #090910 65%); }
+
+/* ── Phone mockup ── */
+.phone-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.phone-wrap--solo { align-items: center; }
+.phone {
+  position: relative;
+  width: 150px;
+  aspect-ratio: 9 / 19.5;
+  background: #0d0d0d;
+  border-radius: 40px;
+  border: 6px solid #2c2c32;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04),
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 28px 72px rgba(0,0,0,0.85);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.phone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 40%);
+  border-radius: 34px;
+  z-index: 5;
+  pointer-events: none;
+}
+.phone--secondary {
+  width: 130px;
+  filter: brightness(0.55);
+  transform: rotate(-9deg) translateX(26px) translateY(14px);
+  z-index: 1;
+}
+.phone--primary {
+  z-index: 2;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04),
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 36px 90px rgba(0,0,0,0.9),
+    0 0 48px rgba(106,103,248,0.22);
+}
+.phone--hero {
+  width: 190px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04),
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 44px 110px rgba(0,0,0,0.9),
+    0 0 64px rgba(106,103,248,0.28),
+    0 0 130px rgba(30,138,255,0.14);
+}
+
+/* ── Trio cascade layout ── */
+.phone-wrap--trio {
+  align-items: flex-end;
+  gap: 0;
+  padding-bottom: 20px;
+}
+.phone--t1 {
+  width: 112px;
+  filter: brightness(0.32);
+  transform: rotate(-12deg) translateX(50px) translateY(16px);
+  z-index: 1;
+}
+.phone--t2 {
+  width: 140px;
+  filter: brightness(0.65);
+  transform: rotate(-4deg) translateX(18px) translateY(5px);
+  z-index: 2;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04),
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 28px 70px rgba(0,0,0,0.85);
+}
+.phone--t3 {
+  width: 170px;
+  z-index: 3;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04),
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 40px 100px rgba(0,0,0,0.95),
+    0 0 60px rgba(106,103,248,0.32),
+    0 0 120px rgba(30,138,255,0.12);
+}
+.phone__island {
+  display: block;
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 21px;
+  background: #000;
+  border-radius: 100px;
+  z-index: 4;
+}
+.phone__img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.phone__home {
+  display: block;
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 4px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 100px;
+  z-index: 4;
+}
+
+/* ── STATS ── */
+.stats {
+  position: relative;
+  background: var(--ink-700);
+  padding: 64px 0 88px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
+  margin-top: 88px;
+}
+.stats::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 180px; height: 180px;
+  background: var(--blue);
+  clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.stats::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 120px; height: 120px;
+  background: var(--purple);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 0%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 80px;
+}
+.stats__num {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(64px, 8.5vw, 100px);
+  color: var(--white);
+  line-height: 1;
+}
+.stats__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ── PARTNERS ── */
+.partners {
+  position: relative;
+  background: var(--black);
+  padding: 80px 0 100px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
+}
+.partners::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 200px; height: 200px;
+  background: var(--purple);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+.partners__head {
+  font-size: clamp(40px, 6vw, 96px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 56px;
+  padding: 0 var(--pad);
+}
+/* Marquee ticker */
+.partners__ticker {
+  overflow: hidden;
+  position: relative;
+}
+.partners__ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 28s linear infinite;
+}
+.partners__ticker-track:hover { animation-play-state: paused; }
+.partners__item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 52px;
+  margin: 0 18px;
+  transition: transform .25s, box-shadow .25s;
+}
+.partners__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.partners__logo {
+  height: 56px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── CTA ── */
+.cta {
+  background: var(--black);
+  padding: 100px 0 100px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 240px; height: 240px;
+  background: var(--blue);
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+  opacity: 0.2;
+  pointer-events: none;
+}
+.cta__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  padding: 0 var(--pad);
+}
+.cta__left {
+  display: flex;
+  flex-direction: column;
+}
+.cta__title {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  margin-bottom: 44px;
+}
+.cta__title span { color: var(--blue); }
+.cta__steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  counter-reset: step-counter;
+}
+.cta__step-item {
+  counter-increment: step-counter;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.72);
+}
+.cta__step-item::before {
+  content: counter(step-counter, decimal-leading-zero);
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 28px;
+  color: var(--purple);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.cta__mantra {
+  margin-top: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.35);
+}
+.cta__form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.cta__field { display: flex; flex-direction: column; gap: 7px; }
+.cta__label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--muted);
+}
+.cta__input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.22);
+  padding: 10px 0;
+  color: var(--white);
+  font-size: 14px;
+  font-family: 'Manrope', sans-serif;
+  outline: none;
+  transition: border-color .2s;
+}
+.cta__input::placeholder { color: rgba(255,255,255,0.22); font-size: 13px; }
+.cta__input:focus { border-bottom-color: rgba(255,255,255,0.65); }
+.cta__submit {
+  margin-top: 8px;
+  align-self: flex-start;
+  padding: 15px 40px;
+  background: var(--blue);
+  border: none;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  transition: opacity .2s;
+}
+.cta__submit:hover { opacity: 0.82; }
+
+/* ── BOTTOM GLOW ── */
+.bottom-glow {
+  position: relative;
+  background: var(--ink-700);
+  overflow: hidden;
+  padding: 80px var(--pad);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom-glow::before {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(106,167,248,0.18) 0%, rgba(219,221,255,0.10) 40%, transparent 70%);
+  pointer-events: none;
+}
+.bottom-glow::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(106,103,248,0.5), rgba(30,138,255,0.5), transparent);
+}
+.bottom-glow__text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.bottom-glow__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--purple);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.bottom-glow__label::before,
+.bottom-glow__label::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--purple);
+}
+.bottom-glow__title {
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+.bottom-glow__title span { color: var(--blue); }
+.bottom-glow__btn {
+  display: inline-block;
+  padding: 14px 40px;
+  background: var(--purple);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: opacity .2s;
+}
+.bottom-glow__btn:hover { opacity: 0.82; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ink-600);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 32px var(--pad);
+}
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer__name {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.28);
+}
+.footer__contacts {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer__contact {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer__contact:hover { color: var(--white); }
+.footer__socials { display: flex; gap: 12px; }
+.footer__social {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+.footer__social:hover { border-color: rgba(255,255,255,0.55); color: var(--white); }
+.footer__social svg { display: block; }
+
+/* ── CALCULATOR ── */
+.calc { display: flex; flex-direction: column; gap: 20px; }
+
+/* Progress bar */
+.calc__prog { display: flex; align-items: center; gap: 0; padding-top: 18px; }
+.calc__prog-step {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  cursor: pointer; flex-shrink: 0;
+}
+.calc__prog-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.25);
+  transition: all 0.25s;
+}
+.calc__prog-step.is-active .calc__prog-dot {
+  border-color: var(--purple); background: rgba(106,103,248,0.18); color: var(--purple);
+}
+.calc__prog-step.is-done .calc__prog-dot {
+  border-color: var(--purple); background: var(--purple); color: #fff;
+}
+.calc__prog-lbl {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: rgba(255,255,255,0.2); transition: color 0.25s;
+  white-space: nowrap;
+}
+.calc__prog-step.is-active .calc__prog-lbl { color: rgba(255,255,255,0.6); }
+.calc__prog-step.is-done .calc__prog-lbl { color: rgba(255,255,255,0.4); }
+.calc__prog-line {
+  flex: 1; height: 1px; background: rgba(255,255,255,0.08);
+  margin-bottom: 18px; transition: background 0.25s;
+}
+.calc__prog-line.is-done { background: var(--purple); }
+
+/* Steps */
+@keyframes calcStepIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.calc__step { display: none; flex-direction: column; gap: 16px; }
+.calc__step.is-visible { display: flex; animation: calcStepIn 0.28s ease forwards; }
+
+.calc__step-hd {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--muted);
+}
+.calc__num {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 20px; color: var(--purple); line-height: 1;
+}
+
+/* Type cards */
+.calc__types {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 8px;
+}
+.calc__type {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+  padding: 14px 12px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  cursor: pointer; text-align: left;
+  transition: border-color .15s, background .15s;
+}
+.calc__type:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); }
+.calc__type.is-sel { border-color: var(--purple); background: rgba(106,103,248,0.14); }
+.calc__type-icon { color: rgba(255,255,255,0.35); transition: color .15s; flex-shrink: 0; }
+.calc__type.is-sel .calc__type-icon { color: var(--purple); }
+.calc__type-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.65); transition: color .15s; word-break: break-word; }
+.calc__type.is-sel .calc__type-name { color: #fff; }
+.calc__type-sub { font-size: 10px; color: var(--muted); line-height: 1.35; }
+
+/* Scale cards */
+.calc__scales { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.calc__scale {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  padding: 16px 12px 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  cursor: pointer; text-align: center;
+  transition: border-color .15s, background .15s;
+}
+.calc__scale:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); }
+.calc__scale.is-sel { border-color: var(--purple); background: rgba(106,103,248,0.14); }
+.calc__scale-visual { display: flex; align-items: flex-end; gap: 4px; height: 36px; }
+.calc__bar {
+  width: 8px; border-radius: 2px 2px 0 0;
+  background: rgba(255,255,255,0.13);
+  height: var(--bh); transition: background .2s;
+}
+.calc__scale.is-sel .calc__bar { background: var(--purple); }
+.calc__scale-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.65); transition: color .15s; }
+.calc__scale.is-sel .calc__scale-name { color: #fff; }
+.calc__scale-sub { font-size: 10px; color: var(--muted); line-height: 1.35; }
+
+/* Extras toggles */
+.calc__extras { display: flex; flex-direction: column; gap: 8px; }
+.calc__extra {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.calc__extra:hover { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.05); }
+.calc__extra-inp { display: none; }
+.calc__extra-toggle {
+  width: 36px; height: 20px; border-radius: 10px; flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+  position: relative; transition: background .15s, border-color .15s;
+}
+.calc__extra-toggle::after {
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: rgba(255,255,255,0.4); transition: transform .15s, background .15s;
+}
+.calc__extra-inp:checked ~ .calc__extra-toggle { background: var(--purple); border-color: var(--purple); }
+.calc__extra-inp:checked ~ .calc__extra-toggle::after { transform: translateX(16px); background: #fff; }
+.calc__extra-text { display: flex; flex-direction: column; gap: 2px; }
+.calc__extra-text b { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.8); }
+.calc__extra-text span { font-size: 11px; color: var(--muted); }
+.calc__extra-inp:checked ~ .calc__extra-text b { color: #fff; }
+
+/* CTA & restart buttons */
+.calc__cta-btn {
+  padding: 13px 24px; border-radius: 8px; border: none;
+  background: var(--purple); color: #fff;
+  font-size: 13px; font-weight: 700; font-family: inherit;
+  cursor: pointer; transition: opacity .15s; align-self: stretch; text-align: center;
+}
+.calc__cta-btn:hover { opacity: 0.85; }
+.calc__restart-btn {
+  padding: 10px 18px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: rgba(255,255,255,0.5);
+  font-size: 12px; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: opacity .15s; align-self: flex-start;
+}
+.calc__restart-btn:hover { opacity: 0.7; }
+
+/* Output */
+.calc__out {
+  padding: 22px 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+}
+.calc__out-nums { display: flex; align-items: center; margin-bottom: 14px; }
+.calc__out-col { flex: 1; }
+.calc__out-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); margin: 0 20px; flex-shrink: 0; }
+.calc__out-tag {
+  display: block; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted); margin-bottom: 5px;
+}
+.calc__out-price, .calc__out-weeks {
+  display: block; font-size: 20px; font-weight: 800;
+  color: #fff; letter-spacing: -0.02em;
+}
+.calc__out-note { font-size: 12px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
+.calc__out-btn {
+  display: block; text-align: center; padding: 13px 22px;
+  background: var(--blue); color: #fff;
+  font-size: 13px; font-weight: 700; font-family: inherit;
+  text-decoration: none; border-radius: 8px; transition: opacity .15s;
+}
+.calc__out-btn:hover { opacity: 0.82; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1200px) {
+  .landscape__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 960px) {
+  .nav__links:not(.is-open) { display: none; }
+  .nav__cta { display: none; }
+  .nav__hamburger { display: flex; }
+
+  .hero__content { width: 100%; max-width: 100%; min-width: 0; }
+  .hero__title { font-size: clamp(26px, 5.5vw, 44px); word-break: break-word; }
+  .hero__accent { display: none; }
+  .hero__logo { display: none; }
+
+  .market__stats { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Services — horizontal swipe carousel on mobile */
+  .services__grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    margin-top: 40px;
+    padding-bottom: 16px;
+    scrollbar-width: none;
+  }
+  .services__grid::-webkit-scrollbar { display: none; }
+  .services__card {
+    flex: 0 0 76vw;
+    max-width: 320px;
+    scroll-snap-align: start;
+    padding: 28px 24px 32px;
+    border-radius: 4px;
+  }
+  .services__card--wide { grid-column: unset; flex: 0 0 76vw; max-width: 320px; }
+  .services__title { font-size: 15px; color: #fff; }
+  .services__desc {
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: #fff;
+    line-height: 1.65;
+    opacity: 0.92;
+  }
+  .services__card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+  }
+  .services__example {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    text-transform: none;
+    letter-spacing: 0.01em;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .services__example span {
+    font-size: 12px;
+    color: #fff;
+  }
+
+  .landscape__grid { grid-template-columns: repeat(2, 1fr); }
+
+  .how__timeline { flex-direction: column; gap: 0; }
+  .how__timeline::before { top: 20px; bottom: 20px; left: 20px; right: auto; width: 2px; height: auto; }
+  .how__tl-step { flex-direction: row; gap: 20px; padding-right: 0; padding-bottom: 32px; align-items: flex-start; }
+  .how__tl-step:last-child { padding-bottom: 0; }
+  .how__tl-dot { margin-bottom: 0; flex-shrink: 0; }
+  .how__tl-body { padding-top: 8px; padding-right: 0; }
+  .how__tl-text { font-size: 14px; color: rgba(0,0,0,0.7); }
+
+  .models__grid { grid-template-columns: 1fr; }
+
+  .why__grid { grid-template-columns: 1fr 1fr; }
+
+  .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 28px 32px; }
+
+  .cta__inner { grid-template-columns: 1fr; gap: 48px; }
+
+  .footer__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+
+  /* Cases — reduce inner padding on tablet */
+  .cases__slide-left { padding: 48px 48px 48px 0; }
+  .cases__slide-right { padding: 48px 0 48px 48px; }
+  /* Apps — reduce inner padding on tablet */
+  .apps__slide-info { padding: 48px 56px 48px 48px; }
+}
+
+@media (max-width: 640px) {
+  .landscape__grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    scrollbar-width: none;
+  }
+  .landscape__grid::-webkit-scrollbar { display: none; }
+  .landscape__col {
+    flex: 0 0 72vw;
+    max-width: 280px;
+    scroll-snap-align: start;
+  }
+  .why__grid { grid-template-columns: 1fr; }
+  .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; }
+
+  /* Cases carousel — stack to single column */
+  .cases__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cases__slide { grid-template-columns: 1fr; }
+  .cases__slide-left {
+    padding: 36px var(--pad) 28px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .cases__slide-right { padding: 28px var(--pad) 36px; }
+  .cases__slide-num { font-size: clamp(64px, 18vw, 100px); margin-bottom: 20px; }
+
+  /* Apps slider — stack to single column */
+  .apps__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .apps__slide { grid-template-columns: 1fr; min-height: auto; }
+  .apps__slide-info {
+    padding: 36px var(--pad) 28px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .apps__slide-preview { min-height: 300px; padding: 28px 20px; }
+  .phone--hero { width: 150px; }
+  .phone--secondary { width: 105px; }
+  .phone--primary { width: 125px; }
+}
+
+@media (max-width: 540px) {
+  .how__step { grid-template-columns: 64px 1fr; gap: 16px; }
+  .how__num { font-size: 44px; }
+  .stats__num { font-size: clamp(40px, 8vw, 64px); }
+  .market__quote { font-size: clamp(14px, 4vw, 20px); }
+
+  /* Tighter padding inside the models section on small phones */
+  .models { padding: 56px var(--pad) 56px; }
+  .cases { padding-top: 56px; margin-top: 56px; }
+  .apps  { padding-top: 56px; margin-top: 56px; }
+  .why   { padding-top: 56px; margin-top: 56px; }
+}
+
+/* ── DECORATIVE TRIANGLE Z-INDEX FIX ──
+   Absolute-positioned ::before/::after triangles are painted above
+   normal-flow children by default. Pin triangles to z-index:0 and
+   lift all content containers to z-index:1 so text is never obscured. */
+.market::before,
+.services::before,
+.how::before,
+.models::after,
+.stats::before,
+.stats::after,
+.partners::after,
+.cta::before {
+  z-index: 0;
+}
+
+.market__head, .market__stats, .market__quote,
+.services__head, .services__grid,
+.how__head, .how__sub, .how__steps, .how__timeline, .how__footer,
+.models__head, .models__grid,
+.stats__grid,
+.partners__head, .partners__ticker,
+.cta__inner {
+  position: relative;
+  z-index: 1;
+}
+
+</style>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav__logo" aria-label="AI Laboratory">
+      <svg height="26" viewBox="0 0 66 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M24.0872 10.0836L27.7351 6.95022e-07H30.4636L34.1115 10.0836H31.5757L30.9677 8.14104H27.1716L26.5636 10.0836H24.0872ZM27.7795 6.16881H30.3598L29.0993 2.1057H29.04L27.7795 6.16881ZM34.8003 10.0836V6.95022e-07H37.1433V10.0836H34.8003ZM38.5113 10.0836V6.95022e-07H40.8543V8.0669H45.5106V10.0836H38.5113ZM45.867 10.0836L49.5149 6.95022e-07H52.2435L55.8914 10.0836H53.3556L52.7476 8.14104H48.9514L48.3435 10.0836H45.867ZM49.5594 6.16881H52.1397L50.8792 2.1057H50.8199L49.5594 6.16881ZM56.7433 10.0836V6.95022e-07H61.9334C63.9205 6.95022e-07 65.0475 1.03802 65.0475 2.773C65.0475 3.8555 64.5581 4.5228 63.7277 4.95284V5.01216C64.6323 5.33839 65.2996 6.09466 65.2996 7.2958C65.2996 9.01595 64.1726 10.0836 62.1707 10.0836H56.7433ZM61.8889 8.21519C62.6452 8.21519 63.0011 7.78515 63.0011 7.05854C63.0011 6.33192 62.6452 5.91672 61.8889 5.91672H59.0566V8.21519H61.8889ZM59.0566 4.10759H61.711C62.4524 4.10759 62.8083 3.70722 62.8083 2.99543C62.8083 2.28364 62.4524 1.86844 61.711 1.86844H59.0566V4.10759Z" fill="white"/>
+        <path d="M12.081 0.087326H18.2521L22.5979 10.1696H16.4268L12.081 0.087326Z" fill="white"/>
+        <path d="M14.8628 10.1696H8.69173L7.43146 7.24572L6.17119 10.1696H0.000137329L4.34594 0.087326H10.517L14.8628 10.1696Z" fill="white"/>
+      </svg>
+    </a>
+
+    <ul class="nav__links" id="nav-links" role="list">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#how">Как работаем</a></li>
+      <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#cta">Контакты</a></li>
+    </ul>
+
+    <a href="#cta" class="nav__cta">Обсудить проект</a>
+
+    <button class="nav__hamburger" id="hamburger" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero">
+    <div class="hero__content">
+      <h1 class="hero__title">Ваша внешняя<br>технологическая<br>команда</h1>
+      <p class="hero__sub">Берём на себя разработку и развитие цифровых продуктов — от AI и автоматизации до web, mobile, backend и интеграций.</p>
+      <a href="https://t.me/tdm343" target="_blank" rel="noopener" class="hero__btn">Обсудить проект</a>
+    </div>
+
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- diagonal cut: dark → white -->
+  <span class="cut cut--to-white" aria-hidden="true"></span>
+
+  <!-- ══ MARKET ══ -->
+  <section class="market" id="market" aria-labelledby="market-title">
+    <h2 class="market__head" id="market-title">AI уже стал частью бизнеса</h2>
+    <div class="market__stats">
+      <div class="market__stat">
+        <div class="market__stat-num">88%</div>
+        <div class="market__stat-desc">организаций используют AI в 2025 году</div>
+        <div class="market__source">Stanford HAI</div>
+      </div>
+      <div class="market__stat">
+        <div class="market__stat-num">86%</div>
+        <div class="market__stat-desc">работодателей ожидают трансформацию бизнеса к 2030</div>
+        <div class="market__source">WEF</div>
+      </div>
+      <div class="market__stat">
+        <div class="market__stat-num">+40%</div>
+        <div class="market__stat-desc">рост производительности у компаний с AI</div>
+        <div class="market__source">PwC</div>
+      </div>
+      <div class="market__stat">
+        <div class="market__stat-num">67%</div>
+        <div class="market__stat-desc">казахстанских компаний планируют внедрить AI в 2025–2026 годах</div>
+        <div class="market__source">KPMG Kazakhstan</div>
+      </div>
+    </div>
+    <blockquote class="market__quote">
+      Вопрос уже не в том, нужен ли бизнесу AI —<br>вопрос, где именно он создаст экономический эффект
+    </blockquote>
+  </section>
+
+  <!-- diagonal cut: white → dark -->
+  <span class="cut cut--to-dark" aria-hidden="true"></span>
+
+  <!-- ══ SERVICES ══ -->
+  <section class="services" id="services" aria-labelledby="services-title">
+    <h2 class="services__head" id="services-title">С какими задачами<br>к нам приходят</h2>
+    <div class="services__grid">
+      <div class="services__card">
+        <div class="services__num">01</div>
+        <div class="services__title">Слишком много ручной работы</div>
+        <p class="services__desc">Процессы завязаны на людей, таблицы и рутину — автоматизируем их с помощью AI и других цифровых инструментов.</p>
+        <p class="services__example"><span>Например:</span> обработка заявок, поддержка, документы, внутренние операции.</p>
+      </div>
+      <div class="services__card">
+        <div class="services__num">02</div>
+        <div class="services__title">Нужен цифровой продукт, но нет команды</div>
+        <p class="services__desc">Берём разработку на себя — от идеи и MVP до полноценного сервиса или приложения.</p>
+        <p class="services__example"><span>Например:</span> личный кабинет, мобильное приложение, онлайн-сервис.</p>
+      </div>
+      <div class="services__card">
+        <div class="services__num">03</div>
+        <div class="services__title">Системы не связаны между собой</div>
+        <p class="services__desc">Объединяем CRM, ERP, внутренние сервисы, данные и аналитику в единую рабочую среду.</p>
+        <p class="services__example"><span>Например:</span> единая система для продаж, операций и управления.</p>
+      </div>
+      <div class="services__card">
+        <div class="services__num">04</div>
+        <div class="services__title">Уже начали делать, но нужно довести до ума</div>
+        <p class="services__desc">Подхватываем существующий продукт, разбираемся в коде и архитектуре и приводим его к стабильному рабочему состоянию.</p>
+        <p class="services__example"><span>Например:</span> даже если первая версия была собрана на AI, no-code или своими силами.</p>
+      </div>
+      <div class="services__card services__card--wide">
+        <div class="services__num">05</div>
+        <div class="services__title">Не хватает IT-ресурса внутри компании</div>
+        <p class="services__desc">Подключаем отдельных специалистов или полноценную внешнюю команду и берём на себя разработку, поддержку и развитие продукта.</p>
+        <p class="services__example"><span>Например:</span> выделенная команда под конкретный проект или постоянную работу.</p>
+      </div>
+    </div>
+
+    <!-- ══ PRODUCT LANDSCAPE ══ -->
+    <div class="landscape">
+      <h2 class="landscape__head">Для тех, кто говорит на техническом</h2>
+      <p class="landscape__sub">Ниже — технологии, с которыми работает наша команда. Если вы технарь — смотрите. Если нет — листайте дальше.</p>
+      <div class="landscape__grid" id="landscape-grid">
+        <div class="landscape__col">
+          <div class="landscape__num">01</div>
+          <div class="landscape__title">AI &amp; Agents</div>
+          <ul class="landscape__list">
+            <li>AI Agents</li>
+            <li>AI Assistants</li>
+            <li>RAG / Enterprise Search</li>
+            <li>Voice AI</li>
+            <li>Document AI</li>
+            <li>AI Analytics</li>
+          </ul>
+        </div>
+        <div class="landscape__col">
+          <div class="landscape__num">02</div>
+          <div class="landscape__title">Business Systems</div>
+          <ul class="landscape__list">
+            <li>CRM</li>
+            <li>ERP</li>
+            <li>Customer Portals</li>
+            <li>Internal Platforms</li>
+            <li>Service Desk</li>
+          </ul>
+        </div>
+        <div class="landscape__col">
+          <div class="landscape__num">03</div>
+          <div class="landscape__title">Automation</div>
+          <ul class="landscape__list">
+            <li>Sales Automation</li>
+            <li>Customer Support Automation</li>
+            <li>Document Processing</li>
+            <li>Back-office Automation</li>
+          </ul>
+        </div>
+        <div class="landscape__col">
+          <div class="landscape__num">04</div>
+          <div class="landscape__title">Digital Products</div>
+          <ul class="landscape__list">
+            <li>Web Platforms</li>
+            <li>Mobile Applications</li>
+            <li>SaaS Products</li>
+            <li>MVP Development</li>
+          </ul>
+        </div>
+        <div class="landscape__col">
+          <div class="landscape__num">05</div>
+          <div class="landscape__title">Data &amp; Integrations</div>
+          <ul class="landscape__list">
+            <li>API Integration</li>
+            <li>Data Pipelines</li>
+            <li>BI &amp; Dashboards</li>
+            <li>System Integration</li>
+            <li>Cloud Infrastructure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ══ CASES ══ -->
+    <div class="cases" id="cases" aria-labelledby="cases-title">
+      <div class="cases__tabs" role="tablist">
+        <button class="cases__tab cases__tab--active" data-tab="projects" role="tab">Кейсы проектов</button>
+        <button class="cases__tab" data-tab="products" role="tab">Наши продукты</button>
+      </div>
+
+      <div class="cases__pane" id="cases-pane-projects">
+      <div class="cases__header">
+        <h2 class="cases__head" id="cases-title">Кейсы</h2>
+        <div class="cases__nav">
+          <button class="cases__btn cases__btn--prev" id="cases-prev" aria-label="Предыдущий кейс">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="cases__dots" id="cases-dots" role="tablist">
+            <button class="cases__dot cases__dot--active" role="tab" aria-selected="true" aria-label="Кейс 1"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 2"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 3"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 4"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 5"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 6"></button>
+            <button class="cases__dot" role="tab" aria-selected="false" aria-label="Кейс 7"></button>
+          </div>
+          <button class="cases__btn cases__btn--next" id="cases-next" aria-label="Следующий кейс">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="cases__track-wrap">
+        <div class="cases__track" id="cases-track">
+
+          <!-- 01 Chayla Group -->
+          <div class="cases__slide">
+            <div class="cases__slide-left">
+              <div class="cases__slide-logo-wrap">
+                <img src="https://static.tildacdn.pro/tild3865-3831-4333-b465-323130353066/chayla-group.jpeg" alt="Chayla Group" class="cases__slide-logo" />
+              </div>
+              <div>
+                <div class="cases__slide-tag">HoReCa</div>
+                <div class="cases__slide-company">Chayla Group</div>
+              </div>
+            </div>
+            <div class="cases__slide-right">
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Задача</div>
+                <div class="cases__slide-text">Закупки велись вручную через таблицы и почту — потери времени, ошибки и отсутствие контроля над бюджетом</div>
+              </div>
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Решение</div>
+                <div class="cases__slide-text">Система автоматизации отдела закупок: сбор предложений от поставщиков, согласование, контроль бюджета и интеграция с 1С</div>
+              </div>
+              <div class="cases__slide-techs">
+                <span class="cases__slide-tech">Web</span>
+                <span class="cases__slide-tech">Python</span>
+                <span class="cases__slide-tech">PostgreSQL</span>
+                <span class="cases__slide-tech">1С</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 Kelzin Group -->
+          <div class="cases__slide">
+            <div class="cases__slide-left">
+              <div class="cases__slide-logo-wrap">
+                <img src="https://static.tildacdn.pro/tild6132-3662-4031-b531-623361613930/kelzin-group.jpeg" alt="Kelzin Group" class="cases__slide-logo" />
+              </div>
+              <div>
+                <div class="cases__slide-tag">Fashion Retail</div>
+                <div class="cases__slide-company">Kelzin Group</div>
+              </div>
+            </div>
+            <div class="cases__slide-right">
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Задача</div>
+                <div class="cases__slide-text">Группа компаний работала в разрозненных системах — склад, продажи и финансы не были связаны между собой</div>
+              </div>
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Решение</div>
+                <div class="cases__slide-text">ERP-система для группы компаний: единая платформа для управления складом, продажами, финансами и аналитикой</div>
+              </div>
+              <div class="cases__slide-techs">
+                <span class="cases__slide-tech">Web</span>
+                <span class="cases__slide-tech">React</span>
+                <span class="cases__slide-tech">FastAPI</span>
+                <span class="cases__slide-tech">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 Vexmont Development -->
+          <div class="cases__slide">
+            <div class="cases__slide-left">
+              <div class="cases__slide-logo-wrap">
+                <img src="https://static.tildacdn.pro/tild6532-3930-4565-a638-376137646261/vexmont.jpeg" alt="Vexmont Development" class="cases__slide-logo" />
+              </div>
+              <div>
+                <div class="cases__slide-tag">Девелопмент</div>
+                <div class="cases__slide-company">Vexmont Development</div>
+              </div>
+            </div>
+            <div class="cases__slide-right">
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Задача</div>
+                <div class="cases__slide-text">Контроль строительных объектов вёлся через звонки и отчёты — нет прозрачности по статусам и срокам в реальном времени</div>
+              </div>
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Решение</div>
+                <div class="cases__slide-text">Операционная система для контроля строительства: задачи, статусы объектов, отчётность и документооборот в одном месте</div>
+              </div>
+              <div class="cases__slide-techs">
+                <span class="cases__slide-tech">Web</span>
+                <span class="cases__slide-tech">Mobile</span>
+                <span class="cases__slide-tech">API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 Balance Fitness -->
+          <div class="cases__slide">
+            <div class="cases__slide-left">
+              <div class="cases__slide-logo-wrap">
+                <img src="https://static.tildacdn.pro/tild3233-3366-4466-b464-383435373637/balance.jpeg" alt="Balance Fitness" class="cases__slide-logo" />
+              </div>
+              <div>
+                <div class="cases__slide-tag">Fitness</div>
+                <div class="cases__slide-company">Balance Fitness</div>
+              </div>
+            </div>
+            <div class="cases__slide-right">
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Задача</div>
+                <div class="cases__slide-text">Продажи велись без системы — менеджеры работали хаотично, лиды терялись, аналитики не было</div>
+              </div>
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Решение</div>
+                <div class="cases__slide-text">Автоматизация продаж: воронка, карточки клиентов, задачи менеджерам и аналитика в одном инструменте</div>
+              </div>
+              <div class="cases__slide-techs">
+                <span class="cases__slide-tech">Web</span>
+                <span class="cases__slide-tech">CRM</span>
+                <span class="cases__slide-tech">API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 05 Dostyq Auto -->
+          <div class="cases__slide">
+            <div class="cases__slide-left">
+              <div class="cases__slide-logo-wrap">
+                <img src="https://static.tildacdn.pro/tild3265-3135-4431-b764-393933396634/dostyq-auto.jpeg" alt="Dostyq Auto" class="cases__slide-logo" />
+              </div>
+              <div>
+                <div class="cases__slide-tag">Авто</div>
+                <div class="cases__slide-company">Dostyq Auto</div>
+              </div>
+            </div>
+            <div class="cases__slide-right">
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Задача</div>
+                <div class="cases__slide-text">Онбординг новых сотрудников занимал недели и требовал постоянного участия менеджеров — дорого и медленно</div>
+              </div>
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Решение</div>
+                <div class="cases__slide-text">AI-агент для онбординга: отвечает на вопросы, проводит по регламентам и тестирует знания сотрудников в автоматическом режиме</div>
+              </div>
+              <div class="cases__slide-techs">
+                <span class="cases__slide-tech">LLM</span>
+                <span class="cases__slide-tech">Telegram</span>
+                <span class="cases__slide-tech">Python</span>
+                <span class="cases__slide-tech">API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06 Golden Solutions -->
+          <div class="cases__slide">
+            <div class="cases__slide-left">
+              <div class="cases__slide-logo-wrap">
+                <img src="https://static.tildacdn.pro/tild3831-3532-4636-b765-613361633764/golden-solutions.jpeg" alt="Golden Solutions" class="cases__slide-logo" />
+              </div>
+              <div>
+                <div class="cases__slide-tag">Логистика</div>
+                <div class="cases__slide-company">Golden Solutions</div>
+              </div>
+            </div>
+            <div class="cases__slide-right">
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Задача</div>
+                <div class="cases__slide-text">Экспедиторы работали в разных системах без единого интерфейса — много ручного ввода, потери данных и медленная обработка заявок</div>
+              </div>
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Решение</div>
+                <div class="cases__slide-text">Операционная система для экспедиторов и AI-агент для автоматической классификации заявок и маршрутизации грузов</div>
+              </div>
+              <div class="cases__slide-techs">
+                <span class="cases__slide-tech">Web</span>
+                <span class="cases__slide-tech">AI</span>
+                <span class="cases__slide-tech">LLM</span>
+                <span class="cases__slide-tech">API</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 07 ТРЦ -->
+          <div class="cases__slide">
+            <div class="cases__slide-left">
+              <div class="cases__slide-num">07</div>
+              <div>
+                <div class="cases__slide-tag">Retail / ТРЦ</div>
+                <div class="cases__slide-company">Торгово-<br>развлекательный<br>центр</div>
+              </div>
+            </div>
+            <div class="cases__slide-right">
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Задача</div>
+                <div class="cases__slide-text">Управление ТРЦ велось через разрозненные таблицы и звонки — арендаторы, инциденты, техобслуживание и финансы не были связаны</div>
+              </div>
+              <div class="cases__slide-block">
+                <div class="cases__slide-label">Решение</div>
+                <div class="cases__slide-text">Операционная система для ТРЦ: управление арендаторами, заявками, техническими задачами и аналитикой в едином интерфейсе</div>
+              </div>
+              <div class="cases__slide-techs">
+                <span class="cases__slide-tech">Web</span>
+                <span class="cases__slide-tech">Mobile</span>
+                <span class="cases__slide-tech">FastAPI</span>
+                <span class="cases__slide-tech">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /cases-pane-projects -->
+
+      <div class="cases__pane cases__pane--hidden" id="cases-pane-products">
+        <div class="cases__header">
+          <h2 class="cases__head">Наши продукты</h2>
+          <div class="apps__nav">
+            <button class="apps__btn apps__btn--prev" id="apps-prev" aria-label="Предыдущий продукт">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="apps__counter"><span id="apps-current">01</span> / <span id="apps-total">03</span></div>
+            <button class="apps__btn apps__btn--next" id="apps-next" aria-label="Следующий продукт">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="apps__track-wrap">
+        <div class="apps__track" id="apps-track">
+
+          <!-- Slide 1: Familia -->
+          <div class="apps__slide">
+            <div class="apps__slide-info">
+              <div class="apps__slide-tag">Mobile App</div>
+              <div class="apps__slide-name">Familia</div>
+              <p class="apps__slide-desc">Приложение для пары и семьи: общий календарь, задачи, цели, привычки, wishlist, покупки, финансы и личные послания — всё в одном месте</p>
+              <div class="apps__slide-techs">
+                <span class="apps__slide-tech">iOS</span>
+                <span class="apps__slide-tech">Android</span>
+                <span class="apps__slide-tech">React Native</span>
+                <span class="apps__slide-tech">FastAPI</span>
+              </div>
+            </div>
+            <div class="apps__slide-preview">
+              <div class="phone-wrap phone-wrap--trio">
+                <div class="phone phone--t1">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild3833-6535-4563-a163-663165616163/familia_calendar.jpg" alt="" class="phone__img">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t2">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild6632-6135-4962-b764-386236376438/familia_habit.jpg" alt="" class="phone__img">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t3">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild6264-3366-4038-a532-316362613930/familia_today.jpg" alt="Familia" class="phone__img">
+                  <span class="phone__home"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Uzel -->
+          <div class="apps__slide">
+            <div class="apps__slide-info">
+              <div class="apps__slide-tag">AI Mobile App</div>
+              <div class="apps__slide-name">Uzel</div>
+              <p class="apps__slide-desc">AI-помощник по контактам: запоминает людей и договорённости, превращает голосовые записи в факты, заметки и напоминания, помогает быстро находить нужную информацию</p>
+              <div class="apps__slide-techs">
+                <span class="apps__slide-tech">iOS</span>
+                <span class="apps__slide-tech">Android</span>
+                <span class="apps__slide-tech">LLM</span>
+                <span class="apps__slide-tech">Voice AI</span>
+              </div>
+            </div>
+            <div class="apps__slide-preview">
+              <div class="phone-wrap phone-wrap--trio">
+                <div class="phone phone--t1" style="background:#f5f0eb;">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild6366-6332-4234-b066-366331646236/uzel_components.png" alt="" class="phone__img" style="object-fit:contain;object-position:center top;">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t2" style="background:#0d0f12;">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild3633-6365-4831-b364-313833396135/uzel_settings.png" alt="" class="phone__img" style="object-fit:contain;object-position:center top;">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t3" style="background:#0d0f12;">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild3365-3636-4230-b237-633964666331/uzel_followup.png" alt="Uzel" class="phone__img" style="object-fit:contain;object-position:center top;">
+                  <span class="phone__home"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Sfera -->
+          <div class="apps__slide">
+            <div class="apps__slide-info">
+              <div class="apps__slide-tag">AI Mobile App</div>
+              <div class="apps__slide-name">Sfera</div>
+              <p class="apps__slide-desc">Дневник реальной жизни, который говорит на языке звёзд. Рассказываешь, как прошёл день — AI раскладывает события по сферам жизни, строит колесо баланса и объясняет перекос через транзиты и нумерологию</p>
+              <div class="apps__slide-techs">
+                <span class="apps__slide-tech">iOS</span>
+                <span class="apps__slide-tech">Android</span>
+                <span class="apps__slide-tech">LLM</span>
+                <span class="apps__slide-tech">Voice AI</span>
+              </div>
+            </div>
+            <div class="apps__slide-preview apps__slide-preview--sfera">
+              <div class="phone-wrap phone-wrap--trio">
+                <div class="phone phone--t1">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild3763-3864-4565-a162-346563626333/sfera_history.png" alt="" class="phone__img" style="object-position:center top">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t2">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild3236-3938-4237-b432-656430356164/sfera_home.png" alt="" class="phone__img" style="object-position:center top">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t3">
+                  <span class="phone__island"></span>
+                  <img src="https://static.tildacdn.pro/tild3763-3864-4565-a162-346563626333/sfera_history.png" alt="Sfera" class="phone__img" style="object-position:center 40%">
+                  <span class="phone__home"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /cases-pane-products -->
+  </div><!-- /cases -->
+
+  <!-- ══ PARTNERS ══ -->
+  <section class="partners" id="partners" aria-labelledby="partners-title">
+    <h2 class="partners__head" id="partners-title">Партнёры</h2>
+    <div class="partners__ticker">
+      <div class="partners__ticker-track" id="ticker-track">
+        <div class="partners__item"><img src="https://static.tildacdn.pro/tild3564-6338-4138-b166-663439303563/partner_4.png" alt="Yandex Cloud" class="partners__logo"></div>
+        <div class="partners__item"><img src="https://static.tildacdn.pro/tild3764-6331-4064-b763-653735616338/partner_7.png" alt="Google Cloud" class="partners__logo"></div>
+        <div class="partners__item"><img src="https://static.tildacdn.pro/tild3632-3664-4536-b663-396632373762/partner_3.png" alt="Smart Cloud" class="partners__logo"></div>
+        <div class="partners__item"><img src="https://static.tildacdn.pro/tild3938-6338-4162-b166-313239306432/partner_1.png" alt="Halyk Kazteleport" class="partners__logo"></div>
+        <div class="partners__item"><img src="https://static.tildacdn.pro/tild3832-3439-4163-a331-383935333765/partner_6.png" alt="Kismet AI" class="partners__logo"></div>
+        <div class="partners__item"><img src="https://static.tildacdn.pro/tild6566-3639-4339-a433-383565393336/partner_2.png" alt="Farabi Hub" class="partners__logo"></div>
+        <div class="partners__item"><img src="https://static.tildacdn.pro/tild6462-3031-4262-b632-656365666433/partner_5.png" alt="SDU Technopark" class="partners__logo"></div>
+        <!-- duplicate set for seamless loop -->
+        <div class="partners__item" aria-hidden="true"><img src="https://static.tildacdn.pro/tild3564-6338-4138-b166-663439303563/partner_4.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="https://static.tildacdn.pro/tild3764-6331-4064-b763-653735616338/partner_7.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="https://static.tildacdn.pro/tild3632-3664-4536-b663-396632373762/partner_3.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="https://static.tildacdn.pro/tild3938-6338-4162-b166-313239306432/partner_1.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="https://static.tildacdn.pro/tild3832-3439-4163-a331-383935333765/partner_6.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="https://static.tildacdn.pro/tild6566-3639-4339-a433-383565393336/partner_2.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="https://static.tildacdn.pro/tild6462-3031-4262-b632-656365666433/partner_5.png" alt="" class="partners__logo"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- diagonal cut: dark → white -->
+  <span class="cut cut--to-white" aria-hidden="true"></span>
+
+  <!-- ══ HOW WE WORK ══ -->
+  <section class="how" id="how" aria-labelledby="how-title">
+    <h2 class="how__head" id="how-title">Наш <span>подход</span></h2>
+    <p class="how__sub">Начинаем с бизнес-задачи, а не с разработки. Сначала разбираемся, что именно нужно решить, какой результат нужен бизнесу и зачем вообще здесь технология. Не обязательно приходить с готовым ТЗ: если оно есть — отлично, если нет — поможем сформулировать требования вместе.</p>
+
+    <div class="how__timeline">
+      <div class="how__tl-step">
+        <div class="how__tl-dot">01</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Рассказываете о задаче</div>
+          <p class="how__tl-text">Что хотите запустить, улучшить, автоматизировать или исправить.</p>
+        </div>
+      </div>
+      <div class="how__tl-step">
+        <div class="how__tl-dot">02</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Вместе разбираемся</div>
+          <p class="how__tl-text">Погружаемся в процесс, задаём вопросы, уточняем ограничения и определяем, какой результат действительно нужен.</p>
+        </div>
+      </div>
+      <div class="how__tl-step">
+        <div class="how__tl-dot">03</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Формируем решение</div>
+          <p class="how__tl-text">Предлагаем подход, фиксируем объём работ, сроки и стоимость. Если есть неопределённость — начинаем с прототипа или MVP.</p>
+        </div>
+      </div>
+      <div class="how__tl-step">
+        <div class="how__tl-dot">04</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Разрабатываем и запускаем</div>
+          <p class="how__tl-text">Берём реализацию на себя, интегрируем решение и доводим его до рабочего состояния.</p>
+        </div>
+      </div>
+      <div class="how__tl-step">
+        <div class="how__tl-dot">05</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Развиваем дальше</div>
+          <p class="how__tl-text">Поддерживаем, масштабируем или остаёмся вашей внешней IT-командой.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how__footer">
+      <p class="how__footer-main">Есть готовое ТЗ — начнём с него. Нет ТЗ — начнём с разговора.</p>
+      <p class="how__footer-note">Это наш идеальный сценарий. Ещё можем подключиться на любом этапе и подобрать путь под конкретную задачу.</p>
+    </div>
+  </section>
+
+  <!-- diagonal cut: white → dark -->
+  <span class="cut cut--to-dark" aria-hidden="true"></span>
+
+  <!-- ══ MODELS ══ -->
+  <section class="models" id="models" aria-labelledby="models-title">
+    <h2 class="models__head" id="models-title">Форматы сотрудничества</h2>
+    <div class="models__grid">
+      <div class="models__card">
+        <div class="models__title">AI/IT Аудит</div>
+        <p class="models__text">Для компаний, которые понимают необходимость цифровизации, но не знают, с чего начать. Карта процессов, точки автоматизации, потенциальные AI use cases, приоритеты и roadmap.</p>
+        <p class="models__example"><span>Например:</span> производственная компания хочет понять, где AI реально сэкономит деньги и с чего начать.</p>
+      </div>
+      <div class="models__card">
+        <div class="models__title">Pilot / MVP</div>
+        <p class="models__text">Для быстрой проверки технологической или продуктовой гипотезы. Типовой цикл: 2–3 недели. Архитектура, разработка, интеграция, запуск.</p>
+        <p class="models__example"><span>Например:</span> AI-ассистент для обработки входящих заявок или прототип мобильного приложения.</p>
+      </div>
+      <div class="models__card">
+        <div class="models__title">Project Development</div>
+        <p class="models__text">Разработка конкретной системы или продукта под ключ.</p>
+        <p class="models__example"><span>Например:</span> приложение для программы лояльности, внутренняя CRM или клиентский портал.</p>
+      </div>
+      <div class="models__card">
+        <div class="models__title">External Technology Team</div>
+        <p class="models__text">Долгосрочная модель: AI Laboratory становится выделенной технологической командой компании. Постоянное развитие продуктов, AI transformation, запуск нескольких инициатив.</p>
+        <p class="models__example"><span>Например:</span> стартап или растущий бизнес без своей IT-команды, которому нужна постоянная разработка.</p>
+      </div>
+    </div>
+
+    <!-- ══ WHY ══ -->
+    <div class="why" id="why" aria-labelledby="why-title">
+      <h2 class="why__head" id="why-title">Почему нам можно доверить разработку</h2>
+      <div class="why__grid">
+        <div class="why__item">
+          <div class="why__title">Опыт из бизнеса</div>
+          <p class="why__text">Мы сами отвечали за продажи, продукт, операции и рост бизнеса.</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Делали сложные проекты</div>
+          <p class="why__text">Работали с корпоративными системами, high-load, GovTech и интеграциями, где важны надёжность и ответственность за результат.</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Сильная техническая команда</div>
+          <p class="why__text">AI, backend, архитектура, инфраструктура и продуктовая разработка — ключевые компетенции внутри команды.</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Работаем как партнёр, а не как «руки»</div>
+          <p class="why__text">Можем спорить с ТЗ, предлагать более простой путь и искать решение исходя из задачи бизнеса.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <section class="cta" id="cta" aria-labelledby="cta-title">
+    <div class="cta__inner">
+      <div class="cta__left">
+        <h2 class="cta__title" id="cta-title">Воплотим ваш проект<br><span>вместе!</span></h2>
+        <ol class="cta__steps">
+          <li class="cta__step-item">Расскажите о процессе или проблеме</li>
+          <li class="cta__step-item">Проведём initial assessment</li>
+          <li class="cta__step-item">Предложим варианты решения</li>
+          <li class="cta__step-item">Запустим Pilot / MVP</li>
+          <li class="cta__step-item">Масштабируем при подтверждённом эффекте</li>
+        </ol>
+        <p class="cta__mantra">Start small. Prove value. Scale what works.</p>
+      </div>
+      <div class="calc" id="calc">
+
+        <!-- Прогресс -->
+        <div class="calc__prog" id="calc-prog">
+          <div class="calc__prog-step" data-ps="1"><span class="calc__prog-dot">1</span><span class="calc__prog-lbl">Тип</span></div>
+          <div class="calc__prog-line"></div>
+          <div class="calc__prog-step" data-ps="2"><span class="calc__prog-dot">2</span><span class="calc__prog-lbl">Формат</span></div>
+          <div class="calc__prog-line"></div>
+          <div class="calc__prog-step" data-ps="3"><span class="calc__prog-dot">3</span><span class="calc__prog-lbl">Масштаб</span></div>
+          <div class="calc__prog-line"></div>
+          <div class="calc__prog-step" data-ps="4"><span class="calc__prog-dot">✓</span><span class="calc__prog-lbl">Бюджет</span></div>
+        </div>
+
+        <!-- Шаг 1: Тип задачи -->
+        <div class="calc__step" data-step="1">
+          <div class="calc__step-hd"><span class="calc__num">01</span>Тип задачи</div>
+          <div class="calc__types" data-calc="type">
+            <button class="calc__type is-sel" data-val="ai">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <b class="calc__type-name">AI агенты</b>
+              <span class="calc__type-sub">Модели, автоматизация</span>
+            </button>
+            <button class="calc__type" data-val="auto">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <b class="calc__type-name">Автоматизация</b>
+              <span class="calc__type-sub">Процессы, интеграции</span>
+            </button>
+            <button class="calc__type" data-val="crm">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <b class="calc__type-name">CRM / ERP / Система</b>
+              <span class="calc__type-sub">Бизнес-системы</span>
+            </button>
+            <button class="calc__type" data-val="digital">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <b class="calc__type-name">Цифровой продукт</b>
+              <span class="calc__type-sub">Web, Mobile, SaaS</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Шаг 2: Формат работы -->
+        <div class="calc__step" data-step="2">
+          <div class="calc__step-hd"><span class="calc__num">02</span>Формат работы</div>
+          <div class="calc__types" data-calc="format">
+            <button class="calc__type is-sel" data-val="mvp">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+              <b class="calc__type-name">Pilot / MVP</b>
+              <span class="calc__type-sub">Быстрая проверка идеи</span>
+            </button>
+            <button class="calc__type" data-val="project">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <b class="calc__type-name">Project Development</b>
+              <span class="calc__type-sub">Полноценная разработка</span>
+            </button>
+            <button class="calc__type" data-val="team">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <b class="calc__type-name">External Tech Team</b>
+              <span class="calc__type-sub">Выделенная команда</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Шаг 3: Масштаб -->
+        <div class="calc__step" data-step="3">
+          <div class="calc__step-hd"><span class="calc__num">03</span>Масштаб проекта</div>
+          <div class="calc__scales" data-calc="scope">
+            <button class="calc__scale is-sel" data-val="s">
+              <div class="calc__scale-visual">
+                <span class="calc__bar" style="--bh:30%"></span>
+                <span class="calc__bar" style="--bh:50%"></span>
+                <span class="calc__bar" style="--bh:70%"></span>
+              </div>
+              <b class="calc__scale-name">Небольшой</b>
+              <span class="calc__scale-sub">Базовый функционал</span>
+            </button>
+            <button class="calc__scale" data-val="m">
+              <div class="calc__scale-visual">
+                <span class="calc__bar" style="--bh:50%"></span>
+                <span class="calc__bar" style="--bh:72%"></span>
+                <span class="calc__bar" style="--bh:90%"></span>
+              </div>
+              <b class="calc__scale-name">Средний</b>
+              <span class="calc__scale-sub">Расширенный продукт</span>
+            </button>
+            <button class="calc__scale" data-val="l">
+              <div class="calc__scale-visual">
+                <span class="calc__bar" style="--bh:70%"></span>
+                <span class="calc__bar" style="--bh:86%"></span>
+                <span class="calc__bar" style="--bh:100%"></span>
+              </div>
+              <b class="calc__scale-name">Комплексный</b>
+              <span class="calc__scale-sub">Индивидуальный расчёт</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Шаг 4: Результат -->
+        <div class="calc__step" data-step="4">
+          <div class="calc__out">
+            <div class="calc__out-nums">
+              <div class="calc__out-col">
+                <span class="calc__out-tag">Стоимость проекта</span>
+                <span class="calc__out-price" id="calc-price">от 520 000 ₸</span>
+              </div>
+            </div>
+            <p class="calc__out-note">Точную оценку дадим после созвона — бесплатно</p>
+            <a href="https://t.me/tdm343" target="_blank" rel="noopener" class="calc__out-btn">Обсудить проект →</a>
+          </div>
+          <button class="calc__restart-btn" id="calc-restart">← Начать заново</button>
+        </div>
+
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <span class="footer__name">Artificial Intelligence Laboratory</span>
+      <div class="footer__contacts">
+        <a href="tel:+77751513414" class="footer__contact">+7 775 151 34 14</a>
+        <a href="https://t.me/tdm343" class="footer__contact" target="_blank" rel="noopener noreferrer">@tdm343</a>
+        <a href="https://ai-laboratory.kz" class="footer__contact" target="_blank" rel="noopener noreferrer">ai-laboratory.kz</a>
+      </div>
+      <div class="footer__socials">
+        <a href="https://t.me/tdm343" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/>
+          </svg>
+        </a>
+        <a href="https://t.me/tdm343" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    /* ── Mobile menu ── */
+    var btn   = document.getElementById('hamburger');
+    var links = document.getElementById('nav-links');
+    if (btn && links) {
+      btn.addEventListener('click', function () {
+        var open = links.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          links.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    /* ── Nav shrink on scroll ── */
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.style.padding = window.scrollY > 40
+        ? '12px var(--pad)'
+        : '18px var(--pad)';
+    }, { passive: true });
+
+        /* ── Calculator ── */
+    (function () {
+      var prices = {
+        ai:      { mvp: { s: 520000,   m: 585000   }, project: { s: 1690000, m: 1950000 }, team: { s: 2665000, m: 3055000 } },
+        auto:    { mvp: { s: 260000,   m: 325000   }, project: { s: 910000,  m: 1040000 }, team: { s: 1430000, m: 1625000 } },
+        crm:     { mvp: { s: 845000,   m: 975000   }, project: { s: 2795000, m: 3185000 }, team: { s: 4420000, m: 5070000 } },
+        digital: { mvp: { s: 1170000,  m: 1365000  }, project: { s: 3900000, m: 4420000 }, team: { s: 6175000, m: 7085000 } }
+      };
+      var sel = { type: 'ai', format: 'mvp', scope: 's' };
+      var step = 1;
+
+      function fmt(n) { return '\u043e\u0442\u00a0' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0') + '\u00a0\u20b8'; }
+
+      function goTo(n) {
+        step = n;
+        document.querySelectorAll('.calc__step').forEach(function(s) { s.classList.remove('is-visible'); });
+        var target = document.querySelector('.calc__step[data-step="' + n + '"]');
+        if (target) { target.classList.remove('is-visible'); void target.offsetWidth; target.classList.add('is-visible'); }
+        document.querySelectorAll('.calc__prog-step').forEach(function(d, i) {
+          d.classList.remove('is-active', 'is-done');
+          if (i + 1 === n) d.classList.add('is-active');
+          if (i + 1 < n)  d.classList.add('is-done');
+        });
+        document.querySelectorAll('.calc__prog-line').forEach(function(l, i) {
+          l.classList.toggle('is-done', i + 1 < n);
+        });
+        if (n === 4) showResult();
+      }
+
+      function showResult() {
+        var priceEl = document.getElementById('calc-price');
+        if (!priceEl) return;
+        if (sel.scope === 'l') {
+          priceEl.textContent = '\u0418\u043d\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0441\u0447\u0451\u0442';
+          priceEl.style.fontSize = '15px';
+        } else {
+          var p = prices[sel.type][sel.format][sel.scope];
+          priceEl.textContent = fmt(p);
+          priceEl.style.fontSize = '';
+        }
+      }
+
+      document.querySelectorAll('[data-calc="type"] .calc__type').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('[data-calc="type"] .calc__type').forEach(function(b) { b.classList.remove('is-sel'); });
+          btn.classList.add('is-sel');
+          sel.type = btn.dataset.val;
+          setTimeout(function() { goTo(2); }, 220);
+        });
+      });
+
+      document.querySelectorAll('[data-calc="format"] .calc__type').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('[data-calc="format"] .calc__type').forEach(function(b) { b.classList.remove('is-sel'); });
+          btn.classList.add('is-sel');
+          sel.format = btn.dataset.val;
+          setTimeout(function() { goTo(3); }, 220);
+        });
+      });
+
+      document.querySelectorAll('.calc__scale').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.calc__scale').forEach(function(b) { b.classList.remove('is-sel'); });
+          btn.classList.add('is-sel');
+          sel.scope = btn.dataset.val;
+          setTimeout(function() { goTo(4); }, 220);
+        });
+      });
+
+      var restartBtn = document.getElementById('calc-restart');
+      if (restartBtn) restartBtn.addEventListener('click', function() {
+        sel = { type: 'ai', format: 'mvp', scope: 's' };
+        document.querySelectorAll('[data-calc="type"] .calc__type').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
+        document.querySelectorAll('[data-calc="format"] .calc__type').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
+        document.querySelectorAll('.calc__scale').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
+        goTo(1);
+      });
+
+      document.querySelectorAll('.calc__prog-step').forEach(function(dot, i) {
+        dot.addEventListener('click', function() { if (i + 1 < step) goTo(i + 1); });
+      });
+
+      goTo(1);
+    })();
+  })();
+
+  // Apps Slider
+  (function() {
+    var track = document.getElementById('apps-track');
+    var prevBtn = document.getElementById('apps-prev');
+    var nextBtn = document.getElementById('apps-next');
+    var currentEl = document.getElementById('apps-current');
+    if (!track) return;
+    var slides = track.querySelectorAll('.apps__slide');
+    var total = slides.length;
+    var current = 0;
+    function goTo(idx) {
+      current = (idx + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      if (currentEl) currentEl.textContent = (current + 1).toString().padStart(2, '0');
+    }
+    prevBtn && prevBtn.addEventListener('click', function() { goTo(current - 1); });
+    nextBtn && nextBtn.addEventListener('click', function() { goTo(current + 1); });
+    var tx = 0;
+    track.addEventListener('touchstart', function(e) { tx = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', function(e) {
+      var d = tx - e.changedTouches[0].clientX;
+      if (Math.abs(d) > 50) goTo(d > 0 ? current + 1 : current - 1);
+    }, {passive:true});
+  })();
+
+  // Cases Carousel
+  (function() {
+    var track = document.getElementById('cases-track');
+    var prevBtn = document.getElementById('cases-prev');
+    var nextBtn = document.getElementById('cases-next');
+    var dotsContainer = document.getElementById('cases-dots');
+    if (!track) return;
+
+    var slides = track.querySelectorAll('.cases__slide');
+    var dots = dotsContainer ? dotsContainer.querySelectorAll('.cases__dot') : [];
+    var current = 0;
+    var total = slides.length;
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function(d, i) {
+        d.classList.toggle('cases__dot--active', i === current);
+        d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+      });
+    }
+
+    prevBtn && prevBtn.addEventListener('click', function() { goTo(current - 1); });
+    nextBtn && nextBtn.addEventListener('click', function() { goTo(current + 1); });
+    dots.forEach(function(dot, i) {
+      dot.addEventListener('click', function() { goTo(i); });
+    });
+
+    // Touch/swipe support
+    var touchStartX = 0;
+    track.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', function(e) {
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+    }, {passive:true});
+  })();
+
+  // Cases / Products tab switching
+  (function () {
+    var tabs = document.querySelectorAll('.cases__tab');
+    if (!tabs.length) return;
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var target = tab.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('cases__tab--active'); });
+        tab.classList.add('cases__tab--active');
+        document.querySelectorAll('.cases__pane').forEach(function (pane) {
+          pane.classList.add('cases__pane--hidden');
+        });
+        var pane = document.getElementById('cases-pane-' + target);
+        if (pane) pane.classList.remove('cases__pane--hidden');
+      });
+    });
+  })();
+  </script>
+
+  <!-- ══ FIBRE ARC WebGL HERO BG ══ -->
+  <script>
+  (function(){
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+
+    const VERT = `attribute vec2 a_pos; void main(){ gl_Position = vec4(a_pos,0.0,1.0); }`;
+    const FRAG = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+uniform vec2 uRes; uniform float uTime; uniform vec2 uMouse; uniform float uHover;
+uniform vec3 uBg, uBase, uAccent, uHigh;
+uniform float uStrands, uCurve, uSpread, uThin, uComb, uReach, uDir;
+float sat(float x){ return clamp(x,0.0,1.0); }
+float pw(float x,float e){ return pow(max(x,1e-5),e); }
+float hash21(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+34.56); return fract(p.x*p.y); }
+float vnoise(vec2 p){ vec2 i=floor(p),f=fract(p); f=f*f*(3.0-2.0*f); float a=hash21(i),b=hash21(i+vec2(1,0)),c=hash21(i+vec2(0,1)),d=hash21(i+vec2(1,1)); return mix(mix(a,b,f.x),mix(c,d,f.x),f.y); }
+void main(){
+  float ar=uRes.x/max(uRes.y,1.0);
+  vec2 p=(gl_FragCoord.xy/uRes-0.5)*vec2(ar,1.0);
+  float t=uTime;
+  vec2 apex=vec2(0.34,0.20);
+  float cs=cos(uDir),sn=sin(uDir);
+  mat2 rot=mat2(cs,sn,-sn,cs);
+  vec2 q=rot*p;
+  vec2 pm=q-rot*((uMouse-0.5)*vec2(ar,1.0));
+  vec2 ps=q-normalize(pm+vec2(1e-5))*uComb*0.10*sat(uHover)*exp(-dot(pm,pm)/max(uReach*uReach,1e-4));
+  float core=0.0,halo=0.0;
+  for(int i=0;i<26;i++){
+    float fi=float(i); float f=fi/25.0; float on=sat(uStrands-fi);
+    float jit=hash21(vec2(fi,1.7));
+    float k=uCurve*(0.55+1.30*f+0.10*jit);
+    float ax=apex.x+(f-0.5)*uSpread*0.18;
+    float ay=apex.y+(f-0.5)*uSpread*0.14+0.012*sin(t*0.5+fi);
+    float dx=ps.x-ax; float yc=ay-k*dx*dx; float sl=-2.0*k*dx;
+    float dd=abs(ps.y-yc)/sqrt(1.0+sl*sl);
+    float w=uThin*(0.0016+0.0032*jit);
+    core+=on*pw(w/(w+dd),3.2);
+    halo+=on*pw(w*11.0/(w*11.0+dd),1.9)*0.085;
+  }
+  float env=mix(0.20,1.0,sat((ps.x+0.52)/0.95));
+  core*=env; halo*=env;
+  vec3 col=uBg;
+  col+=uBase*halo*1.5;
+  col+=mix(uAccent,uHigh,sat(core*0.75))*core*1.4;
+  gl_FragColor=vec4(clamp(col,0.0,1.0),1.0);
+}`;
+
+    const gl = canvas.getContext('webgl', {antialias:false, alpha:false, depth:false});
+    if (!gl) return;
+
+    function compile(type, src) {
+      const sh = gl.createShader(type);
+      gl.shaderSource(sh, src); gl.compileShader(sh);
+      if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(sh)); return null; }
+      return sh;
+    }
+    const prog = gl.createProgram();
+    gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+    gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+    gl.linkProgram(prog); gl.useProgram(prog);
+
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
+    const pos = gl.getAttribLocation(prog, 'a_pos');
+    gl.enableVertexAttribArray(pos);
+    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+
+    const locs = {};
+    function u(n){ if(!(n in locs)) locs[n]=gl.getUniformLocation(prog,n); return locs[n]; }
+
+    // colours matched to site palette
+    const BG     = [0.078, 0.086, 0.169]; // #14162B
+    const BASE   = [0.416, 0.404, 0.973]; // #6A67F8 purple
+    const ACCENT = [0.118, 0.541, 1.000]; // #1E8AFF blue
+    const HIGH   = [0.859, 0.867, 1.000]; // #DBDDFF violet-tint
+
+    const ptr = {x:0.5, y:0.5, tx:0.5, ty:0.5, on:0, onT:0};
+    let clock=0, last=performance.now(), raf=0;
+
+    function render(now) {
+      const dt = Math.min(0.05,(now-last)/1000); last=now;
+      clock = (clock + dt * 1.0) % 3600;
+      const k = 1-Math.exp(-6*dt);
+      ptr.on  += (ptr.onT  - ptr.on)  * k;
+      ptr.x   += ((ptr.onT>0?ptr.tx:0.5) - ptr.x) * k;
+      ptr.y   += ((ptr.onT>0?ptr.ty:0.5) - ptr.y) * k;
+
+      const dpr = Math.min(window.devicePixelRatio||1, 2);
+      const cw  = canvas.clientWidth  || 1200;
+      const ch  = canvas.clientHeight || 800;
+      const bw  = Math.round(cw*dpr), bh = Math.round(ch*dpr);
+      if (canvas.width!==bw||canvas.height!==bh){ canvas.width=bw; canvas.height=bh; }
+      gl.viewport(0,0,bw,bh);
+
+      gl.uniform2f(u('uRes'),bw,bh);
+      gl.uniform1f(u('uTime'),clock);
+      gl.uniform2f(u('uMouse'),ptr.x, 1-ptr.y);
+      gl.uniform1f(u('uHover'), Math.min(1,ptr.on)*1.7);
+      gl.uniform3f(u('uBg'),    BG[0],    BG[1],    BG[2]);
+      gl.uniform3f(u('uBase'),  BASE[0],  BASE[1],  BASE[2]);
+      gl.uniform3f(u('uAccent'),ACCENT[0],ACCENT[1],ACCENT[2]);
+      gl.uniform3f(u('uHigh'),  HIGH[0],  HIGH[1],  HIGH[2]);
+      gl.uniform1f(u('uStrands'),26);
+      gl.uniform1f(u('uReach'), 0.23);
+      gl.uniform1f(u('uDir'),   0.0);
+      gl.uniform1f(u('uCurve'), 0.20);  // flat arcs (preset curve:20)
+      gl.uniform1f(u('uSpread'),1.00);
+      gl.uniform1f(u('uThin'),  1.00);
+      gl.uniform1f(u('uComb'),  1.70);
+      gl.drawArrays(gl.TRIANGLES,0,3);
+      raf = requestAnimationFrame(render);
+    }
+
+    function track(e) {
+      const r = canvas.getBoundingClientRect();
+      if(r.width<=0||r.height<=0) return;
+      ptr.tx = Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+      ptr.ty = Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));
+      ptr.onT = 1;
+    }
+    canvas.addEventListener('pointermove',  track);
+    canvas.addEventListener('pointerenter', track);
+    canvas.addEventListener('pointerleave', ()=>{ ptr.onT=0; });
+    raf = requestAnimationFrame(render);
+  })();
+  </script>
+
+</body>
+</html>
