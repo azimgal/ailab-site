@@ -40,13 +40,6 @@
   <!-- ══ HERO ══ -->
   <section class="hero" id="hero">
     <div class="hero__content">
-      <div class="hero__logo" aria-hidden="true">
-        <svg width="auto" height="32" viewBox="0 0 66 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24.0872 10.0836L27.7351 6.95022e-07H30.4636L34.1115 10.0836H31.5757L30.9677 8.14104H27.1716L26.5636 10.0836H24.0872ZM27.7795 6.16881H30.3598L29.0993 2.1057H29.04L27.7795 6.16881ZM34.8003 10.0836V6.95022e-07H37.1433V10.0836H34.8003ZM38.5113 10.0836V6.95022e-07H40.8543V8.0669H45.5106V10.0836H38.5113ZM45.867 10.0836L49.5149 6.95022e-07H52.2435L55.8914 10.0836H53.3556L52.7476 8.14104H48.9514L48.3435 10.0836H45.867ZM49.5594 6.16881H52.1397L50.8792 2.1057H50.8199L49.5594 6.16881ZM56.7433 10.0836V6.95022e-07H61.9334C63.9205 6.95022e-07 65.0475 1.03802 65.0475 2.773C65.0475 3.8555 64.5581 4.5228 63.7277 4.95284V5.01216C64.6323 5.33839 65.2996 6.09466 65.2996 7.2958C65.2996 9.01595 64.1726 10.0836 62.1707 10.0836H56.7433ZM61.8889 8.21519C62.6452 8.21519 63.0011 7.78515 63.0011 7.05854C63.0011 6.33192 62.6452 5.91672 61.8889 5.91672H59.0566V8.21519H61.8889ZM59.0566 4.10759H61.711C62.4524 4.10759 62.8083 3.70722 62.8083 2.99543C62.8083 2.28364 62.4524 1.86844 61.711 1.86844H59.0566V4.10759Z" fill="white"/>
-          <path d="M12.081 0.087326H18.2521L22.5979 10.1696H16.4268L12.081 0.087326Z" fill="white"/>
-          <path d="M14.8628 10.1696H8.69173L7.43146 7.24572L6.17119 10.1696H0.000137329L4.34594 0.087326H10.517L14.8628 10.1696Z" fill="white"/>
-        </svg>
-      </div>
       <h1 class="hero__title">Ваша внешняя<br>технологическая<br>команда</h1>
       <p class="hero__sub">Берём на себя разработку и развитие цифровых продуктов — от AI и автоматизации до web, mobile, backend и интеграций.</p>
       <a href="#cta" class="hero__btn">Обсудить проект</a>
@@ -76,6 +69,11 @@
         <div class="market__stat-num">+40%</div>
         <div class="market__stat-desc">рост производительности у компаний с AI</div>
         <div class="market__source">PwC</div>
+      </div>
+      <div class="market__stat">
+        <div class="market__stat-num">67%</div>
+        <div class="market__stat-desc">казахстанских компаний планируют внедрить AI в 2025–2026 годах</div>
+        <div class="market__source">KPMG Kazakhstan</div>
       </div>
     </div>
     <blockquote class="market__quote">
@@ -126,7 +124,7 @@
     <div class="landscape">
       <h2 class="landscape__head">Для тех, кто говорит на техническом</h2>
       <p class="landscape__sub">Ниже — технологии, с которыми работает наша команда. Если вы технарь — смотрите. Если нет — листайте дальше.</p>
-      <div class="landscape__grid">
+      <div class="landscape__grid" id="landscape-grid">
         <div class="landscape__col">
           <div class="landscape__num">01</div>
           <div class="landscape__title">AI &amp; Agents</div>
@@ -185,88 +183,14 @@
     </div>
   </section>
 
-  <!-- diagonal cut: dark → white -->
-  <span class="cut cut--to-white" aria-hidden="true"></span>
-
-  <!-- ══ HOW WE WORK ══ -->
-  <section class="how" id="how" aria-labelledby="how-title">
-    <h2 class="how__head" id="how-title">Наш <span>подход</span></h2>
-    <p class="how__sub">Начинаем с бизнес-задачи, а не с разработки. Сначала разбираемся, что именно нужно решить и какой результат нужен бизнесу.</p>
-    <div class="how__steps">
-      <div class="how__step">
-        <span class="how__num" aria-hidden="true">01</span>
-        <div class="how__step-body">
-          <div class="how__step-title">Рассказываете о задаче</div>
-          <p class="how__text">Что хотите запустить, улучшить, автоматизировать или исправить. Готовое ТЗ не обязательно — поможем сформулировать требования вместе.</p>
-        </div>
-      </div>
-      <div class="how__step">
-        <span class="how__num" aria-hidden="true">02</span>
-        <div class="how__step-body">
-          <div class="how__step-title">Вместе разбираемся</div>
-          <p class="how__text">Погружаемся в процесс, задаём вопросы, уточняем ограничения и определяем, какой результат действительно нужен.</p>
-        </div>
-      </div>
-      <div class="how__step">
-        <span class="how__num" aria-hidden="true">03</span>
-        <div class="how__step-body">
-          <div class="how__step-title">Формируем решение</div>
-          <p class="how__text">Предлагаем подход, фиксируем объём работ, сроки и стоимость. Дальше — берём разработку на себя.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- diagonal cut: white → dark -->
-  <span class="cut cut--to-dark" aria-hidden="true"></span>
-
-  <!-- ══ MODELS ══ -->
-  <section class="models" id="models" aria-labelledby="models-title">
-    <h2 class="models__head" id="models-title">Форматы сотрудничества</h2>
-    <div class="models__grid">
-      <div class="models__card">
-        <div class="models__title">AI/IT Аудит</div>
-        <p class="models__text">Для компаний, которые понимают необходимость цифровизации, но не знают, с чего начать. Карта процессов, точки автоматизации, потенциальные AI use cases, приоритеты и roadmap.</p>
-      </div>
-      <div class="models__card">
-        <div class="models__title">Pilot / MVP</div>
-        <p class="models__text">Для быстрой проверки технологической или продуктовой гипотезы. Типовой цикл: 2–3 недели. Архитектура, разработка, интеграция, запуск.</p>
-      </div>
-      <div class="models__card">
-        <div class="models__title">Project Development</div>
-        <p class="models__text">Разработка конкретной системы или продукта под ключ.</p>
-      </div>
-      <div class="models__card">
-        <div class="models__title">External Technology Team</div>
-        <p class="models__text">Долгосрочная модель: AI Laboratory становится выделенной технологической командой компании. Постоянное развитие продуктов, AI transformation, запуск нескольких инициатив.</p>
-      </div>
-    </div>
-
-    <!-- ══ WHY ══ -->
-    <div class="why" id="why" aria-labelledby="why-title">
-      <h2 class="why__head" id="why-title">Почему нам можно доверить разработку</h2>
-      <div class="why__grid">
-        <div class="why__item">
-          <div class="why__title">Опыт из бизнеса</div>
-          <p class="why__text">Сами отвечали за продажи, продукт, операции и рост бизнеса. Понимаем задачи изнутри, а не со стороны.</p>
-        </div>
-        <div class="why__item">
-          <div class="why__title">Сложные проекты за плечами</div>
-          <p class="why__text">Работали с корпоративными системами, high-load, GovTech и интеграциями, где важны надёжность и ответственность за результат.</p>
-        </div>
-        <div class="why__item">
-          <div class="why__title">Сильная техническая команда</div>
-          <p class="why__text">AI, backend, архитектура, инфраструктура и продуктовая разработка — ключевые компетенции внутри команды.</p>
-        </div>
-        <div class="why__item">
-          <div class="why__title">Работаем как партнёр</div>
-          <p class="why__text">Готовы спорить с ТЗ, предлагать более простой путь и искать решение исходя из задачи бизнеса — а не просто выполнять.</p>
-        </div>
-      </div>
-    </div>
-
     <!-- ══ CASES ══ -->
     <div class="cases" id="cases" aria-labelledby="cases-title">
+      <div class="cases__tabs" role="tablist">
+        <button class="cases__tab cases__tab--active" data-tab="projects" role="tab">Кейсы проектов</button>
+        <button class="cases__tab" data-tab="products" role="tab">Наши продукты</button>
+      </div>
+
+      <div class="cases__pane" id="cases-pane-projects">
       <div class="cases__header">
         <h2 class="cases__head" id="cases-title">Кейсы</h2>
         <div class="cases__nav">
@@ -293,7 +217,9 @@
           <!-- 01 Chayla Group -->
           <div class="cases__slide">
             <div class="cases__slide-left">
-              <div class="cases__slide-num">01</div>
+              <div class="cases__slide-logo-wrap">
+                <img src="img/cases/chayla-group.jpeg" alt="Chayla Group" class="cases__slide-logo" />
+              </div>
               <div>
                 <div class="cases__slide-tag">HoReCa</div>
                 <div class="cases__slide-company">Chayla Group</div>
@@ -320,7 +246,9 @@
           <!-- 02 Kelzin Group -->
           <div class="cases__slide">
             <div class="cases__slide-left">
-              <div class="cases__slide-num">02</div>
+              <div class="cases__slide-logo-wrap">
+                <img src="img/cases/kelzin-group.jpeg" alt="Kelzin Group" class="cases__slide-logo" />
+              </div>
               <div>
                 <div class="cases__slide-tag">Fashion Retail</div>
                 <div class="cases__slide-company">Kelzin Group</div>
@@ -347,7 +275,9 @@
           <!-- 03 Vexmont Development -->
           <div class="cases__slide">
             <div class="cases__slide-left">
-              <div class="cases__slide-num">03</div>
+              <div class="cases__slide-logo-wrap">
+                <img src="img/cases/vexmont.jpeg" alt="Vexmont Development" class="cases__slide-logo" />
+              </div>
               <div>
                 <div class="cases__slide-tag">Девелопмент</div>
                 <div class="cases__slide-company">Vexmont Development</div>
@@ -373,7 +303,9 @@
           <!-- 04 Balance Fitness -->
           <div class="cases__slide">
             <div class="cases__slide-left">
-              <div class="cases__slide-num">04</div>
+              <div class="cases__slide-logo-wrap">
+                <img src="img/cases/balance.jpeg" alt="Balance Fitness" class="cases__slide-logo" />
+              </div>
               <div>
                 <div class="cases__slide-tag">Fitness</div>
                 <div class="cases__slide-company">Balance Fitness</div>
@@ -399,7 +331,9 @@
           <!-- 05 Dostyq Auto -->
           <div class="cases__slide">
             <div class="cases__slide-left">
-              <div class="cases__slide-num">05</div>
+              <div class="cases__slide-logo-wrap">
+                <img src="img/cases/dostyq-auto.jpeg" alt="Dostyq Auto" class="cases__slide-logo" />
+              </div>
               <div>
                 <div class="cases__slide-tag">Авто</div>
                 <div class="cases__slide-company">Dostyq Auto</div>
@@ -426,7 +360,9 @@
           <!-- 06 Golden Solutions -->
           <div class="cases__slide">
             <div class="cases__slide-left">
-              <div class="cases__slide-num">06</div>
+              <div class="cases__slide-logo-wrap">
+                <img src="img/cases/golden-solutions.jpeg" alt="Golden Solutions" class="cases__slide-logo" />
+              </div>
               <div>
                 <div class="cases__slide-tag">Логистика</div>
                 <div class="cases__slide-company">Golden Solutions</div>
@@ -479,24 +415,22 @@
 
         </div>
       </div>
-    </div>
+    </div><!-- /cases-pane-projects -->
 
-    <!-- ══ APPS ══ -->
-    <div class="apps" id="apps" aria-labelledby="apps-title">
-      <div class="apps__header">
-        <h2 class="apps__head" id="apps-title">Собственные приложения</h2>
-        <div class="apps__nav">
-          <button class="apps__btn apps__btn--prev" id="apps-prev" aria-label="Предыдущее приложение">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <div class="apps__counter"><span id="apps-current">01</span> / <span id="apps-total">02</span></div>
-          <button class="apps__btn apps__btn--next" id="apps-next" aria-label="Следующее приложение">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
+      <div class="cases__pane cases__pane--hidden" id="cases-pane-products">
+        <div class="cases__header">
+          <h2 class="cases__head">Наши продукты</h2>
+          <div class="apps__nav">
+            <button class="apps__btn apps__btn--prev" id="apps-prev" aria-label="Предыдущий продукт">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="apps__counter"><span id="apps-current">01</span> / <span id="apps-total">03</span></div>
+            <button class="apps__btn apps__btn--next" id="apps-next" aria-label="Следующий продукт">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
         </div>
-      </div>
-
-      <div class="apps__track-wrap">
+        <div class="apps__track-wrap">
         <div class="apps__track" id="apps-track">
 
           <!-- Slide 1: Familia -->
@@ -512,8 +446,24 @@
                 <span class="apps__slide-tech">FastAPI</span>
               </div>
             </div>
-            <div class="apps__slide-preview apps__slide-preview--light">
-              <img src="img/cases/familia_crop.png" alt="Familia — скриншоты приложения" class="apps__slide-img">
+            <div class="apps__slide-preview">
+              <div class="phone-wrap phone-wrap--trio">
+                <div class="phone phone--t1">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/familia_calendar.jpg" alt="" class="phone__img">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t2">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/familia_habit.jpg" alt="" class="phone__img">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t3">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/familia_today.jpg" alt="Familia" class="phone__img">
+                  <span class="phone__home"></span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -530,88 +480,246 @@
                 <span class="apps__slide-tech">Voice AI</span>
               </div>
             </div>
-            <div class="apps__slide-preview apps__slide-preview--dark">
-              <img src="img/cases/uzel_crop.png" alt="Uzel — скриншоты приложения" class="apps__slide-img apps__slide-img--phone">
+            <div class="apps__slide-preview">
+              <div class="phone-wrap phone-wrap--trio">
+                <div class="phone phone--t1" style="background:#f5f0eb;">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/uzel_components.png" alt="" class="phone__img" style="object-fit:contain;object-position:center top;">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t2" style="background:#0d0f12;">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/uzel_settings.png" alt="" class="phone__img" style="object-fit:contain;object-position:center top;">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t3" style="background:#0d0f12;">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/uzel_followup.png" alt="Uzel" class="phone__img" style="object-fit:contain;object-position:center top;">
+                  <span class="phone__home"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Sfera -->
+          <div class="apps__slide">
+            <div class="apps__slide-info">
+              <div class="apps__slide-tag">AI Mobile App</div>
+              <div class="apps__slide-name">Sfera</div>
+              <p class="apps__slide-desc">Дневник реальной жизни, который говорит на языке звёзд. Рассказываешь, как прошёл день — AI раскладывает события по сферам жизни, строит колесо баланса и объясняет перекос через транзиты и нумерологию</p>
+              <div class="apps__slide-techs">
+                <span class="apps__slide-tech">iOS</span>
+                <span class="apps__slide-tech">Android</span>
+                <span class="apps__slide-tech">LLM</span>
+                <span class="apps__slide-tech">Voice AI</span>
+              </div>
+            </div>
+            <div class="apps__slide-preview apps__slide-preview--sfera">
+              <div class="phone-wrap phone-wrap--trio">
+                <div class="phone phone--t1">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/sfera_history.png" alt="" class="phone__img" style="object-position:center top">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t2">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/sfera_home.png" alt="" class="phone__img" style="object-position:center top">
+                  <span class="phone__home"></span>
+                </div>
+                <div class="phone phone--t3">
+                  <span class="phone__island"></span>
+                  <img src="img/cases/sfera_history.png" alt="Sfera" class="phone__img" style="object-position:center 40%">
+                  <span class="phone__home"></span>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
+    </div><!-- /cases-pane-products -->
+  </div><!-- /cases -->
+
+  <!-- ══ PARTNERS ══ -->
+  <section class="partners" id="partners" aria-labelledby="partners-title">
+    <h2 class="partners__head" id="partners-title">Партнёры</h2>
+    <div class="partners__ticker">
+      <div class="partners__ticker-track" id="ticker-track">
+        <div class="partners__item"><img src="img/partners/partner_4.png" alt="Yandex Cloud" class="partners__logo"></div>
+        <div class="partners__item"><img src="img/partners/partner_7.png" alt="Google Cloud" class="partners__logo"></div>
+        <div class="partners__item"><img src="img/partners/partner_3.png" alt="Smart Cloud" class="partners__logo"></div>
+        <div class="partners__item"><img src="img/partners/partner_1.png" alt="Halyk Kazteleport" class="partners__logo"></div>
+        <div class="partners__item"><img src="img/partners/partner_6.png" alt="Kismet AI" class="partners__logo"></div>
+        <div class="partners__item"><img src="img/partners/partner_2.png" alt="Farabi Hub" class="partners__logo"></div>
+        <div class="partners__item"><img src="img/partners/partner_5.png" alt="SDU Technopark" class="partners__logo"></div>
+        <!-- duplicate set for seamless loop -->
+        <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_4.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_7.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_3.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_1.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_6.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_2.png" alt="" class="partners__logo"></div>
+        <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_5.png" alt="" class="partners__logo"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- diagonal cut: dark → white -->
+  <span class="cut cut--to-white" aria-hidden="true"></span>
+
+  <!-- ══ HOW WE WORK ══ -->
+  <section class="how" id="how" aria-labelledby="how-title">
+    <h2 class="how__head" id="how-title">Наш <span>подход</span></h2>
+    <p class="how__sub">Начинаем с бизнес-задачи, а не с разработки. Сначала разбираемся, что именно нужно решить, какой результат нужен бизнесу и зачем вообще здесь технология. Не обязательно приходить с готовым ТЗ: если оно есть — отлично, если нет — поможем сформулировать требования вместе.</p>
+
+    <div class="how__timeline">
+      <div class="how__tl-step">
+        <div class="how__tl-dot">01</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Рассказываете о задаче</div>
+          <p class="how__tl-text">Что хотите запустить, улучшить, автоматизировать или исправить.</p>
+        </div>
+      </div>
+      <div class="how__tl-step">
+        <div class="how__tl-dot">02</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Вместе разбираемся</div>
+          <p class="how__tl-text">Погружаемся в процесс, задаём вопросы, уточняем ограничения и определяем, какой результат действительно нужен.</p>
+        </div>
+      </div>
+      <div class="how__tl-step">
+        <div class="how__tl-dot">03</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Формируем решение</div>
+          <p class="how__tl-text">Предлагаем подход, фиксируем объём работ, сроки и стоимость. Если есть неопределённость — начинаем с прототипа или MVP.</p>
+        </div>
+      </div>
+      <div class="how__tl-step">
+        <div class="how__tl-dot">04</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Разрабатываем и запускаем</div>
+          <p class="how__tl-text">Берём реализацию на себя, интегрируем решение и доводим его до рабочего состояния.</p>
+        </div>
+      </div>
+      <div class="how__tl-step">
+        <div class="how__tl-dot">05</div>
+        <div class="how__tl-body">
+          <div class="how__tl-title">Развиваем дальше</div>
+          <p class="how__tl-text">Поддерживаем, масштабируем или остаёмся вашей внешней IT-командой.</p>
+        </div>
+      </div>
     </div>
 
-    <!-- ══ STATS ══ -->
-    <section class="stats" id="stats" aria-label="Цифры">
-      <div class="stats__grid">
-        <div>
-          <div class="stats__num">40+</div>
-          <div class="stats__label">AI-агентов</div>
-        </div>
-        <div>
-          <div class="stats__num">30+</div>
-          <div class="stats__label">приложений</div>
-        </div>
-        <div>
-          <div class="stats__num">50+</div>
-          <div class="stats__label">сертификатов</div>
-        </div>
-      </div>
-    </section>
+    <div class="how__footer">
+      <p class="how__footer-main">Есть готовое ТЗ — начнём с него. Нет ТЗ — начнём с разговора.</p>
+      <p class="how__footer-note">Это наш идеальный сценарий. Ещё можем подключиться на любом этапе и подобрать путь под конкретную задачу.</p>
+    </div>
+  </section>
 
-    <!-- ══ PARTNERS ══ -->
-    <section class="partners" id="partners" aria-labelledby="partners-title">
-      <h2 class="partners__head" id="partners-title">Партнёры</h2>
-      <div class="partners__ticker">
-        <div class="partners__ticker-track" id="ticker-track">
-          <div class="partners__item"><img src="img/partners/partner_4.png" alt="Yandex Cloud" class="partners__logo"></div>
-          <div class="partners__item"><img src="img/partners/partner_7.png" alt="Google Cloud" class="partners__logo"></div>
-          <div class="partners__item"><img src="img/partners/partner_3.png" alt="Smart Cloud" class="partners__logo"></div>
-          <div class="partners__item"><img src="img/partners/partner_1.png" alt="Halyk Kazteleport" class="partners__logo"></div>
-          <div class="partners__item"><img src="img/partners/partner_6.png" alt="Kismet AI" class="partners__logo"></div>
-          <div class="partners__item"><img src="img/partners/partner_2.png" alt="Farabi Hub" class="partners__logo"></div>
-          <div class="partners__item"><img src="img/partners/partner_5.png" alt="SDU Technopark" class="partners__logo"></div>
-          <!-- duplicate set for seamless loop -->
-          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_4.png" alt="" class="partners__logo"></div>
-          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_7.png" alt="" class="partners__logo"></div>
-          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_3.png" alt="" class="partners__logo"></div>
-          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_1.png" alt="" class="partners__logo"></div>
-          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_6.png" alt="" class="partners__logo"></div>
-          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_2.png" alt="" class="partners__logo"></div>
-          <div class="partners__item" aria-hidden="true"><img src="img/partners/partner_5.png" alt="" class="partners__logo"></div>
-        </div>
-      </div>
-    </section>
+  <!-- diagonal cut: white → dark -->
+  <span class="cut cut--to-dark" aria-hidden="true"></span>
 
-    <!-- ══ CTA ══ -->
-    <section class="cta" id="cta" aria-labelledby="cta-title">
-      <div class="cta__inner">
-        <div class="cta__left">
-          <h2 class="cta__title" id="cta-title">Воплотим ваш проект<br><span>вместе!</span></h2>
-          <ol class="cta__steps">
-            <li class="cta__step-item">Расскажите о процессе или проблеме</li>
-            <li class="cta__step-item">Проведём initial assessment</li>
-            <li class="cta__step-item">Предложим варианты решения</li>
-            <li class="cta__step-item">Запустим Pilot / MVP</li>
-            <li class="cta__step-item">Масштабируем при подтверждённом эффекте</li>
-          </ol>
-          <p class="cta__mantra">Start small. Prove value. Scale what works.</p>
-        </div>
-        <form class="cta__form" id="cta-form" novalidate>
-          <div class="cta__field">
-            <label class="cta__label" for="f-email">Ваш e-mail</label>
-            <input class="cta__input" id="f-email" type="email" placeholder="mail@example.com" required />
-          </div>
-          <div class="cta__field">
-            <label class="cta__label" for="f-name">Имя</label>
-            <input class="cta__input" id="f-name" type="text" placeholder="Имя" />
-          </div>
-          <div class="cta__field">
-            <label class="cta__label" for="f-task">Опишите задачу</label>
-            <input class="cta__input" id="f-task" type="text" />
-          </div>
-          <button type="submit" class="cta__submit">Обсудить проект</button>
-        </form>
+  <!-- ══ MODELS ══ -->
+  <section class="models" id="models" aria-labelledby="models-title">
+    <h2 class="models__head" id="models-title">Форматы сотрудничества</h2>
+    <div class="models__grid">
+      <div class="models__card">
+        <div class="models__title">AI/IT Аудит</div>
+        <p class="models__text">Для компаний, которые понимают необходимость цифровизации, но не знают, с чего начать. Карта процессов, точки автоматизации, потенциальные AI use cases, приоритеты и roadmap.</p>
+        <p class="models__example"><span>Например:</span> производственная компания хочет понять, где AI реально сэкономит деньги и с чего начать.</p>
       </div>
-    </section>
+      <div class="models__card">
+        <div class="models__title">Pilot / MVP</div>
+        <p class="models__text">Для быстрой проверки технологической или продуктовой гипотезы. Типовой цикл: 2–3 недели. Архитектура, разработка, интеграция, запуск.</p>
+        <p class="models__example"><span>Например:</span> AI-ассистент для обработки входящих заявок или прототип мобильного приложения.</p>
+      </div>
+      <div class="models__card">
+        <div class="models__title">Project Development</div>
+        <p class="models__text">Разработка конкретной системы или продукта под ключ.</p>
+        <p class="models__example"><span>Например:</span> приложение для программы лояльности, внутренняя CRM или клиентский портал.</p>
+      </div>
+      <div class="models__card">
+        <div class="models__title">External Technology Team</div>
+        <p class="models__text">Долгосрочная модель: AI Laboratory становится выделенной технологической командой компании. Постоянное развитие продуктов, AI transformation, запуск нескольких инициатив.</p>
+        <p class="models__example"><span>Например:</span> стартап или растущий бизнес без своей IT-команды, которому нужна постоянная разработка.</p>
+      </div>
+    </div>
+
+    <!-- ══ WHY ══ -->
+    <div class="why" id="why" aria-labelledby="why-title">
+      <h2 class="why__head" id="why-title">Почему нам можно доверить разработку</h2>
+      <div class="why__grid">
+        <div class="why__item">
+          <div class="why__title">Опыт из бизнеса</div>
+          <p class="why__text">Мы сами отвечали за продажи, продукт, операции и рост бизнеса.</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Делали сложные проекты</div>
+          <p class="why__text">Работали с корпоративными системами, high-load, GovTech и интеграциями, где важны надёжность и ответственность за результат.</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Сильная техническая команда</div>
+          <p class="why__text">AI, backend, архитектура, инфраструктура и продуктовая разработка — ключевые компетенции внутри команды.</p>
+        </div>
+        <div class="why__item">
+          <div class="why__title">Работаем как партнёр, а не как «руки»</div>
+          <p class="why__text">Можем спорить с ТЗ, предлагать более простой путь и искать решение исходя из задачи бизнеса.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <section class="cta" id="cta" aria-labelledby="cta-title">
+    <div class="cta__inner">
+      <div class="cta__left">
+        <h2 class="cta__title" id="cta-title">Воплотим ваш проект<br><span>вместе!</span></h2>
+        <ol class="cta__steps">
+          <li class="cta__step-item">Расскажите о процессе или проблеме</li>
+          <li class="cta__step-item">Проведём initial assessment</li>
+          <li class="cta__step-item">Предложим варианты решения</li>
+          <li class="cta__step-item">Запустим Pilot / MVP</li>
+          <li class="cta__step-item">Масштабируем при подтверждённом эффекте</li>
+        </ol>
+        <p class="cta__mantra">Start small. Prove value. Scale what works.</p>
+      </div>
+      <div class="calc" id="calc">
+        <div class="calc__group">
+          <div class="calc__group-label">Тип проекта</div>
+          <div class="calc__chips" data-calc="type">
+            <button class="calc__chip is-sel" data-val="web">Web</button>
+            <button class="calc__chip" data-val="mobile">Mobile App</button>
+            <button class="calc__chip" data-val="ai">AI / LLM</button>
+            <button class="calc__chip" data-val="auto">Автоматизация</button>
+            <button class="calc__chip" data-val="api">Backend / API</button>
+          </div>
+        </div>
+        <div class="calc__group">
+          <div class="calc__group-label">Масштаб</div>
+          <div class="calc__chips" data-calc="scope">
+            <button class="calc__chip is-sel" data-val="s">Небольшой</button>
+            <button class="calc__chip" data-val="m">Средний</button>
+            <button class="calc__chip" data-val="l">Крупный</button>
+          </div>
+        </div>
+        <div class="calc__group">
+          <div class="calc__group-label">Срок</div>
+          <div class="calc__chips" data-calc="speed">
+            <button class="calc__chip is-sel" data-val="norm">Стандартный</button>
+            <button class="calc__chip" data-val="fast">Срочно +20%</button>
+          </div>
+        </div>
+        <div class="calc__output">
+          <div class="calc__output-top">
+            <span class="calc__output-label">Примерный бюджет</span>
+            <span class="calc__output-price" id="calc-price">$3 000 — $8 000</span>
+          </div>
+          <p class="calc__output-note">Точную оценку дадим после созвона — бесплатно</p>
+          <a href="https://t.me/tdm343" target="_blank" rel="noopener" class="calc__output-btn">Обсудить проект →</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ══ FOOTER ══ -->
@@ -664,19 +772,44 @@
         : '18px var(--pad)';
     }, { passive: true });
 
-    /* ── CTA form ── */
-    var form = document.getElementById('cta-form');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var email = document.getElementById('f-email').value.trim();
-        if (!email || !/\S+@\S+\.\S+/.test(email)) {
-          document.getElementById('f-email').focus();
-          return;
-        }
-        form.innerHTML = '<p style="color:#fff;font-size:16px;font-weight:600;line-height:1.6;">Спасибо!<br>Мы свяжемся с вами в течение рабочего дня.</p>';
+    /* ── Calculator ── */
+    (function () {
+      var prices = {
+        web:    { s: [3000,8000],   m: [8000,20000],  l: [20000,50000]  },
+        mobile: { s: [5000,15000],  m: [15000,40000], l: [40000,100000] },
+        ai:     { s: [4000,10000],  m: [10000,25000], l: [25000,60000]  },
+        auto:   { s: [2000,5000],   m: [5000,15000],  l: [15000,35000]  },
+        api:    { s: [3000,8000],   m: [8000,20000],  l: [20000,45000]  }
+      };
+      var sel = { type: 'web', scope: 's', speed: 'norm' };
+      var priceEl = document.getElementById('calc-price');
+      if (!priceEl) return;
+
+      function fmt(n) { return '$ ' + n.toLocaleString('en-US').replace(/,/g, ' '); }
+
+      function update() {
+        var r = prices[sel.type][sel.scope];
+        var lo = r[0], hi = r[1];
+        if (sel.speed === 'fast') { lo = Math.round(lo * 1.2 / 100) * 100; hi = Math.round(hi * 1.2 / 100) * 100; }
+        priceEl.classList.add('is-updating');
+        setTimeout(function () {
+          priceEl.textContent = fmt(lo) + ' — ' + fmt(hi);
+          priceEl.classList.remove('is-updating');
+        }, 100);
+      }
+
+      document.querySelectorAll('[data-calc]').forEach(function (group) {
+        var key = group.dataset.calc;
+        group.querySelectorAll('.calc__chip').forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            group.querySelectorAll('.calc__chip').forEach(function (c) { c.classList.remove('is-sel'); });
+            chip.classList.add('is-sel');
+            sel[key] = chip.dataset.val;
+            update();
+          });
+        });
       });
-    }
+    })();
   })();
 
   // Apps Slider
@@ -739,6 +872,24 @@
       var diff = touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
     }, {passive:true});
+  })();
+
+  // Cases / Products tab switching
+  (function () {
+    var tabs = document.querySelectorAll('.cases__tab');
+    if (!tabs.length) return;
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var target = tab.dataset.tab;
+        tabs.forEach(function (t) { t.classList.remove('cases__tab--active'); });
+        tab.classList.add('cases__tab--active');
+        document.querySelectorAll('.cases__pane').forEach(function (pane) {
+          pane.classList.add('cases__pane--hidden');
+        });
+        var pane = document.getElementById('cases-pane-' + target);
+        if (pane) pane.classList.remove('cases__pane--hidden');
+      });
+    });
   })();
   </script>
 
