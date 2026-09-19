@@ -685,39 +685,112 @@
         <p class="cta__mantra">Start small. Prove value. Scale what works.</p>
       </div>
       <div class="calc" id="calc">
-        <div class="calc__group">
-          <div class="calc__group-label">Тип проекта</div>
-          <div class="calc__chips" data-calc="type">
-            <button class="calc__chip is-sel" data-val="web">Web</button>
-            <button class="calc__chip" data-val="mobile">Mobile App</button>
-            <button class="calc__chip" data-val="ai">AI / LLM</button>
-            <button class="calc__chip" data-val="auto">Автоматизация</button>
-            <button class="calc__chip" data-val="api">Backend / API</button>
+
+        <!-- 01 Тип проекта -->
+        <div class="calc__block">
+          <div class="calc__block-hd"><span class="calc__num">01</span>Тип проекта</div>
+          <div class="calc__types" data-calc="type">
+            <button class="calc__type is-sel" data-val="web">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <b class="calc__type-name">Web</b>
+              <span class="calc__type-sub">Сайт, портал, SaaS</span>
+            </button>
+            <button class="calc__type" data-val="mobile">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg>
+              <b class="calc__type-name">Mobile</b>
+              <span class="calc__type-sub">iOS и Android</span>
+            </button>
+            <button class="calc__type" data-val="ai">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <b class="calc__type-name">AI / LLM</b>
+              <span class="calc__type-sub">Модели, чат-боты</span>
+            </button>
+            <button class="calc__type" data-val="auto">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <b class="calc__type-name">Автоматизация</b>
+              <span class="calc__type-sub">Процессы, боты</span>
+            </button>
+            <button class="calc__type" data-val="api">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <b class="calc__type-name">Backend / API</b>
+              <span class="calc__type-sub">Серверы, сервисы</span>
+            </button>
           </div>
         </div>
-        <div class="calc__group">
-          <div class="calc__group-label">Масштаб</div>
-          <div class="calc__chips" data-calc="scope">
-            <button class="calc__chip is-sel" data-val="s">Небольшой</button>
-            <button class="calc__chip" data-val="m">Средний</button>
-            <button class="calc__chip" data-val="l">Крупный</button>
+
+        <!-- 02 Масштаб -->
+        <div class="calc__block">
+          <div class="calc__block-hd"><span class="calc__num">02</span>Масштаб</div>
+          <div class="calc__scales" data-calc="scope">
+            <button class="calc__scale is-sel" data-val="s">
+              <div class="calc__scale-visual">
+                <span class="calc__bar" style="--bh:30%"></span>
+                <span class="calc__bar" style="--bh:50%"></span>
+                <span class="calc__bar" style="--bh:70%"></span>
+              </div>
+              <b class="calc__scale-name">Небольшой</b>
+              <span class="calc__scale-sub">MVP, лендинг</span>
+            </button>
+            <button class="calc__scale" data-val="m">
+              <div class="calc__scale-visual">
+                <span class="calc__bar" style="--bh:50%"></span>
+                <span class="calc__bar" style="--bh:72%"></span>
+                <span class="calc__bar" style="--bh:90%"></span>
+              </div>
+              <b class="calc__scale-name">Средний</b>
+              <span class="calc__scale-sub">Полноценный продукт</span>
+            </button>
+            <button class="calc__scale" data-val="l">
+              <div class="calc__scale-visual">
+                <span class="calc__bar" style="--bh:70%"></span>
+                <span class="calc__bar" style="--bh:86%"></span>
+                <span class="calc__bar" style="--bh:100%"></span>
+              </div>
+              <b class="calc__scale-name">Крупный</b>
+              <span class="calc__scale-sub">Корпоративный</span>
+            </button>
           </div>
         </div>
-        <div class="calc__group">
-          <div class="calc__group-label">Срок</div>
-          <div class="calc__chips" data-calc="speed">
-            <button class="calc__chip is-sel" data-val="norm">Стандартный</button>
-            <button class="calc__chip" data-val="fast">Срочно +20%</button>
+
+        <!-- 03 Дополнительно -->
+        <div class="calc__block">
+          <div class="calc__block-hd"><span class="calc__num">03</span>Дополнительно</div>
+          <div class="calc__extras">
+            <label class="calc__extra">
+              <input class="calc__extra-inp" type="checkbox" data-mul="0.2">
+              <span class="calc__extra-toggle"></span>
+              <span class="calc__extra-text"><b>Срочная разработка</b><span>+20% к стоимости</span></span>
+            </label>
+            <label class="calc__extra">
+              <input class="calc__extra-inp" type="checkbox" data-mul="0.3">
+              <span class="calc__extra-toggle"></span>
+              <span class="calc__extra-text"><b>AI-интеграция</b><span>+30% к стоимости</span></span>
+            </label>
+            <label class="calc__extra">
+              <input class="calc__extra-inp" type="checkbox" data-mul="0.15">
+              <span class="calc__extra-toggle"></span>
+              <span class="calc__extra-text"><b>Поддержка 3 месяца</b><span>+15% к стоимости</span></span>
+            </label>
           </div>
         </div>
-        <div class="calc__output">
-          <div class="calc__output-top">
-            <span class="calc__output-label">Примерный бюджет</span>
-            <span class="calc__output-price" id="calc-price">$3 000 — $8 000</span>
+
+        <!-- Результат -->
+        <div class="calc__out">
+          <div class="calc__out-nums">
+            <div class="calc__out-col">
+              <span class="calc__out-tag">Бюджет</span>
+              <span class="calc__out-price" id="calc-price">$3 000 — $8 000</span>
+            </div>
+            <div class="calc__out-divider"></div>
+            <div class="calc__out-col">
+              <span class="calc__out-tag">Срок</span>
+              <span class="calc__out-weeks" id="calc-weeks">3–6 нед.</span>
+            </div>
           </div>
-          <p class="calc__output-note">Точную оценку дадим после созвона — бесплатно</p>
-          <a href="https://t.me/tdm343" target="_blank" rel="noopener" class="calc__output-btn">Обсудить проект →</a>
+          <p class="calc__out-note">Точную оценку дадим после созвона — бесплатно</p>
+          <a href="https://t.me/tdm343" target="_blank" rel="noopener" class="calc__out-btn">Обсудить проект →</a>
         </div>
+
       </div>
     </div>
   </section>
@@ -737,7 +810,7 @@
             <path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/>
           </svg>
         </a>
-        <a href="https://instagram.com" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <a href="https://www.instagram.com/ai_laboratory_kz/" class="footer__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
           </svg>
@@ -781,33 +854,56 @@
         auto:   { s: [2000,5000],   m: [5000,15000],  l: [15000,35000]  },
         api:    { s: [3000,8000],   m: [8000,20000],  l: [20000,45000]  }
       };
-      var sel = { type: 'web', scope: 's', speed: 'norm' };
+       var timeline = {
+        web:    { s: '3–6',  m: '8–14',  l: '16–24' },
+        mobile: { s: '6–10', m: '14–22', l: '24–36' },
+        ai:     { s: '4–8',  m: '10–18', l: '20–30' },
+        auto:   { s: '2–4',  m: '6–12',  l: '14–22' },
+        api:    { s: '3–6',  m: '8–14',  l: '16–24' }
+      };
+      var sel = { type: 'web', scope: 's' };
       var priceEl = document.getElementById('calc-price');
+      var weeksEl = document.getElementById('calc-weeks');
       if (!priceEl) return;
 
       function fmt(n) { return '$ ' + n.toLocaleString('en-US').replace(/,/g, ' '); }
 
+      function extras() {
+        var mul = 1;
+        document.querySelectorAll('.calc__extra-inp').forEach(function(inp) {
+          if (inp.checked) mul += parseFloat(inp.dataset.mul);
+        });
+        return mul;
+      }
+
       function update() {
         var r = prices[sel.type][sel.scope];
-        var lo = r[0], hi = r[1];
-        if (sel.speed === 'fast') { lo = Math.round(lo * 1.2 / 100) * 100; hi = Math.round(hi * 1.2 / 100) * 100; }
-        priceEl.classList.add('is-updating');
+        var m = extras();
+        var lo = Math.round(r[0] * m / 100) * 100;
+        var hi = Math.round(r[1] * m / 100) * 100;
+        var w  = timeline[sel.type][sel.scope];
+        [priceEl, weeksEl].forEach(function(el) { el.classList.add('is-updating'); });
         setTimeout(function () {
           priceEl.textContent = fmt(lo) + ' — ' + fmt(hi);
-          priceEl.classList.remove('is-updating');
-        }, 100);
+          weeksEl.textContent = w + ' нед.';
+          [priceEl, weeksEl].forEach(function(el) { el.classList.remove('is-updating'); });
+        }, 120);
       }
 
       document.querySelectorAll('[data-calc]').forEach(function (group) {
         var key = group.dataset.calc;
-        group.querySelectorAll('.calc__chip').forEach(function (chip) {
-          chip.addEventListener('click', function () {
-            group.querySelectorAll('.calc__chip').forEach(function (c) { c.classList.remove('is-sel'); });
-            chip.classList.add('is-sel');
-            sel[key] = chip.dataset.val;
+        group.querySelectorAll('.calc__type, .calc__scale').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            group.querySelectorAll('.calc__type, .calc__scale').forEach(function (b) { b.classList.remove('is-sel'); });
+            btn.classList.add('is-sel');
+            sel[key] = btn.dataset.val;
             update();
           });
         });
+      });
+
+      document.querySelectorAll('.calc__extra-inp').forEach(function(inp) {
+        inp.addEventListener('change', update);
       });
     })();
   })();
