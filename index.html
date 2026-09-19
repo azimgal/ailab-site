@@ -686,9 +686,32 @@
       </div>
       <div class="calc" id="calc">
 
-        <!-- 01 Тип проекта -->
-        <div class="calc__block">
-          <div class="calc__block-hd"><span class="calc__num">01</span>Тип проекта</div>
+        <!-- Прогресс -->
+        <div class="calc__prog" id="calc-prog">
+          <div class="calc__prog-step" data-ps="1">
+            <span class="calc__prog-dot">1</span>
+            <span class="calc__prog-lbl">Тип</span>
+          </div>
+          <div class="calc__prog-line"></div>
+          <div class="calc__prog-step" data-ps="2">
+            <span class="calc__prog-dot">2</span>
+            <span class="calc__prog-lbl">Масштаб</span>
+          </div>
+          <div class="calc__prog-line"></div>
+          <div class="calc__prog-step" data-ps="3">
+            <span class="calc__prog-dot">3</span>
+            <span class="calc__prog-lbl">Опции</span>
+          </div>
+          <div class="calc__prog-line"></div>
+          <div class="calc__prog-step" data-ps="4">
+            <span class="calc__prog-dot">✓</span>
+            <span class="calc__prog-lbl">Бюджет</span>
+          </div>
+        </div>
+
+        <!-- Шаг 1: Тип проекта -->
+        <div class="calc__step" data-step="1">
+          <div class="calc__step-hd"><span class="calc__num">01</span>Какой тип проекта?</div>
           <div class="calc__types" data-calc="type">
             <button class="calc__type is-sel" data-val="web">
               <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -718,9 +741,9 @@
           </div>
         </div>
 
-        <!-- 02 Масштаб -->
-        <div class="calc__block">
-          <div class="calc__block-hd"><span class="calc__num">02</span>Масштаб</div>
+        <!-- Шаг 2: Масштаб -->
+        <div class="calc__step" data-step="2">
+          <div class="calc__step-hd"><span class="calc__num">02</span>Масштаб проекта</div>
           <div class="calc__scales" data-calc="scope">
             <button class="calc__scale is-sel" data-val="s">
               <div class="calc__scale-visual">
@@ -752,9 +775,9 @@
           </div>
         </div>
 
-        <!-- 03 Дополнительно -->
-        <div class="calc__block">
-          <div class="calc__block-hd"><span class="calc__num">03</span>Дополнительно</div>
+        <!-- Шаг 3: Дополнительно -->
+        <div class="calc__step" data-step="3">
+          <div class="calc__step-hd"><span class="calc__num">03</span>Дополнительно</div>
           <div class="calc__extras">
             <label class="calc__extra">
               <input class="calc__extra-inp" type="checkbox" data-mul="0.2">
@@ -772,23 +795,27 @@
               <span class="calc__extra-text"><b>Поддержка 3 месяца</b><span>+15% к стоимости</span></span>
             </label>
           </div>
+          <button class="calc__cta-btn" id="calc-go">Рассчитать →</button>
         </div>
 
-        <!-- Результат -->
-        <div class="calc__out">
-          <div class="calc__out-nums">
-            <div class="calc__out-col">
-              <span class="calc__out-tag">Бюджет</span>
-              <span class="calc__out-price" id="calc-price">$3 000 — $8 000</span>
+        <!-- Шаг 4: Результат -->
+        <div class="calc__step" data-step="4">
+          <div class="calc__out">
+            <div class="calc__out-nums">
+              <div class="calc__out-col">
+                <span class="calc__out-tag">Бюджет</span>
+                <span class="calc__out-price" id="calc-price">$3 000 — $8 000</span>
+              </div>
+              <div class="calc__out-divider"></div>
+              <div class="calc__out-col">
+                <span class="calc__out-tag">Срок</span>
+                <span class="calc__out-weeks" id="calc-weeks">3–6 нед.</span>
+              </div>
             </div>
-            <div class="calc__out-divider"></div>
-            <div class="calc__out-col">
-              <span class="calc__out-tag">Срок</span>
-              <span class="calc__out-weeks" id="calc-weeks">3–6 нед.</span>
-            </div>
+            <p class="calc__out-note">Точную оценку дадим после созвона — бесплатно</p>
+            <a href="https://t.me/tdm343" target="_blank" rel="noopener" class="calc__out-btn">Обсудить проект →</a>
           </div>
-          <p class="calc__out-note">Точную оценку дадим после созвона — бесплатно</p>
-          <a href="https://t.me/tdm343" target="_blank" rel="noopener" class="calc__out-btn">Обсудить проект →</a>
+          <button class="calc__restart-btn" id="calc-restart">← Начать заново</button>
         </div>
 
       </div>
@@ -854,7 +881,7 @@
         auto:   { s: [2000,5000],   m: [5000,15000],  l: [15000,35000]  },
         api:    { s: [3000,8000],   m: [8000,20000],  l: [20000,45000]  }
       };
-       var timeline = {
+      var timeline = {
         web:    { s: '3–6',  m: '8–14',  l: '16–24' },
         mobile: { s: '6–10', m: '14–22', l: '24–36' },
         ai:     { s: '4–8',  m: '10–18', l: '20–30' },
@@ -862,49 +889,73 @@
         api:    { s: '3–6',  m: '8–14',  l: '16–24' }
       };
       var sel = { type: 'web', scope: 's' };
-      var priceEl = document.getElementById('calc-price');
-      var weeksEl = document.getElementById('calc-weeks');
-      if (!priceEl) return;
+      var step = 1;
 
-      function fmt(n) { return '$ ' + n.toLocaleString('en-US').replace(/,/g, ' '); }
+      function goTo(n) {
+        step = n;
+        document.querySelectorAll('.calc__step').forEach(function(s) { s.classList.remove('is-visible'); });
+        var target = document.querySelector('.calc__step[data-step="' + n + '"]');
+        if (target) { target.classList.remove('is-visible'); void target.offsetWidth; target.classList.add('is-visible'); }
+        document.querySelectorAll('.calc__prog-step').forEach(function(d, i) {
+          d.classList.remove('is-active', 'is-done');
+          if (i + 1 === n) d.classList.add('is-active');
+          if (i + 1 < n)  d.classList.add('is-done');
+        });
+        document.querySelectorAll('.calc__prog-line').forEach(function(l, i) {
+          l.classList.toggle('is-done', i + 1 < n);
+        });
+        if (n === 4) showResult();
+      }
 
-      function extras() {
+      function showResult() {
+        var r = prices[sel.type][sel.scope];
         var mul = 1;
         document.querySelectorAll('.calc__extra-inp').forEach(function(inp) {
           if (inp.checked) mul += parseFloat(inp.dataset.mul);
         });
-        return mul;
+        var lo = Math.round(r[0] * mul / 100) * 100;
+        var hi = Math.round(r[1] * mul / 100) * 100;
+        var priceEl = document.getElementById('calc-price');
+        var weeksEl = document.getElementById('calc-weeks');
+        if (priceEl) priceEl.textContent = '$ ' + lo.toLocaleString('en-US').replace(/,/g, ' ') + ' — ' + '$ ' + hi.toLocaleString('en-US').replace(/,/g, ' ');
+        if (weeksEl) weeksEl.textContent = timeline[sel.type][sel.scope] + ' нед.';
       }
 
-      function update() {
-        var r = prices[sel.type][sel.scope];
-        var m = extras();
-        var lo = Math.round(r[0] * m / 100) * 100;
-        var hi = Math.round(r[1] * m / 100) * 100;
-        var w  = timeline[sel.type][sel.scope];
-        [priceEl, weeksEl].forEach(function(el) { el.classList.add('is-updating'); });
-        setTimeout(function () {
-          priceEl.textContent = fmt(lo) + ' — ' + fmt(hi);
-          weeksEl.textContent = w + ' нед.';
-          [priceEl, weeksEl].forEach(function(el) { el.classList.remove('is-updating'); });
-        }, 120);
-      }
-
-      document.querySelectorAll('[data-calc]').forEach(function (group) {
-        var key = group.dataset.calc;
-        group.querySelectorAll('.calc__type, .calc__scale').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            group.querySelectorAll('.calc__type, .calc__scale').forEach(function (b) { b.classList.remove('is-sel'); });
-            btn.classList.add('is-sel');
-            sel[key] = btn.dataset.val;
-            update();
-          });
+      document.querySelectorAll('.calc__type').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.calc__type').forEach(function(b) { b.classList.remove('is-sel'); });
+          btn.classList.add('is-sel');
+          sel.type = btn.dataset.val;
+          setTimeout(function() { goTo(2); }, 220);
         });
       });
 
-      document.querySelectorAll('.calc__extra-inp').forEach(function(inp) {
-        inp.addEventListener('change', update);
+      document.querySelectorAll('.calc__scale').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.calc__scale').forEach(function(b) { b.classList.remove('is-sel'); });
+          btn.classList.add('is-sel');
+          sel.scope = btn.dataset.val;
+          setTimeout(function() { goTo(3); }, 220);
+        });
       });
+
+      var goBtn = document.getElementById('calc-go');
+      if (goBtn) goBtn.addEventListener('click', function() { goTo(4); });
+
+      var restartBtn = document.getElementById('calc-restart');
+      if (restartBtn) restartBtn.addEventListener('click', function() {
+        sel = { type: 'web', scope: 's' };
+        document.querySelectorAll('.calc__type').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
+        document.querySelectorAll('.calc__scale').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
+        document.querySelectorAll('.calc__extra-inp').forEach(function(inp) { inp.checked = false; });
+        goTo(1);
+      });
+
+      document.querySelectorAll('.calc__prog-step').forEach(function(dot, i) {
+        dot.addEventListener('click', function() { if (i + 1 < step) goTo(i + 1); });
+      });
+
+      goTo(1);
     })();
   })();
 

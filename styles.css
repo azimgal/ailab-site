@@ -1586,15 +1586,54 @@ body {
 .footer__social:hover { border-color: rgba(255,255,255,0.55); color: var(--white); }
 .footer__social svg { display: block; }
 
-/* ── Calculator ── */
 /* ── CALCULATOR ── */
-.calc { display: flex; flex-direction: column; gap: 24px; }
+.calc { display: flex; flex-direction: column; gap: 20px; }
 
-.calc__block { display: flex; flex-direction: column; }
-.calc__block-hd {
+/* Progress bar */
+.calc__prog { display: flex; align-items: center; gap: 0; }
+.calc__prog-step {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  cursor: pointer; flex-shrink: 0;
+}
+.calc__prog-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.25);
+  transition: all 0.25s;
+}
+.calc__prog-step.is-active .calc__prog-dot {
+  border-color: var(--purple); background: rgba(106,103,248,0.18); color: var(--purple);
+}
+.calc__prog-step.is-done .calc__prog-dot {
+  border-color: var(--purple); background: var(--purple); color: #fff;
+}
+.calc__prog-lbl {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: rgba(255,255,255,0.2); transition: color 0.25s;
+  white-space: nowrap;
+}
+.calc__prog-step.is-active .calc__prog-lbl { color: rgba(255,255,255,0.6); }
+.calc__prog-step.is-done .calc__prog-lbl { color: rgba(255,255,255,0.4); }
+.calc__prog-line {
+  flex: 1; height: 1px; background: rgba(255,255,255,0.08);
+  margin-bottom: 18px; transition: background 0.25s;
+}
+.calc__prog-line.is-done { background: var(--purple); }
+
+/* Steps */
+@keyframes calcStepIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.calc__step { display: none; flex-direction: column; gap: 16px; }
+.calc__step.is-visible { display: flex; animation: calcStepIn 0.28s ease forwards; }
+
+.calc__step-hd {
   display: flex; align-items: center; gap: 10px;
   font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.12em; color: var(--muted); margin-bottom: 14px;
+  letter-spacing: 0.12em; color: var(--muted);
 }
 .calc__num {
   font-family: 'Bebas Neue', Impact, sans-serif;
@@ -1641,8 +1680,7 @@ body {
 .calc__bar {
   width: 8px; border-radius: 2px 2px 0 0;
   background: rgba(255,255,255,0.13);
-  height: var(--bh);
-  transition: background .2s;
+  height: var(--bh); transition: background .2s;
 }
 .calc__scale.is-sel .calc__bar { background: var(--purple); }
 .calc__scale-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.65); transition: color .15s; }
@@ -1666,16 +1704,12 @@ body {
   width: 36px; height: 20px; border-radius: 10px; flex-shrink: 0;
   border: 1.5px solid rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.06);
-  position: relative;
-  transition: background .15s, border-color .15s;
+  position: relative; transition: background .15s, border-color .15s;
 }
 .calc__extra-toggle::after {
-  content: '';
-  position: absolute; top: 2px; left: 2px;
-  width: 13px; height: 13px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.4);
-  transition: transform .15s, background .15s;
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: rgba(255,255,255,0.4); transition: transform .15s, background .15s;
 }
 .calc__extra-inp:checked ~ .calc__extra-toggle { background: var(--purple); border-color: var(--purple); }
 .calc__extra-inp:checked ~ .calc__extra-toggle::after { transform: translateX(16px); background: #fff; }
@@ -1683,6 +1717,23 @@ body {
 .calc__extra-text b { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.8); }
 .calc__extra-text span { font-size: 11px; color: var(--muted); }
 .calc__extra-inp:checked ~ .calc__extra-text b { color: #fff; }
+
+/* CTA & restart buttons */
+.calc__cta-btn {
+  padding: 13px 24px; border-radius: 8px; border: none;
+  background: var(--purple); color: #fff;
+  font-size: 13px; font-weight: 700; font-family: inherit;
+  cursor: pointer; transition: opacity .15s; align-self: stretch; text-align: center;
+}
+.calc__cta-btn:hover { opacity: 0.85; }
+.calc__restart-btn {
+  padding: 10px 18px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: rgba(255,255,255,0.5);
+  font-size: 12px; font-weight: 600; font-family: inherit;
+  cursor: pointer; transition: opacity .15s; align-self: flex-start;
+}
+.calc__restart-btn:hover { opacity: 0.7; }
 
 /* Output */
 .calc__out {
@@ -1702,17 +1753,13 @@ body {
 .calc__out-price, .calc__out-weeks {
   display: block; font-size: 20px; font-weight: 800;
   color: #fff; letter-spacing: -0.02em;
-  transition: opacity .15s;
 }
-.calc__out-price.is-updating, .calc__out-weeks.is-updating { opacity: 0; }
 .calc__out-note { font-size: 12px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
 .calc__out-btn {
-  display: block; text-align: center;
-  padding: 13px 22px;
+  display: block; text-align: center; padding: 13px 22px;
   background: var(--blue); color: #fff;
   font-size: 13px; font-weight: 700; font-family: inherit;
-  text-decoration: none; border-radius: 8px;
-  transition: opacity .15s;
+  text-decoration: none; border-radius: 8px; transition: opacity .15s;
 }
 .calc__out-btn:hover { opacity: 0.82; }
 
