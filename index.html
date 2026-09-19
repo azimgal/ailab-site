@@ -688,62 +688,67 @@
 
         <!-- Прогресс -->
         <div class="calc__prog" id="calc-prog">
-          <div class="calc__prog-step" data-ps="1">
-            <span class="calc__prog-dot">1</span>
-            <span class="calc__prog-lbl">Тип</span>
-          </div>
+          <div class="calc__prog-step" data-ps="1"><span class="calc__prog-dot">1</span><span class="calc__prog-lbl">Тип</span></div>
           <div class="calc__prog-line"></div>
-          <div class="calc__prog-step" data-ps="2">
-            <span class="calc__prog-dot">2</span>
-            <span class="calc__prog-lbl">Масштаб</span>
-          </div>
+          <div class="calc__prog-step" data-ps="2"><span class="calc__prog-dot">2</span><span class="calc__prog-lbl">Формат</span></div>
           <div class="calc__prog-line"></div>
-          <div class="calc__prog-step" data-ps="3">
-            <span class="calc__prog-dot">3</span>
-            <span class="calc__prog-lbl">Опции</span>
-          </div>
+          <div class="calc__prog-step" data-ps="3"><span class="calc__prog-dot">3</span><span class="calc__prog-lbl">Масштаб</span></div>
           <div class="calc__prog-line"></div>
-          <div class="calc__prog-step" data-ps="4">
-            <span class="calc__prog-dot">✓</span>
-            <span class="calc__prog-lbl">Бюджет</span>
-          </div>
+          <div class="calc__prog-step" data-ps="4"><span class="calc__prog-dot">✓</span><span class="calc__prog-lbl">Бюджет</span></div>
         </div>
 
-        <!-- Шаг 1: Тип проекта -->
+        <!-- Шаг 1: Тип задачи -->
         <div class="calc__step" data-step="1">
-          <div class="calc__step-hd"><span class="calc__num">01</span>Какой тип проекта?</div>
+          <div class="calc__step-hd"><span class="calc__num">01</span>Тип задачи</div>
           <div class="calc__types" data-calc="type">
-            <button class="calc__type is-sel" data-val="web">
-              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <b class="calc__type-name">Web</b>
-              <span class="calc__type-sub">Сайт, портал, SaaS</span>
-            </button>
-            <button class="calc__type" data-val="mobile">
-              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg>
-              <b class="calc__type-name">Mobile</b>
-              <span class="calc__type-sub">iOS и Android</span>
-            </button>
-            <button class="calc__type" data-val="ai">
+            <button class="calc__type is-sel" data-val="ai">
               <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <b class="calc__type-name">AI / LLM</b>
-              <span class="calc__type-sub">Модели, чат-боты</span>
+              <b class="calc__type-name">AI агенты</b>
+              <span class="calc__type-sub">Модели, автоматизация</span>
             </button>
             <button class="calc__type" data-val="auto">
               <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
               <b class="calc__type-name">Автоматизация</b>
-              <span class="calc__type-sub">Процессы, боты</span>
+              <span class="calc__type-sub">Процессы, интеграции</span>
             </button>
-            <button class="calc__type" data-val="api">
-              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              <b class="calc__type-name">Backend / API</b>
-              <span class="calc__type-sub">Серверы, сервисы</span>
+            <button class="calc__type" data-val="crm">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <b class="calc__type-name">CRM / ERP / Система</b>
+              <span class="calc__type-sub">Бизнес-системы</span>
+            </button>
+            <button class="calc__type" data-val="digital">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <b class="calc__type-name">Цифровой продукт</b>
+              <span class="calc__type-sub">Web, Mobile, SaaS</span>
             </button>
           </div>
         </div>
 
-        <!-- Шаг 2: Масштаб -->
+        <!-- Шаг 2: Формат работы -->
         <div class="calc__step" data-step="2">
-          <div class="calc__step-hd"><span class="calc__num">02</span>Масштаб проекта</div>
+          <div class="calc__step-hd"><span class="calc__num">02</span>Формат работы</div>
+          <div class="calc__types" data-calc="format">
+            <button class="calc__type is-sel" data-val="mvp">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+              <b class="calc__type-name">Pilot / MVP</b>
+              <span class="calc__type-sub">Быстрая проверка идеи</span>
+            </button>
+            <button class="calc__type" data-val="project">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <b class="calc__type-name">Project Development</b>
+              <span class="calc__type-sub">Полноценная разработка</span>
+            </button>
+            <button class="calc__type" data-val="team">
+              <svg class="calc__type-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <b class="calc__type-name">External Tech Team</b>
+              <span class="calc__type-sub">Выделенная команда</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Шаг 3: Масштаб -->
+        <div class="calc__step" data-step="3">
+          <div class="calc__step-hd"><span class="calc__num">03</span>Масштаб проекта</div>
           <div class="calc__scales" data-calc="scope">
             <button class="calc__scale is-sel" data-val="s">
               <div class="calc__scale-visual">
@@ -752,7 +757,7 @@
                 <span class="calc__bar" style="--bh:70%"></span>
               </div>
               <b class="calc__scale-name">Небольшой</b>
-              <span class="calc__scale-sub">MVP, лендинг</span>
+              <span class="calc__scale-sub">Базовый функционал</span>
             </button>
             <button class="calc__scale" data-val="m">
               <div class="calc__scale-visual">
@@ -761,7 +766,7 @@
                 <span class="calc__bar" style="--bh:90%"></span>
               </div>
               <b class="calc__scale-name">Средний</b>
-              <span class="calc__scale-sub">Полноценный продукт</span>
+              <span class="calc__scale-sub">Расширенный продукт</span>
             </button>
             <button class="calc__scale" data-val="l">
               <div class="calc__scale-visual">
@@ -769,33 +774,10 @@
                 <span class="calc__bar" style="--bh:86%"></span>
                 <span class="calc__bar" style="--bh:100%"></span>
               </div>
-              <b class="calc__scale-name">Крупный</b>
-              <span class="calc__scale-sub">Корпоративный</span>
+              <b class="calc__scale-name">Комплексный</b>
+              <span class="calc__scale-sub">Индивидуальный расчёт</span>
             </button>
           </div>
-        </div>
-
-        <!-- Шаг 3: Дополнительно -->
-        <div class="calc__step" data-step="3">
-          <div class="calc__step-hd"><span class="calc__num">03</span>Дополнительно</div>
-          <div class="calc__extras">
-            <label class="calc__extra">
-              <input class="calc__extra-inp" type="checkbox" data-mul="0.2">
-              <span class="calc__extra-toggle"></span>
-              <span class="calc__extra-text"><b>Срочная разработка</b><span>+20% к стоимости</span></span>
-            </label>
-            <label class="calc__extra">
-              <input class="calc__extra-inp" type="checkbox" data-mul="0.3">
-              <span class="calc__extra-toggle"></span>
-              <span class="calc__extra-text"><b>AI-интеграция</b><span>+30% к стоимости</span></span>
-            </label>
-            <label class="calc__extra">
-              <input class="calc__extra-inp" type="checkbox" data-mul="0.15">
-              <span class="calc__extra-toggle"></span>
-              <span class="calc__extra-text"><b>Поддержка 3 месяца</b><span>+15% к стоимости</span></span>
-            </label>
-          </div>
-          <button class="calc__cta-btn" id="calc-go">Рассчитать →</button>
         </div>
 
         <!-- Шаг 4: Результат -->
@@ -803,13 +785,8 @@
           <div class="calc__out">
             <div class="calc__out-nums">
               <div class="calc__out-col">
-                <span class="calc__out-tag">Бюджет</span>
-                <span class="calc__out-price" id="calc-price">$3 000 — $8 000</span>
-              </div>
-              <div class="calc__out-divider"></div>
-              <div class="calc__out-col">
-                <span class="calc__out-tag">Срок</span>
-                <span class="calc__out-weeks" id="calc-weeks">3–6 нед.</span>
+                <span class="calc__out-tag">Стоимость проекта</span>
+                <span class="calc__out-price" id="calc-price">от 520 000 ₸</span>
               </div>
             </div>
             <p class="calc__out-note">Точную оценку дадим после созвона — бесплатно</p>
@@ -817,6 +794,8 @@
           </div>
           <button class="calc__restart-btn" id="calc-restart">← Начать заново</button>
         </div>
+
+      </div>
 
       </div>
     </div>
@@ -872,24 +851,18 @@
         : '18px var(--pad)';
     }, { passive: true });
 
-    /* ── Calculator ── */
+        /* ── Calculator ── */
     (function () {
       var prices = {
-        web:    { s: [3000,8000],   m: [8000,20000],  l: [20000,50000]  },
-        mobile: { s: [5000,15000],  m: [15000,40000], l: [40000,100000] },
-        ai:     { s: [4000,10000],  m: [10000,25000], l: [25000,60000]  },
-        auto:   { s: [2000,5000],   m: [5000,15000],  l: [15000,35000]  },
-        api:    { s: [3000,8000],   m: [8000,20000],  l: [20000,45000]  }
+        ai:      { mvp: { s: 520000,   m: 585000   }, project: { s: 1690000, m: 1950000 }, team: { s: 2665000, m: 3055000 } },
+        auto:    { mvp: { s: 260000,   m: 325000   }, project: { s: 910000,  m: 1040000 }, team: { s: 1430000, m: 1625000 } },
+        crm:     { mvp: { s: 845000,   m: 975000   }, project: { s: 2795000, m: 3185000 }, team: { s: 4420000, m: 5070000 } },
+        digital: { mvp: { s: 1170000,  m: 1365000  }, project: { s: 3900000, m: 4420000 }, team: { s: 6175000, m: 7085000 } }
       };
-      var timeline = {
-        web:    { s: '3–6',  m: '8–14',  l: '16–24' },
-        mobile: { s: '6–10', m: '14–22', l: '24–36' },
-        ai:     { s: '4–8',  m: '10–18', l: '20–30' },
-        auto:   { s: '2–4',  m: '6–12',  l: '14–22' },
-        api:    { s: '3–6',  m: '8–14',  l: '16–24' }
-      };
-      var sel = { type: 'web', scope: 's' };
+      var sel = { type: 'ai', format: 'mvp', scope: 's' };
       var step = 1;
+
+      function fmt(n) { return '\u043e\u0442\u00a0' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0') + '\u00a0\u20b8'; }
 
       function goTo(n) {
         step = n;
@@ -908,25 +881,33 @@
       }
 
       function showResult() {
-        var r = prices[sel.type][sel.scope];
-        var mul = 1;
-        document.querySelectorAll('.calc__extra-inp').forEach(function(inp) {
-          if (inp.checked) mul += parseFloat(inp.dataset.mul);
-        });
-        var lo = Math.round(r[0] * mul / 100) * 100;
-        var hi = Math.round(r[1] * mul / 100) * 100;
         var priceEl = document.getElementById('calc-price');
-        var weeksEl = document.getElementById('calc-weeks');
-        if (priceEl) priceEl.textContent = '$ ' + lo.toLocaleString('en-US').replace(/,/g, ' ') + ' — ' + '$ ' + hi.toLocaleString('en-US').replace(/,/g, ' ');
-        if (weeksEl) weeksEl.textContent = timeline[sel.type][sel.scope] + ' нед.';
+        if (!priceEl) return;
+        if (sel.scope === 'l') {
+          priceEl.textContent = '\u0418\u043d\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043b\u044c\u043d\u044b\u0439 \u0440\u0430\u0441\u0447\u0451\u0442';
+          priceEl.style.fontSize = '15px';
+        } else {
+          var p = prices[sel.type][sel.format][sel.scope];
+          priceEl.textContent = fmt(p);
+          priceEl.style.fontSize = '';
+        }
       }
 
-      document.querySelectorAll('.calc__type').forEach(function(btn) {
+      document.querySelectorAll('[data-calc="type"] .calc__type').forEach(function(btn) {
         btn.addEventListener('click', function() {
-          document.querySelectorAll('.calc__type').forEach(function(b) { b.classList.remove('is-sel'); });
+          document.querySelectorAll('[data-calc="type"] .calc__type').forEach(function(b) { b.classList.remove('is-sel'); });
           btn.classList.add('is-sel');
           sel.type = btn.dataset.val;
           setTimeout(function() { goTo(2); }, 220);
+        });
+      });
+
+      document.querySelectorAll('[data-calc="format"] .calc__type').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('[data-calc="format"] .calc__type').forEach(function(b) { b.classList.remove('is-sel'); });
+          btn.classList.add('is-sel');
+          sel.format = btn.dataset.val;
+          setTimeout(function() { goTo(3); }, 220);
         });
       });
 
@@ -935,19 +916,16 @@
           document.querySelectorAll('.calc__scale').forEach(function(b) { b.classList.remove('is-sel'); });
           btn.classList.add('is-sel');
           sel.scope = btn.dataset.val;
-          setTimeout(function() { goTo(3); }, 220);
+          setTimeout(function() { goTo(4); }, 220);
         });
       });
 
-      var goBtn = document.getElementById('calc-go');
-      if (goBtn) goBtn.addEventListener('click', function() { goTo(4); });
-
       var restartBtn = document.getElementById('calc-restart');
       if (restartBtn) restartBtn.addEventListener('click', function() {
-        sel = { type: 'web', scope: 's' };
-        document.querySelectorAll('.calc__type').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
+        sel = { type: 'ai', format: 'mvp', scope: 's' };
+        document.querySelectorAll('[data-calc="type"] .calc__type').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
+        document.querySelectorAll('[data-calc="format"] .calc__type').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
         document.querySelectorAll('.calc__scale').forEach(function(b, i) { b.classList.toggle('is-sel', i === 0); });
-        document.querySelectorAll('.calc__extra-inp').forEach(function(inp) { inp.checked = false; });
         goTo(1);
       });
 
